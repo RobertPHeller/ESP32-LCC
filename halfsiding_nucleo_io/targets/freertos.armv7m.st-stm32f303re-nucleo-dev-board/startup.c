@@ -1,1 +1,0 @@
-/home/heller/Deepwoods/openmrn/boards/st-stm32f303re-nucleo-dev-board/startup.c

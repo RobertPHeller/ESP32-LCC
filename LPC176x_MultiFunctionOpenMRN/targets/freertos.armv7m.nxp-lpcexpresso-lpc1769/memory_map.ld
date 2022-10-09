@@ -1,1 +1,0 @@
-../freertos.armv7m.nxp-lpc1768/memory_map.ld

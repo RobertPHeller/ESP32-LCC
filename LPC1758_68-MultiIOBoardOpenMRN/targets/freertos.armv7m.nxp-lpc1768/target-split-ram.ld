@@ -1,1 +1,0 @@
-/home/heller/openmrn/boards/armv7m/target-split-ram.ld

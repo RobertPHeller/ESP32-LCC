@@ -1,1 +1,0 @@
-../freertos.armv7m.nxp-lpc1758/startup.c

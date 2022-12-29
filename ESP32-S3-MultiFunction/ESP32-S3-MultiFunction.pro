@@ -1,4 +1,4 @@
-update=Sun 04 Dec 2022 01:24:09 PM EST
+update=Thu 29 Dec 2022 12:19:05 PM EST
 version=1
 last_client=kicad
 [cvpcb]
@@ -27,7 +27,7 @@ BoardOutlineThickness=0.09999999999999999
 ModuleOutlineThickness=0.15
 [eeschema]
 version=1
-LibDir=
+LibDir=../CommonLibraries
 [eeschema/libraries]
 LibName1=power
 LibName2=device
@@ -61,19 +61,19 @@ LibName29=opto
 LibName30=atmel
 LibName31=contrib
 LibName32=valves
-LibName33=/home/heller/RRCircuits/W25Q32JVSSIQ
-LibName34=/home/heller/RRCircuits/umh3n
-LibName35=/home/heller/RRCircuits/lm2574n-5
-LibName36=/home/heller/RRCircuits/tc442x
-LibName37=/home/heller/RRCircuits/4814p-2
-LibName38=/home/heller/RRCircuits/16PWMLedDriverHat/pca9685
-LibName39=/home/heller/RRCircuits/tbd62x83a
-LibName40=/home/heller/RRCircuits/sn65hvd233-ht
+LibName33=W25Q32JVSSIQ
+LibName34=umh3n
+LibName35=lm2574n-5
+LibName36=tc442x
+LibName37=4814p-2
+LibName38=pca9685
+LibName39=tbd62x83a
+LibName40=sn65hvd233-ht
 LibName41=mechanical
 LibName42=graphic_symbols
 LibName43=ESP32-S3
 LibName44=ESP32-S3-MultiFunction-cache
 LibName45=ESP32-S3-MultiFunction-rescue
 LibName46=USBLC6-2SC6
-LibName47=/home/heller/RRCircuits/esp32_s3_wroom
-LibName48=/home/heller/RRCircuits/gct_usb4105
+LibName47=esp32_s3_wroom
+LibName48=gct_usb4105

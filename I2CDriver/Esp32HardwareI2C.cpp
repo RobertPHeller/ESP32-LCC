@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Oct 8 12:47:31 2022
-//  Last Modified : <221222.1007>
+//  Last Modified : <221229.1416>
 //
 //  Description	
 //
@@ -65,7 +65,11 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <string.h>
 #include <esp_system.h>
 #include <esp_task_wdt.h>
+#if defined(CONFIG_IDF_TARGET_ESP32)
+#include <esp32/rom/rtc.h>
+#elif defined(CONFIG_IDF_TARGET_ESP32S3)
 #include <esp32s3/rom/rtc.h>
+#endif
 #include <hal/gpio_types.h>
 #include <freertos_includes.h>   
 #include "utils/logging.h"
@@ -94,12 +98,12 @@ void Esp32HardwareI2C::hw_init()
         .master = {.clk_speed = I2C_MASTER_FREQ_HZ},
         .clk_flags = I2C_SCLK_DEFAULT
     };
-    i2c_param_config(i2c_master_port, &conf);
+    ESP_ERROR_CHECK(i2c_param_config(i2c_master_port, &conf));
     
     ESP_ERROR_CHECK(i2c_driver_install(i2c_master_port,
                                        conf.mode,
-                                       I2C_MASTER_RX_BUF_DISABLE,
-                                       I2C_MASTER_TX_BUF_DISABLE,
+                                       0,
+                                       0,
                                        0));
 }
 

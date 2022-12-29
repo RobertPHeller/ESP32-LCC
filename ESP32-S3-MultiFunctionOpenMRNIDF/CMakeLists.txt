@@ -12,7 +12,10 @@ if (IDF_VERSION_MAJOR EQUAL 4 AND IDF_VERSION_MINOR LESS 2)
     message(FATAL_ERROR "ESP32IO requires IDF v4.2 (or newer)")
 endif()
 
-set(EXTRA_COMPONENT_DIRS "${CMAKE_CURRENT_SOURCE_DIR}/../OpenMRNIDF")
+set(EXTRA_COMPONENT_DIRS 
+        "${CMAKE_CURRENT_SOURCE_DIR}/../OpenMRNIDF"
+        "${CMAKE_CURRENT_SOURCE_DIR}/../I2CDriver"
+        )
 
 set(SUPPORTED_TARGETS esp32s3)
 project(Esp32MultiFunction)

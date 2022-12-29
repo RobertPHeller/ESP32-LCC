@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Oct 8 11:16:35 2022
-//  Last Modified : <221224.1144>
+//  Last Modified : <221229.1416>
 //
 //  Description	
 //
@@ -52,7 +52,11 @@
 #include <esp_ota_ops.h>
 #include <esp_system.h>
 #include <esp_task_wdt.h>
+#if defined(CONFIG_IDF_TARGET_ESP32)
 #include <esp32/rom/rtc.h>
+#elif defined(CONFIG_IDF_TARGET_ESP32S3)
+#include <esp32s3/rom/rtc.h>
+#endif
 #include <hal/gpio_types.h>
 #include <freertos_includes.h>   
 #include "utils/logging.h"

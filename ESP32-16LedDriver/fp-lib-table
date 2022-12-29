@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name ESP32Boards)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/ESP32Boards.mod")(options "")(descr ""))
+  (lib (name PELowProfile)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/PELowProfile.mod")(options "")(descr ""))
+  (lib (name RJ45-8N-S)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/RJ45-8N-S.mod")(options "")(descr ""))
+  (lib (name 3PosJumper)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/3PosJumper.mod")(options "")(descr ""))
+)

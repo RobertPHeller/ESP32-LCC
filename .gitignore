@@ -81,3 +81,10 @@ openmrnpath.mk
 #Mac OS X file system artifacts
 .DS_Store
 
+build
+build.sh
+config.sh
+flash.sh
+monitor.sh
+compile_cdi
+cdidata.hxx

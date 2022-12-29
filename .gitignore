@@ -81,6 +81,7 @@ openmrnpath.mk
 #Mac OS X file system artifacts
 .DS_Store
 
+# Additional build artifacts
 build
 build.sh
 config.sh

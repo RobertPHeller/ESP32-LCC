@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Dec 16 10:47:59 2022
-//  Last Modified : <221224.1607>
+//  Last Modified : <221230.1141>
 //
 //  Description	
 //
@@ -106,6 +106,7 @@ public:
     inline void node_id(uint64_t node_id)
     {
         config_.node_id = node_id;
+        config_.force_reset = true;
         need_persist_ = true;
     }
     inline wifi_mode_t wifi_mode() {return config_.wifi_mode;}
@@ -135,9 +136,14 @@ public:
     NvsManager() : need_persist_(false) 
     {
     }
-    inline void CheckPersist() 
+    inline bool CheckPersist() 
     {
-        if (need_persist_) {persist_configuration();}
+        if (need_persist_) {
+            persist_configuration();
+            return true;
+        } else {
+            return false;
+        }
     }
     void DisplayNvsConfiguration();
     

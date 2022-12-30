@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <221217.1640>
+//  Last Modified : <221230.1147>
 //
 //  Description	
 //
@@ -99,14 +99,20 @@ public:
     inline void node_id(uint64_t node_id)
     {
         config_.node_id = node_id;
+        config_.force_reset = true;
         need_persist_ = true;
     }
     NvsManager() : need_persist_(false) 
     {
     }
-    inline void CheckPersist() 
+    inline bool CheckPersist() 
     {
-        if (need_persist_) {persist_configuration();}
+        if (need_persist_) {
+            persist_configuration();
+            return true;
+        } else {
+            return false;
+        }
     }
     void DisplayNvsConfiguration();
 private:

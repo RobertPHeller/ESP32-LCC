@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <221225.1539>
+//  Last Modified : <221230.1145>
 //
 //  Description	
 //
@@ -172,6 +172,98 @@ ssize_t os_get_free_heap()
     return heap_caps_get_free_size(MALLOC_CAP_8BIT);
 }
 
+
+namespace esp32pwmhalfsiding {
+
+ConfigUpdateListener::UpdateAction FactoryResetHelper::apply_configuration(
+    int fd, bool initial_load, BarrierNotifiable *done)
+{
+    // nothing to do here as we do not load config
+    AutoNotify n(done);
+    LOG(VERBOSE, "[CFG] apply_configuration(%d, %d)", fd, initial_load);
+    if (!initial_load &&
+        Singleton<NvsManager>::instance()->CheckPersist())
+    {
+        LOG(WARNING, "[CFG] NVS has been updated requesting a restart.");
+        return ConfigUpdateListener::UpdateAction::REBOOT_NEEDED;
+    }
+
+    return ConfigUpdateListener::UpdateAction::UPDATED;
+}
+
+void FactoryResetHelper::factory_reset(int fd)
+{
+    LOG(VERBOSE, "[CFG] factory_reset(%d)", fd);
+    // set the name of the node to the SNIP model name
+    cfg.userinfo().name().write(fd, openlcb::SNIP_STATIC_DATA.model_name);
+    cfg.userinfo().description().write(fd, "");
+    
+    for(int i = 0; i < NUM_OCS; i++)
+    {
+        cfg.seg().ocs().entry(i).description().write(fd, "");
+        CDI_FACTORY_RESET(cfg.seg().ocs().entry(i).debounce);
+    }
+    for(int i = 0; i < NUM_TURNOUTS; i++)
+    {
+        cfg.seg().turnouts().entry(i).description().write(fd, "");
+    }
+    for(int i = 0; i < NUM_POINTSS; i++)
+    {
+        cfg.seg().points().entry(i).description().write(fd, "");
+    }
+    
+#if 1
+    for(int i = 0; i < LOGICCOUNT; i++)
+    {
+        cfg.seg().logics().entry(i).description().write(fd, "");
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).groupFunction);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).logic().logicFunction);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).trueAction);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).falseAction);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).timing().timedelay);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).timing().interval);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).timing().retriggerable);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).v1().trigger);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).v1().source);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).v1().trackspeed);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).v2().trigger);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).v2().source);
+        CDI_FACTORY_RESET(cfg.seg().logics().entry(i).v2().trackspeed);
+        for (int j = 0; j < 4 ; j++)
+        {
+            CDI_FACTORY_RESET(cfg.seg().logics().entry(i).actions().entry(j).actiontrigger);
+        }
+    }
+    for(int i = 0; i < MASTCOUNT; i++)
+    {
+        CDI_FACTORY_RESET(cfg.seg().masts().entry(i).processing);
+        cfg.seg().masts().entry(i).mastid().write(fd,"");
+#ifdef HAVEPWM
+        CDI_FACTORY_RESET(cfg.seg().masts().entry(i).fade);
+#endif
+        for (int j = 0; j < RULESCOUNT; j++)
+        {
+            CDI_FACTORY_RESET(cfg.seg().masts().entry(i).rules().entry(j).name);
+            CDI_FACTORY_RESET(cfg.seg().masts().entry(i).rules().entry(j).speed);
+            for (int k = 0; k < LAMPCOUNT; k++)
+            {
+                CDI_FACTORY_RESET(cfg.seg().masts().entry(i).rules().entry(j).lamps().entry(k).selection);
+                CDI_FACTORY_RESET(cfg.seg().masts().entry(i).rules().entry(j).lamps().entry(k).phase);
+                CDI_FACTORY_RESET(cfg.seg().masts().entry(i).rules().entry(j).lamps().entry(k).brightness);
+                CDI_FACTORY_RESET(cfg.seg().masts().entry(i).rules().entry(j).lamps().entry(k).period);
+            }
+        }
+    }
+    for(int i = 0; i < TRACKCIRCUITCOUNT; i++)
+    {
+        cfg.seg().circuits().entry(i).description().write(fd,"");
+    }
+#endif
+}
+
+}
+
+
 void app_main()
 {
     // capture the reason for the CPU reset
@@ -226,6 +318,7 @@ void app_main()
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif
+    nvs.register_virtual_memory_spaces(&stack);
     openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
     LOG(INFO, "[MAIN] MemoryConfigClient allocated");
     esp32pwmhalfsiding::FactoryResetHelper factory_reset_helper();

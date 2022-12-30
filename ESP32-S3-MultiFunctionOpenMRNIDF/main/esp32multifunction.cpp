@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <221223.1050>
+//  Last Modified : <221230.1142>
 //
 //  Description	
 //
@@ -271,6 +271,12 @@ ConfigUpdateListener::UpdateAction FactoryResetHelper::apply_configuration(
     // nothing to do here as we do not load config
     AutoNotify n(done);
     LOG(VERBOSE, "[CFG] apply_configuration(%d, %d)", fd, initial_load);
+    if (!initial_load &&
+        Singleton<NvsManager>::instance()->CheckPersist())
+    {
+        LOG(WARNING, "[CFG] NVS has been updated requesting a restart.");
+        return ConfigUpdateListener::UpdateAction::REBOOT_NEEDED;
+    }
 
     return ConfigUpdateListener::UpdateAction::UPDATED;
 }
@@ -436,6 +442,7 @@ void app_main()
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
         stack.print_all_packets();
 #endif
+        nvs.register_virtual_memory_spaces(&stack);
         openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
         LOG(INFO, "[esp32multifunction] MemoryConfigClient done.");
         esp32multifunction::FactoryResetHelper factory_reset_helper();

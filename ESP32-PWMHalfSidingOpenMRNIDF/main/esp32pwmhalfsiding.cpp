@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <221230.1145>
+//  Last Modified : <221230.1224>
 //
 //  Description	
 //
@@ -51,6 +51,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "fs.hxx"
 #include "hardware.hxx"
 #include "NvsManager.hxx"
+#include "NodeRebootHelper.hxx"
 #include "BootPauseHelper.hxx"
 
 #include <algorithm>
@@ -166,6 +167,18 @@ PCA9685PWMBit LampB7(&pwmchip,15);
 
 extern "C"
 {
+
+void *node_reboot(void *arg)
+{
+    Singleton<esp32pwmhalfsiding::NodeRebootHelper>::instance()->reboot();
+    return nullptr;
+}
+
+void reboot()
+{
+    os_thread_create(nullptr, nullptr, uxTaskPriorityGet(NULL) + 1, 2048
+                   , node_reboot, nullptr);
+}
 
 ssize_t os_get_free_heap()
 {
@@ -410,6 +423,8 @@ void app_main()
     stack.check_version_and_factory_reset(cfg.seg().internal_config(),
                                           CDI_VERSION,
                                           cleanup_config_tree);
+    esp32pwmhalfsiding::NodeRebootHelper node_reboot_helper(&stack, config_fd);
+
     if (reset_events)
     {
         LOG(WARNING, "[CDI] Resetting event IDs");

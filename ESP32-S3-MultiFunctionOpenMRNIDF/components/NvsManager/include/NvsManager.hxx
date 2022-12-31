@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <221230.1147>
+//  Last Modified : <221231.1113>
 //
 //  Description	
 //
@@ -95,6 +95,17 @@ public:
         config_.bootloader_req = false;
         need_persist_ = true;
     }
+    inline bool should_test_signal_lamps() {return config_.test_signal_lamps;}
+    inline void force_test_signal_lamps()
+    {
+        config_.test_signal_lamps = true;
+        need_persist_ = true;
+    }
+    inline void clear_test_signal_lamps()
+    {
+        config_.test_signal_lamps = false;
+        need_persist_ = true;
+    }
     inline uint64_t node_id() {return config_.node_id;}
     inline void node_id(uint64_t node_id)
     {
@@ -127,6 +138,7 @@ private:
         bool force_reset;
         bool bootloader_req;
         bool reset_events_req;
+        bool test_signal_lamps;
         uint8_t reserved[20];
     } config_;
     bool need_persist_;

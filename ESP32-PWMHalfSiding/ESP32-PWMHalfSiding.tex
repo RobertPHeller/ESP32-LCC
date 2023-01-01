@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Mon Feb 10 14:21:24 2020
-%  Last Modified : <220902.0857>
+%  Last Modified : <230101.1432>
 %
 %  Description 
 %
@@ -273,61 +273,63 @@ Figure~\ref{fig:ESP32-PWMHalfSidingOEEnableMods}.
 \clearpage
 \section{Downloadables and Software Support}
 
-The ESP32 needs to have a program installed in it to run the board.  This 
-program can be downloaded from GitHub as part of the RRCircuits package: 
-\url{https://github.com/RobertPHeller/RPi-RRCircuits}. The sketch is in the 
-ESP32MRNSketches folder and is named ESP32-PWMHalfSiding. 
+As shipped, the TTGO-T1 has already had its firmware installed, but if you 
+want to rebuild the code (possibly with customizations) the code is on GitHub 
+in my ESP32-LCC repo: \url{https://github.com/RobertPHeller/ESP32-LCC}, in the 
+ESP32-PWMHalfSidingOpenMRNIDF sub-folder.  You will need the Espressif's IoT 
+Development Framework, version 4.2 or later, available from 
+\url{https://github.com/espressif/esp-idf}.  The ESP32-PWMHalfSidingOpenMRNIDF 
+also uses Mike Dunston's OpenMRNID module -- be sure to do ``git submodule 
+update --init'' after cloning https://github.com/RobertPHeller/ESP32-LCC.
 
 
 \subsection{Building and installing the software}
 
+Once you have installed Espressif's IoT Development Framework and cloned the 
+ESP32-LCC repo, you can build the software by cd'ing to the 
+ESP32-PWMHalfSidingOpenMRNIDF and in bash running these commands:
 
-The ESP32 MCU is programmed with the Arduino IDE. It uses two libraries: the
-FaBo PWM PCA9685 library for the PCA9685 chip and the OpenMRN\_lite library to
-implement the OpenLCB/LCC stack. First you need to install board support for
-the ESP32 and then install the FaBo PWM PCA9685 library. Both of these can be
-done using the Arduino IDE board and library managers. Installing the
-OpenMRN\_lite library is a little different. The OpenMRN\_lite library is part
-of the OpenMRN package, available on GitHub here:
-\url{https://github.com/bakerstu/openmrn}. You will also need the sketch for
-this board which is also on GitHub in the RRCircuits repository:
-\url{https://github.com/RobertPHeller/RPi-RRCircuits} in the
-ESP32MRNSketches/ESP32-PWMHalfSiding. The kit includes a thumb drive that
-contains two Zip files: one for the OpenMRN\_lite library
-(\texttt{OpenMRN\_lite.zip}) and one for the sketch
-(\texttt{ESP32-PWMHalfSiding.zip}). Just unpack the \texttt{OpenMRN\_lite.zip}
-file under your Arduino libraries folder (usually named libraries in the
-Arduino folder in your home folder). And then unpack the sketch
-(\texttt{ESP32-PWMHalfSiding.zip}) directly under your Arduino folder. Then
-open the sketch with the Arduino IDE. Before you compile it, you will need to
-edit the NODEID.h file to set the node ID, which should be one of the node ids
-you got from the OpenLCB website. If you have more than one of these boards,
-you need to give each one a different node id.
+\begin{verbatim}
+. path-to-Espressifs-IDF/export.sh
+idf.py build
+\end{verbatim}
 
-Once you have built the sketch, you can upload it using an USB cable connected 
-between your computer and the MCU board.
+You can then use the idf.py's flash command to flash the TTGO-T1.
 
 \subsection{Program Description}
 
-The program consists of a main sketch file, and several support files.  Most 
-of the support files implement I/O or logic elements:
+The program consists of a main sketch file, and several support files and
+``components'' (libraries).
 
-\begin{description}
-\item[Blink.h] This file provides support for blinking (flashing) signal 
-lamps.
-\item[config.h] This file defines the structure of the node's configuration.
-\item[Lamp.h] This file implements the output functions for signal lamps.
-\item[Logic.cpp, Logic.h] These files implement the Logic elements available 
-in the node.
-\item[Mast.cpp, Mast.h] These files implement signal masts.
-\item[NODEID.h] This file contains the Node ID.
-\item[OccupancyDetector.h] This file implements the occupancy detector inputs.
-\item[Points.h] This file implements the point sense inputs.
-\item[PWM.h] This file implements the PWM abstraction.
-\item[Rule.cpp, Rule.h] These files implement traffic rules.
-\item[TrackCircuit.cpp, TrackCircuit.h] These files implement track circuits.
-\item[Turnout.h] This file implements the switch motor outputs.
-\end{description}
+\subsection{Program Startup notes}
+
+While most of the common node configuration is accessable using the available
+CDI configuruation tools (JMRI's PanelPro program or MRR SYS OpenLCB program), 
+some of the nodes configuration is in separate non-volitle (flash) memory.  
+This includes the node's ID number and some boot options.  As installed the 
+node ID is initialized to 05:01:01:01:22:00.  \textbf{You don't really want to 
+leave this as the node id!}  There are two ways to set the node id.  One way 
+is to use a CDI configuruation tool -- the node ID is exposed as a 
+configuration option.  Changes the node id forces a ``factory reset'' on the 
+next boot (and when you update the configuration with a CDI configuruation 
+tool, the node will reboot).  The other way is during the boot up process.  
+When the node boots, it waits on the USB serial connection for 10 seconds for 
+any ``keyboard'' response and if it gets a ``keyboard'' response, it enters a 
+simple command line loop accepting simple commands (mostly single letters). 
+To use this feature you need to connect a a USB cable between the TTGO-T1 and 
+a computer (eg a PC or Mac) and then connect to the USB Com port with a 
+terminal program (the Arduino IDE Serial Monitor should work).  The commands 
+that the boot startup command line loop supports are:
+
+\begin{itemize}
+\item \textbf{N} Set the node id.  Follow the ``N'' with a 12 digit hex 
+number, with optional periods or colons.  Causes a Factory Reset.
+\item \textbf{E} Reset events on boot up.
+\item \textbf{F} Force a Factory Reset.
+\item \textbf{T} Test signal lamps\footnote{Each of the signal lamps is flashed 
+for 1 second during boot up.}.
+\item \textbf{R} Resume.
+\end{itemize}
 
 \section{General Wiring Notes}
 

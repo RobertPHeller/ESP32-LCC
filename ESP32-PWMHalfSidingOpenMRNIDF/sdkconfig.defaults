@@ -17,7 +17,7 @@ CONFIG_HEAP_POISONING_LIGHT=y
 # Partition Table
 #
 CONFIG_PARTITION_TABLE_CUSTOM=y
-CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="esp32multifunction-partitions.csv"
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="esp32pwmhalfsiding-partitions.csv"
 
 #
 # Log output

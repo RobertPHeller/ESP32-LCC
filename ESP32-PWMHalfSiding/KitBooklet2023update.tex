@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sun Jan 1 13:48:18 2023
-%  Last Modified : <230101.1432>
+%  Last Modified : <230102.1007>
 %
 %  Description 
 %
@@ -46,6 +46,7 @@
 \usepackage{times}
 \usepackage{makeidx}
 \usepackage{ifpdf}
+\usepackage{footmisc}
 \ifpdf
 \usepackage[pdftex,
             pagebackref=true,
@@ -76,15 +77,18 @@
 
 This is the replacement section for ``Downloadables and Software Support''.
 
+\setcounter{section}{3}
+
 \section{Downloadables and Software Support}
 
-As shipped, the TTGO-T1 has already had its firmware installed, but if you 
-want to rebuild the code (possibly with customizations) the code is on GitHub 
-in my ESP32-LCC repo: \url{https://github.com/RobertPHeller/ESP32-LCC}, in the 
-ESP32-PWMHalfSidingOpenMRNIDF sub-folder.  You will need the Espressif's IoT 
-Development Framework, version 4.2 or later, available from 
-\url{https://github.com/espressif/esp-idf}.  The ESP32-PWMHalfSidingOpenMRNIDF 
-also uses Mike Dunston's OpenMRNID module -- be sure to do ``git submodule 
+As shipped, the TTGO-T1 has already had the ESP32-PWMHalfSiding firmware
+installed, but if you want to rebuild the code (possibly with customizations)
+the code is on GitHub in my ESP32-LCC repo:
+\url{https://github.com/RobertPHeller/ESP32-LCC}, in the
+ESP32-PWMHalfSidingOpenMRNIDF sub-folder. You will need the Espressif's IoT
+Development Framework, version 4.2 or later, available from
+\url{https://github.com/espressif/esp-idf}. The ESP32-PWMHalfSidingOpenMRNIDF
+also uses Mike Dunston's OpenMRNID module -- be sure to do ``git submodule
 update --init'' after cloning https://github.com/RobertPHeller/ESP32-LCC.
 
 
@@ -100,6 +104,15 @@ idf.py build
 \end{verbatim}
 
 You can then use the idf.py's flash command to flash the TTGO-T1.
+
+\subsubsection{WiFi notes}
+
+The default configuration is with WiFi disabled. Using both the CAN interface
+\textbf{and} WiFi at the same time on the ESP32 is not recomended. The
+processor cannot handle both well. It is possible to enable the WiFi code.
+This is done by using the menuconfig command with idf.py and then re-building
+the firmware. This adds some additional config options to the CDI relating to 
+WiFi.
 
 \subsection{Program Description}
 
@@ -131,8 +144,18 @@ that the boot startup command line loop supports are:
 number, with optional periods or colons.  Causes a Factory Reset.
 \item \textbf{E} Reset events on boot up.
 \item \textbf{F} Force a Factory Reset.
-\item \textbf{T} Test signal lamps\footnote{Each of the signal lamps is flashed 
-for 1 second during boot up.}.
+\item \textbf{S} WiFi ssid\footnote{Only useful if WiFi is 
+enabled.\label{fn:wifi}}. Enter the ssid after the ``S'', leading and trailing 
+spaces are stripped off.
+\item \textbf{P} WiFi password\footref{fn:wifi}. Enter the password after the 
+``P'', leading and trailing spaces are stripped off.
+\item \textbf{H} Hostname prefix\footref{fn:wifi}. Enter the hostname prefix 
+after the ``H'', leading and trailing spaces are stripped off. The NODE ID in 
+hex is appended.  Hostnames are limited to 32 characters.
+\item \textbf{W} Enable WiFi\footref{fn:wifi}. Enter ``YES'', ``NO'', 
+``ON'', or ``OFF'' after the ``W''.
+\item \textbf{T} Test signal lamps\footnote{Each of the signal lamps is 
+flashed for 1 second during boot up.}.
 \item \textbf{R} Resume.
 \end{itemize}
 

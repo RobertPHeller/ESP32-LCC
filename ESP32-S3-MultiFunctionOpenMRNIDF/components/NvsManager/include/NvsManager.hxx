@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <221231.1113>
+//  Last Modified : <230103.1457>
 //
 //  Description	
 //
@@ -54,6 +54,7 @@
 #include <nvs.h>
 #include <nvs_flash.h>
 #include <utils/Singleton.hxx>
+#include <openlcb/SimpleStack.hxx>
 
 namespace esp32multifunction
 {
@@ -126,6 +127,7 @@ public:
         }
     }
     void DisplayNvsConfiguration();
+    void register_virtual_memory_spaces(openlcb::SimpleStackBase *stack);
 private:
     /// NVS Persistence namespace.
     static constexpr char NVS_NAMESPACE[] = "node";

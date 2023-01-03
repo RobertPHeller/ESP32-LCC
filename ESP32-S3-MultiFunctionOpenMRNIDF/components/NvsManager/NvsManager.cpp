@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <221217.1657>
+//  Last Modified : <230103.1539>
 //
 //  Description	
 //
@@ -54,10 +54,15 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <nvs_flash.h>
 #include <utils/Singleton.hxx>
 #include "NvsManager.hxx"
+#include "NodeIdMemoryConfigSpace.hxx"
 #include <utils/logging.h>
+#include <openlcb/SimpleStack.hxx>
 
 namespace esp32multifunction
 {
+
+static uninitialized<NodeIdMemoryConfigSpace> node_id_memoryspace;
+
 void NvsManager::init(uint8_t reset_reason)
 {
     LOG(VERBOSE, "NVS.init(%d)", reset_reason);
@@ -99,6 +104,11 @@ void NvsManager::init(uint8_t reset_reason)
     }
     CheckPersist();
     DisplayNvsConfiguration();
+}
+
+void NvsManager::register_virtual_memory_spaces(openlcb::SimpleStackBase *stack)
+{
+    node_id_memoryspace.emplace(stack, this);
 }
 
 void NvsManager::DisplayNvsConfiguration()

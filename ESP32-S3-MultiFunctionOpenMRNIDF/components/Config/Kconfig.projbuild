@@ -1,7 +1,7 @@
 menu "OpenLCB Configuration"
     config OLCB_NODE_ID
         hex "Node ID"
-        default 0x050201030000
+        default 0x050101012200
         help 
             This is the OpenLCB unique node identifier for the ESP32 OpenLCB IO
             Board. It is recommended, but not required, to request your own
@@ -10,6 +10,14 @@ menu "OpenLCB Configuration"
             The default node identifier is part of a reserved range of
             identifier values.
 
+    config OLCB_NODEID_MEMORY_SPACE_ID
+        hex
+        default 0xAA
+                            
+    config OLCB_NODEID_MEMORY_SPACE_OFFSET
+        int
+        default 0
+                                
     config OLCB_CONFIG_SYNC_SEC
         int
         default 5

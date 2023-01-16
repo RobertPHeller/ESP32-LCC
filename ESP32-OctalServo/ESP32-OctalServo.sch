@@ -84,7 +84,7 @@ L Screw_Terminal_01x02 J101
 U 1 1 63C46065
 P 7125 6275
 F 0 "J101" H 7125 6375 50  0000 C CNN
-F 1 "Servo Power" H 7125 6075 50  0000 C CNN
+F 1 "+ 5V Servo -" H 7125 6075 50  0000 C CNN
 F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_PT-3.5mm_2pol" H 7125 6275 50  0001 C CNN
 F 3 "" H 7125 6275 50  0001 C CNN
 	1    7125 6275

@@ -34,6 +34,7 @@ LIBS:valves
 LIBS:sn65hvd233-ht
 LIBS:esp32_devboards
 LIBS:lm2574n-5
+LIBS:ap63205
 LIBS:ESP32-OctalServo-cache
 EELAYER 25 0
 EELAYER END

@@ -1,4 +1,4 @@
-update=Sun 15 Jan 2023 01:01:51 PM EST
+update=Mon 16 Jan 2023 12:11:35 PM EST
 version=1
 last_client=kicad
 [pcbnew]
@@ -64,3 +64,4 @@ LibName32=valves
 LibName33=../CommonLibraries/sn65hvd233-ht
 LibName34=../CommonLibraries/esp32_devboards
 LibName35=../CommonLibraries/lm2574n-5
+LibName36=/home/heller/ESP32-LCC/CommonLibraries/ap63205

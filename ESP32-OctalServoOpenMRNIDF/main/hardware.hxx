@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Jan 15 16:13:22 2023
-//  Last Modified : <230115.1615>
+//  Last Modified : <230116.0806>
 //
 //  Description	
 //
@@ -48,7 +48,11 @@
 #include <os/Gpio.hxx>
 #include <utils/GpioInitializer.hxx>
 
+#if defined(CONFIG_IDF_TARGET_ESP32)
 #define SERVOPINS {12,13,14,15,16,17,18,19}
+#elif defined(CONFIG_IDF_TARGET_ESP32S3)
+#define SERVOPINS {11,12,13,14,15,16,17,18}
+#endif
 
 /// GPIO Pin connected to the TWAI (CAN) Transceiver RX pin.
 // ADC2_CHANNEL_0

@@ -16,7 +16,7 @@ set(EXTRA_COMPONENT_DIRS
         "${CMAKE_CURRENT_SOURCE_DIR}/../OpenMRNIDF"
         )
 
-set(SUPPORTED_TARGETS esp32)
+set(SUPPORTED_TARGETS esp32 esp32s3)
 project(Esp32OctalServo)
 
 ###############################################################################

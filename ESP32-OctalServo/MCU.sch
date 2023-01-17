@@ -319,7 +319,7 @@ Text Label 5650 2750 0    39   ~ 0
 23
 Text HLabel 5800 4500 2    39   Output ~ 0
 CAN_TX
-Text HLabel 5800 4650 2    39   Output ~ 0
+Text HLabel 5800 4650 2    39   Input ~ 0
 CAN_RX
 Text HLabel 4575 4650 0    39   Output ~ 0
 Servo0

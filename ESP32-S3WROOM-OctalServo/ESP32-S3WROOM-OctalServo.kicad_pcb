@@ -3,7 +3,7 @@
   (general
     (links 117)
     (no_connects 0)
-    (area 10.16 10.16 287.020001 200.660001)
+    (area 144.704999 60.884999 210.895001 152.475001)
     (thickness 1.6)
     (drawings 11)
     (tracks 299)
@@ -3430,7 +3430,7 @@
       (net 63 "Net-(U201-PadEPad)"))
   )
 
-  (gr_text "(C) 2022 Robert Heller D/B/A \n      Deepwoods Software\n      ESP32-OctalServo" (at 165.735 104.013 90) (layer B.Cu)
+  (gr_text "(C) 2022 Robert Heller D/B/A \n      Deepwoods Software\n      ESP32-S3WROOM-OctalServo" (at 165.735 104.013 90) (layer B.Cu)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify mirror))
   )
   (dimension 81.28 (width 0.3) (layer Dwgs.User)

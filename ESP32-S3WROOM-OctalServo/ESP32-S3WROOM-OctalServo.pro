@@ -1,4 +1,4 @@
-update=Mon 16 Jan 2023 12:11:35 PM EST
+update=Tue 17 Jan 2023 01:55:05 PM EST
 version=1
 last_client=kicad
 [pcbnew]
@@ -65,3 +65,6 @@ LibName33=sn65hvd233-ht
 LibName34=esp32_devboards
 LibName35=lm2574n-5
 LibName36=ap63205
+LibName37=esp32_s3_wroom
+LibName38=USBLC6-2SC6
+LibName39=gct_usb4105

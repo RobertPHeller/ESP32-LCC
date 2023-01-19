@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sun Jan 1 13:48:18 2023
-%  Last Modified : <230102.1007>
+%  Last Modified : <230119.1551>
 %
 %  Description 
 %
@@ -109,10 +109,7 @@ You can then use the idf.py's flash command to flash the TTGO-T1.
 
 The default configuration is with WiFi disabled. Using both the CAN interface
 \textbf{and} WiFi at the same time on the ESP32 is not recomended. The
-processor cannot handle both well. It is possible to enable the WiFi code.
-This is done by using the menuconfig command with idf.py and then re-building
-the firmware. This adds some additional config options to the CDI relating to 
-WiFi.
+processor cannot handle both well.
 
 \subsection{Program Description}
 
@@ -123,12 +120,12 @@ The program consists of a main sketch file, and several support files and
 
 While most of the common node configuration is accessable using the available
 CDI configuruation tools (JMRI's PanelPro program or MRR SYS OpenLCB program), 
-some of the nodes configuration is in separate non-volitle (flash) memory.  
+some of the node's configuration is in separate non-volitle (flash) memory.  
 This includes the node's ID number and some boot options.  As installed the 
 node ID is initialized to 05:01:01:01:22:00.  \textbf{You don't really want to 
 leave this as the node id!}  There are two ways to set the node id.  One way 
 is to use a CDI configuruation tool -- the node ID is exposed as a 
-configuration option.  Changes the node id forces a ``factory reset'' on the 
+configuration option.  Changing the node id forces a ``factory reset'' on the 
 next boot (and when you update the configuration with a CDI configuruation 
 tool, the node will reboot).  The other way is during the boot up process.  
 When the node boots, it waits on the USB serial connection for 10 seconds for 

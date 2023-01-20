@@ -85,7 +85,10 @@ openmrnpath.mk
 build
 build.sh
 config.sh
+clean.sh
 flash.sh
 monitor.sh
 compile_cdi
 cdidata.hxx
+log
+make.log

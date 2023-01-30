@@ -5,4 +5,5 @@
   (lib (name SRN1060)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/SRN1060.mod")(options "")(descr ""))
   (lib (name BigSMDCaps)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/BigSMDCaps.pretty")(options "")(descr ""))
   (lib (name ESP32-Boards)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/ESP32-Boards.pretty")(options "")(descr ""))
+  (lib (name PowerLabels)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/PowerLabels.pretty")(options "")(descr ""))
 )

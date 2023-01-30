@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230102.0922>
+//  Last Modified : <230120.1556>
 //
 //  Description	
 //
@@ -93,6 +93,7 @@ static const char rcsid[] = "@(#) : $Id$";
 // traffic load (ie: large datagram transport).
 ///////////////////////////////////////////////////////////////////////////////
 OVERRIDE_CONST(can_rx_buffer_size, 64);
+OVERRIDE_CONST(num_memory_spaces, 6);
 
 TrackCircuit *circuits[TRACKCIRCUITCOUNT];
 

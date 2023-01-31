@@ -1,0 +1,204 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:sn65hvd233-ht
+LIBS:ap63205
+LIBS:esp32_devboards
+LIBS:tc442x
+LIBS:ESP32-S3DK-OctalTwinCoil-cache
+EELAYER 25 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 4 5
+Title "ESP32 S3 Multifunction Board"
+Date ""
+Rev "1.0"
+Comp "Deepwoods Software"
+Comment1 "Power Supply"
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+Text GLabel 3350 4600 0    50   Input ~ 0
+CAN +12V
+$Comp
+L +5V #PWR011
+U 1 1 63D92D9F
+P 5600 4700
+AR Path="/63D925A6/63D92F69/63D92D9F" Ref="#PWR011"  Part="1" 
+AR Path="/63D925A8/63D92D9F" Ref="#PWR011"  Part="1" 
+F 0 "#PWR011" H 5600 4550 50  0001 C CNN
+F 1 "+5V" H 5600 4840 50  0000 C CNN
+F 2 "" H 5600 4700 50  0001 C CNN
+F 3 "" H 5600 4700 50  0001 C CNN
+	1    5600 4700
+	1    0    0    -1  
+$EndComp
+$Comp
+L AP63205 U501
+U 1 1 63D92DA0
+P 4275 4775
+AR Path="/63D925A6/63D92F69/63D92DA0" Ref="U501"  Part="1" 
+AR Path="/63D925A8/63D92DA0" Ref="U801"  Part="1" 
+F 0 "U801" H 4275 4775 60  0000 C CNN
+F 1 "AP63205" H 4275 4875 60  0000 C CNN
+F 2 "TO_SOT_Packages_SMD:TSOT-23-6_MK06A" H 4275 4775 60  0001 C CNN
+F 3 "" H 4275 4775 60  0001 C CNN
+F 4 "621-AP63205WU-7" H 4275 4775 60  0001 C CNN "Mouser Part Number"
+	1    4275 4775
+	1    0    0    -1  
+$EndComp
+$Comp
+L CP1_Small C501
+U 1 1 63D92DA1
+P 3600 4800
+AR Path="/63D925A6/63D92F69/63D92DA1" Ref="C501"  Part="1" 
+AR Path="/63D925A8/63D92DA1" Ref="C801"  Part="1" 
+F 0 "C801" H 3610 4870 50  0000 L CNN
+F 1 "10uf" H 3610 4720 50  0000 L CNN
+F 2 "Capacitors_SMD:CP_Elec_5x5.3" H 3600 4800 50  0001 C CNN
+F 3 "" H 3600 4800 50  0001 C CNN
+F 4 "710-865230542002" H 3600 4800 60  0001 C CNN "Mouser Part Number"
+	1    3600 4800
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR012
+U 1 1 63D92DA2
+P 3600 5075
+AR Path="/63D925A6/63D92F69/63D92DA2" Ref="#PWR012"  Part="1" 
+AR Path="/63D925A8/63D92DA2" Ref="#PWR012"  Part="1" 
+F 0 "#PWR012" H 3600 4825 50  0001 C CNN
+F 1 "GND" H 3600 4925 50  0000 C CNN
+F 2 "" H 3600 5075 50  0001 C CNN
+F 3 "" H 3600 5075 50  0001 C CNN
+	1    3600 5075
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C502
+U 1 1 63D92DA3
+P 4900 4675
+AR Path="/63D925A6/63D92F69/63D92DA3" Ref="C502"  Part="1" 
+AR Path="/63D925A8/63D92DA3" Ref="C802"  Part="1" 
+F 0 "C802" H 4910 4745 50  0000 L CNN
+F 1 "100nf" H 4910 4595 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 4900 4675 50  0001 C CNN
+F 3 "" H 4900 4675 50  0001 C CNN
+F 4 "710-885012206020" H 4900 4675 60  0001 C CNN "Mouser Part Number"
+	1    4900 4675
+	1    0    0    -1  
+$EndComp
+$Comp
+L L_Small L501
+U 1 1 63D92DA4
+P 5175 4775
+AR Path="/63D925A6/63D92F69/63D92DA4" Ref="L501"  Part="1" 
+AR Path="/63D925A8/63D92DA4" Ref="L801"  Part="1" 
+F 0 "L801" H 5205 4815 50  0000 L CNN
+F 1 "4.7uH" H 5205 4735 50  0000 L CNN
+F 2 "Inductors_SMD:L_7.3x7.3_H4.5" H 5175 4775 50  0001 C CNN
+F 3 "" H 5175 4775 50  0001 C CNN
+F 4 "81-B1047AS-4R7NP3" H 5175 4775 60  0001 C CNN "Mouser Part Number"
+	1    5175 4775
+	0    1    1    0   
+$EndComp
+$Comp
+L C_Small C503
+U 1 1 63D92DA5
+P 5375 4875
+AR Path="/63D925A6/63D92F69/63D92DA5" Ref="C503"  Part="1" 
+AR Path="/63D925A8/63D92DA5" Ref="C803"  Part="1" 
+F 0 "C803" H 5385 4945 50  0000 L CNN
+F 1 "22uf" H 5385 4795 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5375 4875 50  0001 C CNN
+F 3 "" H 5375 4875 50  0001 C CNN
+F 4 "603-CC0603MRX6S5B226" H 5375 4875 60  0001 C CNN "Mouser Part Number"
+	1    5375 4875
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3350 4600 3850 4600
+Wire Wire Line
+	3850 4600 3850 4775
+Wire Wire Line
+	3600 4700 3600 4600
+Connection ~ 3600 4600
+Wire Wire Line
+	3600 4900 3600 5075
+Wire Wire Line
+	4775 4600 4775 4550
+Wire Wire Line
+	4775 4550 4900 4550
+Wire Wire Line
+	4900 4550 4900 4575
+Wire Wire Line
+	4775 4775 5075 4775
+Connection ~ 4900 4775
+Wire Wire Line
+	5275 4775 5600 4775
+$Comp
+L C_Small C504
+U 1 1 63D92DA6
+P 5600 4875
+AR Path="/63D925A6/63D92F69/63D92DA6" Ref="C504"  Part="1" 
+AR Path="/63D925A8/63D92DA6" Ref="C804"  Part="1" 
+F 0 "C804" H 5610 4945 50  0000 L CNN
+F 1 "22uf" H 5610 4795 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 5600 4875 50  0001 C CNN
+F 3 "" H 5600 4875 50  0001 C CNN
+F 4 "603-CC0603MRX6S5B226" H 5600 4875 60  0001 C CNN "Mouser Part Number"
+	1    5600 4875
+	1    0    0    -1  
+$EndComp
+Connection ~ 5375 4775
+Wire Wire Line
+	5600 4775 5600 4700
+Wire Wire Line
+	3875 5225 5375 5225
+Wire Wire Line
+	3875 5225 3875 5000
+Wire Wire Line
+	3875 5000 3600 5000
+Connection ~ 3600 5000
+Wire Wire Line
+	5275 4950 4775 4950
+Wire Wire Line
+	5275 4950 5275 4775
+Wire Wire Line
+	5600 4975 5375 4975
+Wire Wire Line
+	5375 4975 5375 5225
+Connection ~ 4275 5225
+$EndSCHEMATC

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230115.1648>
+//  Last Modified : <230201.1049>
 //
 //  Description	
 //
@@ -62,7 +62,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <esp_ota_ops.h>
 #include <esp_system.h>
 #include <esp_task_wdt.h>
-#include <esp32/rom/rtc.h>
 #include <freertos_includes.h>   
 #include <openlcb/SimpleStack.hxx>
 #include <freertos_drivers/esp32/Esp32HardwareTwai.hxx>
@@ -84,6 +83,7 @@ static const char rcsid[] = "@(#) : $Id$";
 // traffic load (ie: large datagram transport).
 ///////////////////////////////////////////////////////////////////////////////
 OVERRIDE_CONST(can_rx_buffer_size, 64);
+OVERRIDE_CONST(num_memory_spaces, 6);
 
 esp32octalservo::ConfigDef cfg(0);
 Esp32HardwareTwai twai(CONFIG_TWAI_RX_PIN, CONFIG_TWAI_TX_PIN);

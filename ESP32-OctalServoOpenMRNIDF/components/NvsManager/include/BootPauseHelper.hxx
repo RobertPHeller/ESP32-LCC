@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:49:15 2022
-//  Last Modified : <230115.1621>
+//  Last Modified : <230201.1049>
 //
 //  Description	
 //
@@ -48,7 +48,6 @@
 #include <esp_ota_ops.h>
 #include <esp_system.h>
 #include <esp_task_wdt.h>
-#include <esp32/rom/rtc.h>
 #include <esp_wifi_types.h>
 #include <driver/uart.h>
 #include <utils/Singleton.hxx>

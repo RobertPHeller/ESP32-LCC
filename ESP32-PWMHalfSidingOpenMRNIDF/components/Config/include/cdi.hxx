@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230102.0916>
+//  Last Modified : <230202.1336>
 //
 //  Description	
 //
@@ -50,6 +50,7 @@
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
 #include "openlcb/MemoryConfig.hxx"
+#include "Revision.hxxout"
 
 #include "LogicConfig.hxx"
 #include "MastConfig.hxx"
@@ -98,6 +99,7 @@ CDI_GROUP(VersionSeg, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
     Name("Version information"));
 CDI_GROUP_ENTRY(acdi_user_version, openlcb::Uint8ConfigEntry,
     Name("ACDI User Data version"), Description("Set to 2 and do not change."));
+CDI_GROUP_ENTRY(buildrevisions,BuildRevisions);
 CDI_GROUP_END();
 
 /// The main structure of the CDI. ConfigDef is the symbol we use in main.cxx

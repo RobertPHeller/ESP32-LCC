@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230103.1543>
+//  Last Modified : <230203.1108>
 //
 //  Description	
 //
@@ -62,6 +62,8 @@
 
 #include "LEDConfig.hxx"
 
+#include "Revision.hxxout"
+
 namespace esp32multifunction
 {
 
@@ -103,6 +105,7 @@ CDI_GROUP(VersionSeg, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
     Name("Version information"));
 CDI_GROUP_ENTRY(acdi_user_version, openlcb::Uint8ConfigEntry,
     Name("ACDI User Data version"), Description("Set to 2 and do not change."));
+CDI_GROUP_ENTRY(buildrevisions,BuildRevisions);
 CDI_GROUP_END();
 
 /// The main structure of the CDI. ConfigDef is the symbol we use in main.cxx

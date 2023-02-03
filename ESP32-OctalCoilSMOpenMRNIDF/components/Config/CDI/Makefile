@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230115.1641>
+#  Last Modified : <230202.1421>
 #
 #  Description	
 #
@@ -44,17 +44,29 @@
 
 OPENMRNPATH=$(HOME)/openmrn
 OPENMRNIDFPATH=../../../../OpenMRNIDF
+PROJECTPATH=`(cd ../../..;pwd)`
+
+all: ../include/cdidata.hxx
 
 ../include/cdidata.hxx : compile_cdi SNIPEDIT.sed
 	./compile_cdi |sed -f SNIPEDIT.sed >../include/cdidata.hxx
-	
+        
+
 EXTRAFLAGS=
 
 
-compile_cdi: ../include/*.hxx CompileCdiMain.cxx \
-	../../../sdkconfig
+compile_cdi: ../include/cdi.hxx ../include/*Config.hxx CompileCdiMain.cxx \
+	../../../sdkconfig ../include/Revision.hxxout
 	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config/ \
 		-I../include -I$(OPENMRNIDFPATH)/src -I$(OPENMRNPATH)/src \
 		-I$(OPENMRNPATH)/include $(CDIEXTRA)  --std=c++11 -MMD \
 		-MF $@.d $(CXXFLAGSEXTRA) CompileCdiMain.cxx
 	
+
+
+../include/Revision.hxxout : FORCE
+	$(OPENMRNPATH)/bin/revision.py -t -i "$(PROJECTPATH) $(OPENMRNIDFPATH)"
+	mv Revision.hxxout ../include/
+	
+FORCE:
+

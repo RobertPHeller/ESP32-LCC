@@ -5,8 +5,8 @@ using std::string;
 #include "openlcb/ConfigRepresentation.hxx"
 #include "cdi.hxx"
 
-#include "utils/StringPrintf.cxx"
-#include "utils/FileUtils.cxx"
+#include "utils/StringPrintf.cpp"
+#include "utils/FileUtils.cpp"
 
 namespace openlcb {
     /// Defines the identification information for the node. The arguments are:

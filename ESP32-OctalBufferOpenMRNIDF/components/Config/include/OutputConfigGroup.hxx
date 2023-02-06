@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Feb 5 21:56:19 2023
-//  Last Modified : <230205.2207>
+//  Last Modified : <230206.1412>
 //
 //  Description	
 //
@@ -73,6 +73,9 @@ CDI_GROUP_ENTRY(selection, openlcb::Uint8ConfigEntry,
 CDI_GROUP_ENTRY(mode, openlcb::Uint8ConfigEntry,
                 Name("Output Mode"), MapValues(modeSelectMap),
                 Default(0));
+CDI_GROUP_ENTRY(brightness, openlcb::Uint16ConfigEntry,
+                Name("Output brightness, hundreths of a percent (0 to 10000)"),
+                Min(0), Max(10000), Default(5000));
 CDI_GROUP_END();
 
 using OutputConfigGroup = openlcb::RepeatedGroup<OutputConfig, OUTPUTCOUNT>;\

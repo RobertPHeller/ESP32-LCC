@@ -1,4 +1,4 @@
-// -!- c++ -!- //////////////////////////////////////////////////////////////
+// -!- C++ -!- //////////////////////////////////////////////////////////////
 //
 //  System        : 
 //  Module        : 
@@ -7,8 +7,8 @@
 //  Date          : $Date$
 //  Author        : $Author$
 //  Created By    : Robert Heller
-//  Created       : Sun Feb 5 21:41:05 2023
-//  Last Modified : <230206.1407>
+//  Created       : Mon Feb 6 15:24:56 2023
+//  Last Modified : <230206.1537>
 //
 //  Description	
 //
@@ -40,34 +40,57 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef __STEPCONFIGGROUP_HXX
-#define __STEPCONFIGGROUP_HXX
+static const char rcsid[] = "@(#) : $Id$";
 
-#define STEPSCOUNT 8
-
+#include "openlcb/EventHandlerTemplates.hxx"
 #include "openlcb/ConfigRepresentation.hxx"
-
+#include "utils/ConfigUpdateListener.hxx"
+#include "utils/ConfigUpdateService.hxx"
+#include "openlcb/RefreshLoop.hxx"
+#include "openlcb/SimpleStack.hxx"
+#include "executor/Timer.hxx"
+#include "executor/Notifiable.hxx"
+#include <stdio.h>
+#include <stdlib.h>
+#include "utils/logging.h"
+#include <string>
 #include "OutputConfigGroup.hxx"
+#include "StepConfigGroup.hxx"
+#include "SequenceConfigGroup.hxx"
+#include <freertos_drivers/esp32/Esp32Ledc.hxx>
+#include "Sequence.hxx"
 
-static const char NextModeMap[] = 
-"<relation><property>0</property><value>Last</value></relation>"
-"<relation><property>1</property><value>Next</value></relation>"
-"<relation><property>2</property><value>First</value></relation>";
+void Step::StartStep()
+{
+    for (int i=0; i < OUTPUTCOUNT; i++)
+    {
+        outputs_[i]->StartOutput();
+    }
+    SendEventReport(&write_helpers[0],start_);
+    started_ = true;
+    parent_->StepStarted();
+    ended_ = false;
+    StartDelay();
+}
 
-CDI_GROUP(StepConfig);
-CDI_GROUP_ENTRY(outputs,OutputConfigGroup,Name("Appearence"),
-                Description("Individual Outputs"),RepName("Output"));
-CDI_GROUP_ENTRY(time,openlcb::Uint32ConfigEntry,Default(0),
-                Name("Step Time (MilliSecs)"));
-CDI_GROUP_ENTRY(next,openlcb::Uint8ConfigEntry,Default(0),
-                MapValues(NextModeMap));
-CDI_GROUP_ENTRY(start, openlcb::EventConfigEntry,
-                Name("(P) Send this event when the step starts"));
-CDI_GROUP_ENTRY(end, openlcb::EventConfigEntry,
-                Name("(P) Send this event when the step endss"));
-CDI_GROUP_END();
-
-using StepsGroup = openlcb::RepeatedGroup<StepConfig, STEPSCOUNT>;
-
-#endif // __STEPCONFIGGROUP_HXX
+long long Step::timeout()
+{
+    running_ = false;
+    SendEventReport(&write_helpers[1],end_);
+    started_ = false;
+    ended_ = true;
+    parent_->StepEnded();
+    switch (nextMode_)
+    {
+    case Last: 
+        break;
+    case Next: 
+        if (next_ != nullptr) next_->StartStep(); 
+        break;
+    case First: 
+        first_->StartStep(); 
+        break;
+    }
+    return NONE;
+}
 

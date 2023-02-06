@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230201.1049>
+//  Last Modified : <230206.0942>
 //
 //  Description	
 //
@@ -263,7 +263,7 @@ void app_main()
     openlcb::ServoConsumer *servos[esp32octalservo::SERVOCOUNT];
     for (int i=0; i < esp32octalservo::SERVOCOUNT; i++)
     {
-        servos[0] = new openlcb::ServoConsumer(stack.node(), 
+        servos[i] = new openlcb::ServoConsumer(stack.node(), 
                                                cfg.seg().servos().entry(i),
                                                1000,
                                                ledc.get_channel(i));

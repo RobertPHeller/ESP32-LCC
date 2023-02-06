@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230205.1636>
+//  Last Modified : <230206.1520>
 //
 //  Description	
 //
@@ -75,8 +75,8 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <utils/constants.hxx>
 #include <utils/format_utils.hxx>
 
-#include <openlcb/ServoConsumerConfig.hxx>
-#include <openlcb/ServoConsumer.hxx>
+#include "SequenceConfigGroup.hxx"
+#include "Sequence.hxx"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Increase the CAN RX frame buffer size to reduce overruns when there is high
@@ -179,11 +179,21 @@ void FactoryResetHelper::factory_reset(int fd)
     cfg.userinfo().name().write(fd, openlcb::SNIP_STATIC_DATA.model_name);
     cfg.userinfo().description().write(fd, "");
     
-    for (int i=0; i < SERVOCOUNT; i++)
+    for (int i=0; i < SEQUENCECOUNT; i++)
     {
-        cfg.seg().servos().entry(i).description().write(fd, "");
-        CDI_FACTORY_RESET(cfg.seg().servos().entry(i).servo_min_percent);
-        CDI_FACTORY_RESET(cfg.seg().servos().entry(i).servo_max_percent);
+        cfg.seg().sequences().entry(i).name().write(fd, "");
+        CDI_FACTORY_RESET(cfg.seg().sequences().entry(i).enabled);
+        for (int j=0; j < STEPSCOUNT; j++)
+        {
+            CDI_FACTORY_RESET(cfg.seg().sequences().entry(i).steps().entry(j).time);
+            CDI_FACTORY_RESET(cfg.seg().sequences().entry(i).steps().entry(j).next);
+            for (int k=0; k < OUTPUTCOUNT; k++)
+            {
+                CDI_FACTORY_RESET(cfg.seg().sequences().entry(i).steps().entry(j).outputs().entry(k).selection);
+                CDI_FACTORY_RESET(cfg.seg().sequences().entry(i).steps().entry(j).outputs().entry(k).mode);
+                CDI_FACTORY_RESET(cfg.seg().sequences().entry(i).steps().entry(j).outputs().entry(k).brightness);
+            }
+        }
     }
 }
 
@@ -258,15 +268,15 @@ void app_main()
     esp32octalbuffer::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
     
-    openmrn_arduino::Esp32Ledc ledc(SERVOPINS);
+    openmrn_arduino::Esp32Ledc ledc(PWMPINS);
     ledc.hw_init();
-    openlcb::ServoConsumer *servos[esp32octalservo::SERVOCOUNT];
-    for (int i=0; i < esp32octalservo::SERVOCOUNT; i++)
+    Output::PinLookupInit(ledc);
+    Sequence *sequences[SEQUENCECOUNT];
+    for (int i=0; i < SEQUENCECOUNT; i++)
     {
-        servos[0] = new openlcb::ServoConsumer(stack.node(), 
-                                               cfg.seg().servos().entry(i),
-                                               1000,
-                                               ledc.get_channel(i));
+        sequences[i] = new Sequence(stack.node(),
+                                    cfg.seg().sequences().entry(i),
+                                    stack.executor()->active_timers());
     }
     LOG(INFO, "[MAIN] config file size is %d",openlcb::CONFIG_FILE_SIZE);
     // Create config file and initiate factory reset if it doesn't exist or is

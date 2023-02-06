@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230205.1641>
+//  Last Modified : <230206.0941>
 //
 //  Description	
 //
@@ -51,9 +51,12 @@
 #include "openlcb/ConfiguredProducer.hxx"
 #include "openlcb/MemoryConfig.hxx"
 #include "Revision.hxxout"
+#include "SequenceConfigGroup.hxx"
 
 namespace esp32octalbuffer
 {
+
+using SequenceConfigGroup = openlcb::RepeatedGroup<SequenceConfig, SEQUENCECOUNT>;
 
 
 /// Defines the main segment in the configuration CDI. This is laid out at
@@ -63,6 +66,7 @@ CDI_GROUP(IoBoard, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
 /// Each entry declares the name of the current entry, then the type and then
 /// optional arguments list.
 CDI_GROUP_ENTRY(internal_config, openlcb::InternalConfigData);
+CDI_GROUP_ENTRY(sequences,SequenceConfigGroup,Name("Sequences"),RepName("Sequence"));
 #ifdef CONFIG_ESP32_WIFI_ENABLED
 CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
 #endif

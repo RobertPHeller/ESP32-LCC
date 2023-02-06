@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Feb 5 21:19:52 2023
-//  Last Modified : <230205.2140>
+//  Last Modified : <230206.1339>
 //
 //  Description	
 //
@@ -61,8 +61,6 @@ CDI_GROUP_ENTRY(enabled, openlcb::Uint8ConfigEntry,
                 Default(0),MapValues(YesNoMap));
 CDI_GROUP_ENTRY(start, openlcb::EventConfigEntry,
                 Name("(C) Event to start the sequence"));
-CDI_GROUP_ENTRY(stop, openlcb::EventConfigEntry,
-                Name("(C) Event to stop the sequence"));
 CDI_GROUP_ENTRY(steps,StepsGroup,Name("Steps"),RepName("Step"));
 CDI_GROUP_END();
 

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230206.1540>
+#  Last Modified : <230206.1806>
 #
 #  Description	
 #
@@ -63,7 +63,7 @@ compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx ../include/*Group.hxx \
 	
 
 
-../include/Revision.hxxout : FORCE
+../include/Revision.hxxout : ../../../../.git/index
 	../../../../buildscripts/revision.py -t \
 		-i "$(PROJECTPATH)" -o ../include/Revision
 	

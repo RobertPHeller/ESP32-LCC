@@ -41,13 +41,6 @@ idf_build_set_property(COMPILE_DEFINITIONS "-D_GLIBCXX_USE_C99" APPEND)
 # idf_build_set_property(COMPILE_DEFINITIONS "-Wno-unused-variable" APPEND)
 # idf_build_set_property(COMPILE_DEFINITIONS "-Wno-unused-but-set-variable" APPEND)
 
-###############################################################################
-# Verify submodules were checked out correctly
-###############################################################################
-
-if (NOT EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/../OpenMRNIDF/CMakeLists.txt)
-    message(FATAL_ERROR  "${CMAKE_CURRENT_SOURCE_DIR}/../OpenMRNIDF does not appear to have been checked out, please run 'git submodule  update --init' from ${CMAKE_CURRENT_SOURCE_DIR}/..")
-endif()
 
 ###############################################################################
 # Configuration validations

@@ -37,6 +37,7 @@ set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/StepConfigGroup.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/OutputConfigGroup.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../.git/index
    )
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx" 

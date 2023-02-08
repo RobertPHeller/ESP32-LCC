@@ -1,0 +1,10 @@
+(fp_lib_table
+  (lib (name LCC_LOGO)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/LCC_LOGO.pretty")(options "")(descr ""))
+  (lib (name DWSLogoBCU)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/DWSLogoBCU.mod")(options "")(descr ""))
+  (lib (name RJ45-8N-S)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/RJ45-8N-S.mod")(options "")(descr ""))
+  (lib (name SRN1060)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/SRN1060.mod")(options "")(descr ""))
+  (lib (name ESP32Boards)(type Legacy)(uri "$(KIPRJMOD)/../CommonFootprints/ESP32Boards.mod")(options "")(descr ""))
+  (lib (name ESP32_mini)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/ESP32_mini.pretty")(options "")(descr ""))
+  (lib (name PowerLabels)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/PowerLabels.pretty")(options "")(descr ""))
+  (lib (name SOIC_Wide)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/SOIC_Wide.pretty")(options "")(descr ""))
+)

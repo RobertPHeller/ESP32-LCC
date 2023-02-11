@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:07:59 2022
-//  Last Modified : <221127.1312>
+//  Last Modified : <230211.1522>
 //
 //  Description	
 //
@@ -56,6 +56,8 @@ GPIO_PIN(Motor2, MotorPin, 11);
 GPIO_PIN(Motor3, MotorPin,  8);
 #ifdef CONFIG_DEVKIT_BREADBOARD
 GPIO_PIN(Motor4, MotorPin, 45);
+#elif defined(CONFIG_T7S3)
+GPIO_PIN(Motor4, MotorPin, 43);
 #else
 GPIO_PIN(Motor4, MotorPin, 33);
 #endif
@@ -69,11 +71,18 @@ GPIO_PIN(Points4, SensePin, 10);
 
 #ifdef CONFIG_DEVKIT_BREADBOARD
 GPIO_PIN(OD1, ODPin, 46);
+#elif defined(CONFIG_T7S3)
+GPIO_PIN(OD1, ODPin, 44);
 #else
 GPIO_PIN(OD1, ODPin, 34);
 #endif
+#ifdef CONFIG_T7S3
+GPIO_PIN(OD2, ODPin, 48);
+GPIO_PIN(OD3, ODPin, 45);
+#else
 GPIO_PIN(OD2, ODPin, 35);
 GPIO_PIN(OD3, ODPin, 36);
+#endif
 GPIO_PIN(OD4, ODPin,  7);
 
 #define LEDPin GpioOutputSafeLow
@@ -87,7 +96,11 @@ GPIO_PIN(LED4, LEDPin,  1);
 
 GPIO_PIN(Button1, ButtonPin, 38);
 GPIO_PIN(Button2, ButtonPin,  6);
+#ifdef CONFIG_T7S3
+GPIO_PIN(Button3, ButtonPin, 46);
+#else
 GPIO_PIN(Button3, ButtonPin, 37);
+#endif
 GPIO_PIN(Button4, ButtonPin, 16);
 
 #define ActPin GpioOutputSafeHighInvert

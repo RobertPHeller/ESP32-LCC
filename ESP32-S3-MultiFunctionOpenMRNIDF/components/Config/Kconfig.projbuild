@@ -52,6 +52,9 @@ menu "Advanced Configuration"
     config DEVKIT_BREADBOARD
         bool "Using DEVKIT Breadboard"
         default n
+    config T7S3
+        bool "Using TTGO-T7S3"
+        default n
 endmenu
 
 

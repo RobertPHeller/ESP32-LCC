@@ -1,4 +1,4 @@
-update=Thu 29 Dec 2022 12:19:05 PM EST
+update=Sat 11 Feb 2023 10:28:42 AM EST
 version=1
 last_client=kicad
 [cvpcb]
@@ -77,3 +77,4 @@ LibName46=USBLC6-2SC6
 LibName47=esp32_s3_wroom
 LibName48=gct_usb4105
 LibName49=ESP32_mini
+LibName50=ap63205

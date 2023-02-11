@@ -48,6 +48,7 @@ LIBS:USBLC6-2SC6
 LIBS:esp32_s3_wroom
 LIBS:gct_usb4105
 LIBS:ESP32_mini
+LIBS:ap63205
 EELAYER 25 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -263,7 +264,7 @@ U 1 1 62AFE875
 P 5000 5650
 F 0 "FD101" H 5000 5850 50  0000 C CNN
 F 1 "FidMark" H 5000 5775 50  0000 C CNN
-F 2 "Fiducials:Fiducial_1mm_Dia_2.54mm_Outer_CopperTop" H 5000 5650 50  0001 C CNN
+F 2 "Fiducials:Fiducial_classic_Small_SilkscreenTop_Type1" H 5000 5650 50  0001 C CNN
 F 3 "" H 5000 5650 50  0001 C CNN
 	1    5000 5650
 	1    0    0    -1  
@@ -274,7 +275,7 @@ U 1 1 62AFEAF8
 P 5400 5650
 F 0 "FD102" H 5400 5850 50  0000 C CNN
 F 1 "FidMark" H 5400 5775 50  0000 C CNN
-F 2 "Fiducials:Fiducial_1mm_Dia_2.54mm_Outer_CopperTop" H 5400 5650 50  0001 C CNN
+F 2 "Fiducials:Fiducial_classic_Small_SilkscreenTop_Type1" H 5400 5650 50  0001 C CNN
 F 3 "" H 5400 5650 50  0001 C CNN
 	1    5400 5650
 	1    0    0    -1  
@@ -285,7 +286,7 @@ U 1 1 62AFED78
 P 5900 5700
 F 0 "FD103" H 5900 5900 50  0000 C CNN
 F 1 "FidMark" H 5900 5825 50  0000 C CNN
-F 2 "Fiducials:Fiducial_1mm_Dia_2.54mm_Outer_CopperTop" H 5900 5700 50  0001 C CNN
+F 2 "Fiducials:Fiducial_classic_Small_SilkscreenTop_Type1" H 5900 5700 50  0001 C CNN
 F 3 "" H 5900 5700 50  0001 C CNN
 	1    5900 5700
 	1    0    0    -1  

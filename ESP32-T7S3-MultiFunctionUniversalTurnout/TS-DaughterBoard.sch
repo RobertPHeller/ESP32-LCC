@@ -33,7 +33,6 @@ LIBS:contrib
 LIBS:valves
 LIBS:4814p-2
 LIBS:tc442x
-LIBS:SM-DaughterBoard-cache
 EELAYER 25 0
 EELAYER END
 $Descr USLetter 11000 8500
@@ -282,31 +281,45 @@ Wire Wire Line
 Wire Wire Line
 	1800 4200 1300 4200
 Wire Wire Line
-	750  2000 1400 2000
+	750  2000 1000 2000
+Wire Wire Line
+	1000 2000 1400 2000
 Wire Wire Line
 	750  2000 750  3900
 Wire Wire Line
 	650  3900 650  1100
 Wire Wire Line
-	650  1100 1400 1100
+	650  1100 1000 1100
 Wire Wire Line
-	1400 3500 950  3500
+	1000 1100 1400 1100
+Wire Wire Line
+	950  3500 1200 3500
+Wire Wire Line
+	1200 3500 1400 3500
 Wire Wire Line
 	950  3500 950  3900
 Wire Wire Line
 	850  3900 850  2600
 Wire Wire Line
-	850  2600 1400 2600
+	850  2600 1200 2600
 Wire Wire Line
-	1450 4500 1150 4500
+	1200 2600 1400 2600
+Wire Wire Line
+	1450 4500 1325 4500
+Wire Wire Line
+	1325 4500 1150 4500
 Wire Wire Line
 	1050 4500 1050 5400
 Wire Wire Line
-	1050 5400 1450 5400
+	1050 5400 1325 5400
+Wire Wire Line
+	1325 5400 1450 5400
 Wire Wire Line
 	950  4500 950  6000
 Wire Wire Line
-	950  6000 1450 6000
+	950  6000 1250 6000
+Wire Wire Line
+	1250 6000 1450 6000
 Wire Wire Line
 	850  4500 850  6900
 Wire Wire Line
@@ -314,7 +327,9 @@ Wire Wire Line
 NoConn ~ 750  4500
 NoConn ~ 650  4500
 Wire Wire Line
-	1800 750  1800 1000
+	1800 750  1800 850 
+Wire Wire Line
+	1800 850  1800 1000
 $Comp
 L 74HCT00 U?
 U 1 1 63EA55C0
@@ -334,7 +349,9 @@ Wire Wire Line
 Wire Wire Line
 	2450 1450 2450 1650
 Wire Wire Line
-	1800 850  3200 850 
+	1800 850  2850 850 
+Wire Wire Line
+	2850 850  3200 850 
 Connection ~ 1800 850 
 Connection ~ 2850 850 
 Wire Wire Line
@@ -429,4 +446,124 @@ Wire Wire Line
 	7325 5300 7650 5300
 Wire Wire Line
 	7325 5400 7600 5400
+$Comp
+L Screw_Terminal_01x03 J?
+U 1 1 63EABCF7
+P 800 1475
+F 0 "J?" H 800 1675 50  0000 C CNN
+F 1 "P1A G P1B" H 800 1275 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 800 1475 50  0001 C CNN
+F 3 "" H 800 1475 50  0001 C CNN
+	1    800  1475
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1000 1375 1000 1100
+Connection ~ 1000 1100
+Wire Wire Line
+	1000 1575 1000 2000
+Connection ~ 1000 2000
+$Comp
+L GND #PWR?
+U 1 1 63EABE80
+P 1125 1475
+F 0 "#PWR?" H 1125 1225 50  0001 C CNN
+F 1 "GND" H 1125 1325 50  0000 C CNN
+F 2 "" H 1125 1475 50  0001 C CNN
+F 3 "" H 1125 1475 50  0001 C CNN
+	1    1125 1475
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1000 1475 1125 1475
+$Comp
+L Screw_Terminal_01x03 J?
+U 1 1 63EAC3CF
+P 1000 2975
+F 0 "J?" H 1000 3175 50  0000 C CNN
+F 1 "P2A G P2B" H 1000 2775 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 1000 2975 50  0001 C CNN
+F 3 "" H 1000 2975 50  0001 C CNN
+	1    1000 2975
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1200 2875 1200 2600
+Wire Wire Line
+	1200 3075 1200 3500
+$Comp
+L GND #PWR?
+U 1 1 63EAC3D7
+P 1225 2975
+F 0 "#PWR?" H 1225 2725 50  0001 C CNN
+F 1 "GND" H 1225 2825 50  0000 C CNN
+F 2 "" H 1225 2975 50  0001 C CNN
+F 3 "" H 1225 2975 50  0001 C CNN
+	1    1225 2975
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1200 2975 1225 2975
+Connection ~ 1200 2600
+Connection ~ 1200 3500
+$Comp
+L GND #PWR?
+U 1 1 63EAC706
+P 1350 4875
+F 0 "#PWR?" H 1350 4625 50  0001 C CNN
+F 1 "GND" H 1350 4725 50  0000 C CNN
+F 2 "" H 1350 4875 50  0001 C CNN
+F 3 "" H 1350 4875 50  0001 C CNN
+	1    1350 4875
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1325 4875 1350 4875
+Wire Wire Line
+	1325 4975 1325 5400
+Connection ~ 1325 5400
+$Comp
+L Screw_Terminal_01x03 J?
+U 1 1 63EAC6FE
+P 1125 4875
+F 0 "J?" H 1125 5075 50  0000 C CNN
+F 1 "P3A G P3B" H 1125 4675 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 1125 4875 50  0001 C CNN
+F 3 "" H 1125 4875 50  0001 C CNN
+	1    1125 4875
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1325 4775 1325 4500
+Connection ~ 1325 4500
+$Comp
+L GND #PWR?
+U 1 1 63EACAD0
+P 1275 6475
+F 0 "#PWR?" H 1275 6225 50  0001 C CNN
+F 1 "GND" H 1275 6325 50  0000 C CNN
+F 2 "" H 1275 6475 50  0001 C CNN
+F 3 "" H 1275 6475 50  0001 C CNN
+	1    1275 6475
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 6475 1275 6475
+Wire Wire Line
+	1250 6575 1250 6900
+$Comp
+L Screw_Terminal_01x03 J?
+U 1 1 63EACAD8
+P 1050 6475
+F 0 "J?" H 1050 6675 50  0000 C CNN
+F 1 "P4A G P4B" H 1050 6275 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 1050 6475 50  0001 C CNN
+F 3 "" H 1050 6475 50  0001 C CNN
+	1    1050 6475
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	1250 6000 1250 6375
+Connection ~ 1250 6000
+Connection ~ 1250 6900
 $EndSCHEMATC

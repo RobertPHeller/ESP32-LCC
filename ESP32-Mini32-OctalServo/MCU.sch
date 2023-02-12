@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ESP32-Mini32-OctalServo-rescue
 LIBS:power
 LIBS:device
 LIBS:switches
@@ -51,7 +52,7 @@ Comment3 ""
 Comment4 ""
 $EndDescr
 $Comp
-L TTGO-T7_S3-V1.1 U201
+L TTGO-T7_S3-V1.1-RESCUE-ESP32-Mini32-OctalServo U201
 U 1 1 63E3CC09
 P 5225 3075
 F 0 "U201" H 5500 1125 50  0000 C CNN

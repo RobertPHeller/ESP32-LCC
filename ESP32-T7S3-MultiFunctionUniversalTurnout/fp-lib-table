@@ -12,4 +12,6 @@
   (lib (name ESP32-WROOM)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/ESP32-WROOM.pretty")(options "")(descr ""))
   (lib (name ESP32_mini)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/ESP32_mini.pretty")(options "")(descr ""))
   (lib (name GCT_USB)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/GCT_USB.pretty")(options "")(descr ""))
+  (lib (name BigSMDCaps)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/BigSMDCaps.pretty")(options "")(descr ""))
+  (lib (name Rectifiers)(type KiCad)(uri "$(KIPRJMOD)/../CommonFootprints/Rectifiers.pretty")(options "")(descr ""))
 )

@@ -1,0 +1,432 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:4814p-2
+LIBS:tc442x
+LIBS:SM-DaughterBoard-cache
+EELAYER 25 0
+EELAYER END
+$Descr USLetter 11000 8500
+encoding utf-8
+Sheet 1 1
+Title "ESP32 S3 Multifunction Board"
+Date ""
+Rev "1.0"
+Comp "Deepwoods Software"
+Comment1 "Stall Motor Drivers and point sense."
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55A6
+P 2000 1900
+F 0 "U?" H 2000 1950 50  0000 C CNN
+F 1 "74HCT00" H 2000 1800 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2000 1900 50  0001 C CNN
+F 3 "" H 2000 1900 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2000 1900 60  0001 C CNN "Mouser Part Number"
+	1    2000 1900
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55A7
+P 2000 2700
+F 0 "U?" H 2000 2750 50  0000 C CNN
+F 1 "74HCT00" H 2000 2600 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2000 2700 50  0001 C CNN
+F 3 "" H 2000 2700 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2000 2700 60  0001 C CNN "Mouser Part Number"
+	1    2000 2700
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55A8
+P 2000 3400
+F 0 "U?" H 2000 3450 50  0000 C CNN
+F 1 "74HCT00" H 2000 3300 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2000 3400 50  0001 C CNN
+F 3 "" H 2000 3400 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2000 3400 60  0001 C CNN "Mouser Part Number"
+	1    2000 3400
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55A9
+P 2050 4600
+F 0 "U?" H 2050 4650 50  0000 C CNN
+F 1 "74HCT00" H 2050 4500 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2050 4600 50  0001 C CNN
+F 3 "" H 2050 4600 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2050 4600 60  0001 C CNN "Mouser Part Number"
+	1    2050 4600
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55AA
+P 2050 5300
+F 0 "U?" H 2050 5350 50  0000 C CNN
+F 1 "74HCT00" H 2050 5200 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2050 5300 50  0001 C CNN
+F 3 "" H 2050 5300 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2050 5300 60  0001 C CNN "Mouser Part Number"
+	1    2050 5300
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55AB
+P 2050 6100
+F 0 "U?" H 2050 6150 50  0000 C CNN
+F 1 "74HCT00" H 2050 6000 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2050 6100 50  0001 C CNN
+F 3 "" H 2050 6100 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2050 6100 60  0001 C CNN "Mouser Part Number"
+	1    2050 6100
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55AC
+P 2050 6800
+F 0 "U?" H 2050 6850 50  0000 C CNN
+F 1 "74HCT00" H 2050 6700 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2050 6800 50  0001 C CNN
+F 3 "" H 2050 6800 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2050 6800 60  0001 C CNN "Mouser Part Number"
+	1    2050 6800
+	1    0    0    -1  
+$EndComp
+$Comp
+L 4814P-2 RR?
+U 1 1 63EA55AD
+P 900 4200
+F 0 "RR?" H 900 4300 30  0000 C CNN
+F 1 "10K Ohms" V 900 4150 30  0000 C CNN
+F 2 "48xxP:4814P" H 900 4200 60  0001 C CNN
+F 3 "" H 900 4200 60  0000 C CNN
+F 4 "652-4814P-2LF-10K" H 900 4200 60  0001 C CNN "Mouser Part Number"
+	1    900  4200
+	0    1    1    0   
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 63EA55AE
+P 2850 950
+F 0 "C?" H 2860 1020 50  0000 L CNN
+F 1 ".1 uf" H 2860 870 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 2850 950 50  0001 C CNN
+F 3 "" H 2850 950 50  0001 C CNN
+F 4 "710-885012206095" H 2850 950 60  0001 C CNN "Mouser Part Number"
+	1    2850 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L C_Small C?
+U 1 1 63EA55AF
+P 3200 950
+F 0 "C?" H 3210 1020 50  0000 L CNN
+F 1 ".1 uf" H 3210 870 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 3200 950 50  0001 C CNN
+F 3 "" H 3200 950 50  0001 C CNN
+F 4 "710-885012206095" H 3200 950 60  0001 C CNN "Mouser Part Number"
+	1    3200 950 
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V3 #PWR?
+U 1 1 63EA55BC
+P 1800 750
+F 0 "#PWR?" H 1800 600 50  0001 C CNN
+F 1 "+3V3" H 1800 890 50  0000 C CNN
+F 2 "" H 1800 750 50  0001 C CNN
+F 3 "" H 1800 750 50  0001 C CNN
+	1    1800 750 
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V3 #PWR?
+U 1 1 63EA55BD
+P 1800 4200
+F 0 "#PWR?" H 1800 4050 50  0001 C CNN
+F 1 "+3V3" H 1800 4340 50  0000 C CNN
+F 2 "" H 1800 4200 50  0001 C CNN
+F 3 "" H 1800 4200 50  0001 C CNN
+	1    1800 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 63EA55BE
+P 1800 3800
+F 0 "#PWR?" H 1800 3550 50  0001 C CNN
+F 1 "GND" H 1800 3650 50  0000 C CNN
+F 2 "" H 1800 3800 50  0001 C CNN
+F 3 "" H 1800 3800 50  0001 C CNN
+	1    1800 3800
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 63EA55BF
+P 1850 7200
+F 0 "#PWR?" H 1850 6950 50  0001 C CNN
+F 1 "GND" H 1850 7050 50  0000 C CNN
+F 2 "" H 1850 7200 50  0001 C CNN
+F 3 "" H 1850 7200 50  0001 C CNN
+	1    1850 7200
+	1    0    0    -1  
+$EndComp
+NoConn ~ 1150 3900
+NoConn ~ 1050 3900
+NoConn ~ 500  4200
+Wire Wire Line
+	1800 3800 1800 3600
+Wire Wire Line
+	1800 4400 1800 4200
+Wire Wire Line
+	2650 6500 2650 6800
+Wire Wire Line
+	1650 6500 2650 6500
+Wire Wire Line
+	1650 6300 1650 6500
+Wire Wire Line
+	1450 6300 1650 6300
+Wire Wire Line
+	1450 6200 1450 6300
+Wire Wire Line
+	2650 5000 2650 5300
+Wire Wire Line
+	1600 5000 2650 5000
+Wire Wire Line
+	1600 4800 1600 5000
+Wire Wire Line
+	1450 4800 1600 4800
+Wire Wire Line
+	1450 4700 1450 4800
+Wire Wire Line
+	1450 6400 1450 6700
+Wire Wire Line
+	2650 6400 1450 6400
+Wire Wire Line
+	2650 6100 2650 6400
+Wire Wire Line
+	1450 4850 1450 5200
+Wire Wire Line
+	2650 4850 1450 4850
+Wire Wire Line
+	2650 4600 2650 4850
+Wire Wire Line
+	1400 3150 1400 3300
+Wire Wire Line
+	2350 3150 1400 3150
+Wire Wire Line
+	2350 2900 2350 3150
+Wire Wire Line
+	2600 2900 2350 2900
+Wire Wire Line
+	2600 2700 2600 2900
+Wire Wire Line
+	2600 3000 2600 3400
+Wire Wire Line
+	1400 3000 2600 3000
+Wire Wire Line
+	1400 2800 1400 3000
+Wire Wire Line
+	1400 1650 1400 1800
+Wire Wire Line
+	2450 1650 1400 1650
+Wire Wire Line
+	2600 1550 2600 1900
+Wire Wire Line
+	1400 1550 2600 1550
+Wire Wire Line
+	1400 1300 1400 1550
+Wire Wire Line
+	1850 7200 1850 7000
+Wire Wire Line
+	1800 4200 1300 4200
+Wire Wire Line
+	750  2000 1400 2000
+Wire Wire Line
+	750  2000 750  3900
+Wire Wire Line
+	650  3900 650  1100
+Wire Wire Line
+	650  1100 1400 1100
+Wire Wire Line
+	1400 3500 950  3500
+Wire Wire Line
+	950  3500 950  3900
+Wire Wire Line
+	850  3900 850  2600
+Wire Wire Line
+	850  2600 1400 2600
+Wire Wire Line
+	1450 4500 1150 4500
+Wire Wire Line
+	1050 4500 1050 5400
+Wire Wire Line
+	1050 5400 1450 5400
+Wire Wire Line
+	950  4500 950  6000
+Wire Wire Line
+	950  6000 1450 6000
+Wire Wire Line
+	850  4500 850  6900
+Wire Wire Line
+	850  6900 1450 6900
+NoConn ~ 750  4500
+NoConn ~ 650  4500
+Wire Wire Line
+	1800 750  1800 1000
+$Comp
+L 74HCT00 U?
+U 1 1 63EA55C0
+P 2000 1200
+F 0 "U?" H 2000 1250 50  0000 C CNN
+F 1 "74HCT00" H 2000 1100 50  0000 C CNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 2000 1200 50  0001 C CNN
+F 3 "" H 2000 1200 50  0001 C CNN
+F 4 "595-SN74AHC00D" H 2000 1200 60  0001 C CNN "Mouser Part Number"
+	1    2000 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2600 1200 2600 1450
+Wire Wire Line
+	2600 1450 2450 1450
+Wire Wire Line
+	2450 1450 2450 1650
+Wire Wire Line
+	1800 850  3200 850 
+Connection ~ 1800 850 
+Connection ~ 2850 850 
+Wire Wire Line
+	3200 1050 2850 1050
+$Comp
+L GND #PWR?
+U 1 1 63EA55C1
+P 3200 1200
+F 0 "#PWR?" H 3200 950 50  0001 C CNN
+F 1 "GND" H 3200 1050 50  0000 C CNN
+F 2 "" H 3200 1200 50  0001 C CNN
+F 3 "" H 3200 1200 50  0001 C CNN
+	1    3200 1200
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3200 1200 3200 1050
+Text Label 900  1100 0    59   ~ 0
+P1A
+Text Label 900  2000 0    59   ~ 0
+P1B
+Text Label 950  2600 0    59   ~ 0
+P2A
+Text Label 1050 3500 0    59   ~ 0
+P2B
+Text Label 1300 4500 0    59   ~ 0
+P3A
+Text Label 1300 5400 0    59   ~ 0
+P3B
+Text Label 1150 6000 0    59   ~ 0
+P4A
+Text Label 1050 6900 0    59   ~ 0
+P4B
+$Comp
+L Conn_01x10_Male J101
+U 1 1 63EA55CC
+P 7125 5300
+F 0 "J101" H 7175 5600 50  0000 C CNN
+F 1 "IO_Port" H 7175 5000 50  0000 C CNN
+F 2 "Pin_Headers:Pin_Header_Straight_1x10_Pitch2.54mm" H 7125 5300 50  0001 C CNN
+F 3 "" H 7125 5300 50  0001 C CNN
+	1    7125 5300
+	1    0    0    -1  
+$EndComp
+Text Label 7325 4900 0    60   ~ 0
+Motor1
+Text Label 7325 5000 0    60   ~ 0
+Motor2
+Text Label 7325 5100 0    60   ~ 0
+Motor3
+Text Label 7325 5200 0    60   ~ 0
+Motor4
+Text Label 7325 5500 0    60   ~ 0
+Points1
+Text Label 7325 5600 0    60   ~ 0
+Points2
+Text Label 7325 5700 0    60   ~ 0
+Points3
+Text Label 7325 5800 0    60   ~ 0
+Points4
+$Comp
+L +3V3 #PWR?
+U 1 1 63EA55CD
+P 7650 5300
+F 0 "#PWR?" H 7650 5150 50  0001 C CNN
+F 1 "+3V3" H 7650 5440 50  0000 C CNN
+F 2 "" H 7650 5300 50  0001 C CNN
+F 3 "" H 7650 5300 50  0001 C CNN
+	1    7650 5300
+	0    1    1    0   
+$EndComp
+$Comp
+L GND #PWR?
+U 1 1 63EA55CE
+P 7600 5400
+F 0 "#PWR?" H 7600 5150 50  0001 C CNN
+F 1 "GND" H 7600 5250 50  0000 C CNN
+F 2 "" H 7600 5400 50  0001 C CNN
+F 3 "" H 7600 5400 50  0001 C CNN
+	1    7600 5400
+	0    -1   -1   0   
+$EndComp
+Text Label 2600 1325 0    60   ~ 0
+Points1
+Text Label 2600 2800 0    60   ~ 0
+Points2
+Text Label 2650 4725 0    60   ~ 0
+Points3
+Text Label 2650 6250 0    60   ~ 0
+Points4
+Wire Wire Line
+	7325 5300 7650 5300
+Wire Wire Line
+	7325 5400 7600 5400
+$EndSCHEMATC

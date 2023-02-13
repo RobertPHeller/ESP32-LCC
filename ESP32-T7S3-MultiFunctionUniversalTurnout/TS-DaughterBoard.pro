@@ -1,4 +1,4 @@
-update=Sun 12 Feb 2023 12:30:27 PM EST
+update=Mon 13 Feb 2023 02:04:59 PM EST
 version=1
 last_client=kicad
 [pcbnew]
@@ -63,3 +63,4 @@ LibName31=contrib
 LibName32=valves
 LibName33=4814p-2
 LibName34=tc442x
+LibName35=74lv125AN

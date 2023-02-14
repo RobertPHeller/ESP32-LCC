@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:07:59 2022
-//  Last Modified : <230211.1522>
+//  Last Modified : <230214.1024>
 //
 //  Description	
 //
@@ -48,8 +48,12 @@
 #include <os/Gpio.hxx>
 #include <utils/GpioInitializer.hxx>
 
+#if defined(CONFIG_SERVO_TURNOUTS)
+
+#define TURNOUTSERVOPINS {9,11,8,43}
+
+#else
 #define MotorPin GpioOutputSafeLow
-#define SensePin GpioInputNP
 
 GPIO_PIN(Motor1, MotorPin,  9);
 GPIO_PIN(Motor2, MotorPin, 11);
@@ -61,6 +65,9 @@ GPIO_PIN(Motor4, MotorPin, 43);
 #else
 GPIO_PIN(Motor4, MotorPin, 33);
 #endif
+#endif
+
+#define SensePin GpioInputNP
 
 GPIO_PIN(Points1, SensePin, 12);
 GPIO_PIN(Points2, SensePin, 13);
@@ -109,7 +116,10 @@ GPIO_PIN(LED_ACT1, ActPin, 15);
 GPIO_PIN(LED_ACT2, ActPin, 0);
 
 // Create an initializer that can initialize all the GPIO pins in one shot
-typedef GpioInitializer<Motor1_Pin, Motor2_Pin, Motor3_Pin, Motor4_Pin,
+typedef GpioInitializer<
+#if !defined(CONFIG_SERVO_TURNOUTS)
+                        Motor1_Pin, Motor2_Pin, Motor3_Pin, Motor4_Pin,
+#endif
                         Points1_Pin, Points2_Pin, Points3_Pin, Points4_Pin,
                         OD1_Pin, OD2_Pin, OD3_Pin, OD4_Pin,
                         LED1_Pin, LED2_Pin, LED3_Pin, LED4_Pin,

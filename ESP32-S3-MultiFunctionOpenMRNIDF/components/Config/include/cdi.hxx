@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230203.1108>
+//  Last Modified : <230214.1014>
 //
 //  Description	
 //
@@ -53,7 +53,11 @@
 #include "MastConfig.hxx"
 #include "TrackCircuitConfig.hxx"
 
+#if defined(CONFIG_SERVO_TURNOUTS)
+#include "ServoTurnoutConfig.hxx"
+#else
 #include "TurnoutConfig.hxx"
+#endif
 #include "PointsConfig.hxx"
 
 #include "OccupancyDetectorConfig.hxx" 
@@ -76,7 +80,11 @@ using LogicGroup = openlcb::RepeatedGroup<LogicConfig, LOGICCOUNT>;
 using MastGroup = openlcb::RepeatedGroup<MastConfig, MASTCOUNT>;
 using TrackCircuitGroup = openlcb::RepeatedGroup<TrackCircuitConfig, TRACKCIRCUITCOUNT>;
 
+#if defined(CONFIG_SERVO_TURNOUTS)
+using TurnoutGroup = openlcb::RepeatedGroup<ServoTurnoutConfig, NUM_TURNOUTS>;
+#else
 using TurnoutGroup = openlcb::RepeatedGroup<TurnoutConfig, NUM_TURNOUTS>;
+#endif
 using PointsGroup = openlcb::RepeatedGroup<PointsConfig, NUM_POINTSS>;
 using OCGroup = openlcb::RepeatedGroup<OccupancyDetectorConfig, NUM_OCS>;
 using ButtonGroup = openlcb::RepeatedGroup<ButtonConfig, NUM_BUTTONS>;

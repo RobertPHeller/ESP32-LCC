@@ -55,6 +55,9 @@ menu "Advanced Configuration"
     config T7S3
         bool "Using TTGO-T7S3"
         default n
+    config SERVO_TURNOUTS
+        bool "Using the servo turnout daughter board"
+        default n
 endmenu
 
 

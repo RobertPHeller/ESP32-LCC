@@ -156,6 +156,7 @@ CONFIG_OLCB_CONFIG_SYNC_SEC=5
 CONFIG_HEALTH_INTERVAL=15
 # CONFIG_DEVKIT_BREADBOARD is not set
 # CONFIG_T7S3 is not set
+# CONFIG_SERVO_TURNOUTS is not set
 # end of Advanced Configuration
 
 #

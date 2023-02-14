@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <221231.1110>
+//  Last Modified : <230214.1031>
 //
 //  Description	
 //
@@ -80,7 +80,13 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "Blink.hxx"
 #include "TrackCircuit.hxx"
 #include "Logic.hxx"
+#if defined(CONFIG_SERVO_TURNOUTS)
+#include <freertos_drivers/esp32/Esp32Ledc.hxx>
+#include "ServoTurnoutConfig.hxx"
+#include "ServoTurnout.hxx"
+#else
 #include "Turnout.hxx"
+#endif
 #include "Points.hxx"
 #include "OccupancyDetector.hxx"
 #include "Button.hxx"
@@ -297,6 +303,10 @@ void FactoryResetHelper::factory_reset(int fd)
     for(int i = 0; i < NUM_TURNOUTS; i++)
     {
         cfg.seg().turnouts().entry(i).description().write(fd, "");
+#if defined(CONFIG_SERVO_TURNOUTS)
+        CDI_FACTORY_RESET(cfg.seg().turnouts().entry(i).servo_normal_percent);
+        CDI_FACTORY_RESET(cfg.seg().turnouts().entry(i).servo_reversed_percent);
+#endif
     }
     for(int i = 0; i < NUM_POINTSS; i++)
     {
@@ -483,10 +493,19 @@ void app_main()
             prevLogic = logics[i];
         }
         LOG(INFO, "[esp32multifunction] Logics done.");
+#if defined(CONFIG_SERVO_TURNOUTS)
+        openmrn_arduino::Esp32Ledc ledc(TURNOUTSERVOPINS);
+        ledc.hw_init();
+        ServoTurnout turnout1(stack.node(), cfg.seg().turnouts().entry<0>(),1000,ledc.get_channel(0));
+        ServoTurnout turnout2(stack.node(), cfg.seg().turnouts().entry<1>(),1000,ledc.get_channel(1));
+        ServoTurnout turnout3(stack.node(), cfg.seg().turnouts().entry<2>(),1000,ledc.get_channel(2));
+        ServoTurnout turnout4(stack.node(), cfg.seg().turnouts().entry<3>(),1000,ledc.get_channel(3));
+#else
         Turnout turnout1(stack.node(), cfg.seg().turnouts().entry<0>(),Motor1_Pin());
         Turnout turnout2(stack.node(), cfg.seg().turnouts().entry<1>(),Motor2_Pin());
         Turnout turnout3(stack.node(), cfg.seg().turnouts().entry<2>(),Motor3_Pin());
         Turnout turnout4(stack.node(), cfg.seg().turnouts().entry<3>(),Motor4_Pin());
+#endif
         LOG(INFO, "[esp32multifunction] Turnouts done.");
         Points points1(stack.node(), cfg.seg().points().entry<0>(),Points1_Pin());
         Points points2(stack.node(), cfg.seg().points().entry<1>(),Points2_Pin());

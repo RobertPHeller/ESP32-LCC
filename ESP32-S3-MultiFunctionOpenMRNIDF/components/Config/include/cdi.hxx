@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230214.1450>
+//  Last Modified : <230214.1610>
 //
 //  Description	
 //
@@ -43,15 +43,14 @@
 #ifndef __CDI_HXX
 #define __CDI_HXX
 
+#include "sdkconfig.h"
 #include <openlcb/ConfigRepresentation.hxx>
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
 #include "openlcb/MemoryConfig.hxx"
 #include "NodeIdConfigurationGroup.hxx"
-#ifdef CONFIG_ESP32_WIFI_ENABLED
 #include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
-#endif
 #include "LogicConfig.hxx"
 #include "MastConfig.hxx"
 #include "TrackCircuitConfig.hxx"

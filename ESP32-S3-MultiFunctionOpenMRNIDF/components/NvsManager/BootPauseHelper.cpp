@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <230214.1447>
+//  Last Modified : <230214.1537>
 //
 //  Description	
 //
@@ -233,6 +233,29 @@ size_t BootPauseHelper::ReadLine(uart_port_t uart_num,char *buffer,
     return numread;
 }
 
+wifi_mode_t BootPauseHelper::GetMode(char *buffer,size_t bufferlen)
+{
+    char *p = buffer;
+    char *end = buffer+bufferlen;
+    while (*p <= ' ' && p < end) p++;
+    if (p >= end) return WIFI_MODE_STA;
+    if (strncasecmp("ON",p,2) == 0) {return WIFI_MODE_STA;}
+    else if (strncasecmp("OFF",p,3) == 0) {return WIFI_MODE_NULL;}
+    else if (strncasecmp("YES",p,3) == 0) {return WIFI_MODE_STA;}
+    else if (strncasecmp("NO",p,2) == 0) {return WIFI_MODE_NULL;}
+    else {return WIFI_MODE_STA;}
+}
+
+const char *BootPauseHelper::GetString(char *buffer,size_t bufferlen)
+{
+    char *p = buffer;
+    char *end = buffer+bufferlen;
+    while (*p <= ' ' && p < end) p++;
+    if (p >= end) return "";
+    while (*(end-1) <= ' ' && end > p) end--;
+    *end = '\0';
+    return p;
+}
 
 DEFINE_SINGLETON_INSTANCE(BootPauseHelper);
 

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <230214.1447>
+//  Last Modified : <230214.1535>
 //
 //  Description	
 //
@@ -44,15 +44,14 @@
 #define __NVSMANAGER_HXX
 
 #include "sdkconfig.h"
-#if CONFIG_IDF_TARGET_ESP32
-#include <esp32/rom/rtc.h>
-#elif CONFIG_IDF_TARGET_ESP32S3
-#include <esp32s3/rom/rtc.h>
-#endif
+#include <esp_wifi_types.h>
 #include <esp_err.h>
 #include <esp_partition.h>
+
 #include <nvs.h>
 #include <nvs_flash.h>
+#include <string>
+#include <string.h>
 #include <utils/Singleton.hxx>
 
 namespace openlcb

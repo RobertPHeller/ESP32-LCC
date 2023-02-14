@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230205.1235>
+#  Last Modified : <230214.1558>
 #
 #  Description	
 #
@@ -54,7 +54,7 @@ all: ../include/cdidata.hxx
 EXTRAFLAGS=
 
 
-compile_cdi: ../include/cdi.hxx ../include/*Config.hxx CompileCdiMain.cxx \
+compile_cdi: ../include/cdi.hxx ../include/*Config*.hxx CompileCdiMain.cxx \
 	../../../sdkconfig ../include/Revision.hxxout
 	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config/ \
 		-I../include -I$(OPENMRNIDFPATH)/src \

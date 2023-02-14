@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <230214.1446>
+//  Last Modified : <230214.1617>
 //
 //  Description	
 //
@@ -43,11 +43,6 @@
 static const char rcsid[] = "@(#) : $Id$";
 
 #include "sdkconfig.h"
-#if CONFIG_IDF_TARGET_ESP32
-#include <esp32/rom/rtc.h>
-#elif CONFIG_IDF_TARGET_ESP32S3
-#include <esp32s3/rom/rtc.h>
-#endif
 #include <esp_err.h>
 #include <esp_partition.h>
 #include <nvs.h>
@@ -55,10 +50,12 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <utils/Singleton.hxx>
 #include "NvsManager.hxx"
 #include "NodeIdMemoryConfigSpace.hxx"
+#include "WiFiMemoryConfigSpace.hxx"
+#include <esp_wifi_types.h>
+#include <freertos_drivers/esp32/Esp32WiFiManager.hxx>
 #include <utils/logging.h>
 #include <openlcb/SimpleStack.hxx>
 
-#ifdef CONFIG_ESP32_WIFI_ENABLED
 #ifndef CONFIG_WIFI_STATION_SSID
 #define CONFIG_WIFI_STATION_SSID ""
 #endif
@@ -70,15 +67,12 @@ static const char rcsid[] = "@(#) : $Id$";
 #ifndef CONFIG_WIFI_HOSTNAME_PREFIX
 #define CONFIG_WIFI_HOSTNAME_PREFIX "esp32multifunc_"
 #endif
-#endif
 
 namespace esp32multifunction
 {
 
 static uninitialized<NodeIdMemoryConfigSpace> node_id_memoryspace;
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-static uninitialized<WiFiMemoryConfigSpace> wifi_memory_space
-#endif
+static uninitialized<WiFiMemoryConfigSpace> wifi_memory_space;
 
 void NvsManager::init(uint8_t reset_reason)
 {
@@ -142,6 +136,11 @@ void NvsManager::register_virtual_memory_spaces(openlcb::SimpleStackBase *stack)
 
 void NvsManager::DisplayNvsConfiguration()
 {
+    static constexpr const char *const WIFI_MODES[] =
+    {
+        "Disabled",
+        "Station"
+    };
     // display current configuration settings.
     LOG(INFO, "[NVS] Node ID: 0x%llX", config_.node_id);
     LOG(INFO, "[NVS] Force Reset: %s",

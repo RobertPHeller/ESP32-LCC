@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:49:15 2022
-//  Last Modified : <230214.1447>
+//  Last Modified : <230214.1537>
 //
 //  Description	
 //
@@ -79,6 +79,8 @@ private:
     void PauseConsole();
     uint64_t ParseNode(char *buffer,size_t bufferlen);
     size_t ReadLine(uart_port_t uart_num,char *buffer, size_t bufferlen);
+    wifi_mode_t GetMode(char *buffer,size_t bufferlen);
+    const char *GetString(char *buffer,size_t bufferlen);
 };
 
 }

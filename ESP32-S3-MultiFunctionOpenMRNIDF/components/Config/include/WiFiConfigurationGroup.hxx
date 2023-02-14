@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Dec 16 12:43:10 2022
-//  Last Modified : <230115.1610>
+//  Last Modified : <230214.1613>
 //
 //  Description	
 //
@@ -46,7 +46,7 @@
 
 #include "sdkconfig.h"
 
-namespace esp32octalservo
+namespace esp32multifunction
 {
 
 CDI_GROUP(WiFiStationConfiguration);

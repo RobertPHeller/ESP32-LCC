@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Dec 18 12:33:51 2022
-//  Last Modified : <230115.1600>
+//  Last Modified : <230214.1541>
 //
 //  Description	
 //
@@ -54,7 +54,7 @@
 #include "StringUtils.hxx"
 #include "sdkconfig.h"
 
-namespace esp32octalservo {
+namespace esp32multifunction {
 
 /// Node configuration holder
 static constexpr WiFiConfiguration WiFiConfigHolder(CONFIG_OLCB_WIFI_MEMORY_SPACE_OFFSET);

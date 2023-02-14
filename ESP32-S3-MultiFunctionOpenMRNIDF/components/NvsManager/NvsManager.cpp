@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <230103.1539>
+//  Last Modified : <230214.1446>
 //
 //  Description	
 //
@@ -58,10 +58,27 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <utils/logging.h>
 #include <openlcb/SimpleStack.hxx>
 
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+#ifndef CONFIG_WIFI_STATION_SSID
+#define CONFIG_WIFI_STATION_SSID ""
+#endif
+
+#ifndef CONFIG_WIFI_STATION_PASSWORD
+#define CONFIG_WIFI_STATION_PASSWORD ""
+#endif
+
+#ifndef CONFIG_WIFI_HOSTNAME_PREFIX
+#define CONFIG_WIFI_HOSTNAME_PREFIX "esp32multifunc_"
+#endif
+#endif
+
 namespace esp32multifunction
 {
 
 static uninitialized<NodeIdMemoryConfigSpace> node_id_memoryspace;
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+static uninitialized<WiFiMemoryConfigSpace> wifi_memory_space
+#endif
 
 void NvsManager::init(uint8_t reset_reason)
 {
@@ -100,6 +117,15 @@ void NvsManager::init(uint8_t reset_reason)
         config_.force_reset = false;
         config_.reset_events_req = false;
         config_.bootloader_req = false;
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+        config_.wifi_mode = (wifi_mode_t)CONFIG_WIFI_MODE;
+        strncpy(config_.hostname_prefix,CONFIG_WIFI_HOSTNAME_PREFIX,
+                sizeof(config_.hostname_prefix));
+        strncpy(config_.station_ssid,CONFIG_WIFI_STATION_SSID,
+                sizeof(config_.station_ssid));
+        strncpy(config_.station_pass,CONFIG_WIFI_STATION_PASSWORD,
+                sizeof(config_.station_pass));
+#endif
         need_persist_ = true;
     }
     CheckPersist();
@@ -109,6 +135,9 @@ void NvsManager::init(uint8_t reset_reason)
 void NvsManager::register_virtual_memory_spaces(openlcb::SimpleStackBase *stack)
 {
     node_id_memoryspace.emplace(stack, this);
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+    wifi_memory_space.emplace(stack, this);
+#endif
 }
 
 void NvsManager::DisplayNvsConfiguration()
@@ -121,6 +150,16 @@ void NvsManager::DisplayNvsConfiguration()
         config_.reset_events_req ? "true" : "false");
     LOG(INFO, "[NVS] Bootloader: %s",
         config_.bootloader_req ? "true" : "false");
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+    LOG(INFO, "[NVS] WiFi Mode: %s (%d)", WIFI_MODES[config_.wifi_mode],
+        config_.wifi_mode);
+    LOG(INFO, "[NVS] Hostname Prefix: %s", config_.hostname_prefix);
+    if (config_.wifi_mode != 0)
+    {
+        LOG(INFO, "[NVS] Station SSID: %s", config_.station_ssid);
+    }
+    
+#endif
 }
 
 

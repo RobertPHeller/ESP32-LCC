@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:49:15 2022
-//  Last Modified : <221231.1116>
+//  Last Modified : <230214.1447>
 //
 //  Description	
 //
@@ -66,6 +66,12 @@ public:
         EVENTRESET = 'E',
         FACTORYRESET = 'F',
         TESTSIGLAMPS = 'T',
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+        SETSSID = 'S',
+        SETPASS = 'P',
+        SETHOST = 'H',
+        SETWIFI = 'W',
+#endif
         RESUME = 'R'
     };
     void CheckPause();

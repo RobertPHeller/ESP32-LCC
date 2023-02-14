@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <221231.1115>
+//  Last Modified : <230214.1447>
 //
 //  Description	
 //
@@ -139,6 +139,20 @@ void BootPauseHelper::PauseConsole()
         case TESTSIGLAMPS:
             NvsManager::instance()->force_test_signal_lamps();
             break;
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+        case SETSSID:
+            NvsManager::instance()->station_ssid(GetString(&receivebuffer[1],len-1));
+            break;
+        case SETPASS:
+            NvsManager::instance()->station_pass(GetString(&receivebuffer[1],len-1));
+            break;
+        case SETHOST:
+            NvsManager::instance()->hostname_prefix(GetString(&receivebuffer[1],len-1));
+            break;
+        case SETWIFI:
+            NvsManager::instance()->wifi_mode(GetMode(&receivebuffer[1],len-1));
+            break;
+#endif
         case RESUME:
             return;
         default:

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230214.1031>
+//  Last Modified : <230214.1446>
 //
 //  Description	
 //
@@ -68,6 +68,9 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <freertos_drivers/esp32/Esp32HardwareTwai.hxx>
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+#include <freertos_drivers/esp32/Esp32WiFiManager.hxx>
+#endif
 #include <openlcb/MemoryConfigClient.hxx>
 #include <openlcb/RefreshLoop.hxx>
 #include <openlcb/SimpleStack.hxx>
@@ -462,6 +465,16 @@ void app_main()
         nvs.register_virtual_memory_spaces(&stack);
         openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
         LOG(INFO, "[esp32multifunction] MemoryConfigClient done.");
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+        openmrn_arduino::Esp32WiFiManager wifi_manager(
+                                                       nvs.station_ssid(), 
+                                                       nvs.station_pass(),
+                                                       &stack, 
+                                                       cfg.seg().olbcwifi(), 
+                                                       nvs.wifi_mode(),
+                                                       (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
+                                                       nvs.hostname_prefix());
+#endif
         esp32multifunction::FactoryResetHelper factory_reset_helper();
         LOG(INFO, "[esp32multifunction] FactoryResetHelper done.");
         esp32multifunction::EventBroadcastHelper event_helper();

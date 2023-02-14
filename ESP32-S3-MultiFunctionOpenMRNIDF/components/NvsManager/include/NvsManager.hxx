@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <230103.1457>
+//  Last Modified : <230214.1447>
 //
 //  Description	
 //
@@ -54,7 +54,16 @@
 #include <nvs.h>
 #include <nvs_flash.h>
 #include <utils/Singleton.hxx>
-#include <openlcb/SimpleStack.hxx>
+
+namespace openlcb
+{
+    class Node;
+    class SimpleStackBase;
+}
+namespace openmrn_arduino
+{
+    class Esp32WiFiManager;
+}
 
 namespace esp32multifunction
 {
@@ -114,6 +123,32 @@ public:
         config_.force_reset = true;
         need_persist_ = true;
     }
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+    inline wifi_mode_t wifi_mode() {return config_.wifi_mode;}
+    inline void wifi_mode(wifi_mode_t mode)
+    {
+        config_.wifi_mode = mode;
+        need_persist_ = true;
+    }
+    inline const char *station_ssid() {return config_.station_ssid;}
+    inline void station_ssid(const char *ssid)
+    {
+        strncpy(config_.station_ssid,ssid,sizeof(config_.station_ssid)-1);
+        need_persist_ = true;
+    }
+    inline const char *station_pass() {return config_.station_pass;}
+    inline void station_pass(const char *password)
+    {
+        strncpy(config_.station_pass,password,sizeof(config_.station_pass)-1);
+        need_persist_ = true;
+    }
+    inline const char *hostname_prefix() {return config_.hostname_prefix;}
+    inline void hostname_prefix(const char *hostname)
+    {
+        strncpy(config_.hostname_prefix,hostname,sizeof(config_.hostname_prefix)-1);
+        need_persist_ = true;
+    }
+#endif
     NvsManager() : need_persist_(false) 
     {
     }
@@ -141,6 +176,12 @@ private:
         bool bootloader_req;
         bool reset_events_req;
         bool test_signal_lamps;
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+        char hostname_prefix[16];
+        char station_ssid[33];
+        char station_pass[33];
+        wifi_mode_t wifi_mode;
+#endif
         uint8_t reserved[20];
     } config_;
     bool need_persist_;

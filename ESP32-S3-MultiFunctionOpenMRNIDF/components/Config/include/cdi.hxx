@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230214.1014>
+//  Last Modified : <230214.1450>
 //
 //  Description	
 //
@@ -48,7 +48,10 @@
 #include "openlcb/ConfiguredProducer.hxx"
 #include "openlcb/MemoryConfig.hxx"
 #include "NodeIdConfigurationGroup.hxx"
-
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+#include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
+#include "WiFiConfigurationGroup.hxx"
+#endif
 #include "LogicConfig.hxx"
 #include "MastConfig.hxx"
 #include "TrackCircuitConfig.hxx"
@@ -105,6 +108,9 @@ CDI_GROUP_ENTRY(leds,LEDGroup, Name("LEDS"), RepName("LED"));
 CDI_GROUP_ENTRY(logics, LogicGroup, Name("LOGIC"), RepName("Logic"));
 CDI_GROUP_ENTRY(masts, MastGroup, Name("Rule to aspect"),RepName("Mast"));
 CDI_GROUP_ENTRY(circuits, TrackCircuitGroup, Name("TRACK CIRCUITS"), RepName("Circuit"));
+#ifdef CONFIG_ESP32_WIFI_ENABLED
+CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
+#endif
 CDI_GROUP_END();
 
 /// This segment is only needed temporarily until there is program code to set
@@ -129,6 +135,9 @@ CDI_GROUP_ENTRY(userinfo, openlcb::UserInfoSegment, Name("User Info"));
 /// Adds the main configuration segment.
 CDI_GROUP_ENTRY(seg, IoBoard, Name("Board Configuration"));
 CDI_GROUP_ENTRY(node, NodeIdConfig, Name("Node ID"));
+#if defined(CONFIG_ESP32_WIFI_ENABLED)
+CDI_GROUP_ENTRY(wifi, WiFiConfiguration, Name("WiFi Configuration"));
+#endif
 /// Adds the versioning segment.
 CDI_GROUP_ENTRY(version, VersionSeg);
 CDI_GROUP_END();

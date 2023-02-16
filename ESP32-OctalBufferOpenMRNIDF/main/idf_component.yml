@@ -2,3 +2,5 @@ dependencies:
   idf: ">=4.4,<5.0"
   OpenMRNIDF:
     git: https://github.com/atanisoft/OpenMRNIDF.git
+  NVSManager:
+    path: ../../NVSManager

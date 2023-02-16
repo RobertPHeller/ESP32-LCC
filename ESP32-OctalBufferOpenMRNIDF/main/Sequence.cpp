@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 6 15:24:56 2023
-//  Last Modified : <230206.1537>
+//  Last Modified : <230216.1418>
 //
 //  Description	
 //
@@ -83,11 +83,20 @@ long long Step::timeout()
     switch (nextMode_)
     {
     case Last: 
+        parent_->LastStep();
         break;
     case Next: 
-        if (next_ != nullptr) next_->StartStep(); 
+        if (next_ != nullptr) 
+        {
+            next_->StartStep(); 
+        }
+        else
+        {
+            parent_->LastStep();
+        }
         break;
     case First: 
+        if (parent_->StopP()) break;
         first_->StartStep(); 
         break;
     }

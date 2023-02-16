@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 6 09:47:06 2023
-//  Last Modified : <230206.1536>
+//  Last Modified : <230216.1429>
 //
 //  Description	
 //
@@ -136,6 +136,7 @@ public:
             if (currentstate_ != flickering)
             {
                 currentstate_ = flickering;
+                currentbrightness_ = ((random()&0x01FF)+128)*10;
                 startDelay(((random()&0x01FF)+128)*1000000ULL); // random 128-640 ms
             }
             break;
@@ -222,14 +223,7 @@ private:
             }
             break;
         case flickering:
-            if (currentbrightness_ == 0)
-            {
-                currentbrightness_ = brightness_;
-            }
-            else
-            {
-                currentbrightness_ = 0;
-            }
+            currentbrightness_ = ((random()&0x01FF)+128)*10;
             p->set_duty((uint32_t)(BRIGHNESSHUNDRETHSPERCENT(currentbrightness_)*p->get_period()));
             running_ = true;
             return ((random()&0x01FF)+128)*1000000ULL; // random 128-640ms
@@ -433,6 +427,7 @@ public:
         enabled_ = false;
         start_ = 0ULL;
         stepRunning_ = false;
+        stopped_ = true;
         for (int i = 0; i < STEPSCOUNT; i++)
         {
             steps_[i] = new Step(node_,cfg_.steps().entry(i),timers,this);
@@ -462,13 +457,15 @@ public:
         AutoNotify n(done);
         enabled_ = cfg_.enabled().read(fd);
         openlcb::EventId cfg_start = cfg_.start().read(fd);
-        if (cfg_start != start_)
+        openlcb::EventId cfg_stop = cfg_.stop().read(fd);
+        if (cfg_start != start_ || cfg_stop != stop_)
         {
             if (!initial_load)
             {
                 unregister_handler();
             }
             start_ = cfg_start;
+            stop_ = cfg_stop;
             register_handler();
             return REINIT_NEEDED; // Causes events identify. 
         }
@@ -497,9 +494,17 @@ public:
                              BarrierNotifiable *done)
     {
         AutoNotify n(done);
-        if (stepRunning_) return;
-        if (!enabled_) return;
-        steps_[0]->StartStep();
+        if (event->event == stop_)
+        {
+            stopped_ = true;
+        }
+        else
+        {
+            if (stepRunning_) return;
+            if (!enabled_) return;
+            stopped_ = false;
+            steps_[0]->StartStep();
+        }
     }
     void StepStarted()
     {
@@ -508,6 +513,14 @@ public:
     void StepEnded()
     {
         stepRunning_ = false;
+    }
+    bool StopP()
+    {
+        return stopped_;
+    }
+    void LastStep()
+    {
+        stopped_ = true;
     }
 private:
     void SendAllConsumersIdentified(openlcb::EventReport *event,BarrierNotifiable *done)
@@ -547,7 +560,9 @@ private:
     const SequenceConfig cfg_;
     bool enabled_;
     openlcb::EventId start_;
+    openlcb::EventId stop_;
     bool stepRunning_;
+    bool stopped_;
     Step *steps_[STEPSCOUNT];
 };
         

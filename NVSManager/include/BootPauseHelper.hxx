@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:49:15 2022
-//  Last Modified : <230214.1643>
+//  Last Modified : <230216.1407>
 //
 //  Description	
 //
@@ -49,6 +49,8 @@
 #include <esp_system.h>
 #include <esp_task_wdt.h>
 #include <utils/Singleton.hxx>
+#include "hal/uart_types.h"
+#include <driver/uart.h>
 
 namespace nvsmanager
 {

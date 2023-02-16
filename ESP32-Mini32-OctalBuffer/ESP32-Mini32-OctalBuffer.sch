@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ESP32-Mini32-OctalBuffer-rescue
 LIBS:power
 LIBS:device
 LIBS:switches

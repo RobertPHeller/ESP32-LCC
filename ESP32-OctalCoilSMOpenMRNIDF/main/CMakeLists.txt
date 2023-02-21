@@ -7,7 +7,7 @@ set(deps
     spiffs
     OpenMRNIDF
     Config
-    NvsManager
+    NVSManager
     json
 )
 

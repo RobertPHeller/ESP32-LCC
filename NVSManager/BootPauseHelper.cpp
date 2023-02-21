@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <230214.1642>
+//  Last Modified : <230221.1601>
 //
 //  Description	
 //
@@ -47,7 +47,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <esp_ota_ops.h>
 #include <esp_system.h>
 #include <esp_task_wdt.h>
-#include <esp32s3/rom/rtc.h>
 #include <driver/uart.h>
 #include "NvsManager.hxx"
 #include "BootPauseHelper.hxx"

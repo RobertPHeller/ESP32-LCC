@@ -7,7 +7,7 @@ set(deps
     spiffs
     OpenMRNIDF
     Config
-    NvsManager
+    NVSManager
     json
 )
 
@@ -30,8 +30,6 @@ set_source_files_properties(esp32octalservo.cpp PROPERTIES COMPILE_DEFINITIONS "
 set_source_files_properties(fs.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 
 set(CDIDEPS
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/NodeIdConfigurationGroup.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/WiFiConfigurationGroup.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
    )
 

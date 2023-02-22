@@ -6,3 +6,5 @@ dependencies:
     path: ../../I2CDriver
   NVSManager:
     path: ../../NVSManager
+  FS:
+    path: ../../FS

@@ -4,3 +4,5 @@ dependencies:
     git: https://github.com/atanisoft/OpenMRNIDF.git
   NVSManager:
     path: ../../NVSManager
+  FS:
+    path: ../../FS

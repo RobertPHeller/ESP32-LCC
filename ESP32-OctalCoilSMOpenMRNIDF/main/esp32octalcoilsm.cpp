@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1419>
+//  Last Modified : <230222.1543>
 //
 //  Description	
 //
@@ -137,7 +137,7 @@ extern "C"
 
 void *node_reboot(void *arg)
 {
-    Singleton<esp32octalcoilsm::NodeRebootHelper>::instance()->reboot();
+    Singleton<reboothelpers::NodeRebootHelper>::instance()->reboot();
     return nullptr;
 }
 
@@ -250,7 +250,7 @@ void app_main()
 #endif
     esp32octalcoilsm::FactoryResetHelper factory_reset_helper();
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
-    esp32octalcoilsm::HealthMonitor health_mon(stack.service());
+    healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
     
     Turnout turnout1(stack.node(), cfg.seg().turnouts().entry<0>(),Motor1_Pin());
@@ -273,7 +273,7 @@ void app_main()
     stack.check_version_and_factory_reset(cfg.seg().internal_config(),
                                           CDI_VERSION,
                                           cleanup_config_tree);
-    esp32octalcoilsm::NodeRebootHelper node_reboot_helper(&stack, config_fd);
+    reboothelpers::NodeRebootHelper node_reboot_helper(&stack, config_fd);
 
     if (reset_events)
     {

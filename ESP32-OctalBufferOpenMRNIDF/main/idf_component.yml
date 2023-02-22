@@ -6,4 +6,8 @@ dependencies:
     path: ../../NVSManager
   FS:
     path: ../../FS
+  HealthMonitor:
+    path: ../../HealthMonitor
+  RebootHelpers:
+    path: ../../RebootHelpers
 

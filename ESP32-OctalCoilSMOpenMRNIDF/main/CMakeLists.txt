@@ -9,6 +9,8 @@ set(deps
     Config
     NVSManager
     FS
+    HealthMonitor
+    RebootHelpers
     json
 )
 

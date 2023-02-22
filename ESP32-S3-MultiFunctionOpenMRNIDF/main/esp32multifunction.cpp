@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1421>
+//  Last Modified : <230222.1536>
 //
 //  Description	
 //
@@ -206,7 +206,7 @@ extern "C"
 
 void *node_reboot(void *arg)
 {
-    Singleton<esp32multifunction::NodeRebootHelper>::instance()->reboot();
+    Singleton<reboothelpers::NodeRebootHelper>::instance()->reboot();
     return nullptr;
 }
 
@@ -477,9 +477,9 @@ void app_main()
 #endif
         esp32multifunction::FactoryResetHelper factory_reset_helper();
         LOG(INFO, "[esp32multifunction] FactoryResetHelper done.");
-        esp32multifunction::DelayRebootHelper delayed_reboot(stack.service());
+        reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
         LOG(INFO, "[esp32multifunction] DelayRebootHelper done.");
-        esp32multifunction::HealthMonitor health_mon(stack.service());
+        healthmonitor::HealthMonitor health_mon(stack.service());
         LOG(INFO, "[esp32multifunction] HealthMonitor done.");
         BlinkTimer blinker(stack.executor()->active_timers());
         blinker.start(500000000);
@@ -599,7 +599,7 @@ void app_main()
                                               CDI_VERSION,
                                               cleanup_config_tree);
 
-        esp32multifunction::NodeRebootHelper node_reboot_helper(&stack, config_fd);
+        reboothelpers::NodeRebootHelper node_reboot_helper(&stack, config_fd);
         
         if (reset_events)
         {

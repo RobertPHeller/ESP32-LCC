@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1418>
+//  Last Modified : <230222.1553>
 //
 //  Description	
 //
@@ -137,7 +137,7 @@ extern "C"
 
 void *node_reboot(void *arg)
 {
-    Singleton<esp32octalservo::NodeRebootHelper>::instance()->reboot();
+    Singleton<reboothelpers::NodeRebootHelper>::instance()->reboot();
     return nullptr;
 }
 
@@ -252,7 +252,7 @@ void app_main()
 #endif
     esp32octalservo::FactoryResetHelper factory_reset_helper();
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
-    esp32octalservo::HealthMonitor health_mon(stack.service());
+    healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
     
     openmrn_arduino::Esp32Ledc ledc(SERVOPINS);
@@ -275,7 +275,7 @@ void app_main()
     stack.check_version_and_factory_reset(cfg.seg().internal_config(),
                                           CDI_VERSION,
                                           cleanup_config_tree);
-    esp32octalservo::NodeRebootHelper node_reboot_helper(&stack, config_fd);
+    reboothelpers::NodeRebootHelper node_reboot_helper(&stack, config_fd);
 
     if (reset_events)
     {

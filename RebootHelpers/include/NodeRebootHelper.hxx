@@ -35,7 +35,7 @@
 #include <utils/Singleton.hxx>
 #include <openlcb/SimpleStack.hxx>
 
-namespace esp32octalbuffer
+namespace reboothelpers
 {
 
 /// Utility class for rebooting the node safely.
@@ -73,4 +73,4 @@ private:
     int fd_;
 };
 
-} // namespace esp32s2io
+} // namespace reboothelpers

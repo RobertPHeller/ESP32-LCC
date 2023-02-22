@@ -24,53 +24,68 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * \file NodeRebootHelper.hxx
+ * \file DelayReboot.hxx
  *
- * Helper for triggering a remote reboot of the ESP32 IO Board.
+ * Implementation of a countdown to reboot
  *
  * @author Mike Dunston
- * @date 4 July 2020
+ * @date 14 July 2020
  */
 
-#include <utils/Singleton.hxx>
-#include <openlcb/SimpleStack.hxx>
+#ifndef DELAY_REBOOT_HXX_
+#define DELAY_REBOOT_HXX_
 
-namespace esp32pwmhalfsiding
+#include <executor/Service.hxx>
+#include <executor/StateFlow.hxx>
+#include <utils/logging.h>
+#include <utils/Singleton.hxx>
+
+extern "C" void reboot();
+
+namespace reboothelpers
 {
 
-/// Utility class for rebooting the node safely.
-class NodeRebootHelper : public Singleton<NodeRebootHelper>
+/// Utility class that will reboot the node after a pre-defined time has
+/// elapsed.
+class DelayRebootHelper : public StateFlowBase
+                        , public Singleton<DelayRebootHelper>
 {
 public:
     /// Constructor.
-    NodeRebootHelper(openlcb::SimpleCanStack *stack, int fd)
-          : stack_(stack), fd_(fd)
+    ///
+    /// @param service is the @ref Service that will execute this flow.
+    DelayRebootHelper(Service *service) : StateFlowBase(service)
     {
     }
 
-    /// Initiates an orderly shutdown of all components before restarting the
-    /// ESP32.
-    void reboot()
+    /// Starts the countdown timer.
+    void start()
     {
-        // make sure we are not called from the executor thread otherwise there
-        // will be a deadlock
-        HASSERT(os_thread_self() != stack_->executor()->thread_handle());
-        LOG(INFO, "[Reboot] Shutting down LCC executor...");
-        stack_->executor()->sync_run([&]()
-        {
-            close(fd_);
-            unmount_fs();
-            // restart the node
-            LOG(INFO, "[Reboot] Restarting!");
-            esp_restart();
-        });
+        start_flow(STATE(delay));
     }
+
 private:
-    /// @ref SimpleCanStack to be shutdown.
-    openlcb::SimpleCanStack *stack_;
+    StateFlowTimer timer_{this};
+    const uint16_t DELAY_INTERVAL_MSEC{250};
+    const uint64_t DELAY_INTERVAL_NSEC{
+        (uint64_t)MSEC_TO_NSEC(DELAY_INTERVAL_MSEC)};
+    uint16_t delayCountdown_{2000};
 
-    /// Configuration file descriptor to be closed prior to shutdown.
-    int fd_;
+    /// Counts down the time until reboot should occur.
+    Action delay()
+    {
+        delayCountdown_ -= DELAY_INTERVAL_MSEC;
+        if (delayCountdown_)
+        {
+            LOG(WARNING
+              , "[Reboot] %u ms remaining until reboot", delayCountdown_);
+            return sleep_and_call(&timer_, DELAY_INTERVAL_NSEC, STATE(delay));
+        }
+        reboot();
+        return exit();
+    }
 };
 
-} // namespace esp32s2io
+} // namespace reboothelpers
+
+#endif // DELAY_REBOOT_HXX_

@@ -13,6 +13,8 @@ set(deps
     Logic
     NVSManager
     FS
+    HealthMonitor
+    RebootHelpers
     json
 )
 

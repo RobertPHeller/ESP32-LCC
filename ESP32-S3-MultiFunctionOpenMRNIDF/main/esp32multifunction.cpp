@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230214.1619>
+//  Last Modified : <230222.1147>
 //
 //  Description	
 //
@@ -283,7 +283,7 @@ ConfigUpdateListener::UpdateAction FactoryResetHelper::apply_configuration(
     AutoNotify n(done);
     LOG(VERBOSE, "[CFG] apply_configuration(%d, %d)", fd, initial_load);
     if (!initial_load &&
-        Singleton<NvsManager>::instance()->CheckPersist())
+        Singleton<nvsmanager::NvsManager>::instance()->CheckPersist())
     {
         LOG(WARNING, "[CFG] NVS has been updated requesting a restart.");
         return ConfigUpdateListener::UpdateAction::REBOOT_NEEDED;
@@ -398,7 +398,7 @@ void app_main()
     bool test_signal_lamps = false;
     GpioInit::hw_init();
 
-    esp32multifunction::NvsManager nvs;
+    nvsmanager::NvsManager nvs;
     nvs.init(reset_reason);
 
     // Ensure the LEDs are both ON for PauseCheck
@@ -407,7 +407,7 @@ void app_main()
     
     LOG(INFO, "[BootPauseHelper] starting...");
     
-    esp32multifunction::BootPauseHelper pause;
+    nvsmanager::BootPauseHelper pause;
     
     pause.CheckPause();
     LOG(INFO, "[BootPauseHelper] returned...");

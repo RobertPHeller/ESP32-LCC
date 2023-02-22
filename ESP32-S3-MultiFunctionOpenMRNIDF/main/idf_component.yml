@@ -4,3 +4,6 @@ dependencies:
     git: https://github.com/atanisoft/OpenMRNIDF.git
   I2CDriver:
     path: ../../I2CDriver
+  NVSManager:
+    path: ../../NVSManager
+      

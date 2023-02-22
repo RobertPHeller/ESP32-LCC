@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230214.1610>
+//  Last Modified : <230222.1148>
 //
 //  Description	
 //
@@ -133,9 +133,9 @@ CDI_GROUP_ENTRY(acdi, openlcb::Acdi);
 CDI_GROUP_ENTRY(userinfo, openlcb::UserInfoSegment, Name("User Info"));
 /// Adds the main configuration segment.
 CDI_GROUP_ENTRY(seg, IoBoard, Name("Board Configuration"));
-CDI_GROUP_ENTRY(node, NodeIdConfig, Name("Node ID"));
+CDI_GROUP_ENTRY(node, nvsmanager::NodeIdConfig, Name("Node ID"));
 #if defined(CONFIG_ESP32_WIFI_ENABLED)
-CDI_GROUP_ENTRY(wifi, WiFiConfiguration, Name("WiFi Configuration"));
+CDI_GROUP_ENTRY(wifi, nvsmanager::WiFiConfiguration, Name("WiFi Configuration"));
 #endif
 /// Adds the versioning segment.
 CDI_GROUP_ENTRY(version, VersionSeg);

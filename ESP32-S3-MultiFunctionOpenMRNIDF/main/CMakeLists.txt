@@ -11,7 +11,7 @@ set(deps
     GeneralIO
     Signals
     Logic
-    NvsManager
+    NVSManager
     json
 )
 

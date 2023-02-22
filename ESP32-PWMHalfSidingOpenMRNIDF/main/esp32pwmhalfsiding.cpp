@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1026>
+//  Last Modified : <230222.1419>
 //
 //  Description	
 //
@@ -45,7 +45,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "sdkconfig.h"
 #include "cdi.hxx"
 #include "cdidata.hxx"
-#include "EventBroadcastHelper.hxx"
 #include "FactoryResetHelper.hxx"
 #include "HealthMonitor.hxx"
 #include "fs.hxx"
@@ -348,8 +347,6 @@ void app_main()
 #endif
     esp32pwmhalfsiding::FactoryResetHelper factory_reset_helper();
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
-    esp32pwmhalfsiding::EventBroadcastHelper event_helper();
-    LOG(INFO, "[MAIN] EventBroadcastHelper allocated");
     esp32pwmhalfsiding::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
     

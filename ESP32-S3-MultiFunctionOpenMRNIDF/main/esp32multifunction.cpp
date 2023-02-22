@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1147>
+//  Last Modified : <230222.1421>
 //
 //  Description	
 //
@@ -46,7 +46,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "cdi.hxx"
 #include "cdidata.hxx"
 #include "DelayRebootHelper.hxx"
-#include "EventBroadcastHelper.hxx"
 #include "FactoryResetHelper.hxx"
 #include "HealthMonitor.hxx"
 #include "fs.hxx"
@@ -478,8 +477,6 @@ void app_main()
 #endif
         esp32multifunction::FactoryResetHelper factory_reset_helper();
         LOG(INFO, "[esp32multifunction] FactoryResetHelper done.");
-        esp32multifunction::EventBroadcastHelper event_helper();
-        LOG(INFO, "[esp32multifunction] EventBroadcastHelper done.");
         esp32multifunction::DelayRebootHelper delayed_reboot(stack.service());
         LOG(INFO, "[esp32multifunction] DelayRebootHelper done.");
         esp32multifunction::HealthMonitor health_mon(stack.service());

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230216.1359>
+//  Last Modified : <230222.1417>
 //
 //  Description	
 //
@@ -45,7 +45,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "sdkconfig.h"
 #include "cdi.hxx"
 #include "cdidata.hxx"
-#include "EventBroadcastHelper.hxx"
 #include "FactoryResetHelper.hxx"
 #include "HealthMonitor.hxx"
 #include "fs.hxx"
@@ -263,8 +262,6 @@ void app_main()
 #endif
     esp32octalbuffer::FactoryResetHelper factory_reset_helper();
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
-    esp32octalbuffer::EventBroadcastHelper event_helper();
-    LOG(INFO, "[MAIN] EventBroadcastHelper allocated");
     esp32octalbuffer::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
     

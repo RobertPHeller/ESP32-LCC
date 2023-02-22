@@ -11,7 +11,7 @@ set(deps
     GeneralIO
     Signals
     Logic
-    NvsManager
+    NVSManager
     json
 )
 
@@ -43,8 +43,6 @@ set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/RuleConfig.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/TrackCircuitConfig.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/TurnoutConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/NodeIdConfigurationGroup.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/WiFiConfigurationGroup.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
    )
 

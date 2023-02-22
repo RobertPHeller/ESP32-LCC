@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230205.1234>
+#  Last Modified : <230222.1027>
 #
 #  Description	
 #
@@ -43,6 +43,7 @@
 ##############################################################################
 
 OPENMRNIDFPATH=../../../managed_components/OpenMRNIDF
+NVSMANAGERPATH=../../../../NVSManager
 PROJECTPATH=`(cd ../../..;pwd)`
 
 all: ../include/cdidata.hxx
@@ -58,12 +59,13 @@ compile_cdi: ../include/cdi.hxx ../include/*Config.hxx CompileCdiMain.cxx \
 	../../../sdkconfig ../include/Revision.hxxout
 	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config/ \
 		-I../include -I$(OPENMRNIDFPATH)/src \
+		-I$(NVSMANAGERPATH)/include \
 		 $(CDIEXTRA)  --std=c++11 -MMD \
 		-MF $@.d $(CXXFLAGSEXTRA) CompileCdiMain.cxx
 	
 
 
-../include/Revision.hxxout : FORCE
+../include/Revision.hxxout : ../../../../.git/index
 	../../../../buildscripts/revision.py -t \
 		-i "$(PROJECTPATH)" -o ../include/Revision
 	

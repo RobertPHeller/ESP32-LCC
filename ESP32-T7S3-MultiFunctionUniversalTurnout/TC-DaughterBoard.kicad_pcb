@@ -3,9 +3,9 @@
   (general
     (links 92)
     (no_connects 0)
-    (area 38.024999 38.1 115.8 137.160001)
+    (area 38.024999 38.532999 96.595001 136.473001)
     (thickness 1.6)
-    (drawings 11)
+    (drawings 13)
     (tracks 285)
     (zones 0)
     (modules 32)
@@ -37,7 +37,7 @@
   )
 
   (setup
-    (last_trace_width 0.75)
+    (last_trace_width 0.25)
     (user_trace_width 0.5)
     (user_trace_width 0.75)
     (user_trace_width 1)
@@ -74,8 +74,8 @@
     (aux_axis_origin 0 0)
     (visible_elements FFFFEF7F)
     (pcbplotparams
-      (layerselection 0x00030_80000001)
-      (usegerberextensions false)
+      (layerselection 0x3ffff_80000001)
+      (usegerberextensions true)
       (excludeedgelayer true)
       (linewidth 0.100000)
       (plotframeref false)
@@ -95,9 +95,9 @@
       (subtractmaskfromsilk false)
       (outputformat 1)
       (mirror false)
-      (drillshape 1)
+      (drillshape 0)
       (scaleselection 1)
-      (outputdirectory ""))
+      (outputdirectory Gerber/))
   )
 
   (net 0 "")
@@ -1515,6 +1515,10 @@
     (pad 1 np_thru_hole circle (at 0 0) (size 4 4) (drill 4) (layers *.Cu *.Mask))
   )
 
+  (gr_text 1 (at 91.694 93.345) (layer F.Fab)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
+  (gr_circle (center 90.17 95.25) (end 90.551 95.758) (layer F.SilkS) (width 0.2))
   (dimension 48.26 (width 0.3) (layer Dwgs.User)
     (gr_text "48.260 mm" (at 106.252 95.758 90) (layer Dwgs.User)
       (effects (font (size 1.5 1.5) (thickness 0.3)))

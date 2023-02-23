@@ -232,7 +232,7 @@ L Conn_01x10_Female J101
 U 1 1 63E9558E
 P 9100 1650
 F 0 "J101" H 9150 1950 50  0000 C CNN
-F 1 "IO_Port" H 9150 1350 50  0000 C CNN
+F 1 "Turnout Daughterboard" H 9150 1350 50  0000 C CNN
 F 2 "Socket_Strips:Socket_Strip_Straight_1x10_Pitch2.54mm" H 9100 1650 50  0001 C CNN
 F 3 "" H 9100 1650 50  0001 C CNN
 	1    9100 1650

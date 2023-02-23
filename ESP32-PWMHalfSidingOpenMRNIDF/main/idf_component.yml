@@ -3,12 +3,12 @@ dependencies:
   OpenMRNIDF:
     git: https://github.com/atanisoft/OpenMRNIDF.git
   I2CDriver:
-    path: ../../I2CDriver
+    path: ../../CommonComponents/I2CDriver
   NVSManager:
-    path: ../../NVSManager
+    path: ../../CommonComponents/NVSManager
   FS:
-    path: ../../FS
+    path: ../../CommonComponents/FS
   HealthMonitor:
-    path: ../../HealthMonitor
+    path: ../../CommonComponents/HealthMonitor
   RebootHelpers:
-    path: ../../RebootHelpers
+    path: ../../CommonComponents/RebootHelpers

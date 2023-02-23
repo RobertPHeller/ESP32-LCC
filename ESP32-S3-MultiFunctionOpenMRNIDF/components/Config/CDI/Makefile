@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230222.1150>
+#  Last Modified : <230223.1127>
 #
 #  Description	
 #
@@ -42,8 +42,6 @@
 #
 ##############################################################################
 
-OPENMRNIDFPATH=../../../managed_components/OpenMRNIDF
-NVSMANAGERPATH=../../../../NVSManager
 PROJECTPATH=`(cd ../../..;pwd)`
 
 all: ../include/cdidata.hxx
@@ -54,12 +52,11 @@ all: ../include/cdidata.hxx
 
 EXTRAFLAGS=
 
+EXTRAINCLUDES=`../../../../buildscripts/getincludes.tcl ../../../build/build.ninja`
 
-compile_cdi: ../include/cdi.hxx ../include/*Config*.hxx CompileCdiMain.cxx \
+compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
 	../../../sdkconfig ../include/Revision.hxxout
-	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config/ \
-		-I../include -I$(OPENMRNIDFPATH)/src \
-		-I$(NVSMANAGERPATH)/include \
+	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config $(EXTRAINCLUDES) \
 		$(CDIEXTRA)  --std=c++11 -MMD \
 		-MF $@.d $(CXXFLAGSEXTRA) CompileCdiMain.cxx
 	

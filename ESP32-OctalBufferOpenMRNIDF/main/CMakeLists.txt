@@ -40,6 +40,7 @@ set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../../.git/index
    )
 
+
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx" 
                           "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/Revision.hxxout"
                    COMMAND make -C ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/CDI 

@@ -53,7 +53,7 @@ EELAYER 25 0
 EELAYER END
 $Descr A4 11693 8268
 encoding utf-8
-Sheet 2 8
+Sheet 2 7
 Title "ESP32 S3 Multifunction Board"
 Date ""
 Rev "1.0"

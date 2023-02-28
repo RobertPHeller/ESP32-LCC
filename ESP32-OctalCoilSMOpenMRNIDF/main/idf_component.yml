@@ -10,3 +10,5 @@ dependencies:
     path: ../../CommonComponents/HealthMonitor
   RebootHelpers:
     path: ../../CommonComponents/RebootHelpers
+  GeneralIO:
+    path: ../../CommonComponents/GeneralIO

@@ -15,7 +15,6 @@ set(deps
 )
 
 idf_component_register(SRCS esp32octalcoilsm.cpp
-                            VetoBitEventInterface.cpp
                        REQUIRES "${deps}")
 
 # export the project version as a define for the SNIP data, note it must be
@@ -35,7 +34,6 @@ set_source_files_properties(VetoBitEventInterface.cpp PROPERTIES COMPILE_FLAGS "
 
 set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/TurnoutConfig.hxx
    )
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx" 

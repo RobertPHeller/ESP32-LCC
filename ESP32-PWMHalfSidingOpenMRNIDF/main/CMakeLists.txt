@@ -37,14 +37,6 @@ set_source_files_properties(esp32pwmhalfsiding.cpp PROPERTIES COMPILE_DEFINITION
 set_source_files_properties(PCA9685PWM.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 
 set(CDIDEPS
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/LampConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/LogicConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/MastConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/OccupancyDetectorConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/PointsConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/RuleConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/TrackCircuitConfig.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/TurnoutConfig.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
    )
 

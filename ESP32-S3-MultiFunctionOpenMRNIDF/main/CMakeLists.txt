@@ -39,6 +39,8 @@ set_source_files_properties(PCA9685PWM.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=
 
 set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../.git/index
+    ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx"

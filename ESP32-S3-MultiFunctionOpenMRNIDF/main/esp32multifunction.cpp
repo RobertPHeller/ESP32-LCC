@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1536>
+//  Last Modified : <230302.1654>
 //
 //  Description	
 //
@@ -44,6 +44,18 @@ static const char rcsid[] = "@(#) : $Id$";
 
 #include "sdkconfig.h"
 #include "cdi.hxx"
+#if defined(CONFIG_T7S3)
+#define TARGETMOD "T7S3"
+#elif defined(CONFIG_DEVKIT_BREADBOARD)
+#define TARGETMOD "DEVKIT_BREADBOARD"
+#else
+#define TARGETMOD "BARES3"
+#endif
+#if defined(CONFIG_SERVO_TURNOUTS)
+#define TARGETDAUGHTER " SERVOS"
+#else
+#define TARGETDAUGHTER ""
+#endif
 #include "cdidata.hxx"
 #include "DelayRebootHelper.hxx"
 #include "FactoryResetHelper.hxx"

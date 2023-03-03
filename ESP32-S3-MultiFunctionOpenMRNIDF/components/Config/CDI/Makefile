@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230223.1127>
+#  Last Modified : <230303.1209>
 #
 #  Description	
 #
@@ -44,7 +44,7 @@
 
 PROJECTPATH=`(cd ../../..;pwd)`
 
-all: ../include/cdidata.hxx
+all: ../include/cdidata.hxx ../../../Sticker.out
 
 ../include/cdidata.hxx : compile_cdi SNIPEDIT.sed
 	./compile_cdi |sed -f SNIPEDIT.sed >../include/cdidata.hxx
@@ -62,9 +62,17 @@ compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
 	
 
 
-../include/Revision.hxxout : ../../../../.git/index
+../include/Revision.hxxout : ../../../../.git/index \
+	../../../sdkconfig
 	../../../../buildscripts/revision.py -t \
 		-i "$(PROJECTPATH)" -o ../include/Revision
 	
+
+../../../Sticker.out: ../../../../.git/index ../include/Revision.hxxout \
+	../../../sdkconfig
+	../../../../buildscripts/sticker.py -t \
+		-i "$(PROJECTPATH)" \
+		-b 'DEVKIT_BREADBOARD=$(CONFIG_DEVKIT_BREADBOARD) T7S3=$(CONFIG_T7S3) SERVO_TURNOUTS=$(CONFIG_SERVO_TURNOUTS)' \
+		-o ../../../Sticker.out
 FORCE:
 

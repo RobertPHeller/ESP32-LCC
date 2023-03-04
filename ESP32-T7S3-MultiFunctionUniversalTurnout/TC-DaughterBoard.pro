@@ -1,4 +1,4 @@
-update=Sun 12 Feb 2023 12:30:27 PM EST
+update=Sat 04 Mar 2023 09:33:21 AM EST
 version=1
 last_client=kicad
 [pcbnew]
@@ -63,3 +63,13 @@ LibName31=contrib
 LibName32=valves
 LibName33=4814p-2
 LibName34=tc442x
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=KitBooklet/
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60

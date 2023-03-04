@@ -33,17 +33,17 @@ LIBS:contrib
 LIBS:valves
 LIBS:4814p-2
 LIBS:tc442x
-LIBS:SM-DaughterBoard-cache
+LIBS:SC-DaughterBoard-cache
 EELAYER 25 0
 EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
-Title "ESP32 S3 Multifunction Board"
+Title "ESP32 S3 Multifunction Board SC Daughter Board"
 Date ""
 Rev "1.0"
 Comp "Deepwoods Software"
-Comment1 "Stall Motor Drivers and point sense."
+Comment1 "Single Coil Drivers and point sense."
 Comment2 ""
 Comment3 ""
 Comment4 ""

@@ -1,4 +1,4 @@
-update=Sat 11 Feb 2023 10:28:42 AM EST
+update=Sat 04 Mar 2023 09:23:15 AM EST
 version=1
 last_client=kicad
 [cvpcb]
@@ -78,3 +78,13 @@ LibName47=esp32_s3_wroom
 LibName48=gct_usb4105
 LibName49=ESP32_mini
 LibName50=ap63205
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60

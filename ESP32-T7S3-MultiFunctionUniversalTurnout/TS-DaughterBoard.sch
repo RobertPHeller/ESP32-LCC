@@ -40,11 +40,11 @@ EELAYER END
 $Descr USLetter 11000 8500
 encoding utf-8
 Sheet 1 1
-Title "ESP32 S3 Multifunction Board"
+Title "ESP32 S3 Multifunction Board TS Daughter board"
 Date ""
 Rev "1.0"
 Comp "Deepwoods Software"
-Comment1 "Stall Motor Drivers and point sense."
+Comment1 "Servo Drivers and point sense."
 Comment2 ""
 Comment3 ""
 Comment4 ""

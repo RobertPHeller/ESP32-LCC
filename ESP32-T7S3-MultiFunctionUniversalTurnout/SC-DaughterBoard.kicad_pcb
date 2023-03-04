@@ -382,10 +382,10 @@
       (net 28 MotorPower))
     (pad 2 smd rect (at 6.75 0 90) (size 2.5 7.5) (layers F.Cu F.Paste F.Mask)
       (net 1 GND))
-    (model EEEFK1E472SM.stp
+    (model Capacitors_SMD.3dshapes/CP_Elec_10x10.wrl
       (at (xyz 0 0 0))
-      (scale (xyz 1 1 1))
-      (rotate (xyz -90 0 -180))
+      (scale (xyz 1.8 1.8 2.1))
+      (rotate (xyz 0 0 180))
     )
   )
 
@@ -785,6 +785,11 @@
       (net 23 /P3A))
     (pad 14 smd rect (at -3.81 -3.45) (size 0.63 2) (layers F.Cu F.Paste F.Mask)
       (net 2 +3V3))
+    (model Housings_SOIC.3dshapes/SOIC-14_3.9x8.7mm_Pitch1.27mm.wrl
+      (at (xyz 0 0 0))
+      (scale (xyz 1.35 1 1))
+      (rotate (xyz 0 0 -90))
+    )
   )
 
   (module Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm (layer F.Cu) (tedit 58CC8F64) (tstamp 63F64531)

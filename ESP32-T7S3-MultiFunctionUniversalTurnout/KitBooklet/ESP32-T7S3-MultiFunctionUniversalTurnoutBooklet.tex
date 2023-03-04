@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230304.1211>
+%  Last Modified : <230304.1554>
 %
 %  Description 
 %
@@ -121,6 +121,7 @@ electromagnets, solenoids, relays, etc.
 \includegraphics[height=7in]{TS-DaughterBoard.png}
 \caption{3D image of the Servo driver daughter board}
 \end{centering}\end{figure}
+\clearpage
 
 The board has all of the SMD parts factory installed. Only the through-hole
 parts are not soldered to the board. These are the RJ45 Jacks, the Termination
@@ -134,7 +135,32 @@ part to the board, reheat that one pin's solder pad and snaping the part to
 the board and holding it tight and square to the board as the solder cools.
 Important: make sure the wire entry holes in the terminal blocks are facing
 the edge of the board! The RJ45 Jacks cannot be installed wrong (they have
-orientation pins).  Start with the shortest parts and work up to the tallest.
+orientation pins).  Start with the shortest parts and work up to the tallest. 
+Note: the pin array on the daughtboard goes on the bottom of the board and is 
+soldered on the top side.
+
+%% Need photo of a daughter board's pin array.
+
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics{NylonStandoffInstall.png}
+\caption{Nylon Standoff Installation}
+\end{centering}\end{figure}
+
+The daughter boards are supported with a pair of nylon standoffs.  These are 
+pushed through from the bottom of the main board.
+
+You also need to solder the 2x10 pin headers to the bottom of the T7S3 board.
+
+%% Add photo
+
+Once all of the soldering is done, the T7S3 can be installed on the main board 
+the WiFi antenna extends beyond the top of the board, with the T7S3's USB 
+connector facing into the center of the board.  The daughter board's pin array 
+goes in the socket header on the main board and there are two holes in the 
+daughter board that engage the nylon standoffs.
+
+%% Need a photo of a daughter board being installed on the main board 
+%% and probably one of the T7S3 installed on the main board.
 
 \clearpage
 \section{Downloadables and Software Support}
@@ -220,5 +246,119 @@ hex is appended.  Hostnames are limited to 32 characters.
 flashed for 1 second during boot up.}.
 \item \textbf{R} Resume.
 \end{itemize}
+
+\section{General Wiring Notes}
+
+\subsection{Main board}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{ESP32-T7S3-MultiFunctionUniversalTurnout-Annotated.png}
+\caption{ESP32 T7S3 MultiFunctionUniversalTurnout board, annotated}
+\end{centering}\end{figure}
+
+There are various terminal blocks, connectors, and jumper blocks on this
+board.  
+
+On the left side is a 10 position socket header for the turnout daughter board
+and an 8 position terminal block for the four CT coil occupancy detectors,
+Along the bottom is the 6 position terminal block for the driver outputs, then
+come the terminal block to extracting power from the LCC bus. Then there is
+the termination jumper block for the LCC bus. Then there is terminal block for
+injecting power into the LCC bus. Above the LCC power terminal blocks is a
+pair of RJ45 connectors. These are for connecting the board to the LCC bus.
+These connectors are wired in parallel. On the right side of the board are two
+9 position terminal blocks for the signal lamp LEDs. Finally, between the
+terminal blocks for the signal lamp LEDs is a two position terminal block to
+(optionally) provide power for the signal lamp LEDs.
+
+\subsubsection{Turnout Daughter board connector}
+
+Starting on the upper left, there is a 10 position socket header for the 
+turnout daughter board.  The socket mates with the 10 position pin array on 
+the underside of the Turnout Daughter board.  The Turnout Daughter boards' 
+terminal blocks are described below in Sections~\ref{sect:SM-Daughter}, 
+\ref{sect:TS-Daughter}, \ref{sect:SC-Daughter}, and \ref{sect:TC-Daughter}.
+
+\subsubsection{Occupancy Detectors}
+
+Then on the lower left side is an 8 position terminal block for the four CT 
+coil occupancy detectors.  Each adjacent pair of terminals is for one twisted 
+pair cable to one CT coil for one feeder wire for one block. There is a 
+sensitivity adjustment trimmer and an indicator LED for each detector.
+
+\subsubsection{Driver Outputs}
+
+There is a 6 position terminal block for the four driver outputs.  There are 
+1500 Ohm load resistors, which are suitable for driving LEDs with a 12V 
+supply.  The driver outputs require an external power source, typically 12V.  
+The driver chips are totem pole (push-pull), so can drive both high side and 
+low side, up to 1.5 Amps.
+
+\subsubsection{LCC Power}
+
+Power can be optionally injected into the LCC bus or extracted from the LCC 
+bus. Power can be injected to into the LCC bus to power this and other boards. 
+Power can also be extracted to power local devices.
+
+\subsubsection{LCC Network Connectors}
+
+There are two RJ45 connectors for the LCC Network.  Connect a CAT5 or CAT6 
+(Ethernet) cable of at 1 foot in length to the naxt and previous node in the 
+network.  If this is the last node, only one connector is used and termination 
+jumpers should be installed.  See Section~\ref{sect:termination}.
+
+\subsubsection{Button (or switch) Inputs}
+
+There is a 5 position terminal block for button (or switch) inputs.  These are 
+Schmitt-trigger inputs and are referenced to ground (supplied on the fifth 
+position of the terminal block).
+
+\subsubsection{PWM Signal Lamp drivers}
+
+There are two 9 position terminal blocks for the sixteen PWM Signal Lamp 
+outputs (two banks of 8) and there is a two position terminal blocks to 
+provide (optional) external power for the signal lamps.  These terminal blocks 
+are on the right side of the board.  The boards can be build to be either for 
+common anode or common cathode.
+
+\clearpage
+\subsubsection{LCC Termination}
+\label{sect:termination}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics{TerminationJumpers.png}
+\caption{Termination Options}
+\label{fig:termination}
+\end{centering}\end{figure}
+
+There are three options for termination: none, simple, and center tap, as 
+shown in Figure~\ref{fig:termination}.
+
+
+
+
+\clearpage
+\subsection{Stall Motor Turnout daughter board}
+\label{sect:SM-Daughter}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=3in]{SM-DaughterBoard-Annotated.png}
+\caption{Stall Motor Turnout daughter board, annotated}
+\end{centering}\end{figure}
+
+The Stall Motor Turnout daughter board can drive Circuitron Tortoise and
+similar slow motion, stall motor switch machines. There is a 2 position
+terminal block for a 12-15 volt supply to drive the stall motors and four 5
+position terminal blocks, one for each motor. Each 5 position terminal block
+has motor A and B connection for the motors and a point A and B and a ground
+(G) connection for the point sense. The motor A and B connections go to the
+Tortoises 1 and 8 pins, and the other three can be connected to one of the
+poles of the internal switch contacts to report point sense -- the G to the
+common.
+
+\clearpage
+\subsection{Servo Turnout daughter board}
+\label{sect:TS-Daughter}
+\subsection{Single Coil Turnout daughter board}
+\label{sect:SC-Daughter}
+\subsection{Twin Coil Turnout daughter board}
+\label{sect:TC-Daughter}
 
 \end{document}

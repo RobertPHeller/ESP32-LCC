@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230304.1212>
+#  Last Modified : <230304.1552>
 #
 #  Description	
 #
@@ -51,7 +51,9 @@ GS=/usr/bin/gs
 TEXS=ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.tex
 
 FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
-	SC-DaughterBoard.png TS-DaughterBoard.png SM-DaughterBoard.png
+	SC-DaughterBoard.png TS-DaughterBoard.png SM-DaughterBoard.png \
+	NylonStandoffInstall.png ESP32-T7S3-MultiFunctionUniversalTurnout.png \
+	TerminationJumpers.png SM-DaughterBoard-Annotated.png
 
 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)
 	for f in $(TEXS) $(FIGURES);  do \

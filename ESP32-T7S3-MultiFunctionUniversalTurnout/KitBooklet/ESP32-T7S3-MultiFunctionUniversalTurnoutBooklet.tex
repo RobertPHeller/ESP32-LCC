@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230305.0928>
+%  Last Modified : <230305.1409>
 %
 %  Description 
 %
@@ -102,42 +102,42 @@ electromagnets, solenoids, relays, etc.
 \clearpage
 \section{Assembly}
 \begin{figure}[hbpt]\begin{centering}%
-\includegraphics[width=5in]{ESP32-T7S3-MultiFunctionUniversalTurnout.png}
+\includegraphics[width=4in]{ESP32-T7S3-MultiFunctionUniversalTurnout.png}
 \caption{3D image of the ESP32 T7S3 MultiFunctionUniversalTurnout board}
 \end{centering}\end{figure}
 \begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=7in]{SC-DaughterBoard.png}
+\includegraphics[height=3in]{SC-DaughterBoard.png}
 \caption{3D image of the Single Coil Turnout driver daughter board}
 \end{centering}\end{figure}
 \begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=7in]{SM-DaughterBoard.png}
+\includegraphics[height=3in]{SM-DaughterBoard.png}
 \caption{3D image of the Stall Motor driver daughter board}
 \end{centering}\end{figure}
 \begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=7in]{TC-DaughterBoard.png}
+\includegraphics[height=3in]{TC-DaughterBoard.png}
 \caption{3D image of the Twin Coil driver daughter board}
 \end{centering}\end{figure}
 \begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=7in]{TS-DaughterBoard.png}
+\includegraphics[height=3in]{TS-DaughterBoard.png}
 \caption{3D image of the Servo driver daughter board}
 \end{centering}\end{figure}
 \clearpage
 
-The board has all of the SMD parts factory installed. Only the through-hole
+The boards have all of the SMD parts factory installed. Only the through-hole
 parts are not soldered to the board. These are the RJ45 Jacks, the Termination
 Jumper, the turnout daughter board header, the min32 headers, the daughter
 board support standoffs, and the terminal blocks. The daughter boards also
-have all of the SMD parts factory installed, and just needs their terminal
-blocks and board inter-connect headers installed. These are all easy to solder
-parts. Make sure the headers and terminal blocks are fully seated and square
-to the boards. A simple trick is to solder one pin and then while pressing the
-part to the board, reheat that one pin's solder pad and snaping the part to
-the board and holding it tight and square to the board as the solder cools.
-Important: make sure the wire entry holes in the terminal blocks are facing
-the edge of the board! The RJ45 Jacks cannot be installed wrong (they have
-orientation pins).  Start with the shortest parts and work up to the tallest. 
-Note: the pin array on the daughtboard goes on the bottom of the board and is 
-soldered on the top side.
+have all of their SMD parts factory installed, and just needs their terminal
+blocks and board inter-connect pin array headers installed. These are all easy
+to solder parts. Make sure the headers and terminal blocks are fully seated
+and square to the boards. A simple trick is to solder one pin and then while
+pressing the part to the board, reheat that one pin's solder pad and snaping
+the part to the board and holding it tight and square to the board as the
+solder cools. Important: make sure the wire entry holes in the terminal blocks
+are facing the edge of the board! The RJ45 Jacks cannot be installed wrong
+(they have orientation pins). Start with the shortest parts and work up to the
+tallest. Note: the pin array on the daughtboard goes on the bottom of the
+board and is soldered on the top side.
 
 %% Need photo of a daughter board's pin array.
 
@@ -153,8 +153,8 @@ You also need to solder the 2x10 pin headers to the bottom of the T7S3 board.
 
 %% Add photo
 
-Once all of the soldering is done, the T7S3 can be installed on the main board 
-the WiFi antenna extends beyond the top of the board, with the T7S3's USB 
+Once all of the soldering is done, the T7S3 can be installed on the main board.
+The WiFi antenna extends beyond the top of the board, with the T7S3's USB 
 connector facing into the center of the board.  The daughter board's pin array 
 goes in the socket header on the main board and there are two holes in the 
 daughter board that engage the nylon standoffs.
@@ -176,7 +176,6 @@ ESP32-S3-MultiFunctionOpenMRNIDFOpenMRNIDF also uses Mike Dunston's OpenMRNIDF
 module. Also available in the 
 ESP32-T7S3-MultiFunctionUniversalTurnout/KitBooklet sub-folder are pdfs of the 
 circuit diagrams.
-
 
 \subsection{Building and installing the software}
 
@@ -278,7 +277,12 @@ the underside of the Turnout Daughter board.  The Turnout Daughter boards'
 terminal blocks are described below in Sections~\ref{sect:SM-Daughter}, 
 \ref{sect:TS-Daughter}, \ref{sect:SC-Daughter}, and \ref{sect:TC-Daughter}.
 
+\clearpage
 \subsubsection{Occupancy Detectors}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=1.5in]{OccupancyDetector-Wiring.png}
+\caption{Occupancy Detector Wiring}
+\end{centering}\end{figure} 
 
 Then on the lower left side is an 8 position terminal block for the four CT 
 coil occupancy detectors.  Each adjacent pair of terminals is for one twisted 
@@ -287,11 +291,12 @@ sensitivity adjustment trimmer and an indicator LED for each detector.
 
 \subsubsection{Driver Outputs}
 
-There is a 6 position terminal block for the four driver outputs.  There are 
-1500 Ohm load resistors, which are suitable for driving LEDs with a 12V 
-supply.  The driver outputs require an external power source, typically 12V.  
-The driver chips are totem pole (push-pull), so can drive both high side and 
-low side, up to 1.5 Amps.
+There is a 6 position terminal block for the four driver outputs. There are
+1500 Ohm load resistors on board, which are suitable for driving LEDs with a
+12V supply. There are places for adding through hole load resistors to allow
+for increased load current. The driver outputs require an external power
+source, typically 12V. The driver chips are totem pole (push-pull), so can
+drive both high side and low side, up to 1.5 Amps.
 
 \subsubsection{LCC Power}
 
@@ -301,10 +306,10 @@ Power can also be extracted to power local devices.
 
 \subsubsection{LCC Network Connectors}
 
-There are two RJ45 connectors for the LCC Network.  Connect a CAT5 or CAT6 
-(Ethernet) cable of at 1 foot in length to the naxt and previous node in the 
-network.  If this is the last node, only one connector is used and termination 
-jumpers should be installed.  See Section~\ref{sect:termination}.
+There are two RJ45 connectors for the LCC Network. Connect a CAT5 or CAT6
+(Ethernet) cable of at least 1 foot in length to the next and previous node in
+the network. If this is the last node, only one connector is used and
+termination jumpers should be installed. See Section~\ref{sect:termination}.
 
 \subsubsection{Button (or switch) Inputs}
 
@@ -395,6 +400,15 @@ charge the capacitors. There is a larger 3 position terminal block for each
 pair of coils, along with a smaller 3 position terminal block point sense for
 each of four turnouts.
 
- 
+\clearpage
+\section{Application Notes}
+
+\subsection{Siding with local control panel}
+
+\subsection{Yard Throat with track selector}
+
+\subsection{Crossing with interchange}
+
+\subsection{Automatic Block Signals}
 
 \end{document}

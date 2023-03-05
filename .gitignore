@@ -74,6 +74,16 @@ demangled.txt
 *.stripped
 objcopy.params
 
+# LaTeX temp files
+*.aux
+*.bbl
+*.blg
+*.idx
+*.ilg
+*.ind
+*.log
+*.out
+
 # files that are local to the build environment
 set250k.c
 set250k.nc

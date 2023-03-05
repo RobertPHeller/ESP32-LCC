@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230304.1554>
+%  Last Modified : <230305.0928>
 %
 %  Description 
 %
@@ -333,15 +333,17 @@ There are three options for termination: none, simple, and center tap, as
 shown in Figure~\ref{fig:termination}.
 
 
-
-
-\clearpage
 \subsection{Stall Motor Turnout daughter board}
 \label{sect:SM-Daughter}
 \begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=3in]{SM-DaughterBoard-Annotated.png}
+\includegraphics[height=2.5in]{SM-DaughterBoard-Annotated.png}
 \caption{Stall Motor Turnout daughter board, annotated}
 \end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=1.5in]{SM-DaughterBoard-TortoiseWiring.png}
+\caption{Stall Motor Turnout daughter board, wired to a Tortoise.}
+\end{centering}\end{figure}
+
 
 The Stall Motor Turnout daughter board can drive Circuitron Tortoise and
 similar slow motion, stall motor switch machines. There is a 2 position
@@ -353,12 +355,46 @@ Tortoises 1 and 8 pins, and the other three can be connected to one of the
 poles of the internal switch contacts to report point sense -- the G to the
 common.
 
-\clearpage
 \subsection{Servo Turnout daughter board}
 \label{sect:TS-Daughter}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=2.5in]{TS-DaughterBoard-Annotated.png}
+\caption{Servo Turnout daughter board, annotated}
+\end{centering}\end{figure}
+
+The Servo Turnout daughter board can drive standard 5V servos. There a 2
+position terminal block for a 5 volt power supply to drive the servos, four
+3-pin headers for standard servo connectors, along with four 3 position
+terminal blocks for point sense.
+
 \subsection{Single Coil Turnout daughter board}
 \label{sect:SC-Daughter}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=2.5in]{SC-DaughterBoard-Annotated.png}
+\caption{Single Coil Turnout daughter board, annotated}
+\end{centering}\end{figure}
+
+The Single Coil Turnout daughter board can drive single coil snap action
+turnouts, typicaly Kato turnout motors. This a capacitive discharge type
+driver circuit. There is a 2 position terminal block for a 12-15 volt power
+supply to charge the capacitors.  There is a larger 2 position terminal block 
+for each coil, along with a smaller 3 position terminal block point sense for 
+each of four turnouts.
+
 \subsection{Twin Coil Turnout daughter board}
 \label{sect:TC-Daughter}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=2.5in]{TC-DaughterBoard-Annotated.png}
+\caption{Twin Coil Turnout daughter board, annotated}
+\end{centering}\end{figure}                                                    
+ 
+The Twin Coil Turnout daughter board can drive twin coil snap action turnouts,
+such as Atlas or Peco switch machines. This a capacitive discharge type driver
+circuit. There is a 2 position terminal block for a 12-15 volt power supply to
+charge the capacitors. There is a larger 3 position terminal block for each
+pair of coils, along with a smaller 3 position terminal block point sense for
+each of four turnouts.
+
+ 
 
 \end{document}

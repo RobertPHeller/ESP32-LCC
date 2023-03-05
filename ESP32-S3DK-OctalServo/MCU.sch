@@ -1,4 +1,5 @@
 EESchema Schematic File Version 2
+LIBS:ESP32-S3DK-OctalServo-rescue
 LIBS:power
 LIBS:device
 LIBS:switches

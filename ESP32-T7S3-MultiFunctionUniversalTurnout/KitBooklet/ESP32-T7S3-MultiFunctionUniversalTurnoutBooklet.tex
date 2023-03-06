@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230305.1409>
+%  Last Modified : <230306.1631>
 %
 %  Description 
 %
@@ -403,12 +403,70 @@ each of four turnouts.
 \clearpage
 \section{Application Notes}
 
-\subsection{Siding with local control panel}
+In this section I will present four applications:
 
+\begin{enumerate}
+\item One end of a siding with local (facia panel) and remote (eg dispatcher
+or CTC) control in Section~\ref{sect-appl:siding}.
+\item A Yard Throat with track selection in 
+Section~\ref{sect-appl:yardthroat}. 
+\item A crossing with an interchange track in 
+Section~\ref{sect-appl:crossinginterchange}.
+\item Automatic Block Signals in Section~\ref{sect-appl:ABS}.
+\end{enumerate}
+
+\subsection{Siding with local control panel}
+\label{sect-appl:siding}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{ExampleSidingCP1-Wiring.png}
+\caption{One end of a siding (CP1) with local and remote control, with 
+signals.}
+\label{fig:ExampleSidingCP1-Wiring}
+\end{centering}\end{figure}
+
+This is a basic single turnout with a facia panel with two LEDs indicating the
+turnout points' position and two push buttons to select the desired turnout
+position. There also is a two headed (3 over 2) interlocking signal at the
+turnout's points, and a pair of single head (3 color) signals at the frog
+ends. The turnout's wiring is shown in 
+Figure~\ref{fig:ExampleSidingCP1-Wiring}. We will use one of the turnout 
+drivers (the Stall Motor daughter board is shown, but any of the daughter 
+boards could be used), two of the occupancy detectors, two of the LED drivers, 
+two of button inputs, and 11 of signal lamp driver outputs.
+
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{ExampleSidingCP1-ConfigNameDescr.png}
+\caption{Configuring the name and description}
+\label{fig:ExampleSidingCP1-ConfigNameDescr}
+\end{centering}\end{figure}
+
+We will start by configuring the user name and description of the node, as 
+shown in Figure~\ref{fig:ExampleSidingCP1-ConfigNameDescr}.
+
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigOC1.png}
+\caption{Configuring OC1 and creating Block control item.}
+\label{fig:ExampleSidingCP1-ConfigOC1}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigOC2.png}
+\caption{Configuring OC2 and creating Block control item.}
+\label{fig:ExampleSidingCP1-ConfigOC2}
+\end{centering}\end{figure}
+
+Next, we will move onto the Board Configuration tab and then the Occupancy
+Detectors, specificly OC1. Right now, we will just fill in the name (East
+Main) and create a Block layout control. Similarly for OC2 (CP1 OS).
+
+
+\clearpage
 \subsection{Yard Throat with track selector}
+\label{sect-appl:yardthroat}
 
 \subsection{Crossing with interchange}
+\label{sect-appl:crossinginterchange}
 
 \subsection{Automatic Block Signals}
+\label{sect-appl:ABS}
 
 \end{document}

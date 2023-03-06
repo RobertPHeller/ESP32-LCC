@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230305.0923>
+#  Last Modified : <230306.1630>
 #
 #  Description	
 #
@@ -55,7 +55,9 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	NylonStandoffInstall.png ESP32-T7S3-MultiFunctionUniversalTurnout.png \
 	TerminationJumpers.png SM-DaughterBoard-Annotated.png \
 	SC-DaughterBoard-Annotated.png TC-DaughterBoard-Annotated.png \
-	TS-DaughterBoard-Annotated.png SM-DaughterBoard-TortoiseWiring.png
+	TS-DaughterBoard-Annotated.png SM-DaughterBoard-TortoiseWiring.png \
+	ExampleSidingCP1-Wiring.png ExampleSidingCP1-ConfigNameDescr.png \
+	ExampleSidingCP1-ConfigOC1.png ExampleSidingCP1-ConfigOC2.png
 	
 
 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)

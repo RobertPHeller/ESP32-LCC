@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:12:55 2022
-//  Last Modified : <221217.0928>
+//  Last Modified : <230306.1603>
 //
 //  Description	
 //
@@ -162,11 +162,13 @@ CDI_GROUP_ENTRY(v1,VariableConfig,Name("Variable #1"));
 CDI_GROUP_ENTRY(logic,LogicOperatorConfig);
 CDI_GROUP_ENTRY(v2,VariableConfig,Name("Variable #2"));
 CDI_GROUP_ENTRY(trueAction,openlcb::Uint8ConfigEntry,
-                Name("Action when Conditional = True"),
+                Description("Action when Conditional = True"),
+                Name("when true"),
                 Default(0),
                 MapValues(ActionMap));
 CDI_GROUP_ENTRY(falseAction,openlcb::Uint8ConfigEntry,
-                Name("Action when Conditional = False"),
+                Description("Action when Conditional = False"),
+                Name("when false"),
                 Default(3),
                 MapValues(ActionMap));
 CDI_GROUP_ENTRY(timing,TimingConfig);

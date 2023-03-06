@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Dec 16 12:43:10 2022
-//  Last Modified : <230214.1645>
+//  Last Modified : <230306.1604>
 //
 //  Description	
 //
@@ -69,7 +69,7 @@ Offset(CONFIG_OLCB_WIFI_MEMORY_SPACE_OFFSET));
 CDI_GROUP_ENTRY(wifi_mode, openlcb::Uint8ConfigEntry,
                 Name("WiFi mode"),
                 Description("Configures the WiFi operating mode."),
-                Min(0), Max(3), Default(2), /* SoftAP */
+                Min(0), Max(1), Default(0), /* Off */
                 MapValues(
 R"!^!(<relation><property>0</property><value>Off</value></relation>
 <relation><property>1</property><value>Station Only</value></relation>)!^!"));

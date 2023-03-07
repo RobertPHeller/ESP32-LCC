@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230306.1631>
+%  Last Modified : <230307.1145>
 %
 %  Description 
 %
@@ -457,6 +457,51 @@ shown in Figure~\ref{fig:ExampleSidingCP1-ConfigNameDescr}.
 Next, we will move onto the Board Configuration tab and then the Occupancy
 Detectors, specificly OC1. Right now, we will just fill in the name (East
 Main) and create a Block layout control. Similarly for OC2 (CP1 OS).
+
+
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigTurnout1.png}
+\caption{Configuring Turnout1 and creating Turnout  control item.}
+\label{fig:ExampleSidingCP1-ConfigTurnout1}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigPoints1.png}
+\caption{Configuring Points1 and creating Turnout control item.}
+\label{fig:ExampleSidingCP1-ConfigPoints1}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigTurnout-Veto1.png}
+\caption{Configuring Turnout Veto control item.}
+\label{fig:ExampleSidingCP1-ConfigTurnout-Veto1}
+\end{centering}\end{figure}
+
+
+Similarly we configure the Turnout and Points, along with the veto control
+element. Now we set up the logic for the Veto.  We want to enable the turnout 
+veto in two cases: dispatcher or OS occupancy, so we need one logic element 
+for this.
+
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1a.png}
+\caption{Configuring Veto Logic, part1}
+\label{fig:ExampleSidingCP1-ConfigVetoLogic1a}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1b.png}
+\caption{Configuring Veto Logic, part2}
+\label{fig:ExampleSidingCP1-ConfigVetoLogic1b}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1c.png}
+\caption{Configuring Veto Logic, part3}
+\label{fig:ExampleSidingCP1-ConfigVetoLogic1c}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1d.png}
+\caption{Configuring Veto Logic, part 4}
+\label{fig:ExampleSidingCP1-ConfigVetoLogic1d}
+\end{centering}\end{figure}
+
 
 
 \clearpage

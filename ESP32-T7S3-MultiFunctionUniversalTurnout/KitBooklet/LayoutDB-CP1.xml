@@ -1,0 +1,34 @@
+<?xml version='1.0'?>
+<layout>
+  <block>
+    <name>East Main</name>
+    <occupied>05.01.01.01.22.80.00.00</occupied>
+    <clear>05.01.01.01.22.80.00.01</clear>
+  </block>
+  <block>
+    <name>CP1 OS</name>
+    <occupied>05.01.01.01.22.80.00.02</occupied>
+    <clear>05.01.01.01.22.80.00.03</clear>
+  </block>
+  <turnout>
+    <name>CP1 Motor</name>
+    <motor>
+      <normal>05.01.01.01.22.80.00.08</normal>
+      <reverse>05.01.01.01.22.80.00.09</reverse>
+    </motor>
+    <points>
+      <normal>05.01.01.01.22.80.00.18</normal>
+      <reverse>05.01.01.01.22.80.00.19</reverse>
+    </points>
+  </turnout>
+  <control>
+    <name>CP1 Motor Veto</name>
+    <on>05.01.01.01.22.80.00.0A</on>
+    <off>05.01.01.01.22.80.00.0B</off>
+  </control>
+  <control>
+    <name>CTC Veto</name>
+    <on>05.01.01.01.22.80.00.32</on>
+    <off>05.01.01.01.22.80.00.33</off>
+  </control>
+</layout>

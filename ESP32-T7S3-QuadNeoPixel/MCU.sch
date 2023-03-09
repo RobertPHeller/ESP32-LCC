@@ -1,0 +1,199 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:sn65hvd233-ht
+LIBS:lm2574n-5
+LIBS:ap63205
+LIBS:ESP32_mini
+LIBS:74lv125AN
+LIBS:ESP32-T7S3-QuadNeoPixel-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 2 4
+Title "ESP32 S3 Multifunction Board Universal Turnout"
+Date ""
+Rev "1.0"
+Comp "Deepwoods Software"
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L +3.3V #PWR09
+U 1 1 640A3984
+P 4000 2500
+F 0 "#PWR09" H 4000 2350 50  0001 C CNN
+F 1 "+3.3V" H 4000 2640 50  0000 C CNN
+F 2 "" H 4000 2500 50  0001 C CNN
+F 3 "" H 4000 2500 50  0001 C CNN
+	1    4000 2500
+	1    0    0    -1  
+$EndComp
+Text HLabel 8425 2800 0    60   Output ~ 0
+CAN_TX
+Text HLabel 8425 2700 0    60   Input ~ 0
+CAN_RX
+Text Label 3850 3150 3    60   ~ 0
+GPIO15(Act1)
+$Comp
+L LED D201
+U 1 1 640A3987
+P 3850 3000
+F 0 "D201" H 3850 3100 50  0000 C CNN
+F 1 "ACT1" H 3850 2900 50  0000 C CNN
+F 2 "LEDs:LED_0402" H 3850 3000 50  0001 C CNN
+F 3 "" H 3850 3000 50  0001 C CNN
+F 4 "710-150040GS73220" H 3850 3000 60  0001 C CNN "Mouser Part Number"
+	1    3850 3000
+	0    -1   -1   0   
+$EndComp
+$Comp
+L R R201
+U 1 1 640A3988
+P 3850 2650
+F 0 "R201" V 3930 2650 50  0000 C CNN
+F 1 "270" V 3850 2650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0402" V 3780 2650 50  0001 C CNN
+F 3 "" H 3850 2650 50  0001 C CNN
+F 4 "754-RR0510P-271D" V 3850 2650 60  0001 C CNN "Mouser Part Number"
+	1    3850 2650
+	1    0    0    -1  
+$EndComp
+Text Label 8425 4200 2    60   ~ 0
+GPIO15(Act1)
+$Comp
+L R R202
+U 1 1 640A3989
+P 4150 2650
+F 0 "R202" V 4230 2650 50  0000 C CNN
+F 1 "270" V 4150 2650 50  0000 C CNN
+F 2 "Resistors_SMD:R_0402" V 4080 2650 50  0001 C CNN
+F 3 "" H 4150 2650 50  0001 C CNN
+F 4 "754-RR0510P-271D" V 4150 2650 60  0001 C CNN "Mouser Part Number"
+	1    4150 2650
+	1    0    0    -1  
+$EndComp
+$Comp
+L LED D202
+U 1 1 640A398A
+P 4150 3000
+F 0 "D202" H 4150 3100 50  0000 C CNN
+F 1 "ACT2" H 4150 2900 50  0000 C CNN
+F 2 "LEDs:LED_0402" H 4150 3000 50  0001 C CNN
+F 3 "" H 4150 3000 50  0001 C CNN
+F 4 "710-150040SS73220" H 4150 3000 60  0001 C CNN "Mouser Part Number"
+	1    4150 3000
+	0    -1   -1   0   
+$EndComp
+Text Label 4150 3150 3    60   ~ 0
+GPIO0(Act2)
+Text Label 8425 2500 2    60   ~ 0
+GPIO0(Act2)
+$Comp
+L TTGO-T7_S3-V1.1 U201
+U 1 1 640A398C
+P 8925 2400
+F 0 "U201" H 9200 450 50  0000 C CNN
+F 1 "TTGO-T7_S3-V1.1" H 9025 -275 50  0000 C CNN
+F 2 "ESP32_mini:ESP32_mini" H 9075 2500 50  0001 C CNN
+F 3 "" H 9075 2500 50  0001 C CNN
+	1    8925 2400
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR010
+U 1 1 640A398D
+P 9600 2375
+F 0 "#PWR010" H 9600 2225 50  0001 C CNN
+F 1 "+5V" H 9600 2515 50  0000 C CNN
+F 2 "" H 9600 2375 50  0001 C CNN
+F 3 "" H 9600 2375 50  0001 C CNN
+	1    9600 2375
+	1    0    0    -1  
+$EndComp
+$Comp
+L +3V3 #PWR011
+U 1 1 640A398E
+P 9925 2500
+F 0 "#PWR011" H 9925 2350 50  0001 C CNN
+F 1 "+3V3" H 9925 2640 50  0000 C CNN
+F 2 "" H 9925 2500 50  0001 C CNN
+F 3 "" H 9925 2500 50  0001 C CNN
+	1    9925 2500
+	1    0    0    -1  
+$EndComp
+$Comp
+L GND #PWR012
+U 1 1 640A398F
+P 9600 2900
+F 0 "#PWR012" H 9600 2650 50  0001 C CNN
+F 1 "GND" H 9600 2750 50  0000 C CNN
+F 2 "" H 9600 2900 50  0001 C CNN
+F 3 "" H 9600 2900 50  0001 C CNN
+	1    9600 2900
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	3850 2800 3850 2850
+Wire Wire Line
+	4150 2800 4150 2850
+Wire Wire Line
+	3850 2500 4150 2500
+Connection ~ 4000 2500
+Wire Wire Line
+	9600 2375 9600 2500
+Wire Wire Line
+	9600 2500 9475 2500
+Wire Wire Line
+	9475 2600 9925 2600
+Wire Wire Line
+	9925 2600 9925 2500
+Wire Wire Line
+	9475 2900 9600 2900
+Wire Wire Line
+	9475 2700 9475 2900
+Connection ~ 9475 2800
+Wire Wire Line
+	8425 4900 8425 4900
+Text HLabel 8425 4600 0    60   Output ~ 0
+NeoPixel1/GPIO8
+Text HLabel 8425 2900 0    60   Output ~ 0
+NeoPixel2/GPIO9
+Text HLabel 8425 3000 0    60   Output ~ 0
+NeoPixel3/GPIO10
+Text HLabel 9475 3500 2    60   Output ~ 0
+NeoPixel4/GPIO11
+$EndSCHEMATC

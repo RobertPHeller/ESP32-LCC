@@ -1,0 +1,357 @@
+EESchema Schematic File Version 2
+LIBS:power
+LIBS:device
+LIBS:switches
+LIBS:relays
+LIBS:motors
+LIBS:transistors
+LIBS:conn
+LIBS:linear
+LIBS:regul
+LIBS:74xx
+LIBS:cmos4000
+LIBS:adc-dac
+LIBS:memory
+LIBS:xilinx
+LIBS:microcontrollers
+LIBS:dsp
+LIBS:microchip
+LIBS:analog_switches
+LIBS:motorola
+LIBS:texas
+LIBS:intel
+LIBS:audio
+LIBS:interface
+LIBS:digital-audio
+LIBS:philips
+LIBS:display
+LIBS:cypress
+LIBS:siliconi
+LIBS:opto
+LIBS:atmel
+LIBS:contrib
+LIBS:valves
+LIBS:sn65hvd233-ht
+LIBS:lm2574n-5
+LIBS:ap63205
+LIBS:ESP32_mini
+LIBS:74lv125AN
+LIBS:ESP32-T7S3-QuadNeoPixel-cache
+EELAYER 25 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 4
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Sheet
+S 3375 1525 3350 4925
+U 632C7FD0
+F0 "MCU" 60
+F1 "MCU.sch" 60
+F2 "CAN_TX" O L 3375 2200 60 
+F3 "CAN_RX" I L 3375 2400 60 
+F4 "NeoPixel1/GPIO8" O R 6725 1975 60 
+F5 "NeoPixel2/GPIO9" O R 6725 2475 60 
+F6 "NeoPixel3/GPIO10" O R 6725 3025 60 
+F7 "NeoPixel4/GPIO11" O R 6725 3700 60 
+$EndSheet
+$Sheet
+S 600  1800 2300 1950
+U 632C7FE7
+F0 "CAN Transciver" 60
+F1 "CanTransciver.sch" 60
+F2 "CAN_TX" I R 2900 2200 60 
+F3 "CAN_RX" O R 2900 2400 60 
+$EndSheet
+$Sheet
+S 600  4200 2325 1825
+U 632C8003
+F0 "Power Supply" 60
+F1 "PowerSupply.sch" 60
+$EndSheet
+$Comp
+L 74LVC125 U101
+U 1 1 640A46C7
+P 7425 1975
+F 0 "U101" H 7425 2075 50  0000 L BNN
+F 1 "74LVC125" H 7475 1825 50  0000 L TNN
+F 2 "Housings_SOIC:SOIC-14_3.9x8.7mm_Pitch1.27mm" H 7425 1975 50  0001 C CNN
+F 3 "" H 7425 1975 50  0001 C CNN
+	1    7425 1975
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LVC125 U101
+U 2 1 640A475F
+P 7425 2475
+F 0 "U101" H 7425 2575 50  0000 L BNN
+F 1 "74LVC125" H 7475 2325 50  0000 L TNN
+F 2 "" H 7425 2475 50  0001 C CNN
+F 3 "" H 7425 2475 50  0001 C CNN
+	2    7425 2475
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LVC125 U101
+U 3 1 640A4BE2
+P 7425 3025
+F 0 "U101" H 7425 3125 50  0000 L BNN
+F 1 "74LVC125" H 7475 2875 50  0000 L TNN
+F 2 "" H 7425 3025 50  0001 C CNN
+F 3 "" H 7425 3025 50  0001 C CNN
+	3    7425 3025
+	1    0    0    -1  
+$EndComp
+$Comp
+L 74LVC125 U101
+U 4 1 640A4DD4
+P 7425 3700
+F 0 "U101" H 7425 3800 50  0000 L BNN
+F 1 "74LVC125" H 7475 3550 50  0000 L TNN
+F 2 "" H 7425 3700 50  0001 C CNN
+F 3 "" H 7425 3700 50  0001 C CNN
+	4    7425 3700
+	1    0    0    -1  
+$EndComp
+$Comp
+L +5V #PWR01
+U 1 1 640A5051
+P 7175 1700
+F 0 "#PWR01" H 7175 1550 50  0001 C CNN
+F 1 "+5V" H 7175 1840 50  0000 C CNN
+F 2 "" H 7175 1700 50  0001 C CNN
+F 3 "" H 7175 1700 50  0001 C CNN
+	1    7175 1700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	2900 2200 3375 2200
+Wire Wire Line
+	2900 2400 3375 2400
+Wire Wire Line
+	6975 1975 6725 1975
+Wire Wire Line
+	6975 2475 6725 2475
+Wire Wire Line
+	6975 3025 6725 3025
+Wire Wire Line
+	6975 3700 6725 3700
+Wire Wire Line
+	7275 1825 7175 1825
+Wire Wire Line
+	7175 1825 7175 1700
+$Comp
+L GND #PWR02
+U 1 1 640A585B
+P 7200 3975
+F 0 "#PWR02" H 7200 3725 50  0001 C CNN
+F 1 "GND" H 7200 3825 50  0000 C CNN
+F 2 "" H 7200 3975 50  0001 C CNN
+F 3 "" H 7200 3975 50  0001 C CNN
+	1    7200 3975
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7275 3850 7200 3850
+Wire Wire Line
+	7200 3850 7200 3975
+$Comp
+L GND #PWR03
+U 1 1 640A58D0
+P 7425 4050
+F 0 "#PWR03" H 7425 3800 50  0001 C CNN
+F 1 "GND" H 7425 3900 50  0000 C CNN
+F 2 "" H 7425 4050 50  0001 C CNN
+F 3 "" H 7425 4050 50  0001 C CNN
+	1    7425 4050
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7425 4000 7425 4050
+$Comp
+L GND #PWR04
+U 1 1 640A5985
+P 7425 3375
+F 0 "#PWR04" H 7425 3125 50  0001 C CNN
+F 1 "GND" H 7425 3225 50  0000 C CNN
+F 2 "" H 7425 3375 50  0001 C CNN
+F 3 "" H 7425 3375 50  0001 C CNN
+	1    7425 3375
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7425 3375 7425 3325
+$Comp
+L GND #PWR05
+U 1 1 640A5FDD
+P 7500 2775
+F 0 "#PWR05" H 7500 2525 50  0001 C CNN
+F 1 "GND" H 7500 2625 50  0000 C CNN
+F 2 "" H 7500 2775 50  0001 C CNN
+F 3 "" H 7500 2775 50  0001 C CNN
+	1    7500 2775
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7425 2775 7500 2775
+$Comp
+L GND #PWR06
+U 1 1 640A6476
+P 7525 2275
+F 0 "#PWR06" H 7525 2025 50  0001 C CNN
+F 1 "GND" H 7525 2125 50  0000 C CNN
+F 2 "" H 7525 2275 50  0001 C CNN
+F 3 "" H 7525 2275 50  0001 C CNN
+	1    7525 2275
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7425 2275 7650 2275
+$Comp
+L Screw_Terminal_01x03 J101
+U 1 1 640A6C31
+P 8225 1975
+F 0 "J101" H 8225 2175 50  0000 C CNN
+F 1 "- DO1 +" V 8350 2000 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 8225 1975 50  0001 C CNN
+F 3 "" H 8225 1975 50  0001 C CNN
+	1    8225 1975
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7875 1975 8025 1975
+$Comp
+L GND #PWR07
+U 1 1 640A6DA7
+P 7900 4000
+F 0 "#PWR07" H 7900 3750 50  0001 C CNN
+F 1 "GND" H 7900 3850 50  0000 C CNN
+F 2 "" H 7900 4000 50  0001 C CNN
+F 3 "" H 7900 4000 50  0001 C CNN
+	1    7900 4000
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7975 1450 7975 3600
+Wire Wire Line
+	7975 1875 8025 1875
+$Comp
+L Screw_Terminal_01x03 J102
+U 1 1 640A70D8
+P 8225 2475
+F 0 "J102" H 8225 2675 50  0000 C CNN
+F 1 "- DO2 +" V 8375 2525 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 8225 2475 50  0001 C CNN
+F 3 "" H 8225 2475 50  0001 C CNN
+	1    8225 2475
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7875 2475 8025 2475
+Wire Wire Line
+	7975 2375 8025 2375
+Connection ~ 7975 1875
+Wire Wire Line
+	8025 2075 7900 2075
+Wire Wire Line
+	7900 1700 7900 4000
+Wire Wire Line
+	7900 2575 8025 2575
+$Comp
+L Screw_Terminal_01x03 J103
+U 1 1 640A73CD
+P 8225 3025
+F 0 "J103" H 8225 3225 50  0000 C CNN
+F 1 "- DO3 +" V 8350 3025 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 8225 3025 50  0001 C CNN
+F 3 "" H 8225 3025 50  0001 C CNN
+	1    8225 3025
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7875 3025 8025 3025
+Wire Wire Line
+	7975 2925 8025 2925
+Connection ~ 7975 2375
+Wire Wire Line
+	7900 3125 8025 3125
+Connection ~ 7900 2575
+$Comp
+L Screw_Terminal_01x03 J104
+U 1 1 640A754F
+P 8225 3700
+F 0 "J104" H 8225 3900 50  0000 C CNN
+F 1 "- DO4 +" V 8350 3700 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_3pol" H 8225 3700 50  0001 C CNN
+F 3 "" H 8225 3700 50  0001 C CNN
+	1    8225 3700
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7875 3700 8025 3700
+Wire Wire Line
+	7975 3600 8025 3600
+Connection ~ 7975 2925
+Wire Wire Line
+	7900 3800 8025 3800
+Connection ~ 7900 3125
+Connection ~ 7900 3800
+$Comp
+L +5VP #PWR08
+U 1 1 640A89F7
+P 7975 1450
+F 0 "#PWR08" H 7975 1300 50  0001 C CNN
+F 1 "+5VP" H 7975 1590 50  0000 C CNN
+F 2 "" H 7975 1450 50  0001 C CNN
+F 3 "" H 7975 1450 50  0001 C CNN
+	1    7975 1450
+	1    0    0    -1  
+$EndComp
+$Comp
+L Screw_Terminal_01x02 J105
+U 1 1 640A8B8F
+P 8225 1600
+F 0 "J105" H 8225 1700 50  0000 C CNN
+F 1 "-5VP+" V 8350 1550 50  0000 C CNN
+F 2 "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_2pol" H 8225 1600 50  0001 C CNN
+F 3 "" H 8225 1600 50  0001 C CNN
+	1    8225 1600
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	8025 1600 7975 1600
+Connection ~ 7975 1600
+Wire Wire Line
+	8025 1700 7900 1700
+Connection ~ 7900 2075
+$Comp
+L C_Small C101
+U 1 1 640A9E28
+P 7575 1650
+F 0 "C101" H 7585 1720 50  0000 L CNN
+F 1 ".1 uf" H 7585 1570 50  0000 L CNN
+F 2 "Capacitors_SMD:C_0603" H 7575 1650 50  0001 C CNN
+F 3 "" H 7575 1650 50  0001 C CNN
+	1    7575 1650
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	7575 1550 7350 1550
+Wire Wire Line
+	7350 1550 7350 1700
+Wire Wire Line
+	7350 1700 7175 1700
+Wire Wire Line
+	7575 1750 7650 1750
+Wire Wire Line
+	7650 1750 7650 2275
+Connection ~ 7525 2275
+$EndSCHEMATC

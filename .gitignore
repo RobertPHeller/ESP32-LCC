@@ -104,3 +104,9 @@ cdidata.hxx
 log
 make.log
 Revision.hxxout
+
+managed_components
+managed_components/*
+dependencies.lock
+sdkconfig
+

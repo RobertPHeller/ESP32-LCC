@@ -1,4 +1,4 @@
-switch (mode)// -!- C++ -!- //////////////////////////////////////////////////////////////
+// -!- C++ -!- //////////////////////////////////////////////////////////////
 //
 //  System        : 
 //  Module        : 
@@ -8,7 +8,7 @@ switch (mode)// -!- C++ -!- ////////////////////////////////////////////////////
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Mar 10 11:36:16 2023
-//  Last Modified : <230310.1623>
+//  Last Modified : <230311.1217>
 //
 //  Description	
 //
@@ -43,14 +43,14 @@ switch (mode)// -!- C++ -!- ////////////////////////////////////////////////////
 static const char rcsid[] = "@(#) : $Id$";
 
 #include <stdint.h>
+#include <string.h>
 #include <esp_timer.h>
 #include "Esp32NeoPixel.hxx"
 #include "driver/rmt.h"
 
-#include <driver/adc.h>
+#include <esp_err.h>
 #include <driver/gpio.h>
 #include <esp_idf_version.h>
-#include <soc/adc_channel.h>
 
 #define HIGH 0x1
 #define LOW  0x0
@@ -84,7 +84,7 @@ static inline void pinMode(uint8_t pin, uint8_t mode)
 
 static inline void digitalWrite(uint8_t pin, uint8_t val)
 {
-    ESP_ERROR_CHECK(gpio_set_level(pin,val);
+    ESP_ERROR_CHECK(gpio_set_level((gpio_num_t)pin,val));
 }
 
 /*!

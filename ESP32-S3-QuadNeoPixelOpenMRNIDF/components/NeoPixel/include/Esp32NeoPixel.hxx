@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Mar 10 10:06:37 2023
-//  Last Modified : <230310.1135>
+//  Last Modified : <230311.1121>
 //
 //  Description	
 //
@@ -45,6 +45,7 @@
 
 #include <stdint.h>
 #include <esp_timer.h>
+#include <esp_err.h>
 
 #define micros esp_timer_get_time
 
@@ -273,7 +274,7 @@ public:
      *              output is often used for pixel brightness in animation effects.
      *   */
     static uint8_t sine8(uint8_t x) {
-        return pgm_read_byte(&_NeoPixelSineTable[x]); // 0-255 in, 0-255 out
+        return _NeoPixelSineTable[x]; // 0-255 in, 0-255 out
     }
     /*!
      *     @brief   An 8-bit gamma-correction function for basic pixel brightness
@@ -287,7 +288,7 @@ public:
      *              need to provide your own gamma-correction function instead.
      *   */
     static uint8_t gamma8(uint8_t x) {
-        return pgm_read_byte(&_NeoPixelGammaTable[x]); // 0-255 in, 0-255 out
+        return _NeoPixelGammaTable[x]; // 0-255 in, 0-255 out
     }
     /*!
      *     @brief   Convert separate red, green and blue values into a single

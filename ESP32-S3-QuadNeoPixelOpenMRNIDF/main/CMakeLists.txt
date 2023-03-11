@@ -15,8 +15,8 @@ set(deps
     json
 )
 
-idf_component_register(SRCS esp32quadneopixel.cpp
-                        NeoPixelConsumer.cpp
+idf_component_register(SRCS esp32quadneopixel.cpp NeoPixelConsumer.cpp
+                        INCLUDE_DIRS .
                         REQUIRES "${deps}")
                         
 

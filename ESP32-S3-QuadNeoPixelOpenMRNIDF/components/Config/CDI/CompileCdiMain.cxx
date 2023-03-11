@@ -34,9 +34,9 @@ const SimpleNodeStaticValues SNIP_STATIC_DATA =
 }
 bool raw_render = false;
 
-// esp32multifunction::ConfigDef def(0);
+// esp32quadneopixel::ConfigDef def(0);
 
-RENDER_CDI(esp32multifunction, ConfigDef, "CDI", 1);
+RENDER_CDI(esp32quadneopixel, ConfigDef, "CDI", 1);
 
 template <int N> void render_all_cdi()
 {
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     render_all_cdi<20>();
 
     std::vector<unsigned> event_offsets;
-    esp32multifunction::ConfigDef def(0);
+    esp32quadneopixel::ConfigDef def(0);
     def.handle_events([&event_offsets](unsigned o)
         {
             event_offsets.push_back(o);

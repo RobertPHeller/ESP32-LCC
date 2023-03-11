@@ -9,7 +9,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Feb 23 10:58:07 2023
-#  Last Modified : <230223.1121>
+#  Last Modified : <230311.1029>
 #
 #  Description	
 #
@@ -61,6 +61,8 @@ close $njfp
 #puts stderr "*** allincludes is '$allincludes'"
 
 if {$allincludes eq {}} {puts "";exit}
+
+lappend includes "-I[file normalize [file join $builddir ../main]]"
 
 foreach inc [split $allincludes { }] {
     #puts stderr "*** inc = '$inc'"

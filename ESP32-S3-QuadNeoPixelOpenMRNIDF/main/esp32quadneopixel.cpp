@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Mar 10 16:25:11 2023
-//  Last Modified : <230310.1637>
+//  Last Modified : <230312.1038>
 //
 //  Description
 //
@@ -256,6 +256,14 @@ void FactoryResetHelper::factory_reset(int fd)
     cfg.userinfo().name().write(fd, openlcb::SNIP_STATIC_DATA.model_name);
     cfg.userinfo().description().write(fd, "");
     
+    for(int i = 0; i < NUM_NEOPIXELCONSUMERS; i++)
+    {
+        cfg.seg().neopixels().entry(i).description().write(fd, "");
+        CDI_FACTORY_RESET(cfg.seg().neopixels().entry(i).length);
+        CDI_FACTORY_RESET(cfg.seg().neopixels().entry(i).type);
+        CDI_FACTORY_RESET(cfg.seg().neopixels().entry(i).speed);
+        CDI_FACTORY_RESET(cfg.seg().neopixels().entry(i).pattern);
+    }
 }
 
 }
@@ -277,7 +285,6 @@ void app_main()
     bool reset_events = false;
     bool run_bootloader = false;
     bool cleanup_config_tree = false;
-    bool test_signal_lamps = false;
     GpioInit::hw_init();
 
     nvsmanager::NvsManager nvs;
@@ -317,11 +324,6 @@ void app_main()
         reset_events = true;
         // reset the flag so we start in normal operating mode next time.
         nvs.clear_reset_events();
-    }
-    if (nvs.should_test_signal_lamps())
-    {
-        test_signal_lamps = true;
-        nvs.clear_test_signal_lamps();
     }
     nvs.CheckPersist();
 
@@ -364,6 +366,27 @@ void app_main()
         LOG(INFO, "[esp32quadneopixel] DelayRebootHelper done.");
         healthmonitor::HealthMonitor health_mon(stack.service());
         LOG(INFO, "[esp32quadneopixel] HealthMonitor done.");
+        
+        NeoPixelConsumer neopixel1(stack.node(), 
+                                   cfg.seg().neopixels().entry<0>(),
+                                   stack.executor()->active_timers(),
+                                   NeoPixel1);
+        
+        NeoPixelConsumer neopixel2(stack.node(), 
+                                   cfg.seg().neopixels().entry<1>(),
+                                   stack.executor()->active_timers(),
+                                   NeoPixel2);
+        
+        NeoPixelConsumer neopixel3(stack.node(), 
+                                   cfg.seg().neopixels().entry<2>(),
+                                   stack.executor()->active_timers(),
+                                   NeoPixel3);
+        
+        NeoPixelConsumer neopixel4(stack.node(), 
+                                   cfg.seg().neopixels().entry<3>(),
+                                   stack.executor()->active_timers(),
+                                   NeoPixel4);
+        
         
         // Create config file and initiate factory reset if it doesn't exist or is
         // otherwise corrupted.

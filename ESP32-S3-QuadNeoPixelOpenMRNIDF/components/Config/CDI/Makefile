@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230303.1209>
+#  Last Modified : <230312.1200>
 #
 #  Description	
 #
@@ -72,7 +72,7 @@ compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
 	../../../sdkconfig
 	../../../../buildscripts/sticker.py -t \
 		-i "$(PROJECTPATH)" \
-		-b 'DEVKIT_BREADBOARD=$(CONFIG_DEVKIT_BREADBOARD) T7S3=$(CONFIG_T7S3) SERVO_TURNOUTS=$(CONFIG_SERVO_TURNOUTS)' \
+		-b 'DEVKIT_BREADBOARD=$(CONFIG_DEVKIT_BREADBOARD) T7S3=$(CONFIG_T7S3)' \
 		-o ../../../Sticker.out
 FORCE:
 

@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230307.1145>
+%  Last Modified : <230314.1537>
 %
 %  Description 
 %
@@ -480,6 +480,14 @@ Similarly we configure the Turnout and Points, along with the veto control
 element. Now we set up the logic for the Veto.  We want to enable the turnout 
 veto in two cases: dispatcher or OS occupancy, so we need one logic element 
 for this.
+
+We name the Logic ``Veto On'', copy the OS Occupancy detector events to
+Variable 2 (Variable 1 will be used by the dispatcher to lock the turnout),
+set the Logic to V1 OR V2. The actions for both true and false will be send
+and exit. Action event 1 will be Send Immediately on True and the Turnout Veto
+On event will be copied to the action event. Action event 2 will be Send
+Immediately on False and the the Turnout Veto Off event will be copied to the 
+action event.
 
 \begin{figure}[hbpt]\begin{centering}%
 \includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1a.png}

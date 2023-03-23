@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:12:55 2022
-//  Last Modified : <230306.1603>
+//  Last Modified : <230314.1031>
 //
 //  Description	
 //
@@ -132,7 +132,7 @@ CDI_GROUP_END();
 
 CDI_GROUP(TimingConfig)
 CDI_GROUP_ENTRY(timedelay,openlcb::Uint16ConfigEntry,
-                Description("Time Delay before action\n"
+                Description("Delay Time (1-60000)\n"
                             "Delay Time (1-60000)."),
                 Default(0),Min(0),Max(60000));
 CDI_GROUP_ENTRY(interval,openlcb::Uint8ConfigEntry,
@@ -144,9 +144,11 @@ CDI_GROUP_END();
 
 CDI_GROUP(ActionConfig);
 CDI_GROUP_ENTRY(actiontrigger,openlcb::Uint8ConfigEntry,
-                MapValues(ActionTriggerMap),Default(0));
+                MapValues(ActionTriggerMap),Default(0),
+                Name("Condition"));
 CDI_GROUP_ENTRY(actionevent,openlcb::EventConfigEntry,
-                Name("(P) this event will be sent."));
+                Name("Action Event"),
+                Description("(P) this event will be sent."));
 CDI_GROUP_END();
 
 using ActionGroup = openlcb::RepeatedGroup<ActionConfig,4>;
@@ -171,8 +173,11 @@ CDI_GROUP_ENTRY(falseAction,openlcb::Uint8ConfigEntry,
                 Name("when false"),
                 Default(3),
                 MapValues(ActionMap));
-CDI_GROUP_ENTRY(timing,TimingConfig);
-CDI_GROUP_ENTRY(actions,ActionGroup,Name("A trigger or change will generate the following events."),RepName("Action"));
+CDI_GROUP_ENTRY(timing,TimingConfig,Name("Time Delay before action"));
+CDI_GROUP_ENTRY(actions,ActionGroup,
+                Description("A trigger or change will generate the following events."),
+                Name("Action"),
+                RepName("Action"));
 CDI_GROUP_END();
 
 

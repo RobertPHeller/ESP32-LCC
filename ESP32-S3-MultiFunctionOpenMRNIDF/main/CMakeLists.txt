@@ -43,6 +43,11 @@ set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )
 
+set(DOCDEPS
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../.git/index
+    ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
+    )
+    
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx"
                           "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/Revision.hxxout"
                    COMMAND make CONFIG_DEVKIT_BREADBOARD="${CONFIG_DEVKIT_BREADBOARD}" CONFIG_T7S3="${CONFIG_T7S3}" CONFIG_SERVO_TURNOUTS="${CONFIG_SERVO_TURNOUTS}" -C ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/CDI 
@@ -50,8 +55,19 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/incl
                    VERBATIM
                   )
 
+idf_build_get_property(component_dirs COMPONENT_DIRS)
+
+add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../doc/pdf"
+                          "${CMAKE_CURRENT_SOURCE_DIR}/../doc/html/index.html"
+                   COMMAND make PROJECTNAME="${project_name}" PROJECTNUMBER="${project_ver}" -C "${CMAKE_CURRENT_SOURCE_DIR}/../doc"
+                   DEPENDS "${DOCDEPS}"
+                   VERBATIM
+                  )
+
 add_custom_target(FORCE 
                   ALL
-                  DEPENDS                                                     
+                  DEPENDS 
                   "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx"
+                  "${CMAKE_CURRENT_SOURCE_DIR}/../doc/pdf"
                  )
+

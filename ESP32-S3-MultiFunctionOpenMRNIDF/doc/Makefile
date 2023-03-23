@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <230323.1400>
+#  Last Modified : <230323.1702>
 #
 #  Description	
 #
@@ -45,17 +45,39 @@
 
 all: html latex pdf
 
+SOURCES = $(wildcard ../main/*.hxx) $(wildcard ../main/*.cpp) \
+	  $(wildcard ../components/Config/include/*.hxx) \
+	  $(wildcard ../../CommonComponents/I2CDriver/*.cpp) \
+          $(wildcard ../../CommonComponents/I2CDriver/include/*.hxx) \
+          $(wildcard ../../CommonComponents/NVSManager/*.cpp) \
+          $(wildcard ../../CommonComponents/NVSManager/include/*.hxx) \
+          $(wildcard ../../CommonComponents/FS/*.cpp) \
+          $(wildcard ../../CommonComponents/FS/include/*.hxx) \
+          $(wildcard ../../CommonComponents/HealthMonitor/*.cpp) \
+          $(wildcard ../../CommonComponents/HealthMonitor/include/*.hxx) \
+          $(wildcard ../../CommonComponents/RebootHelpers/*.cpp) \
+          $(wildcard ../../CommonComponents/RebootHelpers/include/*.hxx) \
+          $(wildcard ../../CommonComponents/GeneralIO/*.cpp) \
+          $(wildcard ../../CommonComponents/GeneralIO/include/*.hxx) \
+          $(wildcard ../../CommonComponents/Signals/*.cpp) \
+          $(wildcard ../../CommonComponents/Signals/include/*.hxx) \
+          $(wildcard ../../CommonComponents/Logic/*.cpp) \
+          $(wildcard ../../CommonComponents/Logic/include/*.hxx)
 
-Doxyfile: Doxyfile.in ../../.git/index
+Doxyfile: Doxyfile.in ../../.git/index ../sdkconfig
 	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \
 	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
 	    >$@ <$<
 	    
 
-html latex: Doxyfile
+html latex: Doxyfile $(SOURCES)
 	-rm -rf html latex pdf
 	doxygen Doxyfile
 	
 
 pdf: latex
 	make -C latex
+	touch pdf
+
+clean:
+	rm -rf html latex pdf Doxyfile

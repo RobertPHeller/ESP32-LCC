@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230314.1537>
+%  Last Modified : <230324.1725>
 %
 %  Description 
 %
@@ -434,82 +434,70 @@ drivers (the Stall Motor daughter board is shown, but any of the daughter
 boards could be used), two of the occupancy detectors, two of the LED drivers, 
 two of button inputs, and 11 of signal lamp driver outputs.
 
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[width=5in]{ExampleSidingCP1-ConfigNameDescr.png}
-\caption{Configuring the name and description}
-\label{fig:ExampleSidingCP1-ConfigNameDescr}
-\end{centering}\end{figure}
-
-We will start by configuring the user name and description of the node, as 
-shown in Figure~\ref{fig:ExampleSidingCP1-ConfigNameDescr}.
-
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigOC1.png}
-\caption{Configuring OC1 and creating Block control item.}
-\label{fig:ExampleSidingCP1-ConfigOC1}
-\end{centering}\end{figure}
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigOC2.png}
-\caption{Configuring OC2 and creating Block control item.}
-\label{fig:ExampleSidingCP1-ConfigOC2}
-\end{centering}\end{figure}
+We will start by configuring the user name and description of the node in User 
+Info tab.  When we have done this will will be able to find the node by 
+looking for the name.  
 
 Next, we will move onto the Board Configuration tab and then the Occupancy
 Detectors, specificly OC1. Right now, we will just fill in the name (East
 Main) and create a Block layout control. Similarly for OC2 (CP1 OS).
 
+Similarly we configure the Turnout and Points, filling their names and
+creating layout control elements for them, along with the veto control
+element. The layout coltrol elements (or various JMRI table elements). 
 
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigTurnout1.png}
-\caption{Configuring Turnout1 and creating Turnout  control item.}
-\label{fig:ExampleSidingCP1-ConfigTurnout1}
-\end{centering}\end{figure}
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigPoints1.png}
-\caption{Configuring Points1 and creating Turnout control item.}
-\label{fig:ExampleSidingCP1-ConfigPoints1}
-\end{centering}\end{figure}
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigTurnout-Veto1.png}
-\caption{Configuring Turnout Veto control item.}
-\label{fig:ExampleSidingCP1-ConfigTurnout-Veto1}
-\end{centering}\end{figure}
-
-
-Similarly we configure the Turnout and Points, along with the veto control
-element. Now we set up the logic for the Veto.  We want to enable the turnout 
-veto in two cases: dispatcher or OS occupancy, so we need one logic element 
-for this.
-
-We name the Logic ``Veto On'', copy the OS Occupancy detector events to
-Variable 2 (Variable 1 will be used by the dispatcher to lock the turnout),
+Next we set up the logic for the Veto. We want to enable the turnout veto in
+two cases: dispatcher locking or OS occupancy, so we need one logic element
+for this. We name the Logic ``Veto On'', copy the OS Occupancy detector events
+to Variable 2 (Variable 1 will be used by the dispatcher to lock the turnout),
 set the Logic to V1 OR V2. The actions for both true and false will be send
 and exit. Action event 1 will be Send Immediately on True and the Turnout Veto
 On event will be copied to the action event. Action event 2 will be Send
-Immediately on False and the the Turnout Veto Off event will be copied to the 
+Immediately on False and the the Turnout Veto Off event will be copied to the
 action event.
 
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1a.png}
-\caption{Configuring Veto Logic, part1}
-\label{fig:ExampleSidingCP1-ConfigVetoLogic1a}
-\end{centering}\end{figure}
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1b.png}
-\caption{Configuring Veto Logic, part2}
-\label{fig:ExampleSidingCP1-ConfigVetoLogic1b}
-\end{centering}\end{figure}
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1c.png}
-\caption{Configuring Veto Logic, part3}
-\label{fig:ExampleSidingCP1-ConfigVetoLogic1c}
-\end{centering}\end{figure}
-\begin{figure}[hbpt]\begin{centering}%
-\includegraphics[height=6in]{ExampleSidingCP1-ConfigVetoLogic1d.png}
-\caption{Configuring Veto Logic, part 4}
-\label{fig:ExampleSidingCP1-ConfigVetoLogic1d}
-\end{centering}\end{figure}
+Next we set up the LED drivers and the button inputs. We copy the turnout's
+Normal and Reverse motor events to the two button ON events and label the
+buttons Normal and Reverse. Simularly we copy the Point sensor events to the
+LEDs' events. For the Normal labeled LED, copy the Point sensor Normal event
+to the on event, and the Point sensor Reverse event to the off event. Then for
+the Reverse labeled LED, copy the Point sensor Reverse event to the on event, 
+and the Point sensor Normal event to the off event.
 
+For the signals, we will use additional Logics and three Masts.  For each 
+signal will will construct an sequense of logic elements, one for each aspect, 
+starting with the most restrictive and ending with the least restrictive.  
+Each logic element will test one or two conditions and be true for one aspect.
+
+For the signal at the point entry of the turnout we are using a two headed
+signal, a 3 over 2 (3 lamps (GYR) on the top head, 2 lamps (GR or YR) on the
+bottom head). This signal will display 4 aspects: Stop (red over red),
+Approach Limited (red over green or yellow), Approach (yellow over red), and 
+Clear (green over red).  These aspects mean: 
+
+\begin{itemize}
+\item Stop (red over red) Absolute stop.  Typically because the turnout is 
+currently occupied or the dispatcher forbids traversal.
+\item Approach Limited (red over green or yellow) Slow speed, taking the 
+siding.  This is when the turnout is thrown.
+\item Approach (yellow over red) Reduced speed continuing on the main.  This 
+is when there is a Stop indication at the next signal.
+\item  Clear (green over red) Normal speed continuing on the main.  This is 
+when no other cases prevail.
+\end{itemize}
+
+The logic for this mast is:
+
+\begin{verbatim}
+if (TurnoutOS is occupied) then
+    send Stop
+else if (Turnout is Reversed) then
+    send Approach Limited
+else if (track circuit(next block) is Stop) then
+    send Approach
+else
+    send Clear
+\end{verbatim}
 
 
 \clearpage

@@ -27,6 +27,8 @@
  * @file PCA9685PWM.hxx
  * This file implements a PWM driver for the PCA9685.
  *
+ * Modified by Robert Heller
+ * 
  * @author Stuart W. Baker
  * @date 6 January 2018
  */

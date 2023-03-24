@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230302.1654>
+//  Last Modified : <230324.1442>
 //
 //  Description	
 //
@@ -17,28 +17,52 @@
 //  History
 //	
 /////////////////////////////////////////////////////////////////////////////
-//
-//    Copyright (C) 2022  Robert Heller D/B/A Deepwoods Software
-//			51 Locke Hill Road
-//			Wendell, MA 01379-9728
-//
-//    This program is free software; you can redistribute it and/or modify
-//    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation; either version 2 of the License, or
-//    (at your option) any later version.
-//
-//    This program is distributed in the hope that it will be useful,
-//    but WITHOUT ANY WARRANTY; without even the implied warranty of
-//    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//    GNU General Public License for more details.
-//
-//    You should have received a copy of the GNU General Public License
-//    along with this program; if not, write to the Free Software
-//    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
-//
-// 
-//
+/// @copyright
+///    Copyright (C) 2022  Robert Heller D/B/A Deepwoods Software
+///			51 Locke Hill Road
+///			Wendell, MA 01379-9728
+///
+///    This program is free software; you can redistribute it and/or modify
+///    it under the terms of the GNU General Public License as published by
+///    the Free Software Foundation; either version 2 of the License, or
+///    (at your option) any later version.
+///
+///    This program is distributed in the hope that it will be useful,
+///    but WITHOUT ANY WARRANTY; without even the implied warranty of
+///    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+///    GNU General Public License for more details.
+///
+///    You should have received a copy of the GNU General Public License
+///    along with this program; if not, write to the Free Software
+///    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+/// @file esp32multifunction.cpp
+/// @author Robert Heller 
+/// @date Thu Jun 23 12:17:40 2022
 //////////////////////////////////////////////////////////////////////////////
+
+/** @mainpage Introduction
+ * 
+ * This is the firmware for various ESP32S3-based "MultiFunction" LCC Node 
+ * boards.
+ * Boards this software will work for include:
+ * 
+ * - ESP32-S3-MultiFunction original S3-MultiFunction board using a "bare"
+ *   ESP32-S3FN8 chip.
+ * - ESP32-T7S3-MultiFunction A version of the original S3-MultiFunction board
+ *   using a TTGO-T7S3 module.
+ * - ESP32-T7S3-MultiFunctionUniversalTurnout A version of the 
+ *   T7S3-MultiFunction board using a daughter board for the turnout driver
+ *   allowing four different turnout types (Stall Motor, Single Coil, 
+ *   Twin Coil, and Servo).
+ * - This code will also work on a breadboard version using a ESP32S3 DevKit 
+ *   board.
+ * 
+ * There are configuration options to adjust how the code is compiled for 
+ * different hardware options.
+ * 
+ * 
+ * 
+ */
 
 static const char rcsid[] = "@(#) : $Id$";
 

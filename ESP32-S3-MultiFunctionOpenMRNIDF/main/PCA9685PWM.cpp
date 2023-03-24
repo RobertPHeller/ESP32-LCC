@@ -24,11 +24,15 @@
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  *
- * @file PCA9685PWM.cxx
+ * @file PCA9685PWM.cpp
  * This file implements a PWM driver for the PCA9685.
  *
+ * Modified by Robert Heller
+ * 
  * @author Stuart W. Baker
  * @date 6 January 2018
+ * 
+ * 
  */
 
 #include "PCA9685PWM.hxx"

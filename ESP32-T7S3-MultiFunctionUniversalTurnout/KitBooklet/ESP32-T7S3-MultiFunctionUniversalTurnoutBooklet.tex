@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230324.1725>
+%  Last Modified : <230326.1656>
 %
 %  Description 
 %
@@ -486,6 +486,20 @@ is when there is a Stop indication at the next signal.
 when no other cases prevail.
 \end{itemize}
 
+Select the Mast 1 tab under the Rule to aspect tab under Board Configuration. 
+Select Normal under Mast Processing and enter a Mast ID of CP1W for the Mast 
+ID.  Then copy the Track Circuit Link Address to Circuit 1 under TRACK 
+CIRCUITS and set the Remote Mast Description  to CP1W.
+
+Back at Rule to aspect / Mast 1 scroll down to the Rules. Under Rule 1's
+Appearance, set Lamp 1 to A0, and Lamp 2 to A2. These are the two red lamps.
+Now select tab Rule 2.  Set Name to 27-Approach-Limited and Track Speed to 
+Limited.  Then for its Appearance, set Lamp 1 to A1 and Lamp 2 to A2. Moving 
+on to Rule 3: Set Name to 21-Approach and Track Speed to Approach.  Then Lamp 
+1 to A0, and Lamp 2 A3.  Finally for Rule 4: Set Name to 29-Clear and Track 
+Speed to Clear/Procede and Lamp 1 to A0, and Lamp 2 to A4. This completes 
+setting up the mast.
+
 The logic for this mast is:
 
 \begin{verbatim}
@@ -499,6 +513,23 @@ else
     send Clear
 \end{verbatim}
 
+We will need 4 successive Logic elements for this mast, but first we need to 
+create a virtual mast for the block identified as East Main.  We will use Mast 
+8 and Circuit 8 for this mast.  Select Mast 8, set its Mast Processing to 
+Normal, its Mast ID to CP1ME, and copy its Link Address to Circuit 8.  Now 
+right click on the East Main OC in the Layout DB window, and copy its Occupied 
+event to the event to set aspect for Rule 1 (Rule one is already set to Stop 
+speed).  Then copy East Main's Clear event to the event to set aspect for Rule 
+2, then change Rule 2's name to 29-Clear and Track Speed tp Clear/Procede.  We 
+won't be setting anything for this mast's Lamps, since it is not a ``visible'' 
+signal.  We are just using it to general track circuit signals.
+
+Now we can start to set up the Logic elements. We will start with Logic 4. Set
+its description to ``CP1W Stop'', its Group Function to Group, copy CP1 OS OC
+detector's events to Variable \#1's events: true from Occupied, false from
+Clear. Set the Logic function to V1 only, set Action 1 to Immediate If True
+and copy the event from Mast 1, Rule 1's ``(C) Event to Set Aspect'' event to 
+Action 1's event.
 
 \clearpage
 \subsection{Yard Throat with track selector}

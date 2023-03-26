@@ -40,3 +40,6 @@ terminal throat, ABS, and interlocking plants.</p>
 
 The firmware for this board is [ESP32-S3-MultiFunctionOpenMRNIDF](https://github.com/RobertPHeller/RPi-RRCircuits/tree/master/ESP32-S3-MultiFunctionOpenMRNIDF).
 
+## Kit booket
+
+There is LaTeX source for the kit booklet in [KitBooklet](https://github.com/RobertPHeller/RPi-RRCircuits/tree/master/ESP32-T7S3-MultiFunctionUniversalTurnout/KitBooklet).

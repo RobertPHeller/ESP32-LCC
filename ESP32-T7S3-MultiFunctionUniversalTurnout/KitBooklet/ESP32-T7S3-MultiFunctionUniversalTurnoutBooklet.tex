@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Mar 4 08:39:57 2023
-%  Last Modified : <230326.1656>
+%  Last Modified : <230327.1333>
 %
 %  Description 
 %
@@ -530,6 +530,63 @@ detector's events to Variable \#1's events: true from Occupied, false from
 Clear. Set the Logic function to V1 only, set Action 1 to Immediate If True
 and copy the event from Mast 1, Rule 1's ``(C) Event to Set Aspect'' event to 
 Action 1's event.
+
+Next we set up Logic 5. Set its description to ``CP1W Approach Limited'', its 
+Group Function to Group, copy the Points 1 sense detector's events to Variable 
+\#1's events: true from Reversed, false from Normal -- we want *true* if the 
+turnout is set to the siding. Set the Logic function to V1 only, set Action 1 
+to Immediate If True  and copy the event from Mast 1, Rule 2's ``(C) Event to 
+Set Aspect'' event to Action 1's event.
+
+Next we set up Logic 6. Set its description to ``CP1W Approach'', its Group 
+Function to Group, its variable source to Track Circuit 8.  Use the default 
+speed of Stop.  Set the Logic function to V1 only, set Action 1 to Immediate 
+If True  and copy the event from Mast 1, Rule 3's ``(C) Event to Set Aspect'' 
+event to Action 1's event.
+
+Finally we set up Logic 7. Set its description to ``CP1W Clear'', its Group 
+Function to Last (Single), set its Logic function to null $=>$ true, set Action 
+1 to Immediate If True  and copy the event from Mast 1, Rule 4's ``(C) Event 
+to Set Aspect'' event to Action 1's event.
+
+Next we need to set up the two signals at the frog end of the turnout.  They 
+both the same aspects:
+
+\begin{itemize}
+\item Stop (red) Absolute stop.  Typically because the turnout is currently 
+occupied, the points are aligned against travel, or the dispatcher forbids 
+traversal.
+\item Approach (yellow) Reduced speed continuing on the main.  This is when 
+there is a Stop indication at the next signal.
+\item  Clear (green) Normal speed continuing on the main.  This is when no 
+other cases prevail.
+\end{itemize}
+
+We will set up these two signals on Mast 2 and Mast 3 and also set up a 
+virtual mast for West Main using Mast 7.
+
+First CP1E on Mast 2:
+
+Set Mast Processing to Normal, Mast ID to CP1E, copy the track circuit address 
+to Circuit 2, along with the Mast ID to the Remote Mast Description. Rule 1's
+Name will be 0-Stop, its speed Stop, and its Appearence will be Lamp 1: B3.
+Rule 2's Name will be 21-Approach, its speed Approach, and its Appearence will 
+be Lamp 1: B4. Rule 3's Name will be 29-Clear, its speed Clear/Procede, and 
+its Appearence will be Lamp 1: B5.
+
+Then CP1S on Mast 3:
+
+Set Mast Processing to Normal, Mast ID to CP1S, copy the track circuit address 
+to Circuit 3, along with the Mast ID to the Remote Mast Description. Rule 1's
+Name will be 0-Stop, its speed Stop, and its Appearence will be Lamp 1: B0.
+Rule 2's Name will be 21-Approach, its speed Approach, and its Appearence will 
+be Lamp 1: B1. Rule 3's Name will be 29-Clear, its speed Clear/Procede, and 
+its Appearence will be Lamp 1: B2.
+
+
+
+
+
 
 \clearpage
 \subsection{Yard Throat with track selector}

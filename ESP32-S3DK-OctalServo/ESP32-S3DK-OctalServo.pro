@@ -1,4 +1,4 @@
-update=Sun 05 Mar 2023 01:25:47 PM EST
+update=Fri 07 Apr 2023 03:00:52 PM EDT
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,8 +23,6 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=../CommonLibraries
@@ -67,3 +65,5 @@ LibName35=esp32_devboards
 LibName36=lm2574n-5
 LibName37=ap63205
 LibName38=74lv125AN
+[general]
+version=1

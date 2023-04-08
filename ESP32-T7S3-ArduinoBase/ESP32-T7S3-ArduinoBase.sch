@@ -454,7 +454,7 @@ Wire Wire Line
 Wire Wire Line
 	7250 1550 7400 1550
 Wire Wire Line
-	7450 2175 7250 2175
+	7250 2175 7450 2175
 Text Label 6725 1550 2    60   ~ 0
 SDA
 Text Label 6700 2175 2    60   ~ 0
@@ -585,34 +585,52 @@ Text Label 4150 1225 2    60   ~ 0
 SDA
 Text Label 4150 3525 2    60   ~ 0
 SCL
-NoConn ~ 4150 3425
-NoConn ~ 4150 3325
-NoConn ~ 4150 3225
-NoConn ~ 4150 3125
-NoConn ~ 4150 3025
 NoConn ~ 4150 2925
-NoConn ~ 4150 2825
 NoConn ~ 4150 2725
-NoConn ~ 4150 2625
-NoConn ~ 4150 2525
-NoConn ~ 4150 2425
-NoConn ~ 4150 2325
-NoConn ~ 4150 2225
 NoConn ~ 4150 2125
 NoConn ~ 4150 2025
 NoConn ~ 4150 1925
 NoConn ~ 5200 2725
-NoConn ~ 5200 2625
-NoConn ~ 5200 2525
-NoConn ~ 5200 2425
-NoConn ~ 5200 2325
-NoConn ~ 5200 2225
-NoConn ~ 5200 2125
 NoConn ~ 5200 1775
 NoConn ~ 5200 1625
 NoConn ~ 4150 1125
-NoConn ~ 4150 1525
-NoConn ~ 4150 1625
 NoConn ~ 4150 1725
 NoConn ~ 4150 1825
+Text Label 5200 2625 0    60   ~ 0
+A0
+Text Label 5200 2425 0    60   ~ 0
+A1
+Text Label 5200 2525 0    60   ~ 0
+A2
+Text Label 4150 3225 2    60   ~ 0
+A3
+Text Label 5200 2325 0    60   ~ 0
+0(Rx)
+Text Label 5200 2225 0    60   ~ 0
+1(Tx)
+Text Label 4150 2325 2    60   ~ 0
+13(SCK)
+Text Label 4150 3325 2    60   ~ 0
+12(MISO)
+Text Label 5200 2125 0    60   ~ 0
+11(**/MOSI)
+Text Label 4150 1625 2    60   ~ 0
+10(**/SS)
+Text Label 4150 1525 2    60   ~ 0
+9(**)
+Text Label 4150 3025 2    60   ~ 0
+8
+Text Label 4150 3125 2    60   ~ 0
+7
+Text Label 4150 2825 2    60   ~ 0
+6(**)
+Text Label 4150 3425 2    60   ~ 0
+5(**)
+Text Label 4150 2225 2    60   ~ 0
+4
+Text Label 4150 2525 2    60   ~ 0
+3(**)
+Text Label 4150 2625 2    60   ~ 0
+2
+NoConn ~ 4150 2425
 $EndSCHEMATC

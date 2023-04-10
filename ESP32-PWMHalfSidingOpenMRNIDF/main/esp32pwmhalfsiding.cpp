@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1550>
+//  Last Modified : <230410.1647>
 //
 //  Description	
 //
@@ -345,7 +345,7 @@ void app_main()
                                                    (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
                                                    nvs.hostname_prefix());
 #endif
-    esp32pwmhalfsiding::FactoryResetHelper factory_reset_helper();
+    esp32pwmhalfsiding::FactoryResetHelper factory_reset_helper;
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
     healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");

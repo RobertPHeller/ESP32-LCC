@@ -16,6 +16,7 @@ set(deps
     HealthMonitor
     RebootHelpers
     json
+    esp_timer
 )
 
 idf_component_register(SRCS esp32pwmhalfsiding.cpp PCA9685PWM.cpp

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Mar 10 16:25:11 2023
-//  Last Modified : <230312.1038>
+//  Last Modified : <230410.1532>
 //
 //  Description
 //
@@ -360,7 +360,7 @@ void app_main()
                                                        (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
                                                        nvs.hostname_prefix());
 #endif
-        esp32quadneopixel::FactoryResetHelper factory_reset_helper();
+        esp32quadneopixel::FactoryResetHelper factory_reset_helper;
         LOG(INFO, "[esp32quadneopixel] FactoryResetHelper done.");
         reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
         LOG(INFO, "[esp32quadneopixel] DelayRebootHelper done.");

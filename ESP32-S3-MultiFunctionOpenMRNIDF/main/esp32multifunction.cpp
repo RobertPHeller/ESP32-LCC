@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230324.1442>
+//  Last Modified : <230410.1418>
 //
 //  Description	
 //
@@ -511,7 +511,7 @@ void app_main()
                                                        (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
                                                        nvs.hostname_prefix());
 #endif
-        esp32multifunction::FactoryResetHelper factory_reset_helper();
+        esp32multifunction::FactoryResetHelper factory_reset_helper;
         LOG(INFO, "[esp32multifunction] FactoryResetHelper done.");
         reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
         LOG(INFO, "[esp32multifunction] DelayRebootHelper done.");

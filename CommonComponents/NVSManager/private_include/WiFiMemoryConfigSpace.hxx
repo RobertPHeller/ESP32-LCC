@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Dec 18 12:33:51 2022
-//  Last Modified : <230214.1644>
+//  Last Modified : <230410.1401>
 //
 //  Description	
 //
@@ -132,7 +132,7 @@ private:
         return [this, offset](unsigned repeat, T value, BarrierNotifiable *done)
         {
             AutoNotify n(done);
-            LOG(VERBOSE, "[WiFiMemCfg:%02x-WR] offs: %d, value: %d",
+            LOG(VERBOSE, "[WiFiMemCfg:%02x-WR] offs: %d, value: %ld",
                 SPACE, offset, (uint32_t)value);
             switch(offset)
             {

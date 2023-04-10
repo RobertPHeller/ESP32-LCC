@@ -16,6 +16,7 @@ set(deps
     HealthMonitor
     RebootHelpers
     json
+    esp_timer
 )
 
 idf_component_register(SRCS esp32multifunction.cpp

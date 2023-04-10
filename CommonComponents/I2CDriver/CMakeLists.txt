@@ -10,3 +10,4 @@ idf_component_register(SRCS Esp32HardwareI2C.cpp
                        PRIV_INCLUDE_DIRS "private_include"
                        REQUIRES "${DEPS}"
                        )
+set_source_files_properties(Esp32HardwareI2C.cpp PROPERTIES COMPILE_FLAGS "-Wno-narrowing")

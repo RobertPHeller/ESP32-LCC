@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Oct 8 12:47:31 2022
-//  Last Modified : <230324.0915>
+//  Last Modified : <230410.1353>
 //
 //  Description	
 //
@@ -96,7 +96,11 @@ void Esp32HardwareI2C::hw_init()
         .sda_pullup_en = GPIO_PULLUP_ENABLE,
         .scl_pullup_en = GPIO_PULLUP_ENABLE,
         .master = {.clk_speed = I2C_MASTER_FREQ_HZ},
+#if ESP_IDF_VERSION >= ESP_IDF_VERSION_VAL(5,0,0)
+        .clk_flags = I2C_SCLK_SRC_FLAG_FOR_NOMAL
+#else // IDF v4.x (or earlier)
         .clk_flags = I2C_SCLK_DEFAULT
+#endif
     };
     ESP_ERROR_CHECK(i2c_param_config(i2c_master_port, &conf));
     
@@ -237,7 +241,7 @@ int Esp32HardwareI2C::transfer(struct i2c_msg *msg, bool stop) const
                                                     (uint16_t)msg->addr,
                                                     (uint8_t *)msg->buf,
                                                     bytes,
-                                                    I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+                                                    pdMS_TO_TICKS(I2C_MASTER_TIMEOUT_MS));
         LOG(INFO,"[Esp32HardwareI2C::transfer]: (i2c_master_read_from_device) err = %d.",err);
         if (err != ESP_OK) return -EIO;
         else return bytes;
@@ -248,7 +252,7 @@ int Esp32HardwareI2C::transfer(struct i2c_msg *msg, bool stop) const
                                                    (uint16_t)msg->addr,
                                                    (uint8_t *)msg->buf,
                                                    bytes,
-                                                   I2C_MASTER_TIMEOUT_MS / portTICK_RATE_MS);
+                                                   pdMS_TO_TICKS(I2C_MASTER_TIMEOUT_MS));
         LOG(INFO,"[Esp32HardwareI2C::transfer]: (i2c_master_write_to_device) err = %d.",err);
         if (err != ESP_OK) return -EIO;
         else return bytes;

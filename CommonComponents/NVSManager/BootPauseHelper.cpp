@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <230324.0927>
+//  Last Modified : <230410.1442>
 //
 //  Description	
 //
@@ -104,7 +104,6 @@ void BootPauseHelper::PauseConsole()
 {
     char receivebuffer[RXBufferLength];
     char transmitBuffer[TXBufferLength];
-    
     uart_write_bytes(UART_NUM_0,"Ready.\r\n",8);
     
     while (true)

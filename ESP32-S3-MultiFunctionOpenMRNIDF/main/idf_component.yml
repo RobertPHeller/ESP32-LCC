@@ -1,6 +1,6 @@
 dependencies:
-  idf: ">=4.4,<5.0"
   OpenMRNIDF:
+    version: idf-v5
     git: https://github.com/atanisoft/OpenMRNIDF.git
   I2CDriver:
     path: ../../CommonComponents/I2CDriver

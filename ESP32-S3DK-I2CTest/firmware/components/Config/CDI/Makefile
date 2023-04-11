@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230210.1126>
+#  Last Modified : <230411.1245>
 #
 #  Description	
 #
@@ -43,7 +43,7 @@
 ##############################################################################
 
 OPENMRNIDFPATH=../../../managed_components/OpenMRNIDF
-PROJECTPATH=`(cd ../../..;pwd)`
+PROJECTPATH=`(cd ../../../..;pwd)`
 
 all: ../include/cdidata.hxx
 

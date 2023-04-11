@@ -33,11 +33,9 @@ set_source_files_properties(esp32octalbuffer.cpp PROPERTIES COMPILE_DEFINITIONS 
 set_source_files_properties(Sequence.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 
 set(CDIDEPS
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/SequenceConfigGroup.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/StepConfigGroup.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/OutputConfigGroup.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../../.git/index
+    ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )
 
 

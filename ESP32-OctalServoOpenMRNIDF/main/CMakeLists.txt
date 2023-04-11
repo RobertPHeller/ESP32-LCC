@@ -33,6 +33,8 @@ set_source_files_properties(esp32octalservo.cpp PROPERTIES COMPILE_DEFINITIONS "
 
 set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../../.git/index
+    ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx"

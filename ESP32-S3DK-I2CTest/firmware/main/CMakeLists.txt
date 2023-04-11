@@ -37,6 +37,7 @@ set_source_files_properties(esp32i2ctest.cpp PROPERTIES COMPILE_DEFINITIONS "SNI
 set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../.git/index
+    ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )
 
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx" 

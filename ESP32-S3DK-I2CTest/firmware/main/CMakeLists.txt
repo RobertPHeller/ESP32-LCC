@@ -7,14 +7,17 @@ set(deps
     spiffs
     OpenMRNIDF
     Config
-    NvsManager
+    NVSManager
     MCP23017Gpio
     MD_I2CDriver
     PCA9685PWM
+    FS
+    HealthMonitor
+    RebootHelpers
     json
 )
 
-idf_component_register(SRCS esp32i2ctest.cpp fs.cpp
+idf_component_register(SRCS esp32i2ctest.cpp
                        REQUIRES "${deps}")
 
 # export the project version as a define for the SNIP data, note it must be
@@ -30,11 +33,8 @@ set(CDI_VERSION "0x0100")
 
 set_source_files_properties(esp32i2ctest.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(esp32i2ctest.cpp PROPERTIES COMPILE_DEFINITIONS "SNIP_PROJECT_PAGE=\"${SNIP_PROJECT_PAGE}\"; SNIP_HW_VERSION=\"${SNIP_HW_VERSION}\"; SNIP_SW_VERSION=\"${SNIP_SW_VERSION}\"; SNIP_PROJECT_NAME=\"${SNIP_PROJECT_NAME}\"; CDI_VERSION=${CDI_VERSION}")
-set_source_files_properties(fs.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 
 set(CDIDEPS
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/NodeIdConfigurationGroup.hxx
-    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/WiFiConfigurationGroup.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../.git/index
    )

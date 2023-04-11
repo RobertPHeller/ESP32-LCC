@@ -22,7 +22,7 @@ project(Esp32I2CTest)
 # NOTE: C++14 would be preferred but IDF has dependencies on GNU extensions.
 ###############################################################################
 
-string(REPLACE "-std=gnu++11" "-std=gnu++14" CXX_OPTIONS "${CXX_COMPILE_OPTIONS}")
+string(REPLACE "-std=gnu++20" "-std=gnu++17" CXX_OPTIONS "${CXX_COMPILE_OPTIONS}")
 idf_build_set_property(CXX_COMPILE_OPTIONS "${CXX_OPTIONS}" REPLACE)
 
 ###############################################################################

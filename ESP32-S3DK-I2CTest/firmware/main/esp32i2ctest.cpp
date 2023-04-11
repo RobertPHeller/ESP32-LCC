@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230210.1353>
+//  Last Modified : <230411.0944>
 //
 //  Description	
 //
@@ -191,7 +191,7 @@ extern "C"
 
 void *node_reboot(void *arg)
 {
-    Singleton<esp32i2ctest::NodeRebootHelper>::instance()->reboot();
+    Singleton<reboothelpers::NodeRebootHelper>::instance()->reboot();
     return nullptr;
 }
 
@@ -216,7 +216,7 @@ ConfigUpdateListener::UpdateAction FactoryResetHelper::apply_configuration(
     AutoNotify n(done);
     LOG(VERBOSE, "[CFG] apply_configuration(%d, %d)", fd, initial_load);
     if (!initial_load &&
-        Singleton<NvsManager>::instance()->CheckPersist())
+        Singleton<nvsmanager::NvsManager>::instance()->CheckPersist())
     {
         LOG(WARNING, "[CFG] NVS has been updated requesting a restart.");
         return ConfigUpdateListener::UpdateAction::REBOOT_NEEDED;
@@ -273,12 +273,12 @@ void app_main()
     
     //GpioInit::hw_init();
     
-    esp32i2ctest::NvsManager nvs;
+    nvsmanager::NvsManager nvs;
     nvs.init(reset_reason);
     
     LOG(INFO, "[BootPauseHelper] starting...");
     
-    esp32i2ctest::BootPauseHelper pause;
+    nvsmanager::BootPauseHelper pause;
     
     pause.CheckPause();
     LOG(INFO, "[BootPauseHelper] returned...");
@@ -318,11 +318,11 @@ void app_main()
                                                    (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
                                                    nvs.hostname_prefix());
 #endif
-    esp32i2ctest::FactoryResetHelper factory_reset_helper();
+    esp32i2ctest::FactoryResetHelper factory_reset_helper;
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
-    esp32i2ctest::EventBroadcastHelper event_helper();
+    esp32i2ctest::EventBroadcastHelper event_helper;
     LOG(INFO, "[MAIN] EventBroadcastHelper allocated");
-    esp32i2ctest::HealthMonitor health_mon(stack.service());
+    healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
     
     openlcb::MultiConfiguredPC ext0_pcs(stack.node(), kPortExt0, 
@@ -389,7 +389,7 @@ void app_main()
     stack.check_version_and_factory_reset(cfg.seg().internal_config(),
                                           CDI_VERSION,
                                           cleanup_config_tree);
-    esp32i2ctest::NodeRebootHelper node_reboot_helper(&stack, config_fd);
+    reboothelpers::NodeRebootHelper node_reboot_helper(&stack, config_fd);
 
     if (reset_events)
     {

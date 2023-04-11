@@ -256,7 +256,7 @@ private:
         HASSERT(channel < NUM_CHANNELS);
         duty_[channel] = counts;
 
-#if defined(ESP32)
+#if defined(ESP32) || defined(ESP_PLATFORM)
         portENTER_CRITICAL(&mux_);
         dirty_ |= 0x1 << channel;
         portEXIT_CRITICAL(&mux_);
@@ -347,7 +347,7 @@ private:
     /// I2C address of the device
     uint8_t i2cAddress_;
     
-#if defined(ESP32)
+#if defined(ESP32) || defined(ESP_PLATFORM)
     // Port MUX
     portMUX_TYPE mux_;
 #endif

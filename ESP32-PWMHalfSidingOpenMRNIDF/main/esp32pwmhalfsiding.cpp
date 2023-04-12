@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230410.1647>
+//  Last Modified : <230412.1543>
 //
 //  Description	
 //
@@ -82,7 +82,8 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "Turnout.hxx"
 #include "Points.hxx"
 #include "OccupancyDetector.hxx"
-#include "Esp32HardwareI2C.hxx"
+#include "freertos_drivers/esp32/Esp32HardwareI2C.hxx"
+#include "freertos_drivers/arduino/PWM.hxx"
 #include "PCA9685PWM.hxx"
 #include "SignalLampTester.hxx"
 
@@ -98,7 +99,7 @@ TrackCircuit *circuits[TRACKCIRCUITCOUNT];
 
 esp32pwmhalfsiding::ConfigDef cfg(0);
 Esp32HardwareTwai twai(CONFIG_TWAI_RX_PIN, CONFIG_TWAI_TX_PIN);
-Esp32HardwareI2C i2c0(CONFIG_SDA_PIN, CONFIG_SCL_PIN, 0);
+Esp32HardwareI2C i2c("/dev/i2c");
 
 namespace openlcb
 {
@@ -147,7 +148,7 @@ namespace openlcb
 
 DEFINE_SINGLETON_INSTANCE(BlinkTimer);
 PWM* Lamp::pinlookup_[17];
-PCA9685PWM pwmchip(&i2c0);
+PCA9685PWM pwmchip;
 PCA9685PWMBit LampA0(&pwmchip,0);
 PCA9685PWMBit LampA1(&pwmchip,1);
 PCA9685PWMBit LampA2(&pwmchip,2);
@@ -389,8 +390,8 @@ void app_main()
                                              , oc1.polling()
                                              , oc2.polling()
                                          });
-    i2c0.hw_init();
-    pwmchip.init(PCA9685_SLAVE_ADDRESS);
+    i2c.hw_init(CONFIG_SDA_PIN,CONFIG_SCL_PIN,400000,I2C_NUM_0);
+    pwmchip.init("/dev/i2c/i2c0",PCA9685_SLAVE_ADDRESS);
     LOG(INFO, "[MAIN] pwmchip initialized");
     esp32pwmhalfsiding::SignalLampTester tester;
     if (test_signal_lamps)

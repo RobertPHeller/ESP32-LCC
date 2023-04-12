@@ -2,8 +2,8 @@ dependencies:
   OpenMRNIDF:
     version: idf-v5
     git: https://github.com/atanisoft/OpenMRNIDF.git
-  I2CDriver:
-    path: ../../CommonComponents/I2CDriver
+  PCA9685PWM:
+    path: ../../CommonComponents/PCA9685PWM
   NVSManager:
     path: ../../CommonComponents/NVSManager
   FS:

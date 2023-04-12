@@ -7,7 +7,7 @@ set(deps
     spiffs
     OpenMRNIDF
     Config
-    I2CDriver
+    PCA9685PWM
     GeneralIO
     Signals
     Logic
@@ -20,7 +20,6 @@ set(deps
 )
 
 idf_component_register(SRCS esp32multifunction.cpp
-                        PCA9685PWM.cpp
                        REQUIRES "${deps}")
 
 # export the project version as a define for the SNIP data, note it must be

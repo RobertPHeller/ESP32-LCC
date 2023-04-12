@@ -2,7 +2,6 @@ set(DEPS
     driver
     app_update
     OpenMRNIDF
-    MD_I2CDriver
     vfs
    )
    

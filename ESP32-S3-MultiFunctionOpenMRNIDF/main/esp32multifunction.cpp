@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230410.1418>
+//  Last Modified : <230412.1441>
 //
 //  Description	
 //
@@ -90,7 +90,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "NvsManager.hxx"
 
 #include <algorithm>
-#include <driver/i2c.h>
 #include <driver/uart.h>
 #include <esp_err.h>
 #include <esp_log.h>
@@ -130,7 +129,8 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "Button.hxx"
 #include "LED.hxx"
 #include "hardware.hxx"
-#include "Esp32HardwareI2C.hxx"
+#include "freertos_drivers/esp32/Esp32HardwareI2C.hxx"
+#include "freertos_drivers/arduino/PWM.hxx"
 #include "PCA9685PWM.hxx"
 #include "SignalLampTester.hxx"
 
@@ -146,7 +146,7 @@ TrackCircuit *circuits[TRACKCIRCUITCOUNT];
 
 esp32multifunction::ConfigDef cfg(0);
 Esp32HardwareTwai twai(CONFIG_TWAI_RX_PIN, CONFIG_TWAI_TX_PIN);
-Esp32HardwareI2C i2c0(CONFIG_SDA_PIN, CONFIG_SCL_PIN, 0);
+Esp32HardwareI2C i2c("/dev/i2c");
 
 
 namespace openlcb
@@ -217,7 +217,7 @@ void die_with(bool activity1, bool activity2, unsigned period = 1000
 
 DEFINE_SINGLETON_INSTANCE(BlinkTimer);
 PWM* Lamp::pinlookup_[17];
-PCA9685PWM pwmchip1(&i2c0);
+PCA9685PWM pwmchip1;
 PCA9685PWMBit LampA0(&pwmchip1,0);
 PCA9685PWMBit LampA1(&pwmchip1,1);
 PCA9685PWMBit LampA2(&pwmchip1,2);
@@ -589,9 +589,9 @@ void app_main()
                                                  , button4.polling()
                                              });
         LOG(INFO, "[esp32multifunction] RefreshLoop done.");
-        i2c0.hw_init();
+        i2c.hw_init(CONFIG_SDA_PIN,CONFIG_SCL_PIN,400000,I2C_NUM_0);
 
-        pwmchip1.init(PWMCHIP_ADDRESS1);
+        pwmchip1.init("/dev/i2c/i2c0",PWMCHIP_ADDRESS1);
         LOG(INFO, "[esp32multifunction] Lamps done.");
         esp32multifunction::SignalLampTester tester;
         if (test_signal_lamps)

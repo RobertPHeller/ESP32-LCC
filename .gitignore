@@ -16,6 +16,7 @@
 *.a
 *.swp
 *~
+*#
 *.tag
 *.cout
 *.cxxout

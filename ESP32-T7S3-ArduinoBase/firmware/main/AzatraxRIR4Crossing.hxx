@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 12 15:07:42 2023
-//  Last Modified : <230413.1337>
+//  Last Modified : <230414.0831>
 //
 //  Description	
 //
@@ -152,6 +152,23 @@ public:
     {
         cfg_.description().write(fd, "");
     }
+    /// Polling function
+    /// @param helper Write helper for sending event reports
+    /// @param done Notifiable to notify when this function is done.
+    ///
+    /// Splits into three versions, depending on the mode:
+    /// -# LowRes12Tracks: low resolution mode, two sensors per track 
+    /// (1 or 2 tracks, one shield, unidirectional)
+    /// @image html LowRes12Tracks.png
+    /// @image latex LowRes12Tracks.png "Low resolution mode, two sensors per track (1 or 2 tracks, one shield, unidirectional)"
+    /// -# StandardRes1Track: standard resolution mode, four sensors per track 
+    /// (1 track, one shield, bi-directional)
+    /// @image html StandardRes1Track.png
+    /// @image latex StandardRes1Track.png "Standard resolution mode, four sensors per track (1 track, one shield, bi-directional)"
+    /// -# StandardRes2Tracks: standard resolution mode, four sensors per track
+    /// (2 tracks, two shields, bi-directional)
+    /// @image html StandardRes2Tracks.png
+    /// @image latex StandardRes2Tracks.png "Standard resolution mode, four sensors per track (2 tracks, two shields, bi-directional)"
     void poll_33hz(openlcb::WriteHelper *helper, Notifiable *done) OVERRIDE
     {
         switch (mode_)

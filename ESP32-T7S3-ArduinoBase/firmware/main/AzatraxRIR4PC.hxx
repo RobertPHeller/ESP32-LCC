@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Apr 4 11:39:20 2023
-//  Last Modified : <230413.1337>
+//  Last Modified : <230414.0831>
 //
 //  Description	
 //
@@ -137,6 +137,11 @@ public:
         cfg_.description().write(fd, "");
         CDI_FACTORY_RESET(cfg_.threshold);
     }
+    /// Polling function
+    /// Polls the sensor and when it changes, send an event report.
+    /// @param helper Write helper for sending event reports.
+    /// @param done Notifiable to be notified when we are done with the 
+    /// write helper.
     void poll_33hz(openlcb::WriteHelper *helper, Notifiable *done) OVERRIDE
     {
         if (was_occupied_)
@@ -355,6 +360,10 @@ public:
     {
         cfg_.description().write(fd, "");
     }
+    /// Polling function -- checks the state of the stopwatch and sends
+    /// an event report when the state of the stopwatch changes.
+    /// @param helper Write helper for sending events,
+    /// @param done Notifiable to be notified when the helper is done with.
     void poll_33hz(openlcb::WriteHelper *helper, Notifiable *done) OVERRIDE
     {
         byte dir = rir4_->stopwatchDir(index_);
@@ -573,6 +582,11 @@ CDI_GROUP_ENTRY(stopwatches,AllStopwatches,Name("Stopwatches"),
                 Description("Azatrax RIR4 Stopwatches"));
 CDI_GROUP_END();
 
+
+/// Wrapper class for one AzatraxRIR4 shield.  Contains 4 detectors and 2
+/// stopwatches.  Allocates the detector and stopwatch instances.
+/// See @ref AzatraxDetector and @ref AzatraxStopwatch for more information
+/// about these instances.
 class AzatraxRIR4 
 {
 public:
@@ -580,6 +594,9 @@ public:
     /// @param node LCC Node object.
     /// @param cfg Configuration for this AzatraxRIR4.
     /// @param rir4 Azatrax instance
+    ///
+    /// Allocates the detector and stopwatch instances for one AzatraxRIR4 
+    /// shield.
     AzatraxRIR4(openlcb::Node *node, const AzatraxRIR4Config &cfg,
                 azatrax::Azatrax *rir4)
                 : node_(node)

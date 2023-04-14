@@ -791,22 +791,16 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = ../main ../components/Config/include \
-                         ../../CommonComponents/PCA9685PWM \
-                         ../../CommonComponents/PCA9685PWM/include \
-                         ../../CommonComponents/NVSManager \
-                         ../../CommonComponents/NVSManager/include \
-                         ../../CommonComponents/FS \
-                         ../../CommonComponents/FS/include \
-                         ../../CommonComponents/HealthMonitor \
-                         ../../CommonComponents/HealthMonitor/include \
-                         ../../CommonComponents/RebootHelpers \
-                         ../../CommonComponents/RebootHelpers/include \
-                         ../../CommonComponents/GeneralIO \
-                         ../../CommonComponents/GeneralIO/include \
-                         ../../CommonComponents/Signals \
-                         ../../CommonComponents/Signals/include \
-                         ../../CommonComponents/Logic \
-                         ../../CommonComponents/Logic/include
+                         ../../../CommonComponents/NVSManager \
+                         ../../../CommonComponents/NVSManager/include \
+                         ../../../CommonComponents/FS \
+                         ../../../CommonComponents/FS/include \
+                         ../../../CommonComponents/HealthMonitor \
+                         ../../../CommonComponents/HealthMonitor/include \
+                         ../../../CommonComponents/RebootHelpers \
+                         ../../../CommonComponents/RebootHelpers/include \
+                         ../../../CommonComponents/Azatrax \
+                         ../../../CommonComponents/Azatrax/include
     
 
 # This tag can be used to specify the character encoding of the source files
@@ -943,7 +937,7 @@ EXAMPLE_RECURSIVE      = NO
 # that contain images that are to be included in the documentation (see the
 # \image command).
 
-IMAGE_PATH             =
+IMAGE_PATH             = images
 
 # The INPUT_FILTER tag can be used to specify a program that doxygen should
 # invoke to filter for each input file. Doxygen will invoke the filter program

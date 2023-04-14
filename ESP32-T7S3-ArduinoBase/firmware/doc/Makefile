@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <230414.0817>
+#  Last Modified : <230414.0816>
 #
 #  Description	
 #
@@ -47,24 +47,18 @@ all: html latex pdf
 
 SOURCES = $(wildcard ../main/*.hxx) $(wildcard ../main/*.cpp) \
 	  $(wildcard ../components/Config/include/*.hxx) \
-	  $(wildcard ../../CommonComponents/PCA9685PWM/*.cpp) \
-          $(wildcard ../../CommonComponents/PCA9685PWM/include/*.hxx) \
-          $(wildcard ../../CommonComponents/NVSManager/*.cpp) \
-          $(wildcard ../../CommonComponents/NVSManager/include/*.hxx) \
-          $(wildcard ../../CommonComponents/FS/*.cpp) \
-          $(wildcard ../../CommonComponents/FS/include/*.hxx) \
-          $(wildcard ../../CommonComponents/HealthMonitor/*.cpp) \
-          $(wildcard ../../CommonComponents/HealthMonitor/include/*.hxx) \
-          $(wildcard ../../CommonComponents/RebootHelpers/*.cpp) \
-          $(wildcard ../../CommonComponents/RebootHelpers/include/*.hxx) \
-          $(wildcard ../../CommonComponents/GeneralIO/*.cpp) \
-          $(wildcard ../../CommonComponents/GeneralIO/include/*.hxx) \
-          $(wildcard ../../CommonComponents/Signals/*.cpp) \
-          $(wildcard ../../CommonComponents/Signals/include/*.hxx) \
-          $(wildcard ../../CommonComponents/Logic/*.cpp) \
-          $(wildcard ../../CommonComponents/Logic/include/*.hxx)
+	  $(wildcard ../../../CommonComponents/Azatrax/*.cpp) \
+          $(wildcard ../../../CommonComponents/Azatrax/include/*.hxx) \
+          $(wildcard ../../../CommonComponents/NVSManager/*.cpp) \
+          $(wildcard ../../../CommonComponents/NVSManager/include/*.hxx) \
+          $(wildcard ../../../CommonComponents/FS/*.cpp) \
+          $(wildcard ../../../CommonComponents/FS/include/*.hxx) \
+          $(wildcard ../../../CommonComponents/HealthMonitor/*.cpp) \
+          $(wildcard ../../../CommonComponents/HealthMonitor/include/*.hxx) \
+          $(wildcard ../../../CommonComponents/RebootHelpers/*.cpp) \
+          $(wildcard ../../../CommonComponents/RebootHelpers/include/*.hxx)           $(wildcard ../../CommonComponents/Logic/include/*.hxx)
 
-Doxyfile: Doxyfile.in ../../.git/index ../sdkconfig
+Doxyfile: Doxyfile.in ../../../.git/index ../sdkconfig
 	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \
 	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
 	    >$@ <$<

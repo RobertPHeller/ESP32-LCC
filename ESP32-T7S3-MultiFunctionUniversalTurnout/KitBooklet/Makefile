@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230415.1427>
+#  Last Modified : <230415.1429>
 #
 #  Description	
 #
@@ -58,14 +58,7 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	TerminationJumpers.png SM-DaughterBoard-Annotated.png \
 	SC-DaughterBoard-Annotated.png TC-DaughterBoard-Annotated.png \
 	TS-DaughterBoard-Annotated.png SM-DaughterBoard-TortoiseWiring.png \
-	ExampleSidingCP1-Wiring.png ExampleSidingCP1-ConfigNameDescr.png \
-	ExampleSidingCP1-ConfigOC1.png ExampleSidingCP1-ConfigOC2.png \
-	ExampleSidingCP1-ConfigPoints1.png \
-	ExampleSidingCP1-ConfigTurnout1.png \
-	ExampleSidingCP1-ConfigTurnout-Veto1.png \
-	ExampleSidingCP1-ConfigVetoLogic1a.png \
-	ExampleSidingCP1-ConfigVetoLogic1b.png \
-	ExampleSidingCP1-ConfigVetoLogic1c.png \
+	ExampleSidingCP1-Wiring.png  \
 	YardThroat_TrackSelector.png
 	
 	

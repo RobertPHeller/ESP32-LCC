@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230307.1145>
+#  Last Modified : <230415.1039>
 #
 #  Description	
 #
@@ -48,7 +48,9 @@ BIBTEX=/usr/bin/bibtex
 MAKEINDEX=/usr/bin/makeindex
 GS=/usr/bin/gs
 
-TEXS=ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.tex
+TEXS=ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.tex Assembly.tex \
+	Downloadables.tex GeneralWiring.tex ApplNote_Siding.tex \
+	ApplNote_YardThroat.tex ApplNote_Crossing.tex ApplNote_ABS.tex
 
 FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	SC-DaughterBoard.png TS-DaughterBoard.png SM-DaughterBoard.png \

@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:33:56 2023
-%  Last Modified : <230415.1033>
+%  Last Modified : <230415.1055>
 %
 %  Description 
 %
@@ -208,7 +208,20 @@ Rule 2's Name will be 21-Approach, its speed Approach, and its Appearence will
 be Lamp 1: B1. Rule 3's Name will be 29-Clear, its speed Clear/Procede, and 
 its Appearence will be Lamp 1: B2.
 
+Finally, we will create a virtual mast for West Main using Mast 7.  This will 
+be set up much like we did for block identified as East Main, using Mast 7 and 
+Circuit 7.  We can either use one of the unused occupancy detectors for this 
+block, but more likely, there will be another occupancy detector for that 
+block.
 
+Next we will set up the logic for signals CP1E (Mast 2) and CP1S (Mast 3).  
+These will each use three logic elements and will be very similar to the CP1W 
+signal, but only using three logics since there are only three aspects for 
+these signals.  The only special issue is the logic of the point position: 
+CP1S displays Stop when the points are ``normal'' and CP1E displays Stop when 
+the points are ``reversed'', and the Stop logic is ORed with the OS being 
+occupied. Otherwise Approach with the virtual signal at Mast 7 is Stop, and 
+Clear othersize.
 
 
 

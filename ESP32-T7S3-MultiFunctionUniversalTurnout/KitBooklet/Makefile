@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230415.1039>
+#  Last Modified : <230415.1427>
 #
 #  Description	
 #
@@ -65,7 +65,8 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	ExampleSidingCP1-ConfigTurnout-Veto1.png \
 	ExampleSidingCP1-ConfigVetoLogic1a.png \
 	ExampleSidingCP1-ConfigVetoLogic1b.png \
-	ExampleSidingCP1-ConfigVetoLogic1c.png
+	ExampleSidingCP1-ConfigVetoLogic1c.png \
+	YardThroat_TrackSelector.png
 	
 	
 

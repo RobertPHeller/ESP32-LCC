@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230415.1429>
+#  Last Modified : <230416.1354>
 #
 #  Description	
 #
@@ -48,6 +48,8 @@ BIBTEX=/usr/bin/bibtex
 MAKEINDEX=/usr/bin/makeindex
 GS=/usr/bin/gs
 
+all: ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf
+
 TEXS=ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.tex Assembly.tex \
 	Downloadables.tex GeneralWiring.tex ApplNote_Siding.tex \
 	ApplNote_YardThroat.tex ApplNote_Crossing.tex ApplNote_ABS.tex
@@ -59,8 +61,12 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	SC-DaughterBoard-Annotated.png TC-DaughterBoard-Annotated.png \
 	TS-DaughterBoard-Annotated.png SM-DaughterBoard-TortoiseWiring.png \
 	ExampleSidingCP1-Wiring.png  \
-	YardThroat_TrackSelector.png
+	YardThroat_TrackSelector.png YardThroat_YardSelect.pdf
 	
+
+YardThroat_YardSelect.pdf: YardThroat_YardSelect.gv
+	dot -Efontsize=6 -O -Tpdf YardThroat_YardSelect.gv 
+	mv YardThroat_YardSelect.gv.pdf YardThroat_YardSelect.pdf
 	
 
 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)

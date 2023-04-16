@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230416.1354>
+#  Last Modified : <230416.1619>
 #
 #  Description	
 #
@@ -65,7 +65,7 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	
 
 YardThroat_YardSelect.pdf: YardThroat_YardSelect.gv
-	dot -Efontsize=6 -O -Tpdf YardThroat_YardSelect.gv 
+	dot -O -Tpdf YardThroat_YardSelect.gv 
 	mv YardThroat_YardSelect.gv.pdf YardThroat_YardSelect.pdf
 	
 

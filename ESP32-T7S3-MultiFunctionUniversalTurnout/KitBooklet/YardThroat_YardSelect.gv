@@ -1,74 +1,81 @@
 digraph G {
+    bgcolor="gray";
     rankdir=LR;
+    /*nodesep=0.5;*/
     node [shape=Mrecord, style="filled"];
-    button1 [fillcolor="yellow", label ="(Button1) Track 1|<on> Pushed|<off> Released"];
-    button2 [fillcolor="yellow", label ="(Button2) Track 2|<on> Pushed|<off> Released"];
-    button3 [fillcolor="yellow", label ="(Button3) Track 3|<on> Pushed|<off> Released"];
-    button4 [fillcolor="yellow", label ="(Button4) Main Track 1|<on> Pushed|<off> Released"];
+    /* Button Input Nodes */
+    button1 [fontsize="10", fillcolor="yellow", label ="(Button1) Track 1|<on> Pushed|<off> Released"];
+    button2 [fontsize="10", fillcolor="yellow", label ="(Button2) Track 2|<on> Pushed|<off> Released"];
+    button3 [fontsize="10", fillcolor="yellow", label ="(Button3) Track 3|<on> Pushed|<off> Released"];
+    button4 [fontsize="10", fillcolor="yellow", label ="(Button4) Main Track 1|<on> Pushed|<off> Released"];
     
-    Logic1 [fillcolor="cyan", label ="(Logic1) Track 1|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1|<A2> Action 2|<else> Else"];
-    Logic2 [fillcolor="cyan", label ="(Logic2) Track 2|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1|<A2> Action 2|<else> Else"];
-    Logic3 [fillcolor="cyan", label ="(Logic3) Track 3|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1|<A2> Action 2|<else> Else"];
-    Logic4 [fillcolor="cyan", label ="(Logic4) Track 4|True|<A1> Action 1|<A2> Action 2"];
+    /* Yard track selection logic nodes (cascading if/else tree) */
+    Logic1 [fontsize="10", fillcolor="cyan", label ="(Logic1) Track 1|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1|<A2> Action 2|<else> Else"];
+    Logic2 [fontsize="10", fillcolor="cyan", label ="(Logic2) Track 2|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1|<A2> Action 2|<else> Else"];
+    Logic3 [fontsize="10", fillcolor="cyan", label ="(Logic3) Track 3|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1|<A2> Action 2|<else> Else"];
+    Logic4 [fontsize="10", fillcolor="cyan", label ="(Logic4) Track 4|True|<A1> Action 1|<A2> Action 2"];
 
-
-    Logic5 [fillcolor="cyan", label ="(Logic5) Main Track 1 Odd|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
-    Logic6 [fillcolor="cyan", label ="(Logic6) Main Track 2 Even|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
-    Logic7 [fillcolor="cyan", label ="(Logic7) Main Track 1 Even|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
-    Logic8 [fillcolor="cyan", label ="(Logic8) Main Track 2 Odd|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
+    /* Throat Crossover logic nodes (single logic elements) */
+    Logic5 [fontsize="10", fillcolor="cyan", label ="(Logic5) Main Track 1 Odd|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
+    Logic6 [fontsize="10", fillcolor="cyan", label ="(Logic6) Main Track 2 Even|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
+    Logic7 [fontsize="10", fillcolor="cyan", label ="(Logic7) Main Track 1 Even|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
+    Logic8 [fontsize="10", fillcolor="cyan", label ="(Logic8) Main Track 2 Odd|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1"];
     
-    Turnout1 [fillcolor="green", label ="(Turnout1) Throat Crossover|<normal> Normal|<reversed> Reversed"];
-    Turnout2 [fillcolor="green", label ="(Turnout2) Tracks 2-4|<normal> Normal|<reversed> Reversed"];
-    Turnout3 [fillcolor="green", label ="(Turnout3) Tracks 1-3|<normal> Normal|<reversed> Reversed"];
+    /* Turnout motors */
+    Turnout1 [fontsize="10", fillcolor="green", label ="(Turnout1) Throat Crossover|<normal> Normal|<reversed> Reversed"];
+    Turnout2 [fontsize="10", fillcolor="green", label ="(Turnout2) Tracks 2-4|<normal> Normal|<reversed> Reversed"];
+    Turnout3 [fontsize="10", fillcolor="green", label ="(Turnout3) Tracks 1-3|<normal> Normal|<reversed> Reversed"];
     
-    button1:on -> Logic1:V1True;
-    button1:off -> Logic1:V1False;
+    /* Yard selection logic */
+    button1:on -> Logic1:V1True [color="yellow"];
+    button1:off -> Logic1:V1False [color="brown"];
     Logic1:else -> Logic2;
-    button2:on -> Logic2:V1True;
-    button2:off -> Logic2:V1False;
+    button2:on -> Logic2:V1True [color="yellow"];
+    button2:off -> Logic2:V1False [color="brown"];
     Logic2:else -> Logic3;
-    button3:on -> Logic3:V1True;
-    button3:off -> Logic3:V1False;
+    button3:on -> Logic3:V1True [color="yellow"];
+    button3:off -> Logic3:V1False [color="brown"];
     Logic3:else -> Logic4;
     
-    Logic1:A1 -> Turnout3:normal;
-    Logic2:A1 -> Turnout2:normal;
-    Logic3:A1 -> Turnout3:reversed;
-    Logic4:A1 -> Turnout2:reversed;
+    Logic1:A1 -> Turnout3:normal [color="green"];
+    Logic2:A1 -> Turnout2:normal [color="green"];
+    Logic3:A1 -> Turnout3:reversed [color="green"];
+    Logic4:A1 -> Turnout2:reversed [color="green"];
     
-    button4:on -> Logic5:V1True;
-    button4:on -> Logic7:V1True;
-    button4:on -> Logic6:V1False;
-    button4:on -> Logic8:V1False;
+    /* Throat Crossover logic */
+    button4:on -> Logic5:V1True [color="yellow"];
+    button4:on -> Logic7:V1True [color="yellow"];
+    button4:on -> Logic6:V1False [color="yellow"];
+    button4:on -> Logic8:V1False [color="yellow"];
     
-    button4:off -> Logic5:V1False;
-    button4:off -> Logic7:V1False;
-    button4:off -> Logic6:V1True;
-    button4:off -> Logic8:V1True;
+    button4:off -> Logic5:V1False [color="brown"];
+    button4:off -> Logic7:V1False [color="brown"];
+    button4:off -> Logic6:V1True [color="brown"];
+    button4:off -> Logic8:V1True [color="brown"];
     
-    Logic1:A2 -> Logic5:V2True;
-    Logic2:A2 -> Logic5:V2False;
-    Logic3:A2 -> Logic5:V2True;
-    Logic4:A2 -> Logic5:V2False;
+    Logic1:A2 -> Logic5:V2True [color="orange"];
+    Logic2:A2 -> Logic5:V2False [color="violet"];
+    Logic3:A2 -> Logic5:V2True [color="orange"];
+    Logic4:A2 -> Logic5:V2False [color="violet"];
     
-    Logic1:A2 -> Logic6:V2False;
-    Logic2:A2 -> Logic6:V2True;
-    Logic3:A2 -> Logic6:V2False;
-    Logic4:A2 -> Logic6:V2True;
+    Logic1:A2 -> Logic6:V2False [color="orange"];
+    Logic2:A2 -> Logic6:V2True [color="violet"];
+    Logic3:A2 -> Logic6:V2False [color="orange"];
+    Logic4:A2 -> Logic6:V2True [color="violet"];
     
-    Logic1:A2 -> Logic7:V2False;
-    Logic2:A2 -> Logic7:V2True;
-    Logic3:A2 -> Logic7:V2False;
-    Logic4:A2 -> Logic7:V2True;
+    Logic1:A2 -> Logic7:V2False [color="orange"];
+    Logic2:A2 -> Logic7:V2True [color="violet"];
+    Logic3:A2 -> Logic7:V2False [color="orange"];
+    Logic4:A2 -> Logic7:V2True [color="violet"];
     
-    Logic1:A2 -> Logic8:V2True;
-    Logic2:A2 -> Logic8:V2False;
-    Logic3:A2 -> Logic8:V2True;
-    Logic4:A2 -> Logic8:V2False;
+    Logic1:A2 -> Logic8:V2True [color="orange"];
+    Logic2:A2 -> Logic8:V2False [color="violet"];
+    Logic3:A2 -> Logic8:V2True [color="orange"];
+    Logic4:A2 -> Logic8:V2False [color="violet"];
     
-    Logic5:A1 -> Turnout1:normal;
-    Logic6:A1 -> Turnout1:normal;
-    Logic7:A1 -> Turnout1:reversed;
-    Logic8:A1 -> Turnout1:reversed;
+    Logic5:A1 -> Turnout1:normal [color="green"];
+    Logic6:A1 -> Turnout1:normal [color="green"];
+    Logic7:A1 -> Turnout1:reversed [color="green"];
+    Logic8:A1 -> Turnout1:reversed [color="green"];
     
 }

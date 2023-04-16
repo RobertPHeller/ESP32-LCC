@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:37:45 2023
-%  Last Modified : <230416.1413>
+%  Last Modified : <230416.1652>
 %
 %  Description 
 %
@@ -172,13 +172,42 @@ and the V2 false of ``Main Track 1 Odd'' and ``Main Track 2 Odd''.
 
 \begin{figure}[hbpt]\begin{centering}%
 \includegraphics[width=5in]{YardThroat_YardSelect.pdf}
-\caption{Yard Throat Selection Event Id graph. Color Key: Button Inputs in yellow, Logic elements in cyan, and Turnouts in green.}
+\caption{Yard Throat Selection Event Id graph.}
 \label{fig:YardThroatYardSelect}
 \end{centering}\end{figure}
+\begin{table}[hbpt]\begin{centering}%
+\begin{tabular}{|l|l|p{2in}|}
+\hline
+Color&Object&What it is\\
+\hline
+Yellow&Node&Button Inputs\\
+\hline
+Cyan&Node&Logic Elements\\
+\hline
+Green&Node&Turnout Outputs\\
+\hline 
+Yellow&Edge&Button Push Events\\
+\hline
+Brown&Edge&Button Release Events\\
+\hline
+Green&Edge&Turnout Operating Events\\
+\hline
+Black&Edge&Logic Fallthroughs (Elses)\\
+\hline
+Orange&Edge&Odd Yard Tracks (1 and 3)\\
+\hline
+Violet&Edge&Even Yard Tracks (2 and 4)\\
+\hline
+\end{tabular}
+\caption{Graph color key}
+\label{tab:YardThroatYardSelect}
+\end{centering}\end{table}
 
-A graph of the Yard Throat Selection Event Id ``flow'' is shown in 
-Figure~\ref{fig:YardThroatYardSelect}.  This may look a but intimidating, but 
-each ``edge'' (line with an arrow) represents a producer / consumer.  When 
-multiple edges land at a given spot, the edges all represent the \textit{same} 
-event id.  It is easiest to copy the destination (consumer) Event ID to each 
-of the various producers. 
+A graph of the Yard Throat Selection Event Id ``flow'' is shown in
+Figure~\ref{fig:YardThroatYardSelect}, with its color coding shown in
+Table~\ref{tab:YardThroatYardSelect}. This may look a but intimidating, but
+each ``edge'' (line with an arrow) represents a producer / consumer. When
+multiple edges land at a given spot, the edges all represent the \textit{same}
+event id. It is easiest to copy the destination (consumer) Event ID to each of
+the various producers. 
+

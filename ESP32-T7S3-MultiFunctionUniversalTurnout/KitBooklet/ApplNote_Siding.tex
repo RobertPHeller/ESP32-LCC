@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:33:56 2023
-%  Last Modified : <230415.1055>
+%  Last Modified : <230418.1420>
 %
 %  Description 
 %
@@ -69,7 +69,7 @@ Main) and create a Block layout control. Similarly for OC2 (CP1 OS).
 
 Similarly we configure the Turnout and Points, filling their names and
 creating layout control elements for them, along with the veto control
-element. The layout coltrol elements (or various JMRI table elements). 
+element. The layout control elements (or various JMRI table elements). 
 
 Next we set up the logic for the Veto. We want to enable the turnout veto in
 two cases: dispatcher locking or OS occupancy, so we need one logic element
@@ -223,6 +223,11 @@ the points are ``reversed'', and the Stop logic is ORed with the OS being
 occupied. Otherwise Approach with the virtual signal at Mast 7 is Stop, and 
 Clear othersize.
 
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{ExampleSidingCP1_EventFlow.pdf}
+\caption{Example Siding CP1  Event Id graph.}
+\label{fig:ExampleSidingCP1EventFlow}
+\end{centering}\end{figure}
 
 
 

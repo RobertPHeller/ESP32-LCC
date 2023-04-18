@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230416.1619>
+#  Last Modified : <230418.1411>
 #
 #  Description	
 #
@@ -61,13 +61,16 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	SC-DaughterBoard-Annotated.png TC-DaughterBoard-Annotated.png \
 	TS-DaughterBoard-Annotated.png SM-DaughterBoard-TortoiseWiring.png \
 	ExampleSidingCP1-Wiring.png  \
+	ExampleSidingCP1_EventFlow.pdf \
 	YardThroat_TrackSelector.png YardThroat_YardSelect.pdf
 	
-
-YardThroat_YardSelect.pdf: YardThroat_YardSelect.gv
-	dot -O -Tpdf YardThroat_YardSelect.gv 
-	mv YardThroat_YardSelect.gv.pdf YardThroat_YardSelect.pdf
+%.pdf: %.gv
+	dot -O -Tpdf $<
+	mv $<.pdf $@
 	
+YardThroat_YardSelect.pdf: YardThroat_YardSelect.gv
+	
+ExampleSidingCP1_EventFlow.pdf: ExampleSidingCP1_EventFlow.gv
 
 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)
 	for f in $(TEXS) $(FIGURES);  do \

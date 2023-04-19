@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230418.1411>
+#  Last Modified : <230419.1422>
 #
 #  Description	
 #
@@ -64,18 +64,15 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	ExampleSidingCP1_EventFlow.pdf \
 	YardThroat_TrackSelector.png YardThroat_YardSelect.pdf
 	
-%.pdf: %.gv
+%.pdf:%.gv
 	dot -O -Tpdf $<
 	mv $<.pdf $@
 	
 YardThroat_YardSelect.pdf: YardThroat_YardSelect.gv
-	
+
 ExampleSidingCP1_EventFlow.pdf: ExampleSidingCP1_EventFlow.gv
 
 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)
-	for f in $(TEXS) $(FIGURES);  do \
-	  if test -f "`basename $$f`"; then continue; else ln -s $$f ./; fi; \
-	done
 	$(LATEX) ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet
 	-$(BIBTEX) ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet
 	$(LATEX) ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet

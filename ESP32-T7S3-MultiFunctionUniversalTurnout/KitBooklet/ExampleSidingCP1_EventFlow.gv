@@ -1,115 +1,135 @@
-digraph G {
+digraph ExampleSidingCP1_EventFlow {
+    label="Example Siding CP1 Event Flow";
     bgcolor="gray";
     rankdir=LR;
     /*nodesep=0.5;*/
     node [shape=Mrecord, style="filled"];
-    /* Occupancy Detectors */
-    OC1 [fontsize="10", fillcolor="orange", 
-        label ="(OccupancyDetector1) East Main|<occupied> Occupied|<clear> Clear"];
-    OC2 [fontsize="10", fillcolor="orange", 
-        label ="(OccupancyDetector2) CP1 OS|<occupied> Occupied|<clear> Clear"];
-    /* Turnout motors */
-    Turnout1 [fontsize="10", fillcolor="blue", fontcolor="white",
-        label ="(Turnout1) CP1|<normal> Normal|<reversed> Reversed|<veto> Veto on|<enable> Veto Off"];
-    /* Turnout Points */
-    Points1 [fontsize="10", fillcolor="LightSeaGreen", 
-        label ="(Points1) CP1|<normal> Normal|<reversed> Reversed"];
+    subgraph clusterSensorsAndControls {
+        label="Layout Sensors And Controls";
+        /* Occupancy Detectors */
+        OC1 [fontsize="10", fillcolor="orange", 
+            label ="(OccupancyDetector1) East Main|<occupied> Occupied|<clear> Clear"];
+        OC2 [fontsize="10", fillcolor="orange", 
+            label ="(OccupancyDetector2) CP1 OS|<occupied> Occupied|<clear> Clear"];
+        /* Turnout motors */
+        Turnout1 [fontsize="10", fillcolor="blue", fontcolor="white",
+            label ="(Turnout1) CP1|<normal> Normal|<reversed> Reversed|<veto> Veto on|<enable> Veto Off"];
+        /* Turnout Points */
+        Points1 [fontsize="10", fillcolor="LightSeaGreen", 
+            label ="(Points1) CP1|<normal> Normal|<reversed> Reversed"];
+    }
     /* Facia Panel */
-    /* Buttons */
-    button1 [fontsize="10", fillcolor="green", label ="(Button1) Normal|<on> Pushed|<off> Released"];
-    button2 [fontsize="10", fillcolor="red", label ="(Button2) Reverse|<on> Pushed|<off> Released"];
-    /* LEDs */
-    led1 [fontsize="10", fillcolor="green", label ="(Led1) Normal|<on> On|<off> Off"];
-    led2 [fontsize="10", fillcolor="red",   label ="(Led2) Reversed|<on> On|<off> Off"];
-    button1:on -> Turnout1:normal   [color="green"];
-    button2:on -> Turnout1:reversed [color="red"];
-    Points1:normal -> led1:on [color="green"];
-    Points1:normal -> led2:off [color="green"];
-    Points1:reversed -> led1:off [color="red"];
-    Points1:reversed -> led2:on [color="red"];
-
+    subgraph clusterFaciaPanel {
+        label="Facia Panel";
+        /* Buttons */   
+        button1 [fontsize="10", fillcolor="green", label ="(Button1) Normal|<on> Pushed|<off> Released"];
+        button2 [fontsize="10", fillcolor="red", label ="(Button2) Reverse|<on> Pushed|<off> Released"];
+        /* LEDs */
+        led1 [fontsize="10", fillcolor="green", label ="(Led1) Normal|<on> On|<off> Off"];
+        led2 [fontsize="10", fillcolor="red",   label ="(Led2) Reversed|<on> On|<off> Off"];
+        button1:on -> Turnout1:normal   [color="green"];
+        button2:on -> Turnout1:reversed [color="red"];
+        Points1:normal -> led1:on [color="green"];
+        Points1:normal -> led2:off [color="green"];
+        Points1:reversed -> led1:off [color="red"];
+        Points1:reversed -> led2:on [color="red"];
+    }
     /* Veto Logic */
-    Logic1 [fontsize="10", fillcolor="cyan", 
-           label ="(Logic1) Veto On|Single (Last)|V1 OR V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Send Immediately on True)|<A2> Action 2 (Send Immediately on False)"];    
-    OC2:occupied -> Logic1:V2True   [color="orange"];
-    OC2:clear    -> Logic1:V2False  [color="orange"];
-    Logic1:A1    -> Turnout1:veto   [color="cyan"];
-    Logic1:A2    -> Turnout1:enable [color="cyan"];
+    subgraph clusterVetoLogic {
+        label="Veto Logic";
+        Logic1 [fontsize="10", fillcolor="cyan", 
+               label ="(Logic1) Veto On|Single (Last)|V1 OR V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Send Immediately on True)|<A2> Action 2 (Send Immediately on False)"];    
+        OC2:occupied -> Logic1:V2True   [color="orange"];
+        OC2:clear    -> Logic1:V2False  [color="orange"];
+        Logic1:A1    -> Turnout1:veto   [color="cyan"];
+        Logic1:A2    -> Turnout1:enable [color="cyan"];
     
+        CTCPanel [fontsize="10",
+            label ="CTC (Dispatcher) Panel|<lock> Remote Lock|<unlock> Remote Enable"];
+        CTCPanel:lock -> Logic1:V1True;
+        CTCPanel:unlock -> Logic1:V1False;
+    }
     /* Signal Masts */
     
     /* CP1W: (Mast 1) 3 over 2 at CP1 points end (West Main) */
-    Mast1 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-        label ="(Mast1) CP1W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|{A0|A3}}|{<R2>Rule 2|27-Approach-Limited|Limited|{A1|A2}}|{<R3>Rule 3|21-Approach|Approach|{A0|A3}}|{<R4>Rule 4|29-Clear|Clear/Procede|{A0|A4}}"];
-    /* CP1W Signal Logic */
-    Logic4 [fontsize="10", fillcolor="cyan",
-        label ="(Logic4) CP1W Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
-    OC2:occupied -> Logic4:V1True [color="orange"];
-    OC2:clear    -> Logic4:V1False [color="orange"];
-    Logic4:A1 -> Mast1:R1 [color="cyan"];
+    subgraph clusterCP1W {
+        label="CP1W: 3 over 2 at CP1 points end (West Main)";
+        Mast1 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast1) CP1W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|{A0|A3}}|{<R2>Rule 2|27-Approach-Limited|Limited|{A1|A2}}|{<R3>Rule 3|21-Approach|Approach|{A0|A3}}|{<R4>Rule 4|29-Clear|Clear/Procede|{A0|A4}}"];
+        /* CP1W Signal Logic */
+        Logic4 [fontsize="10", fillcolor="cyan",
+            label ="(Logic4) CP1W Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC2:occupied -> Logic4:V1True [color="orange"];
+        OC2:clear    -> Logic4:V1False [color="orange"];
+        Logic4:A1 -> Mast1:R1 [color="cyan"];
 
-    Logic5 [fontsize="10", fillcolor="cyan",
-        label ="(Logic5) CP1W Approach Limited|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
-    Logic4:else -> Logic5;
-    Points1:reversed -> Logic5:V1True [color="LightSeaGreen"];
-    Points1:normal   -> Logic5:V1False [color="LightSeaGreen"];
-    Logic5:A1 -> Mast1:R2 [color="cyan"];
+        Logic5 [fontsize="10", fillcolor="cyan",
+            label ="(Logic5) CP1W Approach Limited|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        Logic4:else -> Logic5;
+        Points1:reversed -> Logic5:V1True [color="LightSeaGreen"];
+        Points1:normal   -> Logic5:V1False [color="LightSeaGreen"];
+        Logic5:A1 -> Mast1:R2 [color="cyan"];
 
-    Logic6 [fontsize="10", fillcolor="cyan", 
-         label ="(Logic6) CP1W Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
-    Logic5:else -> Logic6;
-    Mast8:circuit -> Logic6:V1Circuit [color="RoyalBlue"];
-    Logic6:A1 -> Mast1:R3 [color="cyan"];
+        Logic6 [fontsize="10", fillcolor="cyan", 
+            label ="(Logic6) CP1W Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Logic5:else -> Logic6;
+        Mast8:circuit -> Logic6:V1Circuit [color="RoyalBlue"];
+        Logic6:A1 -> Mast1:R3 [color="cyan"];
 
-    Logic7 [fontsize="10", fillcolor="cyan", 
-        label ="(Logic7) CP1W Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
-    Logic7:A1 -> Mast1:R4 [color="cyan"];
-    Logic6:else -> Logic7    
-
+        Logic7 [fontsize="10", fillcolor="cyan", 
+            label ="(Logic7) CP1W Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic7:A1 -> Mast1:R4 [color="cyan"];
+        Logic6:else -> Logic7    
+    }
+    
     /* CP1E (Mast 2) Frog end, normal (East Main) */
-    Mast2 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-        label ="(Mast2) CP1E|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B3}|{<R2>Rule 2|21-Approach|Approach|B4}|{<R3>Rule 3|29-Clear|Clear/Procede|B5}"];
-    Logic10 [fontsize="10", fillcolor="cyan",
-        label ="(Logic10) CP1E Stop|Group|V1 or V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediate If True)|<else> Else"];
-    OC2:occupied -> Logic10:V1True [color="orange"];
-    OC2:clear    -> Logic10:V1False [color="orange"];
-    Points1:normal -> Logic10:V2False [color="LightSeaGreen"];
-    Points1:reversed -> Logic10:V2True [color="LightSeaGreen"];
-    Logic10:A1 -> Mast2:R1 [color="cyan"];
-    
-    Logic11 [fontsize="10", fillcolor="cyan",
-        label ="(Logic11) CP1E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
-    Logic10:else -> Logic11;
-    Mast7:circuit -> Logic11:V1Circuit [color="RoyalBlue"];
-    Logic11:A1 -> Mast2:R2 [color="cyan"];
-    
-    Logic12 [fontsize="10", fillcolor="cyan",
-        label ="(Logic12) CP1E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
-    Logic12:A1 -> Mast2:R3 [color="cyan"];
-    Logic11:else -> Logic12;
-
+    subgraph clusterCP1E {
+        label="CP1E Frog end, normal (East Main)";
+        Mast2 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast2) CP1E|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B3}|{<R2>Rule 2|21-Approach|Approach|B4}|{<R3>Rule 3|29-Clear|Clear/Procede|B5}"];
+        Logic10 [fontsize="10", fillcolor="cyan",
+            label ="(Logic10) CP1E Stop|Group|V1 or V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC2:occupied -> Logic10:V1True [color="orange"];
+        OC2:clear    -> Logic10:V1False [color="orange"];
+        Points1:normal -> Logic10:V2False [color="LightSeaGreen"];
+        Points1:reversed -> Logic10:V2True [color="LightSeaGreen"];
+        Logic10:A1 -> Mast2:R1 [color="cyan"];
+        
+        Logic11 [fontsize="10", fillcolor="cyan",
+            label ="(Logic11) CP1E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Logic10:else -> Logic11;
+        Mast7:circuit -> Logic11:V1Circuit [color="RoyalBlue"];
+        Logic11:A1 -> Mast2:R2 [color="cyan"];
+        
+        Logic12 [fontsize="10", fillcolor="cyan",
+            label ="(Logic12) CP1E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic12:A1 -> Mast2:R3 [color="cyan"];
+        Logic11:else -> Logic12;
+    }
     /* CP1S (Mast 3) Frog end, reversed (Siding) */
-    Mast3 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-        label ="(Mast3) CP1S|<circuit>Track Circuit 3|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B0}|{<R2>Rule 2|21-Approach|Approach|B1}|{<R3>Rule 3|29-Clear|Clear/Procede|B2}"];
-    Logic16 [fontsize="10", fillcolor="cyan",
-        label ="(Logic16) CP1E Stop|Group|V1 or V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediate If True)|<else> Else"];
-    OC2:occupied -> Logic16:V1True [color="orange"];
-    OC2:clear    -> Logic16:V1False [color="orange"];
-    Points1:reversed -> Logic16:V2False [color="LightSeaGreen"];
-    Points1:normal -> Logic16:V2True [color="LightSeaGreen"];
-    Logic16:A1 -> Mast3:R1 [color="cyan"];
-    
-    Logic17 [fontsize="10", fillcolor="cyan",
-        label ="(Logic17) CP1E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
-    Logic16:else -> Logic17;
-    Mast7:circuit -> Logic17:V1Circuit [color="RoyalBlue"];
-    Logic17:A1 -> Mast3:R2 [color="cyan"];
-    
-    Logic18 [fontsize="10", fillcolor="cyan",
-        label ="(Logic18) CP1E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
-    Logic18:A1 -> Mast3:R3 [color="cyan"];
-    Logic17:else -> Logic18;
-
+    subgraph clusterCP1S {
+        label="CP1S Frog end, reversed (Siding)";
+        Mast3 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast3) CP1S|<circuit>Track Circuit 3|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B0}|{<R2>Rule 2|21-Approach|Approach|B1}|{<R3>Rule 3|29-Clear|Clear/Procede|B2}"];
+        Logic16 [fontsize="10", fillcolor="cyan",
+            label ="(Logic16) CP1E Stop|Group|V1 or V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC2:occupied -> Logic16:V1True [color="orange"];
+        OC2:clear    -> Logic16:V1False [color="orange"];
+        Points1:reversed -> Logic16:V2False [color="LightSeaGreen"];
+        Points1:normal -> Logic16:V2True [color="LightSeaGreen"];
+        Logic16:A1 -> Mast3:R1 [color="cyan"];
+        
+        Logic17 [fontsize="10", fillcolor="cyan",
+            label ="(Logic17) CP1E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Logic16:else -> Logic17;
+        Mast7:circuit -> Logic17:V1Circuit [color="RoyalBlue"];
+        Logic17:A1 -> Mast3:R2 [color="cyan"];
+        
+        Logic18 [fontsize="10", fillcolor="cyan",
+            label ="(Logic18) CP1E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic18:A1 -> Mast3:R3 [color="cyan"];
+        Logic17:else -> Logic18;
+    }
 
     /* West Main Virtual Mast */
     Mast7 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
@@ -125,8 +145,4 @@ digraph G {
     WestNode:occupied -> Mast7:R1 [color="orange"];
     WestNode:clear    -> Mast7:R2 [color="orange"];
     
-    CTCPanel [fontsize="10",
-        label ="CTC (Dispatcher) Panel|<lock> Remote Lock|<unlock> Remote Enable"];
-    CTCPanel:lock -> Logic1:V1True;
-    CTCPanel:unlock -> Logic1:V1False;
 }

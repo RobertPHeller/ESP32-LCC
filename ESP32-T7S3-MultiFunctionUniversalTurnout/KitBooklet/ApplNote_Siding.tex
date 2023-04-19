@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:33:56 2023
-%  Last Modified : <230418.1420>
+%  Last Modified : <230419.1529>
 %
 %  Description 
 %
@@ -228,7 +228,55 @@ Clear othersize.
 \caption{Example Siding CP1  Event Id graph.}
 \label{fig:ExampleSidingCP1EventFlow}
 \end{centering}\end{figure}
+\begin{table}[hbpt]\begin{centering}%
+\begin{tabular}{|l|l|p{2in}|}
+\hline
+Color&Object&What it is\\
+\hline
+Orange&Node&Occupancy Detectors\\
+\hline
+Green&Node&Siding normal button and LED\\
+\hline
+Red&Node&Siding reversed button and LED\\
+\hline
+Cyan&Node&Logic Elements\\
+\hline
+Blue&Node&Turnout Outputs\\
+\hline
+LightSeaGreen&Node&Point Sense Inputs\\
+\hline
+RoyalBlue&Node&Masts\\
+\hline 
+Green&Edge&Button and LED normal Events\\
+\hline
+Red&Edge&Button and LED reverse Events\\
+\hline
+Brown&Edge&Button Release Events\\
+\hline
+Green&Edge&Turnout Operating Events\\
+\hline
+Black&Edge&Logic Fallthroughs (Elses)\\
+\hline
+Orange&Edge&Odd Yard Tracks (1 and 3)\\
+\hline
+Violet&Edge&Even Yard Tracks (2 and 4)\\
+\hline
+Cyan&Edge&Mast Rule Selection\\
+\hline
+LightSeaGreen&Edge&Point Sense events\\
+\hline
+\end{tabular}
+\caption{Graph color key}
+\label{tab:ExampleSidingCP1EventFlow}
+\end{centering}\end{table}
 
+A graph of the Example (CP1) siding Event Id ``flow'' is shown in 
+Figure~\ref{fig:ExampleSidingCP1EventFlow}, with its color coding shown in 
+Table~\ref{tab:ExampleSidingCP1EventFlow}. This may look a but intimidating, 
+but each ``edge'' (line with an arrow) represents a producer / consumer. When 
+multiple edges land at a given spot, the edges all represent the \textit{same} 
+event id. It is easiest to copy the destination (consumer) Event ID to each of 
+the various producers.
 
 
 \clearpage

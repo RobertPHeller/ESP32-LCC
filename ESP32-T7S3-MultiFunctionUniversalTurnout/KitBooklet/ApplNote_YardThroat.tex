@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:37:45 2023
-%  Last Modified : <230419.1532>
+%  Last Modified : <230421.1221>
 %
 %  Description 
 %
@@ -169,6 +169,26 @@ and the V2 false of ``Main Track 1 Even'' and ``Main Track 2 Even''.
 and Track 4 and the V2 true of ``Main Track 1 Even'' and ``Main Track 2 Even'' 
 and the V2 false of ``Main Track 1 Odd'' and ``Main Track 2 Odd''.
 \end{itemize}
+
+Finally, we set up the signals.  Each signal is a 3 over 3 signal, with these 
+aspects:
+
+\begin{itemize}
+\item Stop (Red over Red). Absolute stop, this main is not selected for 
+travel.
+\item Slow-Limited (Red over Yellow). Slow, crossover and divergent route 
+beyond: either main track 1 to yard track 4 or main track 2 to yard track 3.
+\item Slow-Medium (Red over Green). Slow, crossover and non-divergent route 
+beyond: either main track 1 to yard track 2 or main track 2 to yard track 1.
+\item Slow (Yellow over Red). Slow, straight through crossover and 
+divergent route beyond: either main track 1 to yard track 3 or main track 2 to 
+yard track 4.
+\item Slow-clear (Green over Red). Slow, straight through crossover and 
+non-divergent route beyond: either main track 1 to yard track 1 or main track 
+2 to yard track 2.
+\end{itemize}
+
+We implement this with a mast and 5 logics for each signal. 
 
 \begin{figure}[hbpt]\begin{centering}%
 \includegraphics[width=5in]{YardThroat_YardSelect.pdf}

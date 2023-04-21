@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:38:17 2023
-%  Last Modified : <230415.1038>
+%  Last Modified : <230421.1512>
 %
 %  Description 
 %
@@ -43,3 +43,67 @@
 \subsection{Crossing with interchange}
 \label{sect-appl:crossinginterchange}
 
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{CrossingInterchange.png}
+\caption{Crossing with Interchange.}
+\label{fig:CrossingInterchange}
+\end{centering}\end{figure}
+
+This is a level crossing with an interchange track.  We will control and 
+manage this crossing and interchange with three ESP32 T7S3 MultiFunction 
+Universal Turnout nodes, as shown in Figure~\ref{fig:CrossingInterchange}. The 
+three nodes will implement these functions:
+
+\begin{description}
+\item [CPNorth] This node will manage the north turnout and the signals around 
+it.  It will also provide occupancy detection for the turnout OS section and 
+the north-south track segment. It will be wired as following:
+\begin{description}
+\item [OC 1] The turnout OS section.
+\item [OC 2] The north-south track segment.
+\item [Turnout 1] The north turnout motor.
+\item [Points 1] The north turnout points.
+\item [A0(UR), A1(UY), A2(UG), A3(LR), A4(LY), A5(LG)] The signal at the north 
+(points) end of the turnout.
+\item [B0(R), B1(Y), B2(G)] The interchange segment (divergent frog) 
+end of the turnout.
+\item [B3(R), B4(Y), B5(G)] The north-south track segment 
+(non-divergent frog) end of the turnout.
+\end{description} 
+\item [CPWest] This node will manage the west turnout and the signals 
+around it.  It will also provide occupancy detection for the turnout OS 
+section, the east-west track segment, and the interchange track segment.  It 
+will be wired as following: 
+\begin{description}
+\item [OC 1] The turnout OS section.
+\item [OC 2] The east-west track segment.
+\item [OC 3] The interchange track segment
+\item [Turnout 1] The west turnout motor.
+\item [Points 1] The west turnout points.
+\item [A0(UR), A1(UY), A2(UG), A3(LR), A4(LY), A5(LG)] The signal at the west 
+(points) end of the turnout.
+\item [B0(R), B1(Y), B2(G)] The interchange segment (divergent frog) 
+end of the turnout.
+\item [B3(R), B4(Y), B5(G)] The east-west track segment 
+(non-divergent frog) end of the turnout.
+\end{description} 
+\item [CPCrossing] This node will manage the crossing diamond, including the 
+signals around it along with occupancy detection of the diamond itself.  It 
+will be wired as following: 
+\begin{description}
+\item [OC 1] The east-west part of the crossing.
+\item [OC 2] The north-south part of the crossing.
+\item [A0(R), A1(Y), A2(G)] The signal at the west end of the crossing.
+\item [A3(R), A4(Y), A5(G)] The signal at the east end of the crossing.
+\item [B0(R), B1(Y), B2(G)] The signal at the north end of the crossing.
+\item [B3(R), B4(Y), B5(G)] The signal at the south end of the crossing.
+\end{description}
+\end{description}
+
+The CPNorth and CPWest will actually be configured following the much the same 
+methods as an end of a siding, as describe in 
+Section~\ref{sect-appl:siding}\footnote{The local control buttons and LEDs are
+not shown here - they could be added or left out as desired.} Since we are 
+using 3 over 3 signals at the points ends of the turnouts, it is possible to 
+add additional aspects, including the state of the crossing and the far end of 
+the interchange track. 

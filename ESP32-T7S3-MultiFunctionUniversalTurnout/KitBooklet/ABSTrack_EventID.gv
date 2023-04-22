@@ -1,0 +1,130 @@
+digraph ABSTrack_EventID {
+    label="Automatic Block Signal Event Flow";
+    bgcolor="gray";
+    rankdir=LR;
+    /*nodesep=0.5;*/
+    node [shape=Mrecord, style="filled"];
+    subgraph clusterSensorsAndControls {
+        label="Layout Sensors And Controls";
+        /* Occupancy Detectors */
+        OC1 [fontsize="10", fillcolor="orange",
+            label ="(OccupancyDetector1) Block 1|<occupied> Occupied|<clear> Clear"];
+        OC2 [fontsize="10", fillcolor="orange",
+            label ="(OccupancyDetector2) Block 2|<occupied> Occupied|<clear> Clear"];
+        OC3 [fontsize="10", fillcolor="orange",
+            label ="(OccupancyDetector3) Block 3|<occupied> Occupied|<clear> Clear"];
+        OC4 [fontsize="10", fillcolor="orange",
+            label ="(OccupancyDetector4) Block 4|<occupied> Occupied|<clear> Clear"];
+    }
+    /* Signal Masts */
+    
+    /* Signal 2E */
+    subgraph cluster2E {
+        label="2E (protecting Block 2, east bound)"
+        Mast1 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast1) 2E|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+
+        /* 2E Signal Logic */
+        Logic1 [fontsize="10", fillcolor="cyan",
+            label ="(Logic1) 2E Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC2:occupied -> Logic1:V1True [color="orange"];
+        OC2:clear    -> Logic1:V1False [color="orange"];
+        Logic1:A1 -> Mast1:R1 [color="cyan"];
+        Logic1:else -> Logic2;
+        
+        Logic2 [fontsize="10", fillcolor="cyan",
+            label ="(Logic2) 2E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Mast2:circuit -> Logic2:V1Circuit [color="RoyalBlue"];
+        Logic2:A1 -> Mast1:R2 [color="cyan"];
+        Logic2:else -> Logic3;
+        
+        Logic3 [fontsize="10", fillcolor="cyan",
+            label ="(Logic3) 2E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic3:A1 -> Mast1:R3 [color="cyan"];
+    }
+                                        
+    /* Signal 3E */
+    subgraph cluster3E {
+        label="3E (protecting Block 3, east bound)"
+        Mast2 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast2) 3E|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+
+        /* 3E Signal Logic */
+        Logic8 [fontsize="10", fillcolor="cyan",
+            label ="(Logic8) 3E Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC3:occupied -> Logic8:V1True [color="orange"];
+        OC3:clear    -> Logic8:V1False [color="orange"];
+        Logic8:A1 -> Mast2:R1 [color="cyan"];
+        Logic8:else -> Logic9;
+        
+        Logic9 [fontsize="10", fillcolor="cyan",
+            label ="(Logic9) 3E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Mast8:circuit -> Logic9:V1Circuit [color="RoyalBlue"];
+        Logic9:A1 -> Mast2:R2 [color="cyan"];
+        Logic9:else -> Logic10;
+        
+        Logic10 [fontsize="10", fillcolor="cyan",
+            label ="(Logic10) 3E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic10:A1 -> Mast2:R3 [color="cyan"];
+    }
+                                        
+    /* Signal 2W */
+    subgraph cluster2W {
+        label="2W (protecting Block 2, west bound)"
+        Mast3 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast3) 2W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+
+        /* 2W Signal Logic */
+        Logic16 [fontsize="10", fillcolor="cyan",
+            label ="(Logic16) 2W Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC2:occupied -> Logic16:V1True [color="orange"];
+        OC2:clear    -> Logic16:V1False [color="orange"];
+        Logic16:A1 -> Mast3:R1 [color="cyan"];
+        Logic16:else -> Logic17;
+        
+        Logic17 [fontsize="10", fillcolor="cyan",
+            label ="(Logic17) 2W Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Mast7:circuit -> Logic17:V1Circuit [color="RoyalBlue"];
+        Logic17:A1 -> Mast3:R2 [color="cyan"];
+        Logic17:else -> Logic18;
+        
+        Logic18 [fontsize="10", fillcolor="cyan",
+            label ="(Logic18) 2W Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic18:A1 -> Mast3:R3 [color="cyan"];
+    }
+                                        
+    /* Signal 3W */
+    subgraph cluster3W {
+        label="3W (protecting Block 3, west bound)"
+        Mast4 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+            label ="(Mast4) 3W|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+
+        /* 3W Signal Logic */
+        Logic24 [fontsize="10", fillcolor="cyan",
+            label ="(Logic24) 3W Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+        OC3:occupied -> Logic24:V1True [color="orange"];
+        OC3:clear    -> Logic24:V1False [color="orange"];
+        Logic24:A1 -> Mast4:R1 [color="cyan"];
+        Logic24:else -> Logic25;
+        
+        Logic25 [fontsize="10", fillcolor="cyan",
+            label ="(Logic25) 3W Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+        Mast3:circuit -> Logic25:V1Circuit [color="RoyalBlue"];
+        Logic25:A1 -> Mast4:R2 [color="cyan"];
+        Logic25:else -> Logic26;
+        
+        Logic26 [fontsize="10", fillcolor="cyan",
+            label ="(Logic26) 3W Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+        Logic26:A1 -> Mast4:R3 [color="cyan"];
+    }
+                                        
+    /* Virtual masts */
+    Mast7 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+        label ="(Mast7) Block1|<circuit>Track Circuit 8|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|none}|{<R2>Rule 2|29-Clear|Clear/Procede|none}"];
+    OC1:occupied -> Mast7:R1 [color="orange"];
+    OC1:clear    -> Mast7:R2 [color="orange"];
+    Mast8 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
+        label ="(Mast8) Block4|<circuit>Track Circuit 8|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|none}|{<R2>Rule 2|29-Clear|Clear/Procede|none}"];
+    OC4:occupied -> Mast8:R1 [color="orange"];
+    OC4:clear    -> Mast8:R2 [color="orange"];
+}

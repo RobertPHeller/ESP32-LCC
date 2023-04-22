@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230421.1422>
+#  Last Modified : <230422.1444>
 #
 #  Description	
 #
@@ -63,7 +63,8 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 	ExampleSidingCP1-Wiring.png  \
 	ExampleSidingCP1_EventFlow.pdf \
 	YardThroat_TrackSelector.png YardThroat_YardSelect.pdf \
-	CrossingInterchange.png
+	CrossingInterchange.png Crossing_CPNorth.pdf Crossing_CPEast.pdf \
+	Crossing_CPCrossing.pdf
 	
 %.pdf:%.gv
 	dot -O -Tpdf $<
@@ -72,6 +73,12 @@ FIGURES=ESP32-T7S3-MultiFunctionUniversalTurnout.png TC-DaughterBoard.png \
 YardThroat_YardSelect.pdf: YardThroat_YardSelect.gv
 
 ExampleSidingCP1_EventFlow.pdf: ExampleSidingCP1_EventFlow.gv
+
+Crossing_CPNorth.pdf: Crossing_CPNorth.gv
+
+Crossing_CPEast.pdf: Crossing_CPEast.gv
+
+Crossing_CPCrossing.pdf: Crossing_CPCrossing.gv
 
 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)
 	$(LATEX) ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet

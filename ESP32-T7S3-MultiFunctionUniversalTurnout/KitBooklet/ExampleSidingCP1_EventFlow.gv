@@ -55,7 +55,7 @@ digraph ExampleSidingCP1_EventFlow {
     subgraph clusterCP1W {
         label="CP1W: 3 over 2 at CP1 points end (West Main)";
         Mast1 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-            label ="(Mast1) CP1W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|{A0|A3}}|{<R2>Rule 2|27-Approach-Limited|Limited|{A1|A2}}|{<R3>Rule 3|21-Approach|Approach|{A0|A3}}|{<R4>Rule 4|29-Clear|Clear/Procede|{A0|A4}}"];
+            label ="(Mast1) CP1W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|{A2|A0}}|{<R2>Rule 2|27-Approach-Limited|Limited|{A2|A1}}|{<R3>Rule 3|21-Approach|Approach|{A3|A0}}|{<R4>Rule 4|29-Clear|Clear/Procede|{A4|A0}}"];
         /* CP1W Signal Logic */
         Logic4 [fontsize="10", fillcolor="cyan",
             label ="(Logic4) CP1W Stop|Group|V1 only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediate If True)|<else> Else"];
@@ -112,7 +112,7 @@ digraph ExampleSidingCP1_EventFlow {
         Mast3 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
             label ="(Mast3) CP1S|<circuit>Track Circuit 3|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B0}|{<R2>Rule 2|21-Approach|Approach|B1}|{<R3>Rule 3|29-Clear|Clear/Procede|B2}"];
         Logic16 [fontsize="10", fillcolor="cyan",
-            label ="(Logic16) CP1E Stop|Group|V1 or V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediate If True)|<else> Else"];
+            label ="(Logic16) CP1S Stop|Group|V1 or V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediate If True)|<else> Else"];
         OC2:occupied -> Logic16:V1True [color="orange"];
         OC2:clear    -> Logic16:V1False [color="orange"];
         Points1:reversed -> Logic16:V2False [color="LightSeaGreen"];
@@ -120,13 +120,13 @@ digraph ExampleSidingCP1_EventFlow {
         Logic16:A1 -> Mast3:R1 [color="cyan"];
         
         Logic17 [fontsize="10", fillcolor="cyan",
-            label ="(Logic17) CP1E Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
+            label ="(Logic17) CP1S Approach|Group|V1 only|<V1Circuit> V1 Track Circuit: Stop|<A1> Action 1 (Immediate If True|<else> Else"];
         Logic16:else -> Logic17;
         Mast7:circuit -> Logic17:V1Circuit [color="RoyalBlue"];
         Logic17:A1 -> Mast3:R2 [color="cyan"];
         
         Logic18 [fontsize="10", fillcolor="cyan",
-            label ="(Logic18) CP1E Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
+            label ="(Logic18) CP1S Clear|Single (Last)|null True|<A1> Action 1 (Immediate If True)"];
         Logic18:A1 -> Mast3:R3 [color="cyan"];
         Logic17:else -> Logic18;
     }

@@ -8,7 +8,7 @@
 %  Author        : $Author$
 %  Created By    : Robert Heller
 %  Created       : Sat Apr 15 10:38:17 2023
-%  Last Modified : <230421.1512>
+%  Last Modified : <230422.1448>
 %
 %  Description 
 %
@@ -70,7 +70,7 @@ end of the turnout.
 \item [B3(R), B4(Y), B5(G)] The north-south track segment 
 (non-divergent frog) end of the turnout.
 \end{description} 
-\item [CPWest] This node will manage the west turnout and the signals 
+\item [CPEast] This node will manage the east turnout and the signals 
 around it.  It will also provide occupancy detection for the turnout OS 
 section, the east-west track segment, and the interchange track segment.  It 
 will be wired as following: 
@@ -100,10 +100,71 @@ will be wired as following:
 \end{description}
 \end{description}
 
-The CPNorth and CPWest will actually be configured following the much the same 
+The CPNorth and CPEast will actually be configured following the much the same 
 methods as an end of a siding, as describe in 
 Section~\ref{sect-appl:siding}\footnote{The local control buttons and LEDs are
 not shown here - they could be added or left out as desired.} Since we are 
 using 3 over 3 signals at the points ends of the turnouts, it is possible to 
-add additional aspects, including the state of the crossing and the far end of 
-the interchange track. 
+add additional aspects. 
+
+
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{Crossing_CPNorth.pdf}
+\caption{CPNorth  Event Id graph.}
+\label{fig:CrossingCPNorthEventFlow}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{Crossing_CPEast.pdf}
+\caption{CPEast  Event Id graph.}
+\label{fig:CrossingCPEastEventFlow}
+\end{centering}\end{figure}
+\begin{figure}[hbpt]\begin{centering}%
+\includegraphics[width=5in]{Crossing_CPCrossing.pdf}
+\caption{CPCrossing Event Id graph.}
+\label{fig:CrossingCPCrossing}
+\end{centering}\end{figure}
+\clearpage
+\begin{table}[hbpt]\begin{centering}%
+\begin{tabular}{|l|l|p{2in}|}
+\hline
+Color&Object&What it is\\
+\hline
+Orange&Node&Occupancy Detectors\\
+\hline
+Green&Node&Siding normal button and LED\\
+\hline
+Red&Node&Siding reversed button and LED\\
+\hline
+Cyan&Node&Logic Elements\\
+\hline
+Blue&Node&Turnout Outputs\\
+\hline
+LightSeaGreen&Node&Point Sense Inputs\\
+\hline
+RoyalBlue&Node&Masts\\
+\hline 
+Green&Edge&Button and LED normal Events\\
+\hline
+Red&Edge&Button and LED reverse Events\\
+\hline
+Brown&Edge&Button Release Events\\
+\hline
+Green&Edge&Turnout Operating Events\\
+\hline
+Black&Edge&Logic Fallthroughs (Elses)\\
+\hline
+Orange&Edge&Odd Yard Tracks (1 and 3)\\
+\hline
+Violet&Edge&Even Yard Tracks (2 and 4)\\
+\hline
+Cyan&Edge&Mast Rule Selection\\
+\hline
+LightSeaGreen&Edge&Point Sense events\\
+\hline
+\end{tabular}
+\caption{Graph color key}
+\label{tab:ExampleSidingCP1EventFlow}
+\end{centering}\end{table}
+
+
+\clearpage

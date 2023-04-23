@@ -44,7 +44,7 @@
 
 As shipped, the TTGO-T7S3 has already had the ESP32-S3-MultiFunctionOpenMRNIDF
 firmware installed, but if you want to rebuild the code (possibly with
-customizations) the code is on GitHub in my ESP32-LCC repo:
+customizations) the code is on GitHub in my ESP32-LCC repository:
 \url{https://github.com/RobertPHeller/ESP32-LCC}, in the
 ESP32-S3-MultiFunctionOpenMRNIDFOpenMRNIDF sub-folder. You will need the
 Espressif's IoT Development Framework, version 4.2 or later, available from
@@ -57,7 +57,7 @@ circuit diagrams.
 \subsection{Building and installing the software}
 
 Once you have installed Espressif's IoT Development Framework and cloned the 
-ESP32-LCC repo, you can build the software by cd'ing to the 
+ESP32-LCC repository, you can build the software by cd'ing to the 
 ESP32-S3-MultiFunctionOpenMRNIDF and in bash running these commands:
 
 \begin{verbatim}
@@ -85,15 +85,15 @@ The program consists of a main sketch file, and several support files and
 
 \subsection{Program Startup notes}
 
-While most of the common node configuration is accessable using the available
-CDI configuruation tools (JMRI's PanelPro program or MRR SYS OpenLCB program),
-some of the node's configuration is in separate non-volitle (flash) memory.
+While most of the common node configuration is accessible using the available
+CDI configuration tools (JMRI's PanelPro program or MRR SYS OpenLCB program),
+some of the node's configuration is in separate non-volatile (flash) memory.
 This includes the node's ID number and some boot options. As installed the
 node ID is initialized to 05:01:01:01:22:00. \textbf{You don't really want to
 leave this as the node id!} There are two ways to set the node id. One way is
-to use a CDI configuruation tool -- the node ID is exposed as a configuration
+to use a CDI configuration tool -- the node ID is exposed as a configuration
 option. Changing the node id forces a ``factory reset'' on the next boot (and
-when you update the configuration with a CDI configuruation tool, the node
+when you update the configuration with a CDI configuration tool, the node
 will reboot). The other way is during the boot up process. When the node
 boots, it waits on the USB serial connection for 10 seconds for any
 ``keyboard'' response and if it gets a ``keyboard'' response, it enters a

@@ -83,14 +83,14 @@ action event.
 
 Next we set up the LED drivers and the button inputs. We copy the turnout's
 Normal and Reverse motor events to the two button ON events and label the
-buttons Normal and Reverse. Simularly we copy the Point sensor events to the
+buttons Normal and Reverse. Similarly we copy the Point sensor events to the
 LEDs' events. For the Normal labeled LED, copy the Point sensor Normal event
 to the on event, and the Point sensor Reverse event to the off event. Then for
 the Reverse labeled LED, copy the Point sensor Reverse event to the on event, 
 and the Point sensor Normal event to the off event.
 
 For the signals, we will use additional Logics and three Masts.  For each 
-signal will will construct an sequense of logic elements, one for each aspect, 
+signal will will construct an sequence of logic elements, one for each aspect, 
 starting with the most restrictive and ending with the least restrictive.  
 Each logic element will test one or two conditions and be true for one aspect.
 
@@ -145,7 +145,7 @@ Normal, its Mast ID to CP1ME, and copy its Link Address to Circuit 8.  Now
 right click on the East Main OC in the Layout DB window, and copy its Occupied 
 event to the event to set aspect for Rule 1 (Rule one is already set to Stop 
 speed).  Then copy East Main's Clear event to the event to set aspect for Rule 
-2, then change Rule 2's name to 29-Clear and Track Speed tp Clear/Procede.  We 
+2, then change Rule 2's name to 29-Clear and Track Speed to Clear/Procede.  We 
 won't be setting anything for this mast's Lamps, since it is not a ``visible'' 
 signal.  We are just using it to general track circuit signals.
 
@@ -194,19 +194,19 @@ First CP1E on Mast 2:
 
 Set Mast Processing to Normal, Mast ID to CP1E, copy the track circuit address 
 to Circuit 2, along with the Mast ID to the Remote Mast Description. Rule 1's
-Name will be 0-Stop, its speed Stop, and its Appearence will be Lamp 1: B3.
-Rule 2's Name will be 21-Approach, its speed Approach, and its Appearence will 
+Name will be 0-Stop, its speed Stop, and its Appearance will be Lamp 1: B3.
+Rule 2's Name will be 21-Approach, its speed Approach, and its Appearance will 
 be Lamp 1: B4. Rule 3's Name will be 29-Clear, its speed Clear/Procede, and 
-its Appearence will be Lamp 1: B5.
+its Appearance will be Lamp 1: B5.
 
 Then CP1S on Mast 3:
 
 Set Mast Processing to Normal, Mast ID to CP1S, copy the track circuit address 
 to Circuit 3, along with the Mast ID to the Remote Mast Description. Rule 1's
-Name will be 0-Stop, its speed Stop, and its Appearence will be Lamp 1: B0.
-Rule 2's Name will be 21-Approach, its speed Approach, and its Appearence will 
+Name will be 0-Stop, its speed Stop, and its Appearance will be Lamp 1: B0.
+Rule 2's Name will be 21-Approach, its speed Approach, and its Appearance will 
 be Lamp 1: B1. Rule 3's Name will be 29-Clear, its speed Clear/Procede, and 
-its Appearence will be Lamp 1: B2.
+its Appearance will be Lamp 1: B2.
 
 Finally, we will create a virtual mast for West Main using Mast 7.  This will 
 be set up much like we did for block identified as East Main, using Mast 7 and 
@@ -221,7 +221,7 @@ these signals.  The only special issue is the logic of the point position:
 CP1S displays Stop when the points are ``normal'' and CP1E displays Stop when 
 the points are ``reversed'', and the Stop logic is ORed with the OS being 
 occupied. Otherwise Approach with the virtual signal at Mast 7 is Stop, and 
-Clear othersize.
+Clear otherwise.
 
 \begin{figure}[hbpt]\begin{centering}%
 \includegraphics[width=5in]{ExampleSidingCP1_EventFlow.pdf}
@@ -255,7 +255,7 @@ Brown&Edge&Button Release Events\\
 \hline
 Green&Edge&Turnout Operating Events\\
 \hline
-Black&Edge&Logic Fallthroughs (Elses)\\
+Black&Edge&Logic Fall Throughs (Elses)\\
 \hline
 Orange&Edge&Odd Yard Tracks (1 and 3)\\
 \hline

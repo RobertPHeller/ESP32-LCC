@@ -107,7 +107,7 @@ digraph YardThroat_YardSelect {
         Mast1 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
             label ="(Mast1) T1Ent|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|{A3|A0}}|{<R2>Rule 2|9-Slow-Limited|Slow|{A3|A1}}|{<R3>Rule 3|8-Slow-Medium|Slow|{A3|A2}}|{<R4>Rule 4|7-Slow|Slow|{A4|A0}}|{<R5>Rule 5|10-Slow-Clear|Slow|{A5|A0}}"];
         Logic16 [fontsize="10", fillcolor="cyan", 
-            label ="(Logic16) T1Ent Stop|Group|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic16) T1Ent Stop|Group|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic16:else -> Logic17;
         Logic16:A1 -> Mast1:R1 [color="RoyalBlue"];
         Logic5:A1 -> Logic16:V1False [color="cyan"];
@@ -116,7 +116,7 @@ digraph YardThroat_YardSelect {
         Logic8:A1 -> Logic16:V1True [color="cyan"];
 
         Logic17 [fontsize="10", fillcolor="cyan",
-            label ="(Logic17) T1Ent Slow Limited|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic17) T1Ent Slow Limited|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic17:else -> Logic18;
         Logic17:A1 -> Mast1:R2 [color="RoyalBlue"];
         Points1:reversed -> Logic17:V1True [color="LightSeaGreen"];
@@ -125,7 +125,7 @@ digraph YardThroat_YardSelect {
         Points2:normal   -> Logic17:V2False [color="LightSeaGreen"];
         
         Logic18 [fontsize="10", fillcolor="cyan",
-            label ="(Logic18) T1Ent Slow Medium|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic18) T1Ent Slow Medium|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic18:else -> Logic19;
         Logic18:A1 -> Mast1:R3 [color="RoyalBlue"];
         Points1:reversed -> Logic18:V1True [color="LightSeaGreen"];
@@ -134,7 +134,7 @@ digraph YardThroat_YardSelect {
         Points2:reversed -> Logic18:V2False [color="LightSeaGreen"];
         
         Logic19 [fontsize="10", fillcolor="cyan",
-            label ="(Logic19) T1Ent Slow|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic19) T1Ent Slow|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic19:else -> Logic20;
         Logic19:A1 -> Mast1:R4 [color="RoyalBlue"];
         Points1:normal   -> Logic19:V1True [color="LightSeaGreen"];
@@ -143,7 +143,7 @@ digraph YardThroat_YardSelect {
         Points3:normal   -> Logic19:V2False [color="LightSeaGreen"];
         
         Logic20 [fontsize="10", fillcolor="cyan",
-            label ="(Logic20) T1Ent Slow Clear|Single (Last)|True|<A1> Action 1 (Immediatly if True)}"]
+            label ="(Logic20) T1Ent Slow Clear|Single (Last)|True|<A1> Action 1 (Immediately if True)}"]
         Logic20:A1 -> Mast1:R5 [color="RoyalBlue"];
 
     }
@@ -152,7 +152,7 @@ digraph YardThroat_YardSelect {
         Mast2 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
             label ="(Mast2) T2Ent|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|{B3|B0}}|{<R2>Rule 2|9-Slow-Limited|Slow|{B3|B1}}|{<R3>Rule 3|8-Slow-Medium|Slow|{B3|B2}}|{<R4>Rule 4|7-Slow|Slow|{B4|B0}}|{<R5>Rule 5|10-Slow-Clear|Slow|{B5|B0}}"];
         Logic24 [fontsize="10", fillcolor="cyan", 
-            label ="(Logic24) T2Ent Stop|Group|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic24) T2Ent Stop|Group|V1 Only|<V1True> V1 True|<V1False> V1 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic24:else -> Logic25;
         Logic24:A1 -> Mast2:R1 [color="RoyalBlue"];
         Logic6:A1 -> Logic24:V1False [color="cyan"];
@@ -161,7 +161,7 @@ digraph YardThroat_YardSelect {
         Logic7:A1 -> Logic24:V1True [color="cyan"];
 
         Logic25 [fontsize="10", fillcolor="cyan",
-            label ="(Logic25) T2Ent Slow Limited|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic25) T2Ent Slow Limited|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic25:else -> Logic26;
         Logic25:A1 -> Mast2:R2 [color="RoyalBlue"];
         Points1:normal -> Logic25:V1True [color="LightSeaGreen"];
@@ -170,7 +170,7 @@ digraph YardThroat_YardSelect {
         Points3:normal   -> Logic25:V2False [color="LightSeaGreen"];
         
         Logic26 [fontsize="10", fillcolor="cyan",
-            label ="(Logic26) 2Ent Slow Medium|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic26) 2Ent Slow Medium|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic26:else -> Logic27;
         Logic26:A1 -> Mast2:R3 [color="RoyalBlue"];
         Points1:normal -> Logic26:V1True [color="LightSeaGreen"];
@@ -179,7 +179,7 @@ digraph YardThroat_YardSelect {
         Points3:reversed -> Logic26:V2False [color="LightSeaGreen"];
         
         Logic27 [fontsize="10", fillcolor="cyan",
-            label ="(Logic27) 2Ent Slow|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediatly on True)|<else>Else"];
+            label ="(Logic27) 2Ent Slow|Group|V1 and V2|<V1True> V1 True|<V1False> V1 False|<V2True> V2 True|<V2False> V2 False|<A1> Action 1 (Immediately on True)|<else>Else"];
         Logic27:else -> Logic28;
         Logic27:A1 -> Mast2:R4 [color="RoyalBlue"];
         Points1:normal   -> Logic27:V1True [color="LightSeaGreen"];
@@ -188,7 +188,7 @@ digraph YardThroat_YardSelect {
         Points2:normal   -> Logic27:V2False [color="LightSeaGreen"];
         
         Logic28 [fontsize="10", fillcolor="cyan",
-            label ="(Logic28) 2Ent Slow Clear|Single (Last)|True|<A1> Action 1 (Immediatly if True)}"]
+            label ="(Logic28) 2Ent Slow Clear|Single (Last)|True|<A1> Action 1 (Immediately if True)}"]
         Logic28:A1 -> Mast2:R5 [color="RoyalBlue"];
 
     }

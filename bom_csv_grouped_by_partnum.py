@@ -17,9 +17,10 @@
 from __future__ import print_function
 
 import sys
-sys.path.append("/usr/lib/kicad/plugins/")
+sys.path.append("/usr/share/kicad/plugins/")
 # Import the KiCad python helper module and the csv formatter
 import kicad_netlist_reader
+import kicad_utils
 import csv
 
 def myEqu(self, other):

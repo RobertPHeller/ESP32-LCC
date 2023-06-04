@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name "ESP32-Mini32-OctalServo-rescue")(type "Legacy")(uri "${KIPRJMOD}/ESP32-Mini32-OctalServo-rescue.lib")(options "")(descr ""))
+  (lib (name "74lv125AN")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/74lv125AN.lib")(options "")(descr ""))
+  (lib (name "ESP32_mini")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/ESP32_mini.lib")(options "")(descr ""))
+  (lib (name "ap63205")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/ap63205.lib")(options "")(descr ""))
+  (lib (name "sn65hvd233-ht")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/sn65hvd233-ht.lib")(options "")(descr ""))
+)

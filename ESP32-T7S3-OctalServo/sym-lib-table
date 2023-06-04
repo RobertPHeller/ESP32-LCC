@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "ESP32-T7S3-OctalServo-rescue")(type "Legacy")(uri "${KIPRJMOD}/ESP32-T7S3-OctalServo-rescue.lib")(options "")(descr ""))
+  (lib (name "ESP32_mini")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/ESP32_mini.lib")(options "")(descr ""))
+)

@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name "ESP32-OctalServo-rescue")(type "Legacy")(uri "${KIPRJMOD}/ESP32-OctalServo-rescue.lib")(options "")(descr ""))
+  (lib (name "sn65hvd233-ht")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/sn65hvd233-ht.lib")(options "")(descr ""))
+  (lib (name "esp32_devboards")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/esp32_devboards.lib")(options "")(descr ""))
+  (lib (name "lm2574n-5")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/lm2574n-5.lib")(options "")(descr ""))
+  (lib (name "ap63205")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/ap63205.lib")(options "")(descr ""))
+)

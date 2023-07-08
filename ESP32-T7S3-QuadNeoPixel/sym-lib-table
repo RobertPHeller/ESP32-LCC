@@ -1,0 +1,8 @@
+(sym_lib_table
+  (lib (name "ESP32-T7S3-QuadNeoPixel-rescue")(type "Legacy")(uri "${KIPRJMOD}/ESP32-T7S3-QuadNeoPixel-rescue.lib")(options "")(descr ""))
+  (lib (name "sn65hvd233-ht")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/sn65hvd233-ht.lib")(options "")(descr ""))
+  (lib (name "lm2574n-5")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/lm2574n-5.lib")(options "")(descr ""))
+  (lib (name "ap63205")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/ap63205.lib")(options "")(descr ""))
+  (lib (name "ESP32_mini")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/ESP32_mini.lib")(options "")(descr ""))
+  (lib (name "74lv125AN")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/74lv125AN.lib")(options "")(descr ""))
+)

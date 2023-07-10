@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230422.1614>
+#  Last Modified : <230710.1245>
 #
 #  Description	
 #
@@ -49,6 +49,8 @@ MAKEINDEX=/usr/bin/makeindex
 GS=/usr/bin/gs
 
 all: ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf
+
+insert: ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.pdf
 
 TEXS=ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.tex Assembly.tex \
 	Downloadables.tex GeneralWiring.tex ApplNote_Siding.tex \
@@ -97,6 +99,11 @@ ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)
 	#	-sOutputFile=ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf \
 	#	-f ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet-orig.pdf
 	#-rm ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet-orig.pdf
+
+ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.pdf: \
+		ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.tex \
+		ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf
+	$(LATEX) ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.tex
 
 clean:
 	rm -f ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf *.aux *.log *.inx \

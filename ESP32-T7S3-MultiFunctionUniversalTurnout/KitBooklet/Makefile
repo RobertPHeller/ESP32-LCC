@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sat Mar 4 08:32:49 2023
-#  Last Modified : <230710.1245>
+#  Last Modified : <230711.0924>
 #
 #  Description	
 #
@@ -100,10 +100,11 @@ ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf : $(TEXS) $(FIGURES)
 	#	-f ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet-orig.pdf
 	#-rm ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet-orig.pdf
 
-ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.pdf: \
-		ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.tex \
+ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet-book.pdf :\
 		ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf
-	$(LATEX) ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet_4up.tex
+	pdfbook2 ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf
+
+
 
 clean:
 	rm -f ESP32-T7S3-MultiFunctionUniversalTurnoutBooklet.pdf *.aux *.log *.inx \

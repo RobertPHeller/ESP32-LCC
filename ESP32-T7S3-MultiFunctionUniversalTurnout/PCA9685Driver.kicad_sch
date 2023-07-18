@@ -2621,7 +2621,7 @@
     (pin "9" (uuid adad9755-afe1-4118-bfb8-41d502969aa3))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 99.06 27.94 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 99.06 27.94 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062b01c55)
     (property "Reference" "#PWR036" (id 0) (at 99.06 25.654 0)
@@ -2639,7 +2639,7 @@
     (pin "1" (uuid 2904c703-ae82-4d76-85d3-cfc7aa518669))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 162.56 29.21 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 162.56 29.21 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062b01c56)
     (property "Reference" "#PWR037" (id 0) (at 162.56 26.924 0)
@@ -2657,7 +2657,7 @@
     (pin "1" (uuid 4f0ad253-6758-4fab-a304-5619bb190326))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 182.88 137.16 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 182.88 137.16 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062b01c57)
     (property "Reference" "#PWR038" (id 0) (at 182.88 134.874 0)
@@ -2675,7 +2675,7 @@
     (pin "1" (uuid 045e2b02-bbb9-4128-b50f-816a961b17ef))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 120.65 137.16 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 120.65 137.16 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062b01c58)
     (property "Reference" "#PWR039" (id 0) (at 120.65 134.874 0)
@@ -2805,7 +2805,7 @@
     (pin "2" (uuid efd7d119-139b-46c7-a740-b97f28a1acd9))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 71.12 135.89 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+12V") (at 71.12 135.89 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062b01c5f)
     (property "Reference" "#PWR045" (id 0) (at 71.12 137.16 0)

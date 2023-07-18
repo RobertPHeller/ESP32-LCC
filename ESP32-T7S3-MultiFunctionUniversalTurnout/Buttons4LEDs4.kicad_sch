@@ -1145,7 +1145,7 @@
     (uuid de5c2064-b9e1-4057-a8cc-9308019ef4d3)
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 63.5 86.36 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 63.5 86.36 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062af18bc)
     (property "Reference" "U402" (id 0) (at 63.5 93.98 0)
@@ -1169,7 +1169,7 @@
     (pin "7" (uuid 86388482-65de-4962-9ebf-7d4d6c1dfcb6))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 63.5 107.95 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 63.5 107.95 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062af18bd)
     (property "Reference" "U402" (id 0) (at 63.5 115.57 0)
@@ -1189,8 +1189,8 @@
     )
     (pin "3" (uuid 06cccf2c-d0d0-41ad-bc61-a0c3e7cbae93))
     (pin "6" (uuid 51ce9675-eb70-4a97-98fd-269bf17eea73))
-    (pin "4" (uuid 6ef5f8e0-5c2d-4349-9162-179c7c438d89))
-    (pin "5" (uuid 2d7fbff7-ad9e-4962-b4e0-56a226f3dd6a))
+    (pin "2" (uuid fe67d712-2180-4f01-9591-4252c486bb04))
+    (pin "7" (uuid 23bab706-1764-4c61-9cdf-ad78fa766826))
   )
 
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:R") (at 93.98 45.72 270) (unit 1)
@@ -1847,7 +1847,7 @@
     (pin "1" (uuid a658002a-8a7e-43ad-8acb-33b00307f4c4))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 62.23 45.72 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 62.23 45.72 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062af18e3)
     (property "Reference" "U401" (id 0) (at 62.23 53.34 0)
@@ -1871,7 +1871,7 @@
     (pin "7" (uuid f0172b04-3281-4d5a-a911-69e210ac9ebd))
   )
 
-  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 62.23 66.04 0)
+  (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:TC4426") (at 62.23 66.04 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000062af18e4)
     (property "Reference" "U401" (id 0) (at 62.23 73.66 0)
@@ -1891,8 +1891,8 @@
     )
     (pin "3" (uuid dac75ca8-9fd9-4f25-9f22-82af6f3fdad2))
     (pin "6" (uuid e6ba8e5a-5295-4d99-9539-f0f44fc4499c))
-    (pin "4" (uuid 9a573a5f-16ed-4bac-a9aa-25b5d86e5dd3))
-    (pin "5" (uuid 94dd7c58-d6bf-4547-ab6b-8de0e37bf355))
+    (pin "2" (uuid 45bc317e-1176-4fd8-8206-a50d96c1261a))
+    (pin "7" (uuid 1ec99363-65c1-4aaf-b13d-25e323cf5fb9))
   )
 
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:GND") (at 60.96 74.93 0) (unit 1)

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <230410.1442>
+//  Last Modified : <230804.1101>
 //
 //  Description	
 //
@@ -57,7 +57,7 @@ namespace nvsmanager
 {
 void BootPauseHelper::CheckPause()
 {
-        bool need_driver_unload = !uart_is_driver_installed(UART_NUM_0);
+    bool need_driver_unload = !uart_is_driver_installed(UART_NUM_0);
     LOG(VERBOSE,"[CheckPause] need_driver_unload = %d",need_driver_unload);
     if (need_driver_unload)
     {

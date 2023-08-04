@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <230324.0927>
+//  Last Modified : <230804.1104>
 //
 //  Description	
 //
@@ -128,6 +128,7 @@ void NvsManager::init(uint8_t reset_reason)
 
 void NvsManager::register_virtual_memory_spaces(openlcb::SimpleStackBase *stack)
 {
+    LOG(VERBOSE, "NVS.register_virtual_memory_spaces()");
     node_id_memoryspace.emplace(stack, this);
 #ifdef CONFIG_ESP32_WIFI_ENABLED
     wifi_memory_space.emplace(stack, this);

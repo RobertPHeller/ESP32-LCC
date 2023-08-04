@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230412.1441>
+//  Last Modified : <230804.1056>
 //
 //  Description	
 //
@@ -412,6 +412,9 @@ void FactoryResetHelper::factory_reset(int fd)
 
 }
 
+#if defined(CONFIG_SERVO_TURNOUTS)
+openmrn_arduino::Esp32Ledc ledc(TURNOUTSERVOPINS);
+#endif
 
 void app_main()
 {
@@ -541,7 +544,6 @@ void app_main()
         }
         LOG(INFO, "[esp32multifunction] Logics done.");
 #if defined(CONFIG_SERVO_TURNOUTS)
-        openmrn_arduino::Esp32Ledc ledc(TURNOUTSERVOPINS);
         ledc.hw_init();
         ServoTurnout turnout1(stack.node(), cfg.seg().turnouts().entry<0>(),1000,ledc.get_channel(0));
         ServoTurnout turnout2(stack.node(), cfg.seg().turnouts().entry<1>(),1000,ledc.get_channel(1));

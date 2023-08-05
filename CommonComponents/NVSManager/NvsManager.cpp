@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <230804.1104>
+//  Last Modified : <230804.2157>
 //
 //  Description	
 //
@@ -151,6 +151,12 @@ void NvsManager::DisplayNvsConfiguration()
     LOG(INFO, "[NVS] Bootloader: %s",
         config_.bootloader_req ? "true" : "false");
 #ifdef CONFIG_ESP32_WIFI_ENABLED
+    uint8_t m = (uint8_t)config_.wifi_mode;
+    if (m > 1)
+    {
+        config_.wifi_mode = (wifi_mode_t) 1;
+        persist_configuration();
+    }
     LOG(INFO, "[NVS] WiFi Mode: %s (%d)", WIFI_MODES[config_.wifi_mode],
         config_.wifi_mode);
     LOG(INFO, "[NVS] Hostname Prefix: %s", config_.hostname_prefix);

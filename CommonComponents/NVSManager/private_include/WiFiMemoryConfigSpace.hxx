@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Dec 18 12:33:51 2022
-//  Last Modified : <230410.1401>
+//  Last Modified : <230804.2126>
 //
 //  Description	
 //
@@ -140,6 +140,7 @@ private:
                 LOG(VERBOSE, "[WiFiMemCfg:%02x-RD] wifi_mode: %d",
                     SPACE, value);
                 nvs_->wifi_mode((wifi_mode_t)value);
+                nvs_->CheckPersist();
                 break;
             default:
                 LOG_ERROR("[WiFiMemCfg:%02x-WR] request for "
@@ -204,11 +205,13 @@ private:
                     "[WiFiMemCfg:%02x-RD] hostname_prefix: %s", SPACE,
                     value.c_str());
                 nvs_->hostname_prefix(value.c_str());
+                nvs_->CheckPersist();                
                 break;
             case WiFiConfigHolder.station().ssid().offset():
                 LOG(VERBOSE, "[WiFiMemCfg:%02x-RD] station_ssid: %s",
                     SPACE, value.c_str());
                 nvs_->station_ssid(value.c_str());
+                nvs_->CheckPersist();                
                 break;
             case WiFiConfigHolder.station().password().offset():
                 if (value.rfind("***", 0) == 0)
@@ -220,6 +223,7 @@ private:
                 LOG(VERBOSE, "[WiFiMemCfg:%02x-RD] station_pass: %s",
                     SPACE, value.c_str());
                 nvs_->station_pass(value.c_str());
+                nvs_->CheckPersist();                
                 break;
             default:
                 LOG_ERROR("[WiFiMemCfg:%02x-WSTR] request for "

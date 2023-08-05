@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Dec 18 12:28:53 2022
-//  Last Modified : <230214.1643>
+//  Last Modified : <230804.2122>
 //
 //  Description	
 //
@@ -87,6 +87,7 @@ public:
                         LOG(VERBOSE, "[NodeIdMemCfg-WRITE] %s", contents.c_str());
                         uint64_t new_node_id = utils::string_to_uint64(contents);
                         nvs->node_id(new_node_id);
+                        nvs->CheckPersist();
                         nodeid_ = new_node_id;
                         id_ = std::move(contents);
                     }

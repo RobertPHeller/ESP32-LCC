@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <230804.1101>
+//  Last Modified : <230804.2127>
 //
 //  Description	
 //
@@ -73,6 +73,7 @@ void BootPauseHelper::CheckPause()
     for (int i=0;i<PauseLoopCount;i++)
     {
         esp_err_t res = uart_get_buffered_data_len(UART_NUM_0,&bytesavailable);
+        LOG(VERBOSE,"[CheckPause] bytesavailable = %d",bytesavailable);
         if (res != ESP_OK)
         {
             LOG_ERROR("[CheckPause] Failed to get buffered data len");

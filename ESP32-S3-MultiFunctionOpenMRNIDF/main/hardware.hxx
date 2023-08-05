@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:07:59 2022
-//  Last Modified : <230324.0938>
+//  Last Modified : <230805.1114>
 //
 //  Description	
 //
@@ -114,6 +114,7 @@ GPIO_PIN(Button4, ButtonPin, 16);
 
 GPIO_PIN(LED_ACT1, ActPin, 15);
 GPIO_PIN(LED_ACT2, ActPin, 0);
+GPIO_PIN(BOOT,GpioInputNP, 0);
 
 // Create an initializer that can initialize all the GPIO pins in one shot
 typedef GpioInitializer<
@@ -124,7 +125,7 @@ typedef GpioInitializer<
                         OD1_Pin, OD2_Pin, OD3_Pin, OD4_Pin,
                         LED1_Pin, LED2_Pin, LED3_Pin, LED4_Pin,
                         Button1_Pin, Button2_Pin, Button3_Pin, Button4_Pin,
-                        LED_ACT1_Pin, LED_ACT2_Pin> GpioInit;
+                        LED_ACT1_Pin, LED_ACT2_Pin, BOOT_Pin> GpioInit;
 
 /// GPIO Pin connected to the TWAI (CAN) Transceiver RX pin.
 // ADC2_CHANNEL_0

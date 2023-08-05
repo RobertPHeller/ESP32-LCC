@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230804.1056>
+//  Last Modified : <230805.1218>
 //
 //  Description	
 //
@@ -449,6 +449,10 @@ void app_main()
     
     pause.CheckPause();
     LOG(INFO, "[BootPauseHelper] returned...");
+    if (BOOT_Pin::instance()->is_clr())
+    {
+        nvs.force_factory_reset();
+    }
     
     // Ensure the LEDs are both OFF when we startup.
     LED_ACT1_Pin::instance()->clr();

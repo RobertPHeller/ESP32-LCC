@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230805.1218>
+//  Last Modified : <230805.2126>
 //
 //  Description	
 //
@@ -596,6 +596,7 @@ void app_main()
                                              });
         LOG(INFO, "[esp32multifunction] RefreshLoop done.");
         i2c.hw_init(CONFIG_SDA_PIN,CONFIG_SCL_PIN,400000,I2C_NUM_0);
+        i2c.scan(I2C_NUM_0);
 
         pwmchip1.init("/dev/i2c/i2c0",PWMCHIP_ADDRESS1);
         LOG(INFO, "[esp32multifunction] Lamps done.");

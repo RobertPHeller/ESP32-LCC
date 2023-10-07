@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:07:59 2022
-//  Last Modified : <230805.1114>
+//  Last Modified : <231007.1009>
 //
 //  Description	
 //
@@ -135,8 +135,11 @@ static constexpr gpio_num_t CONFIG_TWAI_RX_PIN = GPIO_NUM_4;
 static constexpr gpio_num_t CONFIG_TWAI_TX_PIN = GPIO_NUM_5;
 
 /// GPIO Pin used for I2C SDA.
+#ifdef CONFIG_T7S3
+static constexpr gpio_num_t CONFIG_SDA_PIN = GPIO_NUM_40;
+#else
 static constexpr gpio_num_t CONFIG_SDA_PIN = GPIO_NUM_2;
-
+#endif
 /// GPIO Pin used for I2C SCL.
 static constexpr gpio_num_t CONFIG_SCL_PIN = GPIO_NUM_3;
 

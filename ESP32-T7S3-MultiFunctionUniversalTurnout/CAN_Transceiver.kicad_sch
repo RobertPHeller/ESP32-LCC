@@ -1182,7 +1182,7 @@
     (property "Datasheet" "~" (id 3) (at 127 96.52 0)
       (effects (font (size 1.524 1.524)))
     )
-    (property "Mouser Part Number" "647-UUD1C150MCL" (id 4) (at 127 96.52 0)
+    (property "Mouser Part Number" "710-865080340002 " (id 4) (at 127 96.52 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (pin "1" (uuid 331e4b06-587c-447e-bea7-ab3ccd3f7d67))

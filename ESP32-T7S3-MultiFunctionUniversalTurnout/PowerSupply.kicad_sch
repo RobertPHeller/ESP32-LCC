@@ -529,7 +529,7 @@
     (property "Datasheet" "" (id 3) (at 131.445 121.285 0)
       (effects (font (size 1.27 1.27)) hide)
     )
-    (property "Mouser Part Number" "81-B1047AS-4R7NP3" (id 4) (at 131.445 121.285 0)
+    (property "Mouser Part Number" "81-B1047AS-4R7N=P3" (id 4) (at 131.445 121.285 0)
       (effects (font (size 1.524 1.524)) hide)
     )
     (pin "1" (uuid b2294d29-23dc-410a-912e-e9e293105423))

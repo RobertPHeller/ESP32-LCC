@@ -108,7 +108,7 @@ public:
         register_write(MODE2, mode2.byte);
 
         /* start the thread at the highest priority in the system */
-        start(name, configMAX_PRIORITIES - 1, 1024);
+        start(name, configMAX_PRIORITIES - 1, 2048);
     }
 
     /// Destructor.

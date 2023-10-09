@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <230804.2127>
+//  Last Modified : <231009.1400>
 //
 //  Description	
 //
@@ -47,7 +47,11 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <esp_ota_ops.h>
 #include <esp_system.h>
 #include <esp_task_wdt.h>
+#ifdef CONFIG_IDF_TARGET_ESP32
 #include <driver/uart.h>
+#else
+#include <driver/usb_serial_jtag.h>
+#endif
 #include "NvsManager.hxx"
 #include "BootPauseHelper.hxx"
 #include "utils/logging.h"
@@ -57,6 +61,15 @@ namespace nvsmanager
 {
 void BootPauseHelper::CheckPause()
 {
+#ifndef CONFIG_IDF_TARGET_ESP32
+    usb_serial_jtag_driver_config_t jtagDef = USB_SERIAL_JTAG_DRIVER_CONFIG_DEFAULT();
+    esp_err_t res = usb_serial_jtag_driver_install(&jtagDef);
+    if (res != ESP_OK) 
+    {
+        LOG_ERROR("[CheckPause] Failed to start usb serial jtag");
+        return;
+    }
+#else
     bool need_driver_unload = !uart_is_driver_installed(UART_NUM_0);
     LOG(VERBOSE,"[CheckPause] need_driver_unload = %d",need_driver_unload);
     if (need_driver_unload)
@@ -69,16 +82,22 @@ void BootPauseHelper::CheckPause()
             return;
         }
     }
+#endif
     size_t bytesavailable;
     for (int i=0;i<PauseLoopCount;i++)
     {
+#ifndef CONFIG_IDF_TARGET_ESP32
+        unsigned char temp[2];
+        bytesavailable = usb_serial_jtag_read_bytes(temp,sizeof(temp),10);
+#else
         esp_err_t res = uart_get_buffered_data_len(UART_NUM_0,&bytesavailable);
-        LOG(VERBOSE,"[CheckPause] bytesavailable = %d",bytesavailable);
         if (res != ESP_OK)
         {
             LOG_ERROR("[CheckPause] Failed to get buffered data len");
             return;
         }
+#endif
+        LOG(VERBOSE,"[CheckPause] bytesavailable = %d",bytesavailable);
         if (bytesavailable > 0)
         {
             break;
@@ -90,6 +109,15 @@ void BootPauseHelper::CheckPause()
         PauseConsole();
         NvsManager::instance()->CheckPersist();
     }
+#ifndef CONFIG_IDF_TARGET_ESP32
+    res = usb_serial_jtag_driver_uninstall();
+    if (res != ESP_OK)
+    {
+        LOG_ERROR("[CheckPause] Failed to delete usb serial jtag");
+        return;
+    }
+    
+#else    
     if (need_driver_unload)
     {
         esp_err_t res = uart_driver_delete(UART_NUM_0);
@@ -99,6 +127,7 @@ void BootPauseHelper::CheckPause()
             return;
         }
     }
+#endif
 }
 
 void BootPauseHelper::PauseConsole()
@@ -109,7 +138,11 @@ void BootPauseHelper::PauseConsole()
     
     while (true)
     {
+#ifndef CONFIG_IDF_TARGET_ESP32
+        usb_serial_jtag_write_bytes("\r\n>>>",5,100);
+#else
         uart_write_bytes(UART_NUM_0,"\r\n>>>",5);
+#endif
         size_t len = ReadLine(UART_NUM_0,receivebuffer,sizeof(receivebuffer));
         if (len == 0)
         {
@@ -201,12 +234,20 @@ size_t BootPauseHelper::ReadLine(uart_port_t uart_num,char *buffer,
     
     while (remainder > 0)
     {
+#ifndef CONFIG_IDF_TARGET_ESP32
+        int r = usb_serial_jtag_read_bytes(p,1,100);
+#else
         int r = uart_read_bytes(uart_num,p,1,100);
+#endif
         if (r > 0)
         {
             if (*p == EOL)
             {
+#ifndef CONFIG_IDF_TARGET_ESP32
+                usb_serial_jtag_write_bytes(eol,2,100);
+#else
                 uart_write_bytes(uart_num,eol,2);
+#endif
                 numread++;
                 *p = '\0';
                 break;
@@ -216,13 +257,21 @@ size_t BootPauseHelper::ReadLine(uart_port_t uart_num,char *buffer,
                 if (p > buffer && remainder < bufferlen)
                 {
                     p--; remainder++; numread--;
+#ifndef CONFIG_IDF_TARGET_ESP32
+                    usb_serial_jtag_write_bytes(space,3,100);
+#else
                     uart_write_bytes(uart_num,space,3);
+#endif
                     
                 }
             }
             else
             {
+#ifndef CONFIG_IDF_TARGET_ESP32
+                usb_serial_jtag_write_bytes(p,r,100);
+#else
                 uart_write_bytes(uart_num,p,r);
+#endif
                 numread++;
                 p++;
                 remainder--;

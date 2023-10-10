@@ -10157,7 +10157,7 @@
   (gr_text "(c) Copyright 2023 Robert Heller \nD/B/A Deepwoods Software\nESP32-T7S3-MultiFunction board rev D" (at 170.1165 89.3445 90) (layer "B.Cu") (tstamp 965bc598-5f52-4615-847f-179635cd5cde)
     (effects (font (size 0.75 0.75) (thickness 0.15)) (justify mirror))
   )
-  (gr_text "(C) 2023 Robert Heller D/B/A\n    Deepwoods Software\n    ESP32 T7S3 MultiFunction\n    UniversalTurnout Rev. C" (at 90.678 57.785 270) (layer "B.Cu") (tstamp bde06726-cef4-4003-a1b5-ea6b7a6034a0)
+  (gr_text "(C) 2023 Robert Heller D/B/A\n    Deepwoods Software\n    ESP32 T7S3 MultiFunction\n    UniversalTurnout Rev. D" (at 90.678 57.785 270) (layer "B.Cu") (tstamp bde06726-cef4-4003-a1b5-ea6b7a6034a0)
     (effects (font (size 1.5 1.5) (thickness 0.3)) (justify mirror))
   )
   (dimension (type aligned) (layer "Dwgs.User") (tstamp 08fae221-7b6f-4c57-be73-6210c6206091)

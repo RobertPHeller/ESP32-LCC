@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <230804.2157>
+//  Last Modified : <231105.1506>
 //
 //  Description	
 //
@@ -113,12 +113,22 @@ void NvsManager::init(uint8_t reset_reason)
         config_.bootloader_req = false;
 #ifdef CONFIG_ESP32_WIFI_ENABLED
         config_.wifi_mode = (wifi_mode_t)CONFIG_WIFI_MODE;
-        strncpy(config_.hostname_prefix,CONFIG_WIFI_HOSTNAME_PREFIX,
-                sizeof(config_.hostname_prefix));
-        strncpy(config_.station_ssid,CONFIG_WIFI_STATION_SSID,
-                sizeof(config_.station_ssid));
-        strncpy(config_.station_pass,CONFIG_WIFI_STATION_PASSWORD,
-                sizeof(config_.station_pass));
+        const char *s = CONFIG_WIFI_HOSTNAME_PREFIX;
+        char *d = config_.hostname_prefix;
+        int i;
+        for (i = 0; i <= sizeof(config_.hostname_prefix) && *s != '\0';i++)
+            *d++ = *s++;
+        config_.hostname_prefix[sizeof(config_.hostname_prefix)-1] = 0;
+        s = CONFIG_WIFI_STATION_SSID;
+        d = config_.station_ssid;
+        for (i = 0; i <= sizeof(config_.station_ssid) && *s != '\0';i++)
+            *d++ = *s++;
+        config_.station_ssid[sizeof(config_.station_ssid)-1] = 0;
+        s = CONFIG_WIFI_STATION_PASSWORD;
+        d = config_.station_pass;
+        for (i = 0; i <= sizeof(config_.station_ssid) && *s != '\0';i++)
+            *d++ = *s++;
+        config_.station_pass[sizeof(config_.station_pass)-1] = 0;
 #endif
         need_persist_ = true;
     }

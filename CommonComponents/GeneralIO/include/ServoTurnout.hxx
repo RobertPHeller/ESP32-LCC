@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Feb 14 09:35:57 2023
-//  Last Modified : <230323.1653>
+//  Last Modified : <231125.2054>
 //
 //  Description	
 //
@@ -43,7 +43,7 @@
 #ifndef __SERVOTURNOUT_HXX
 #define __SERVOTURNOUT_HXX
 
-#if defined(ARDUINO) || defined(ESP32)
+#if defined(ARDUINO) || defined(ESP32) || defined(ESP_PLATFORM)
 #include "freertos_drivers/arduino/DummyGPIO.hxx"
 #include "freertos_drivers/arduino/PWM.hxx"
 #else

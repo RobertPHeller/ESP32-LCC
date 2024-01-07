@@ -47,7 +47,7 @@ digraph ABSTrack_EventID {
     subgraph cluster3E {
         label="3E (protecting Block 3, east bound)"
         Mast2 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-            label ="(Mast2) 3E|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+            label ="(Mast2) 3E|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A3}|{<R2>Rule 2|21-Approach|Approach|A4}|{<R3>Rule 3|29-Clear|Clear/Procede|A5}"];
 
         /* 3E Signal Logic */
         Logic8 [fontsize="10", fillcolor="cyan",
@@ -72,7 +72,7 @@ digraph ABSTrack_EventID {
     subgraph cluster2W {
         label="2W (protecting Block 2, west bound)"
         Mast3 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-            label ="(Mast3) 2W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+            label ="(Mast3) 2W|<circuit>Track Circuit 1|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B0}|{<R2>Rule 2|21-Approach|Approach|B1}|{<R3>Rule 3|29-Clear|Clear/Procede|B2}"];
 
         /* 2W Signal Logic */
         Logic16 [fontsize="10", fillcolor="cyan",
@@ -97,7 +97,7 @@ digraph ABSTrack_EventID {
     subgraph cluster3W {
         label="3W (protecting Block 3, west bound)"
         Mast4 [fontsize="10", fillcolor="RoyalBlue", fontcolor="white",
-            label ="(Mast4) 3W|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|A0}|{<R2>Rule 2|21-Approach|Approach|A1}|{<R3>Rule 3|29-Clear|Clear/Procede|A2}"];
+            label ="(Mast4) 3W|<circuit>Track Circuit 2|{Rule|Name|Speed|Lamps}|{<R1>Rule 1|0-Stop|Stop|B3}|{<R2>Rule 2|21-Approach|Approach|B4}|{<R3>Rule 3|29-Clear|Clear/Procede|B5}"];
 
         /* 3W Signal Logic */
         Logic24 [fontsize="10", fillcolor="cyan",

@@ -610,7 +610,7 @@
   (symbol (lib_id "Device:R") (at 215.9 33.655 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 1ae68316-0b19-4591-b964-3309cdc9e75e)
-    (property "Reference" "R?" (id 0) (at 215.9 27.94 90))
+    (property "Reference" "R102" (id 0) (at 215.9 27.94 90))
     (property "Value" "1K" (id 1) (at 215.9 30.48 90))
     (property "Footprint" "Resistor_SMD:R_0402_1005Metric" (id 2) (at 215.9 35.433 90)
       (effects (font (size 1.27 1.27)) hide)
@@ -625,7 +625,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:GND") (at 180.34 46.99 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 2eee5531-a24c-410e-a567-d14d3e7967bd)
-    (property "Reference" "#PWR?" (id 0) (at 180.34 40.64 0)
+    (property "Reference" "#PWR0102" (id 0) (at 180.34 40.64 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 180.34 41.91 0))
@@ -641,7 +641,7 @@
   (symbol (lib_id "Device:R") (at 200.66 44.45 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 3a030344-2986-4af6-a4f7-70282d8393e5)
-    (property "Reference" "R?" (id 0) (at 203.2 43.1799 0)
+    (property "Reference" "R101" (id 0) (at 203.2 43.1799 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "22" (id 1) (at 203.2 45.7199 0)
@@ -660,12 +660,15 @@
   (symbol (lib_id "Connector:Micro_SD_Card_Det") (at 226.695 105.41 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 4eb075a0-26a5-4fa1-8fe6-9ce54e46c993)
-    (property "Reference" "J?" (id 0) (at 227.33 83.82 0))
+    (property "Reference" "J102" (id 0) (at 227.33 83.82 0))
     (property "Value" "Micro_SD_Card_Det" (id 1) (at 227.33 86.36 0))
-    (property "Footprint" "" (id 2) (at 278.765 87.63 0)
+    (property "Footprint" "Connector_Card:microSD_HC_Hirose_DM3D-SF" (id 2) (at 278.765 87.63 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Datasheet" "https://www.hirose.com/product/en/download_file/key_name/DM3/category/Catalog/doc_file_id/49662/?file_category_id=4&item_id=195&is_series=1" (id 3) (at 226.695 102.87 0)
+      (effects (font (size 1.27 1.27)) hide)
+    )
+    (property "Mouser Part Number" "798-DM3D-SF" (id 4) (at 226.695 105.41 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (pin "1" (uuid d18ada70-745b-4235-ae01-b47e69a0c391))
@@ -684,7 +687,7 @@
   (symbol (lib_id "Connector_Generic:Conn_02x05_Odd_Even") (at 185.42 56.515 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 52907680-75b3-427e-b5f3-5e8163cd2077)
-    (property "Reference" "J?" (id 0) (at 186.69 44.45 0))
+    (property "Reference" "J101" (id 0) (at 186.69 44.45 0))
     (property "Value" "Displays" (id 1) (at 186.69 46.99 0))
     (property "Footprint" "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical" (id 2) (at 185.42 56.515 0)
       (effects (font (size 1.27 1.27)) hide)
@@ -707,7 +710,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+3V3") (at 203.835 102.87 90) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 5e1dfc1b-8006-46c8-a7f1-aadfb99c8117)
-    (property "Reference" "#PWR?" (id 0) (at 207.645 102.87 0)
+    (property "Reference" "#PWR0105" (id 0) (at 207.645 102.87 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (id 1) (at 200.66 102.8699 90)
@@ -725,7 +728,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:GND") (at 247.015 118.11 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 87dd08cc-64f7-410f-9d26-d3c22bda64ff)
-    (property "Reference" "#PWR?" (id 0) (at 247.015 124.46 0)
+    (property "Reference" "#PWR0107" (id 0) (at 247.015 124.46 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 247.015 123.19 0))
@@ -741,7 +744,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+3V3") (at 173.99 53.975 0) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid 924f4e93-8b89-4225-8c4d-0bec3ac7ea30)
-    (property "Reference" "#PWR?" (id 0) (at 173.99 57.785 0)
+    (property "Reference" "#PWR0101" (id 0) (at 173.99 57.785 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (id 1) (at 173.99 48.895 0))
@@ -757,7 +760,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:+3V3") (at 193.04 65.405 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid cb31bb4d-02f9-48b0-b667-6546231dee23)
-    (property "Reference" "#PWR?" (id 0) (at 193.04 61.595 0)
+    (property "Reference" "#PWR0103" (id 0) (at 193.04 61.595 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "+3V3" (id 1) (at 193.04 69.85 0))
@@ -773,7 +776,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:GND") (at 200.66 23.495 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid d0cfb4b0-a4f5-4549-b30e-08437ebfa7ce)
-    (property "Reference" "#PWR?" (id 0) (at 200.66 17.145 0)
+    (property "Reference" "#PWR0104" (id 0) (at 200.66 17.145 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 200.66 17.78 0))
@@ -789,7 +792,7 @@
   (symbol (lib_id "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue:GND") (at 203.835 107.95 270) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid daa896c1-335b-4ad3-bada-3982c2ca09de)
-    (property "Reference" "#PWR?" (id 0) (at 197.485 107.95 0)
+    (property "Reference" "#PWR0106" (id 0) (at 197.485 107.95 0)
       (effects (font (size 1.27 1.27)) hide)
     )
     (property "Value" "GND" (id 1) (at 200.66 107.9499 90)
@@ -807,7 +810,7 @@
   (symbol (lib_id "Transistor_BJT:PZT2222A") (at 203.2 33.655 180) (unit 1)
     (in_bom yes) (on_board yes) (fields_autoplaced)
     (uuid dd184833-1644-42fc-9911-b2db6bc7bde7)
-    (property "Reference" "Q?" (id 0) (at 198.12 32.3849 0)
+    (property "Reference" "Q101" (id 0) (at 198.12 32.3849 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Value" "PZT2222A" (id 1) (at 198.12 34.9249 0)
@@ -977,59 +980,74 @@
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05310"
       (reference "#PWR051") (unit 1) (value "GND") (footprint "")
     )
-    (path "/2eee5531-a24c-410e-a567-d14d3e7967bd"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
-    (path "/5e1dfc1b-8006-46c8-a7f1-aadfb99c8117"
-      (reference "#PWR?") (unit 1) (value "+3V3") (footprint "")
-    )
-    (path "/87dd08cc-64f7-410f-9d26-d3c22bda64ff"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
-    )
     (path "/924f4e93-8b89-4225-8c4d-0bec3ac7ea30"
-      (reference "#PWR?") (unit 1) (value "+3V3") (footprint "")
+      (reference "#PWR0101") (unit 1) (value "+3V3") (footprint "")
+    )
+    (path "/2eee5531-a24c-410e-a567-d14d3e7967bd"
+      (reference "#PWR0102") (unit 1) (value "GND") (footprint "")
     )
     (path "/cb31bb4d-02f9-48b0-b667-6546231dee23"
-      (reference "#PWR?") (unit 1) (value "+3V3") (footprint "")
+      (reference "#PWR0103") (unit 1) (value "+3V3") (footprint "")
     )
     (path "/d0cfb4b0-a4f5-4549-b30e-08437ebfa7ce"
-      (reference "#PWR?") (unit 1) (value "GND") (footprint "")
+      (reference "#PWR0104") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/5e1dfc1b-8006-46c8-a7f1-aadfb99c8117"
+      (reference "#PWR0105") (unit 1) (value "+3V3") (footprint "")
     )
     (path "/daa896c1-335b-4ad3-bada-3982c2ca09de"
+      (reference "#PWR0106") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/87dd08cc-64f7-410f-9d26-d3c22bda64ff"
+      (reference "#PWR0107") (unit 1) (value "GND") (footprint "")
+    )
+    (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/1321877b-b430-490c-b8ff-14bc5d133a03"
       (reference "#PWR?") (unit 1) (value "GND") (footprint "")
     )
+    (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/6f1c8c53-1945-4ded-bc8c-09b24922f02a"
+      (reference "#PWR?") (unit 1) (value "+3V3") (footprint "")
+    )
     (path "/58a06321-5405-479d-b5db-3c7330a446c5/00000000-0000-0000-0000-000063e7cce1"
-      (reference "C301") (unit 1) (value "10uf") (footprint "Capacitors_SMD:CP_Elec_5x5.3")
+      (reference "C301") (unit 1) (value "10uf") (footprint "Capacitor_SMD:CP_Elec_5x3.9")
     )
     (path "/58a06321-5405-479d-b5db-3c7330a446c5/00000000-0000-0000-0000-000063e7cce3"
-      (reference "C302") (unit 1) (value "100nf") (footprint "Capacitors_SMD:C_0603")
+      (reference "C302") (unit 1) (value "100nf") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/58a06321-5405-479d-b5db-3c7330a446c5/00000000-0000-0000-0000-000063e7cce5"
-      (reference "C303") (unit 1) (value "22uf") (footprint "Capacitors_SMD:C_0603")
+      (reference "C303") (unit 1) (value "22uf") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/58a06321-5405-479d-b5db-3c7330a446c5/00000000-0000-0000-0000-000063e7cce6"
-      (reference "C304") (unit 1) (value "22uf") (footprint "Capacitors_SMD:C_0603")
+      (reference "C304") (unit 1) (value "22uf") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05302"
-      (reference "C801") (unit 1) (value ".1 uf") (footprint "Capacitors_SMD:C_0603")
+      (reference "C801") (unit 1) (value ".1 uf") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05303"
-      (reference "C802") (unit 1) (value "15 uf 15V") (footprint "Capacitors_SMD:CP_Elec_4x5.7")
+      (reference "C802") (unit 1) (value "15 uf 15V") (footprint "Capacitor_SMD:CP_Elec_4x5.7")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05307"
-      (reference "C803") (unit 1) (value "47 nf") (footprint "Capacitors_SMD:C_0603")
+      (reference "C803") (unit 1) (value "47 nf") (footprint "Capacitor_SMD:C_0603_1608Metric")
     )
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062b4bf99"
-      (reference "D2") (unit 1) (value "ACT1") (footprint "LEDs:LED_0402")
+      (reference "D2") (unit 1) (value "ACT1") (footprint "LED_SMD:LED_0402_1005Metric")
     )
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000063051fa7"
-      (reference "D4") (unit 1) (value "ACT2") (footprint "LEDs:LED_0402")
+      (reference "D4") (unit 1) (value "ACT2") (footprint "LED_SMD:LED_0402_1005Metric")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b0530f"
-      (reference "D801") (unit 1) (value "DFLS240-7") (footprint "Diodes_SMD:D_PowerDI-123")
+      (reference "D801") (unit 1) (value "DFLS240-7") (footprint "Diode_SMD:D_PowerDI-123")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b0530c"
-      (reference "D802") (unit 1) (value "DFLS240-7") (footprint "Diodes_SMD:D_PowerDI-123")
+      (reference "D802") (unit 1) (value "DFLS240-7") (footprint "Diode_SMD:D_PowerDI-123")
+    )
+    (path "/52907680-75b3-427e-b5f3-5e8163cd2077"
+      (reference "J101") (unit 1) (value "Displays") (footprint "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical")
+    )
+    (path "/4eb075a0-26a5-4fa1-8fe6-9ce54e46c993"
+      (reference "J102") (unit 1) (value "Micro_SD_Card_Det") (footprint "Connector_Card:microSD_HC_Hirose_DM3D-SF")
+    )
+    (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/b8d0c3a6-5f3c-4ed0-af13-83bb324ff42d"
+      (reference "J501") (unit 1) (value "Vcc CS2 CS1 C D RS RST A K G") (footprint "Connector_PinHeader_2.54mm:PinHeader_1x10_P2.54mm_Horizontal")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b0530a"
       (reference "J801") (unit 1) (value "RJ45") (footprint "RJ45-8N-S:RJ45_8N-S")
@@ -1037,68 +1055,59 @@
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05309"
       (reference "J802") (unit 1) (value "RJ45") (footprint "RJ45-8N-S:RJ45_8N-S")
     )
-    (path "/4eb075a0-26a5-4fa1-8fe6-9ce54e46c993"
-      (reference "J?") (unit 1) (value "Micro_SD_Card_Det") (footprint "")
-    )
-    (path "/52907680-75b3-427e-b5f3-5e8163cd2077"
-      (reference "J?") (unit 1) (value "Displays") (footprint "Connector_IDC:IDC-Header_2x05_P2.54mm_Vertical")
-    )
-    (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/b8d0c3a6-5f3c-4ed0-af13-83bb324ff42d"
-      (reference "J?") (unit 1) (value "G K A RST RS D C CS1 CS2 Vcc") (footprint "")
-    )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05306"
-      (reference "JP801") (unit 1) (value "Termination") (footprint "Pin_Headers:Pin_Header_Straight_2x02_Pitch2.54mm")
+      (reference "JP801") (unit 1) (value "Termination") (footprint "Connector_PinHeader_2.54mm:PinHeader_2x02_P2.54mm_Vertical")
     )
     (path "/58a06321-5405-479d-b5db-3c7330a446c5/00000000-0000-0000-0000-000063e7cce4"
-      (reference "L301") (unit 1) (value "4.7uH") (footprint "Inductors_SMD:L_7.3x7.3_H4.5")
+      (reference "L301") (unit 1) (value "4.7uH") (footprint "Inductor_SMD:L_7.3x7.3_H4.5")
     )
     (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/9d91dc87-ac0e-4619-be0f-7a8d1d838d40"
-      (reference "LCD?") (unit 1) (value "JD-T1800") (footprint "adafruit:JD-T1800")
+      (reference "LCD501") (unit 1) (value "JD-T1800") (footprint "adafruit:JD-T1800")
     )
     (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/a23ed5a7-e4cb-420d-8cf5-75442036204b"
-      (reference "LCD?") (unit 1) (value "JD-T1800") (footprint "adafruit:JD-T1800")
+      (reference "LCD502") (unit 1) (value "JD-T1800") (footprint "adafruit:JD-T1800")
     )
     (path "/dd184833-1644-42fc-9911-b2db6bc7bde7"
-      (reference "Q?") (unit 1) (value "PZT2222A") (footprint "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
+      (reference "Q101") (unit 1) (value "PZT2222A") (footprint "Package_TO_SOT_SMD:SOT-223-3_TabPin2")
     )
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062b4c14f"
-      (reference "R2") (unit 1) (value "270") (footprint "Resistors_SMD:R_0402")
+      (reference "R2") (unit 1) (value "270") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000063051df1"
-      (reference "R3") (unit 1) (value "270") (footprint "Resistors_SMD:R_0402")
-    )
-    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062af751c"
-      (reference "R203") (unit 1) (value "2.4K") (footprint "Resistors_SMD:R_0402")
-    )
-    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062af7569"
-      (reference "R206") (unit 1) (value "2.4K") (footprint "Resistors_SMD:R_0402")
-    )
-    (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05304"
-      (reference "R801") (unit 1) (value "60 Ohms") (footprint "Resistors_SMD:R_1206")
-    )
-    (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05305"
-      (reference "R802") (unit 1) (value "60 Ohms") (footprint "Resistors_SMD:R_1206")
-    )
-    (path "/1ae68316-0b19-4591-b964-3309cdc9e75e"
-      (reference "R?") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0402_1005Metric")
+      (reference "R3") (unit 1) (value "270") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/3a030344-2986-4af6-a4f7-70282d8393e5"
-      (reference "R?") (unit 1) (value "22") (footprint "Resistor_SMD:R_0603_1608Metric")
+      (reference "R101") (unit 1) (value "22") (footprint "Resistor_SMD:R_0603_1608Metric")
+    )
+    (path "/1ae68316-0b19-4591-b964-3309cdc9e75e"
+      (reference "R102") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0402_1005Metric")
+    )
+    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062af751c"
+      (reference "R203") (unit 1) (value "2.4K") (footprint "Resistor_SMD:R_0402_1005Metric")
+    )
+    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062af7569"
+      (reference "R206") (unit 1) (value "2.4K") (footprint "Resistor_SMD:R_0402_1005Metric")
+    )
+    (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05304"
+      (reference "R801") (unit 1) (value "60 Ohms") (footprint "Resistor_SMD:R_1206_3216Metric")
+    )
+    (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05305"
+      (reference "R802") (unit 1) (value "60 Ohms") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b0530e"
-      (reference "T801") (unit 1) (value "- 15 in +") (footprint "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_2pol")
+      (reference "T801") (unit 1) (value "- 15 in +") (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b0530b"
-      (reference "T802") (unit 1) (value "- 15 out +") (footprint "Connectors_Terminal_Blocks:TerminalBlock_Pheonix_MPT-2.54mm_2pol")
+      (reference "T802") (unit 1) (value "- 15 out +") (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-2-2.54_1x02_P2.54mm_Horizontal")
     )
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000063e6d166"
-      (reference "U201") (unit 1) (value "TTGO-T7_S3-V1.1") (footprint "ESP32_mini:ESP32_mini")
+      (reference "U201") (unit 1) (value "TTGO-T7_S3-V1.1") (footprint "ESP32-mini:ESP32_mini")
     )
     (path "/58a06321-5405-479d-b5db-3c7330a446c5/00000000-0000-0000-0000-000063e7cce0"
-      (reference "U301") (unit 1) (value "AP63205") (footprint "TO_SOT_Packages_SMD:TSOT-23-6_MK06A")
+      (reference "U301") (unit 1) (value "AP63205") (footprint "Package_TO_SOT_SMD:TSOT-23-6")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b052ff"
-      (reference "U801") (unit 1) (value "TCAN332DR") (footprint "Housings_SOIC:SOIC-8_3.9x4.9mm_Pitch1.27mm")
+      (reference "U801") (unit 1) (value "TCAN332DR") (footprint "Package_SO:SOIC-8_3.9x4.9mm_P1.27mm")
     )
   )
 )

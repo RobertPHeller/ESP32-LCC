@@ -1,3 +1,5 @@
 (fp_lib_table
   (lib (name "adafruit")(type "Eagle")(uri "${KIPRJMOD}/adafruit-Adafruit-Eagle-Library-4abf84c/adafruit.lbr")(options "")(descr ""))
+  (lib (name "ESP32-mini")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonFootprints/ESP32_mini.pretty")(options "")(descr ""))
+  (lib (name "RJ45-8N-S")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonFootprints/RJ45-8N-S.mod")(options "")(descr ""))
 )

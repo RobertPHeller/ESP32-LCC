@@ -1,0 +1,4 @@
+(sym_lib_table
+  (lib (name "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue")(type "Legacy")(uri "/home/heller/ESP32-LCC/ESP32-T7S3-MultiFunctionUniversalTurnout/ESP32-T7S3-MultiFunctionUniversalTurnout-rescue.lib")(options "")(descr ""))
+  (lib (name "JD-T1800")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonLibraries/JD-T1800.kicad_sym")(options "")(descr ""))
+)

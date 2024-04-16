@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name "adafruit")(type "Eagle")(uri "${KIPRJMOD}/adafruit-Adafruit-Eagle-Library-4abf84c/adafruit.lbr")(options "")(descr ""))
+)

@@ -1,0 +1,15 @@
+GPIO0(Act2) - 0  OUT LED
+CAN_RX      - 4  IN CAN
+CAN_TX      - 5  OUT CAN
+Backlight   - 9  OUT/PWM
+SCLK        - 10 OUT - SPI
+MOSI        - 18 OUT - SPI
+MISO        - 38 IN  - SPI
+DCS1        - 46 OUT Display 1 select
+DCS2        - 45 OUT Display 2 select
+CardCS      - 47 OUT uSD select
+GPIO15(Act1)- 15 OUT LED
+DRs         - 48 Display RS
+DReset      - 13 Display reset 
+GPIO3/SCL   - 3  OUT I2C
+GPIO40/SDA  - 40 I/O I2C

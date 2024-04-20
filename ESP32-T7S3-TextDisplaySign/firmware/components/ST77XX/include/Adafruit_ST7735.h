@@ -54,7 +54,7 @@
 /// Subclass of ST77XX for ST7735B and ST7735R TFT Drivers:
 class Adafruit_ST7735 : public Adafruit_ST77xx {
 public:
-  Adafruit_ST7735(int8_t cs, Gpio *dc, Gpio *rst);
+  Adafruit_ST7735(int8_t cs, const Gpio *dc, const Gpio *rst);
 
   // Differences between displays (usu. identified by colored tab on
   // plastic overlay) are odd enough that we need to do this 'by hand':

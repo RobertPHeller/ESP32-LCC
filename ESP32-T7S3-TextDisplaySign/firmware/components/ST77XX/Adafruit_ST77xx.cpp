@@ -40,8 +40,8 @@
     @param  rst   Reset pin # (optional, pass -1 if unused)
 */
 /**************************************************************************/
-Adafruit_ST77xx::Adafruit_ST77xx(uint16_t w, uint16_t h, int8_t cs, Gpio *dc,
-                                 Gpio *rst)
+Adafruit_ST77xx::Adafruit_ST77xx(uint16_t w, uint16_t h, int8_t cs, 
+                                 const Gpio *dc, const Gpio *rst)
     : Adafruit_SPITFT(w, h, cs, dc, rst) {}
 
 /**************************************************************************/

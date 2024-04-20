@@ -51,8 +51,8 @@ public:
   // optional reset pin. cs is required but can be -1 if unused -- rather
   // than moving it to the optional arguments, it was done this way to
   // avoid breaking existing code (-1 option was a later addition).
-  Adafruit_SPITFT(uint16_t w, uint16_t h, int8_t cs, Gpio *dc,
-                  Gpio *rst = nullptr);
+  Adafruit_SPITFT(uint16_t w, uint16_t h, int8_t cs, const Gpio *dc,
+                  const Gpio *rst = nullptr);
 
 
   // DESTRUCTOR ----------------------------------------------------------
@@ -148,9 +148,9 @@ protected:
 
   openmrn_arduino::Esp32SPI::SpiDevice *spiDev_;
     
-  Gpio *rst_;             ///< Reset pin (or NULL)
+  const Gpio *rst_;             ///< Reset pin (or NULL)
   int8_t cs_;              ///< Chip select pin # (or -1)
-  Gpio *dc_;              ///< Data/command pin
+  const Gpio *dc_;              ///< Data/command pin
 
   int16_t xstart_ = 0;          ///< Internal framebuffer X offset
   int16_t ystart_ = 0;          ///< Internal framebuffer Y offset

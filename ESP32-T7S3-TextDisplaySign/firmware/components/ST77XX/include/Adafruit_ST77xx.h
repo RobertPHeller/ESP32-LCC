@@ -90,8 +90,8 @@
 /// Subclass of SPITFT for ST77xx displays (lots in common!)
 class Adafruit_ST77xx : public Adafruit_SPITFT {
 public:
-  Adafruit_ST77xx(uint16_t w, uint16_t h, int8_t CS, Gpio * RS,
-                  Gpio * RST = nullptr);
+  Adafruit_ST77xx(uint16_t w, uint16_t h, int8_t CS, const Gpio * RS,
+                  const Gpio * RST = nullptr);
 
   void setAddrWindow(uint16_t x, uint16_t y, uint16_t w, uint16_t h);
   void setRotation(uint8_t r);

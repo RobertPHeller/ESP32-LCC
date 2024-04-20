@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 10:16:07 2024
-//  Last Modified : <240419.2245>
+//  Last Modified : <240420.0854>
 //
 //  Description	
 //
@@ -86,6 +86,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "freertos_drivers/arduino/PWM.hxx"
 #include "hardware.hxx"
 #include "Esp32SPI.hxx"
+#include "Adafruit_ST7735.h"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Increase the CAN RX frame buffer size to reduce overruns when there is high
@@ -97,6 +98,10 @@ OVERRIDE_CONST(num_memory_spaces, 6);
 esp32textdisplay::ConfigDef cfg(0);
 Esp32HardwareTwai twai(CONFIG_TWAI_RX_PIN, CONFIG_TWAI_TX_PIN);
 Esp32SPI spibus;
+Adafruit_ST7735 display1(CONFIG_DCS1,DRs_Pin::instance(),DReset_Pin::instance());
+#ifdef CONFIG_TWO_DISPLAY_PANELS
+Adafruit_ST7735 display2(CONFIG_DCS2,DRs_Pin::instance(),nullptr);
+#endif
 
 namespace openlcb
 {
@@ -284,6 +289,12 @@ void app_main()
     bool run_bootloader = false;
     bool cleanup_config_tree = false;
     GpioInit::hw_init();
+    spibus.hw_initbus(CONFIG_MOSI,CONFIG_MISO,CONFIG_SCLK);
+    display1.initB(&spibus);
+#ifdef CONFIG_TWO_DISPLAY_PANELS
+    display2.initB(&spibus);
+#endif
+    spibus.mount_sd_card("/sdcard",CONFIG_CardCS);
 
     nvsmanager::NvsManager nvs;
     nvs.init(reset_reason);

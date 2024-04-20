@@ -50,8 +50,8 @@
              need to call subclass' begin() function, which in turn calls
              this library's initSPI() function to initialize pins.
 */
-Adafruit_SPITFT::Adafruit_SPITFT(uint16_t w, uint16_t h, int8_t cs, Gpio * dc,
-                                 Gpio * rst)
+Adafruit_SPITFT::Adafruit_SPITFT(uint16_t w, uint16_t h, int8_t cs, 
+                                 const Gpio * dc, const Gpio * rst)
     : Adafruit_GFX(w, h), rst_(rst), cs_(cs), dc_(dc) {
 }
 

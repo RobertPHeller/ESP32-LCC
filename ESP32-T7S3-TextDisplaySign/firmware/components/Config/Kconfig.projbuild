@@ -170,6 +170,11 @@ menu "Advanced Configuration"
         int "Health report interval (sec)"
         default 15
 
+    config TWO_DISPLAY_PANELS
+        bool "Two Display Panels"
+        default y
+        help
+            Two display panels, back to back.
 endmenu
 
 

@@ -13,7 +13,7 @@
     @param  dc   Data/Command pin #
     @param  rst  Reset pin # (optional, pass -1 if unused)
 */
-Adafruit_ST7735::Adafruit_ST7735(int8_t cs, Gpio *dc, Gpio *rst)
+Adafruit_ST7735::Adafruit_ST7735(int8_t cs, const Gpio *dc, const Gpio *rst)
     : Adafruit_ST77xx(ST7735_TFTWIDTH_128, ST7735_TFTHEIGHT_160, cs, dc, rst) {}
 
 // SCREEN INITIALIZATION ***************************************************

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 10:08:49 2024
-#  Last Modified : <240417.1010>
+#  Last Modified : <240419.2009>
 #
 #  Description	
 #
@@ -46,10 +46,13 @@
 set(DEPS
     OpenMRNIDF
     Esp32SPI
+    GFX
     )
     
 
-idf_component_register(INCLUDE_DIRS include
+idf_component_register(SRCS Adafruit_ST7735.cpp Adafruit_ST77xx.cpp 
+				Adafruit_ST7789.cpp 
+			INCLUDE_DIRS include
 			REQUIRES "${DEPS}"
 			)
 

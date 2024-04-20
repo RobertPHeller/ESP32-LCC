@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 10:11:20 2024
-#  Last Modified : <240417.1011>
+#  Last Modified : <240419.1334>
 #
 #  Description	
 #
@@ -94,7 +94,9 @@ set(DEPS
     )
     
 
-idf_component_register(INCLUDE_DIRS include
+idf_component_register(SRCS Adafruit_GFX.cpp Adafruit_SPITFT.cpp 
+			    glcdfont.c Print.cpp
+			INCLUDE_DIRS include include/Fonts
 			REQUIRES "${DEPS}"
 			)
 

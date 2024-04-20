@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 12:37:37 2024
-//  Last Modified : <240419.1042>
+//  Last Modified : <240419.1653>
 //
 //  Description	
 //
@@ -66,19 +66,22 @@ public:
     {
     public:
         void transfer(void * data, uint32_t size);
-        uint8_t transfer(uint8_t data);
-        uint16_t transfer16(uint16_t data);
-        uint32_t transfer32(uint32_t data);
+        uint8_t transfer(uint8_t data,bool keepalive=false);
+        uint16_t transfer16(uint16_t data,bool keepalive=false);
+        uint32_t transfer32(uint32_t data,bool keepalive=false);
         
         void transferBytes(const uint8_t * data, uint8_t * out, uint32_t size);
         void transferBits(uint32_t data, uint32_t * out, uint8_t bits);
         
-        void write(uint8_t data);
-        void write16(uint16_t data);
-        void write32(uint32_t data);
+        void write(uint8_t data,bool keepalive=false);
+        void write16(uint16_t data,bool keepalive=false);
+        void write32(uint32_t data,bool keepalive=false);
         void writeBytes(const uint8_t * data, uint32_t size);
         void writePixels(const void * data, uint32_t size);//ili9341 compatible
         void writePattern(const uint8_t * data, uint8_t size, uint32_t repeat);
+        
+        void Acquire();
+        void Release();
     protected:
         friend class Esp32SPI;
         SpiDevice(gpio_num_t ss, Esp32SPI *parent);

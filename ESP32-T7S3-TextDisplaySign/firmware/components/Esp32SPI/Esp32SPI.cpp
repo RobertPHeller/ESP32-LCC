@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 12:37:51 2024
-//  Last Modified : <240419.1048>
+//  Last Modified : <240419.1719>
 //
 //  Description	
 //
@@ -116,7 +116,18 @@ void Esp32SPI::SpiDevice::transfer(void * data, uint32_t size)
 {
     transferBytes((const uint8_t *)data, (uint8_t *)data, size);
 }
-uint8_t Esp32SPI::SpiDevice::transfer(uint8_t data)
+
+void Esp32SPI::SpiDevice::Acquire()
+{
+    spi_device_acquire_bus(spi_,portMAX_DELAY);
+}
+
+void Esp32SPI::SpiDevice::Release()
+{
+    spi_device_release_bus(spi_);
+}
+
+uint8_t Esp32SPI::SpiDevice::transfer(uint8_t data,bool keepalive)
 {
     AtomicHolder h(parent_);
     esp_err_t ret;
@@ -125,13 +136,14 @@ uint8_t Esp32SPI::SpiDevice::transfer(uint8_t data)
     t.length = 8;
     t.tx_buffer = &data;
     t.flags = SPI_TRANS_USE_RXDATA;
-    spi_device_acquire_bus(spi_,portMAX_DELAY);
+    if (keepalive) t.flags |= SPI_TRANS_CS_KEEP_ACTIVE;
+    //spi_device_acquire_bus(spi_,portMAX_DELAY);
     ret = spi_device_polling_transmit(spi_,&t);
     ESP_ERROR_CHECK(ret);
-    spi_device_release_bus(spi_);
+    //spi_device_release_bus(spi_);
     return *(uint8_t*)t.rx_data;
 }
-uint16_t Esp32SPI::SpiDevice::transfer16(uint16_t data)
+uint16_t Esp32SPI::SpiDevice::transfer16(uint16_t data,bool keepalive)
 {
     AtomicHolder h(parent_);
     esp_err_t ret;
@@ -140,13 +152,14 @@ uint16_t Esp32SPI::SpiDevice::transfer16(uint16_t data)
     t.length = 8*2;
     t.tx_buffer = &data;
     t.flags = SPI_TRANS_USE_RXDATA;
-    spi_device_acquire_bus(spi_,portMAX_DELAY);
+    if (keepalive) t.flags |= SPI_TRANS_CS_KEEP_ACTIVE;
+    //spi_device_acquire_bus(spi_,portMAX_DELAY);
     ret = spi_device_polling_transmit(spi_,&t);
     ESP_ERROR_CHECK(ret);
-    spi_device_release_bus(spi_);
+    //spi_device_release_bus(spi_);
     return *(uint16_t*)t.rx_data;
 }
-uint32_t Esp32SPI::SpiDevice::transfer32(uint32_t data)
+uint32_t Esp32SPI::SpiDevice::transfer32(uint32_t data,bool keepalive)
 {
     AtomicHolder h(parent_);
     esp_err_t ret;
@@ -155,10 +168,11 @@ uint32_t Esp32SPI::SpiDevice::transfer32(uint32_t data)
     t.length = 8*4;
     t.tx_buffer = &data;
     t.flags = SPI_TRANS_USE_RXDATA;
-    spi_device_acquire_bus(spi_,portMAX_DELAY);
+    if (keepalive) t.flags |= SPI_TRANS_CS_KEEP_ACTIVE;
+    //spi_device_acquire_bus(spi_,portMAX_DELAY);
     ret = spi_device_polling_transmit(spi_,&t);
     ESP_ERROR_CHECK(ret);
-    spi_device_release_bus(spi_);
+    //spi_device_release_bus(spi_);
     return *(uint32_t*)t.rx_data;
 }
 void Esp32SPI::SpiDevice::transferBytes(const uint8_t * data, uint8_t * out, uint32_t size)
@@ -170,10 +184,10 @@ void Esp32SPI::SpiDevice::transferBytes(const uint8_t * data, uint8_t * out, uin
     t.length = 8*size;
     t.tx_buffer = data;
     t.rx_buffer = out;
-    spi_device_acquire_bus(spi_,portMAX_DELAY);
+    //spi_device_acquire_bus(spi_,portMAX_DELAY);
     ret = spi_device_polling_transmit(spi_,&t);
     ESP_ERROR_CHECK(ret);
-    spi_device_release_bus(spi_);
+    //spi_device_release_bus(spi_);
 }
 void Esp32SPI::SpiDevice::transferBits(uint32_t data, uint32_t * out, uint8_t bits)
 {
@@ -184,31 +198,78 @@ void Esp32SPI::SpiDevice::transferBits(uint32_t data, uint32_t * out, uint8_t bi
     t.length = bits;
     t.tx_buffer = &data;
     t.rx_buffer = out;
-    spi_device_acquire_bus(spi_,portMAX_DELAY);
+    //spi_device_acquire_bus(spi_,portMAX_DELAY);
     ret = spi_device_polling_transmit(spi_,&t);
     ESP_ERROR_CHECK(ret);
-    spi_device_release_bus(spi_);
+    //spi_device_release_bus(spi_);
 }
         
-void Esp32SPI::SpiDevice::write(uint8_t data)
+void Esp32SPI::SpiDevice::write(uint8_t data,bool keepalive)
 {
-    transfer(data);
+    transfer(data,keepalive);
 }
-void Esp32SPI::SpiDevice::write16(uint16_t data)
+void Esp32SPI::SpiDevice::write16(uint16_t data,bool keepalive)
 {
-    transfer16(data);
+    transfer16(data,keepalive);
 }
-void Esp32SPI::SpiDevice::write32(uint32_t data)
+void Esp32SPI::SpiDevice::write32(uint32_t data,bool keepalive)
 {
-    transfer32(data);
+    transfer32(data,keepalive);
 }
 void Esp32SPI::SpiDevice::writeBytes(const uint8_t * data, uint32_t size)
 {
     transferBytes((const uint8_t *)data, NULL, size);
 }
-void Esp32SPI::SpiDevice::writePixels(const void * data, uint32_t size) //ili9341 compatible
+
+#define MSB_32_SET(var, val) { uint8_t * d = (uint8_t *)&(val); (var) = d[3] | (d[2] << 8) | (d[1] << 16) | (d[0] << 24); }
+#define MSB_24_SET(var, val) { uint8_t * d = (uint8_t *)&(val); (var) = d[2] | (d[1] << 8) | (d[0] << 16); }
+#define MSB_16_SET(var, val) { (var) = (((val) & 0xFF00) >> 8) | (((val) & 0xFF) << 8); }
+#define MSB_PIX_SET(var, val) { uint8_t * d = (uint8_t *)&(val); (var) = d[1] | (d[0] << 8) | (d[3] << 16) | (d[2] << 24); }
+
+void Esp32SPI::SpiDevice::writePixels(const void * data_in, uint32_t size)
 {
-    writeBytes((const uint8_t *)data,size); // punting...
+    uint32_t buffer[16];
+    size_t longs = size >> 2;
+    if(size & 3){
+        longs++;
+    }
+    bool msb = true;
+    uint32_t * data = (uint32_t*)data_in;
+    size_t c_len = 0, c_longs = 0, l_bytes = 0;
+    while(size)
+    {
+        c_len = (size>64)?64:size;
+        c_longs = (longs > 16)?16:longs;
+        l_bytes = (c_len & 3);
+        for (size_t i=0; i<c_longs; i++) {
+            if(msb)
+            {
+                if(l_bytes && i == (c_longs - 1))
+                {
+                    if(l_bytes == 2)
+                    {
+                        MSB_16_SET(buffer[i], data[i]);
+                    }
+                    else
+                    {
+                        buffer[i] = data[i] & 0xFF;
+                    }
+                }
+                else
+                {
+                    MSB_PIX_SET(buffer[i], data[i]);
+                }
+            }
+            else
+            {
+                buffer[i] = data[i];
+            }
+        }
+        writeBytes((const uint8_t *)buffer,c_longs<<2);
+        data += c_longs;
+        longs -= c_longs;
+        size -= c_len;
+    }
 }
 void Esp32SPI::SpiDevice::writePattern(const uint8_t * data, uint8_t size, uint32_t repeat)
 {

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 10:16:07 2024
-//  Last Modified : <240420.0854>
+//  Last Modified : <240420.1731>
 //
 //  Description	
 //
@@ -87,6 +87,9 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "hardware.hxx"
 #include "Esp32SPI.hxx"
 #include "Adafruit_ST7735.h"
+
+#include "RetailDisplayConfig.hxx"
+#include "RetailDisplay.hxx"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Increase the CAN RX frame buffer size to reduce overruns when there is high
@@ -270,7 +273,6 @@ void FactoryResetHelper::factory_reset(int fd)
 }
 
 openmrn_arduino::Esp32Ledc ledc(BacklightPin);
-
 void app_main()
 {
     
@@ -290,9 +292,9 @@ void app_main()
     bool cleanup_config_tree = false;
     GpioInit::hw_init();
     spibus.hw_initbus(CONFIG_MOSI,CONFIG_MISO,CONFIG_SCLK);
-    display1.initB(&spibus);
+    display1.initR(&spibus,INITR_BLACKTAB);
 #ifdef CONFIG_TWO_DISPLAY_PANELS
-    display2.initB(&spibus);
+    display2.initR(&spibus,INITR_BLACKTAB);
 #endif
     spibus.mount_sd_card("/sdcard",CONFIG_CardCS);
 
@@ -379,6 +381,22 @@ void app_main()
         LOG(INFO, "[esp32textdisplay] DelayRebootHelper done.");
         healthmonitor::HealthMonitor health_mon(stack.service());
         LOG(INFO, "[esp32textdisplay] HealthMonitor done.");
+#ifdef CONFIG_FAST_CLOCK
+        openlcb::BroadcastTimeClient timeClient(stack.node(),
+                           openlcb::BroadcastTimeDefs::DEFAULT_FAST_CLOCK_ID);
+#else
+        openlcb::BroadcastTimeClient timeClient(stack.node(),
+                        openlcb::BroadcastTimeDefs::DEFAULT_REALTIME_CLOCK_ID);
+#endif
+        ledc.hw_init();
+        RetailDisplay sign1(stack.node(), cfg.seg().display1(), 
+                            &display1, &timeClient, ledc.get_channel(0));
+        LOG(INFO, "[esp32textdisplay] Sign1 done.");
+#ifdef CONFIG_TWO_DISPLAY_PANELS
+        RetailDisplay sign2(stack.node(), cfg.seg().display2(),
+                            &display2, &timeClient);
+        LOG(INFO, "[esp32textdisplay] Sign2 done.");
+#endif
         // Create config file and initiate factory reset if it doesn't exist or is
         // otherwise corrupted.
         int config_fd =

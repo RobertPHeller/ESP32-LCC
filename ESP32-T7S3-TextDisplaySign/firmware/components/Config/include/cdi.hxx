@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <240417.0944>
+//  Last Modified : <240420.1006>
 //
 //  Description	
 //
@@ -53,6 +53,7 @@
 #include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
 
+#include "RetailDisplayConfig.hxx"
 
 #include "Revision.hxxout"
 
@@ -65,6 +66,10 @@ CDI_GROUP(IoBoard, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
 /// Each entry declares the name of the current entry, then the type and then
 /// optional arguments list.
 CDI_GROUP_ENTRY(internal_config, openlcb::InternalConfigData);
+CDI_GROUP_ENTRY(display1,RetailDisplayConfig,Name("Display"));
+#ifdef CONFIG_TWO_DISPLAY_PANELS
+CDI_GROUP_ENTRY(display2,RetailDisplayConfig,Name("Second Display"));
+#endif
 #ifdef CONFIG_ESP32_WIFI_ENABLED
 CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
 #endif

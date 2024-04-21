@@ -175,6 +175,13 @@ menu "Advanced Configuration"
         default y
         help
             Two display panels, back to back.
+            
+    config FAST_CLOCK
+        bool "Use fast clock for panel time displays."
+        default n
+        help
+            Select between realtime and fast clocks..
+
 endmenu
 
 

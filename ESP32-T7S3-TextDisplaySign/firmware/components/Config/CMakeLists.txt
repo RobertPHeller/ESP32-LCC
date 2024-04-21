@@ -1,5 +1,6 @@
 set(DEPS
     OpenMRNIDF
+    main
    )
    
 

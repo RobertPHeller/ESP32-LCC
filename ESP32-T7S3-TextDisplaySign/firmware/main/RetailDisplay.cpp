@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Apr 20 17:51:02 2024
-//  Last Modified : <240420.2135>
+//  Last Modified : <240420.2156>
 //
 //  Description	
 //
@@ -154,7 +154,9 @@ void BacklightControl::unregister_handler()
 
 
 
-
+void PriceDisplay::updateDisplay()
+{
+}
 
 void RetailDisplay::updateDisplay()
 {

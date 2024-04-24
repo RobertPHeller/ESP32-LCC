@@ -947,9 +947,6 @@
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062ade9fc"
       (reference "#PWR04") (unit 1) (value "+3.3V") (footprint "")
     )
-    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000063e6c883"
-      (reference "#PWR05") (unit 1) (value "+3.3V") (footprint "")
-    )
     (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000063e738c3"
       (reference "#PWR06") (unit 1) (value "+5V") (footprint "")
     )
@@ -1081,12 +1078,6 @@
     )
     (path "/1ae68316-0b19-4591-b964-3309cdc9e75e"
       (reference "R102") (unit 1) (value "1K") (footprint "Resistor_SMD:R_0402_1005Metric")
-    )
-    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062af751c"
-      (reference "R203") (unit 1) (value "2.4K") (footprint "Resistor_SMD:R_0402_1005Metric")
-    )
-    (path "/f0584130-c0cc-4b72-a773-191ba80872e1/00000000-0000-0000-0000-000062af7569"
-      (reference "R206") (unit 1) (value "2.4K") (footprint "Resistor_SMD:R_0402_1005Metric")
     )
     (path "/752b7f6a-f339-4900-990b-48484b91540b/00000000-0000-0000-0000-000062b05304"
       (reference "R801") (unit 1) (value "60 Ohms") (footprint "Resistor_SMD:R_1206_3216Metric")

@@ -52,7 +52,7 @@
 ** Andreas Merkle (web@blue-andi.de)
 */
 
-#define TOMTHUMB_USE_EXTENDED 0
+#define TOMTHUMB_USE_EXTENDED 1
 
 const uint8_t TomThumbBitmaps[] PROGMEM = {
     0x00,             /* 0x20 space */

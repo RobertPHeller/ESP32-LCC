@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Apr 20 09:26:26 2024
-//  Last Modified : <240420.2150>
+//  Last Modified : <240421.0954>
 //
 //  Description	
 //
@@ -101,8 +101,6 @@ using PriceGroup = openlcb::RepeatedGroup<PriceConfig,NUM_PRICES>;
 CDI_GROUP(TODConfig);
 CDI_GROUP_ENTRY(onevent,openlcb::EventConfigEntry,Name("Message On Event"),
                 Description("(C) Receiving this event ID will turn the message on."));
-CDI_GROUP_ENTRY(offevent,openlcb::EventConfigEntry,Name("Message Off Event"),
-                Description("(C) Receiving this event ID will turn the message off."));
 CDI_GROUP_ENTRY(message,openlcb::StringConfigEntry<32>,
                 Name("Message"),Description("The message text to display."));
 CDI_GROUP_ENTRY(messageColor,openlcb::Uint16ConfigEntry,

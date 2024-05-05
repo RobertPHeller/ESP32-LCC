@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Dec 16 12:43:10 2022
-//  Last Modified : <230324.0929>
+//  Last Modified : <240505.1628>
 //
 //  Description	
 //
@@ -48,6 +48,24 @@
 
 namespace nvsmanager
 {
+
+/** @page WiFiConfiguration WiFi Configuration
+ * 
+ * This configuration group configures the Wifi settings for the node.
+ * 
+ * @section wifi_mode WiFi mode
+ * Configures the WiFi operating mode: Off or Station Only.
+ * @section hostname_prefix Hostname prefix
+ * Configures the hostname prefix used by the node. Note: the node ID will
+ * be appended to this value.
+ * @section station Station Configuration
+ * Configures the station WiFi interface on the ESP32 node. This is used to
+ * have the ESP32 join an existing WiFi network.
+ * @subsection ssid SSID
+ * Configures the SSID that the ESP32 will connect to.
+ * @subsection password Password
+ * Configures the password that the ESP32 will use for the station SSID.
+ */
 
 CDI_GROUP(WiFiStationConfiguration);
 /// Allows setting the SSID that the Station will attempt to connect to.

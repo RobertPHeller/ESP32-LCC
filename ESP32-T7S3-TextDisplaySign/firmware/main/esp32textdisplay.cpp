@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 10:16:07 2024
-//  Last Modified : <240505.1335>
+//  Last Modified : <240505.1607>
 //
 //  Description	
 //
@@ -44,12 +44,13 @@
 
 
 /** @mainpage Introduction 
+ * 
  * This board controls one or two small TFT displays that is being used as 
  * modern digital retail displays, commonly used by gas (filling) stations, 
  * but might also be used by movie theaters, shopping malls, or other retail 
  * establishments.  The displays can display a store logo, fuel (or other 
- * product) prices, along with other information.  LCC events can turn the 
- * whole display on or off, or to select one of four short messages.  The 
+ * product) prices along with other information.  LCC events can turn the
+ * whole display on or off, or to select one of four short messages.  The
  * display can also display the time of day, using the Broadcast Time 
  * Protocol (either real time or fast clock).
  */

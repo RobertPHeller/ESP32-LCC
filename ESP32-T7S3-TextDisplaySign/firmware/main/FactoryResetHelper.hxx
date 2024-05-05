@@ -46,17 +46,20 @@
 namespace esp32textdisplay
 {
 
-// when the io board starts up the first time the config is blank and needs to
-// be reset to factory settings.
+
+/// When the io board starts up the first time the config is blank and needs to
+/// be reset to factory settings.
 class FactoryResetHelper : public DefaultConfigUpdateListener
 {
 public:
+    /// Constructor.
     FactoryResetHelper() : DefaultConfigUpdateListener()
     {
     }
-
+    /// Update the configurations.
     UpdateAction apply_configuration(int fd, bool initial_load,
                                      BarrierNotifiable *done) override;
+    /// Perform a factory reset.
     void factory_reset(int fd) override;
 };
 

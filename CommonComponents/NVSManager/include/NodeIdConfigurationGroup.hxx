@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Dec 16 12:40:48 2022
-//  Last Modified : <230324.0929>
+//  Last Modified : <240505.1619>
 //
 //  Description	
 //
@@ -45,6 +45,28 @@
 #include <openlcb/ConfigRepresentation.hxx>
 
 #include "sdkconfig.h"
+
+/** @page NodeIdConfig Node id configuration
+ * 
+ * This is the identifier to use for this device. NOTE: Changing this value 
+ * will force a factory reset.
+ * 
+ * The initial default value is a placeholder value and should be changed
+ * the first time the node is powered up.
+ * 
+ * A node id range can be acquired at 
+ * https://registry.openlcb.org/requestuniqueidrange#new_tab
+ * 
+ * @section NodeIdOpts Configuration Options
+ * 
+ * There is one configuration option.  It is the string representation of the
+ * node id, in the form xx.xx.xx.xx.xx.xx, where each xx is a 2 digit hex
+ * number representing one 8-bit byte (00 to ff).
+ * 
+ * Updating this option will cause the node to reboot with a factory reset
+ * configuration (except for the node id).  The node id is stored in a separate
+ * persistent storage area.
+ */
 
 namespace nvsmanager
 {

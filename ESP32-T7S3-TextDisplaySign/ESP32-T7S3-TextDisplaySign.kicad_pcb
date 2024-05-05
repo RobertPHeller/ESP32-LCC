@@ -362,6 +362,16 @@
       (net 51 "unconnected-(U201-Pad39)") (pinfunction "IO_7") (pintype "passive+no_connect") (tstamp 5fa08726-7767-490e-b9bb-5766f1d5eb2e))
     (pad "40" thru_hole circle locked (at 13.97 11.43 270) (size 1.4 1.4) (drill 0.8) (layers *.Cu *.Mask)
       (net 50 "unconnected-(U201-Pad40)") (pinfunction "CLK/IO_6") (pintype "passive+no_connect") (tstamp 3baf6e13-0d7b-48b7-a8c2-73759d0233c1))
+    (model "${KICAD6_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_2x10_P2.54mm_Vertical.wrl"
+      (offset (xyz -11 11.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
+    (model "${KICAD6_3DMODEL_DIR}/Connector_PinSocket_2.54mm.3dshapes/PinSocket_2x10_P2.54mm_Vertical.wrl"
+      (offset (xyz 14 11.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Package_TO_SOT_SMD:TSOT-23-6" (layer "F.Cu")
@@ -582,10 +592,10 @@
       (net 2 "GND") (pintype "passive") (tstamp 2cb0d1b4-134f-4b65-a0e1-92efdcaa700d))
     (pad "8" thru_hole circle (at 4.445 -8.89 90) (size 1.50114 1.50114) (drill 0.89916) (layers *.Cu *.Mask "F.SilkS")
       (net 1 "CAN +12V") (pintype "passive") (tstamp 957a791d-0a78-49eb-bbb0-d32e2b5baf75))
-    (model "connectors/RJ45_8.wrl"
-      (offset (xyz 0 0 0))
-      (scale (xyz 0.4 0.4 0.4))
-      (rotate (xyz 0 0 0))
+    (model "${KIPRJMOD}/../CommonFootprints/Connectors_RJ.3dshapes/615008144221.stp"
+      (offset (xyz 0 1.5 7.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
     )
   )
 
@@ -806,7 +816,7 @@
     (property "Sheetname" "Display Board")
     (path "/0dbdf17a-1f86-4bad-b68c-59be1dcdeafb/b8d0c3a6-5f3c-4ed0-af13-83bb324ff42d")
     (attr through_hole)
-    (fp_text reference "J501" (at 4.385 -2.27 90) (layer "F.SilkS")
+    (fp_text reference "J501" (at 0.532 -3.429 90) (layer "F.SilkS")
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp ad6be4ba-2ba9-42a2-99ba-65ca3e783269)
     )
@@ -2634,10 +2644,10 @@
       (net 5 "+5V") (pintype "passive") (tstamp b62e90a8-e423-4716-8635-bbb4e56405ed))
     (pad "2" smd rect (at 3.2 0) (size 1.5 2.2) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 4 "Net-(C302-Pad2)") (pintype "passive") (tstamp 4cc710c2-8205-42de-9f18-94ea1cac8fef))
-    (model "${KICAD6_3DMODEL_DIR}/Inductor_SMD.3dshapes/L_7.3x7.3_H4.5.wrl"
+    (model "${KIPRJMOD}/B1047AS-4R7N=P3.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
-      (rotate (xyz 0 0 0))
+      (rotate (xyz 90 180 90))
     )
   )
 
@@ -2687,10 +2697,10 @@
       (net 2 "GND") (pintype "passive") (tstamp 49ae65f1-8402-4cd2-9045-aa19ca5e0f13))
     (pad "8" thru_hole circle (at 4.445 -8.89 270) (size 1.50114 1.50114) (drill 0.89916) (layers *.Cu *.Mask "F.SilkS")
       (net 1 "CAN +12V") (pintype "passive") (tstamp ed32853a-bdfd-4027-be7f-0bfac5ae7682))
-    (model "connectors/RJ45_8.wrl"
-      (offset (xyz 0 0 0))
-      (scale (xyz 0.4 0.4 0.4))
-      (rotate (xyz 0 0 0))
+    (model "${KIPRJMOD}/../CommonFootprints/Connectors_RJ.3dshapes/615008144221.stp"
+      (offset (xyz 0 1.5 7.5))
+      (scale (xyz 1 1 1))
+      (rotate (xyz -90 0 0))
     )
   )
 
@@ -5540,7 +5550,7 @@
     (tedit 0) (tstamp f6ffbca8-3c1d-4cfc-a4c2-d029f63c3c42)
     (at 166.37 35.56 90)
     (attr board_only exclude_from_pos_files exclude_from_bom)
-    (fp_text reference "G***" (at 0 0 90) (layer "F.SilkS")
+    (fp_text reference "G***" (at 0 0 90) (layer "F.SilkS") hide
       (effects (font (size 1.524 1.524) (thickness 0.3)))
       (tstamp 831a2ada-b307-431f-96f3-d42897308d5f)
     )
@@ -7098,7 +7108,7 @@
   (dimension (type aligned) (layer "Dwgs.User") (tstamp 55d6feb3-5a7e-46a3-b8ff-29d36b7cce48)
     (pts (xy 107.95 26.67) (xy 107.95 102.87))
     (height 20.32)
-    (gr_text "76.2000 mm" (at 86.48 64.77 90) (layer "Dwgs.User") (tstamp 1d50d4dd-3eef-4a98-a169-204b424e33db)
+    (gr_text "76.2000 mm" (at 86.48 64.77 90) (layer "Dwgs.User") (tstamp 55d6feb3-5a7e-46a3-b8ff-29d36b7cce48)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (format (units 3) (units_format 1) (precision 4))
@@ -7107,7 +7117,7 @@
   (dimension (type aligned) (layer "Dwgs.User") (tstamp f53d22b4-60e8-4252-9467-c6aa69b9129e)
     (pts (xy 107.95 26.67) (xy 213.36 26.67))
     (height -11.43)
-    (gr_text "105.4100 mm" (at 160.655 14.09) (layer "Dwgs.User") (tstamp 356ac5a5-b470-4937-9c78-df7bc812973f)
+    (gr_text "105.4100 mm" (at 160.655 14.09) (layer "Dwgs.User") (tstamp f53d22b4-60e8-4252-9467-c6aa69b9129e)
       (effects (font (size 1 1) (thickness 0.15)))
     )
     (format (units 3) (units_format 1) (precision 4))

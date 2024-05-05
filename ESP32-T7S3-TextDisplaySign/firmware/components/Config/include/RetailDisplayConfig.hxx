@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Apr 20 09:26:26 2024
-//  Last Modified : <240421.0954>
+//  Last Modified : <240505.1529>
 //
 //  Description	
 //
@@ -70,10 +70,77 @@ static const char ColorMap[] =
 "<relation><property>0xFFE0</property><value>Yellow</value></relation>"
 "<relation><property>0xFC00</property><value>Orange</value></relation>";
 
+/** @page retailDiaplayConfig Retail Display Configuration 
+ * There can one or two displays (compile time configuration). 
+ * The display displays this information from top to bottom:
+ * 
+ * The logo at the top, then the time (if enabled), then the four product
+ * prices, then one of the short one line message, and finally the fixed
+ * message of the day message.
+ * 
+ * Each display has these configuration options:
+ * @section description Description
+ * This is a user suppplied descriptive name for identifing purposes.
+ * @section orient Display Rotation
+ * This is the orientation of the display.  Portrait is the display in an 
+ * upright position with the connector pins at the bottom. Landscape is the 
+ * display with the pins to the right and Seascape is the display with the
+ * pins to the left, and UpsideDown is with pins at the top.
+ * @section background Background Color
+ * The general packground color for the display.
+ * @section signon Sign On Event
+ * Receiving this event ID will turn the sign on.
+ * @section signoff Sign Off Event
+ * Receiving this event ID will turn the sign off.
+ * @section brightness Display brightness
+ * This controls the display's backlight brightness in hundreths of a percent 
+ * (0 to 10000).
+ * @section logofile Store Logo File
+ * This is the name of a BMP file on the uSD card. It can be either an 
+ * uncompressed 24bit RGB or a 1bit bitmap.
+ * @section prices Prices
+ * These are the fuel (or other product) prices.  There is space for 4 
+ * products, for example Economy, Regular, Primium, and Diesel.
+ * @subsection product Product Name
+ * The product name (eg Regular, Diesel, Coffee, etc.).
+ * @subsection productColor Product color
+ * The color to use for the product name.
+ * @subsection currency Currency sign
+ * The currency sign to use: None, Dollar, Pound (British), or Euro.
+ * @subsection price Product Price
+ * The product price.  This is a text field, not a number, so be sure to 
+ * include a decimal point.
+ * @subsection suffix Suffix
+ * A suffix to add: None, 9/10 (typical for US fuel prices), "ea", or "hr".
+ * @subsection priceColor Price Color
+ * The color to use for the product price.
+ * @section mod Message of the Day
+ * This is a fixed message displayed at the bottom of the sign.
+ * @section modColor Message of the Day Color
+ * The color to use for the Message of the Day.
+ * @section displayTime Display Time
+ * Display the time, yes or no.  A compile time option selects real time or 
+ * fast clock time. The time display uses a "seven segment" format, like old
+ * digital clocks.
+ * @section timeColor Clock color
+ * The color to use for the time.
+ * @section timedofdaymessages Time Of Day Messages
+ * There is a space for short 1-line messages.  One of up to four message can
+ * be displayed in response to an event.
+ * @subsection onevent Message On Event
+ * This event selects this message.
+ * @subsection message Message
+ * The message text.
+ * @subsection messageColor Message Color
+ * The message color.
+ * 
+ */
+
+
 CDI_GROUP(PriceConfig);
 CDI_GROUP_ENTRY(product,openlcb::StringConfigEntry<8>,
                 Name("Product Name"),
-                Description("Product name (eg Regular, Diesel, Coffee, etc."));
+                Description("Product name (eg Regular, Diesel, Coffee, etc.)"));
 CDI_GROUP_ENTRY(productColor,openlcb::Uint16ConfigEntry,
                 Name("Product Color"),
                 Description("Product color"),

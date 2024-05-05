@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <240417.1039>
+#  Last Modified : <240505.1519>
 #
 #  Description	
 #
@@ -43,9 +43,10 @@
 ##############################################################################
 
 
-all: html latex pdf
+all: html latex UserManual.pdf KitBooklet.pdf
 
-SOURCES = $(wildcard ../main/*.hxx) $(wildcard ../main/*.cpp) \
+SOURCES = $(wildcard ../main/*.hxx) kitbooklet.h Revision.h \
+	  $(wildcard ../main/*.cpp) \
 	  $(wildcard ../components/Config/include/*.hxx) \
 	  $(wildcard ../components/Esp32SPI/include/*.hxx) \
 	  $(wildcard ../components/GFX/include/*.hxx) \
@@ -64,15 +65,37 @@ Doxyfile: Doxyfile.in ../../../.git/index ../sdkconfig
 	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
 	    >$@ <$<
 	    
+Doxyfile.kit: Doxyfile.kit.in ../../../.git/index ../sdkconfig
+	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \
+	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
+	    >$@ <$<
+	  
+Revision.h: ../components/Config/include/Revision.hxxout
+	echo '/** @page Revision Build Revisions' > $@
+	grep '^[[:space:]]*"[^"]*",$$' $< |sed 's/^[[:space:]]*"/ * - /g'|sed 's/",$$//g' >> $@
+	echo '*/' >> $@
 
-html latex: Doxyfile $(SOURCES)
-	-rm -rf html latex pdf
+
+html/index.html latex/refman.tex: Makefile Doxyfile $(SOURCES)
+	-rm -rf html latex 
 	doxygen Doxyfile
 	
 
-pdf: latex
+UserManual.pdf: latex/refman.tex
 	make -C latex
-	touch pdf
+	mv latex/refman.pdf ./UserManual.pdf
+	
 
+latex2/refman.tex: Makefile Doxyfile.kit $(SOURCES)
+	-rm -rf latex2
+	doxygen Doxyfile.kit
+
+KitBooklet.pdf: latex2/refman.tex
+	make -C latex2
+	pdfbook2 latex2/refman.pdf
+	mv latex2/refman-book.pdf ./KitBooklet.pdf
 clean:
-	rm -rf html latex pdf Doxyfile
+	-rm -rf html latex latex2 Doxyfile Doxyfile.kit
+
+distclean: clean
+	-rm UserManual.pdf KitBooklet.pdf

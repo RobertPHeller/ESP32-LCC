@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun May 5 12:53:24 2024
-//  Last Modified : <240506.1014>
+//  Last Modified : <240507.1600>
 //
 //  Description	
 //
@@ -94,17 +94,22 @@
  * @image latex ESP32-T7S3-TextDisplaySign-cut.png "Cutting the two boards apart" width=5in
  *
  * Assembly is straight forward.  The SMD parts are already soldered,
- * so only the through hole part need to be soldered to the board.
+ * so only the through hole parts need to be soldered to the board.
  * Start with the shortest parts and work towards the tallest. Their are 
  * one 2x2 and two 2x10 headers.  The 2x2 header is for the termination header 
- * and the two 2x10 will go in the T7-S3 board (supplied separately).
+ * and the two 2x10 will go in the T7-S3 board (supplied separately). Note the
+ * orientation of the 2x5 shrouded header and the orientation of the screw
+ * terminals.
  * 
  * You will probably want to use some sheet styreen to dress up the display 
- * panel.  Using textured styreen sheets can be used to simulate brick, stone,
+ * panel. Using textured styreen sheets can be used to simulate brick, stone,
  * or other materials.  There are two options to provide a way to connect the 
  * ribbon cable to the display board.  The small piece of stripboard and the
  * single in line header is one option, the other is the free hangine single 
  * in line socket is the other.
+ * 
+ * @image html DisplayBoard.png "Using styreen sheet (3/32in/2.4mm) to dress up the display panels."
+ * @image latex DisplayBoard.png "Using styreen sheet (3/32in/2.4mm) to dress up the display panels." height=4in
  * 
  * @page 02wiring General Wiring Notes
  * @section connectingNet Connecting the network

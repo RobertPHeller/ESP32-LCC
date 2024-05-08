@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun May 5 12:53:24 2024
-//  Last Modified : <240507.1600>
+//  Last Modified : <240508.1513>
 //
 //  Description	
 //
@@ -81,14 +81,14 @@
  * -# 1 2x5 IDC plug
  * @image html 622-1041LF_DSL.jpg
  * @image latex 622-1041LF_DSL.jpg height=1in 
- * -# 3 feet of 10 counductor ribbon cable
+ * -# 3 feet of 10 conductor ribbon cable
  * -# 1 small piece of strip board
  * @page 01assembly Assembly
  * 
  * 
  * The first step is to separate the node board from the display board.  This
  * is done by cutting the two boards apart. This can be done with a razor saw
- * or a jewlery saw.  Carefully sand the cut edges smooth.  
+ * or a jewelry saw.  Carefully sand the cut edges smooth.  
  * 
  * @image html ESP32-T7S3-TextDisplaySign-cut.png "Cutting the two boards apart"
  * @image latex ESP32-T7S3-TextDisplaySign-cut.png "Cutting the two boards apart" width=5in
@@ -101,20 +101,36 @@
  * orientation of the 2x5 shrouded header and the orientation of the screw
  * terminals.
  * 
- * You will probably want to use some sheet styreen to dress up the display 
- * panel. Using textured styreen sheets can be used to simulate brick, stone,
+ * You will probably want to use some sheet styrene to dress up the display 
+ * panel. Using textured styrene sheets can be used to simulate brick, stone,
  * or other materials.  There are two options to provide a way to connect the 
- * ribbon cable to the display board.  The small piece of stripboard and the
- * single in line header is one option, the other is the free hangine single 
+ * ribbon cable to the display board.  The small piece of strip board and the
+ * single in line header is one option, the other is the free hanging single 
  * in line socket is the other.
  * 
- * @image html DisplayBoard.png "Using styreen sheet (3/32in/2.4mm) to dress up the display panels."
- * @image latex DisplayBoard.png "Using styreen sheet (3/32in/2.4mm) to dress up the display panels." height=4in
+ * @image html DisplayBoard.png "Using styrene sheet (3/32in/2.4mm) to dress up the display panels."
+ * @image latex DisplayBoard.png "Using styrene sheet (3/32in/2.4mm) to dress up the display panels." height=4in
  * 
  * @page 02wiring General Wiring Notes
+ * Wiring the board is simply connecting the LCC CAN network and the display.
+ * 
+ * There are screw terminals for optionally connecting either a power supply to
+ * inject power into the CAN network or to pick power off the CAN network for 
+ * local use.
+ * 
+ * There is a header for CAN network termination. Shorting jumpers can be added
+ * to set network termination. They can be added parallel to the board edge
+ * for simple termination, or at right angles to the board edge for center
+ * tapped termination.  If no jumper are installed, then there is no 
+ * termination.
  * @section connectingNet Connecting the network
+ * There are two RJ45 jacks for connecting to the CAN network.
  * @section connectingDisplay Connecting the display
+ * There is a 2x5 shrouded pin header for connecting to the display. A 2x5 IDC
+ * plug is included in the kit.
  * @page 03initialConfig Initial Configuration
+ * The first time the node is started, it is necessary to set the node id.
+ * See \ref NodeIdConfig for information about this.
  * ****************************************************************************/
 
 

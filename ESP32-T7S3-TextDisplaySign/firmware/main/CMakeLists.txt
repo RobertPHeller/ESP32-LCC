@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <240423.2217>
+#  Last Modified : <240508.0936>
 #
 #  Description	
 #
@@ -94,7 +94,7 @@ set(CDIDEPS
     
 add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdidata.hxx"
                           "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/Revision.hxxout"
-                   COMMAND make CONFIG_DEVKIT_BREADBOARD="${CONFIG_DEVKIT_BREADBOARD}" CONFIG_T7S3="${CONFIG_T7S3}" CONFIG_SERVO_TURNOUTS="${CONFIG_SERVO_TURNOUTS}" -C ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/CDI 
+                   COMMAND make -C ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/CDI 
                    DEPENDS "${CDIDEPS}"
                    VERBATIM
                   )

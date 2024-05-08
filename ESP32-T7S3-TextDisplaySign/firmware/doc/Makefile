@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <240505.1519>
+#  Last Modified : <240508.1500>
 #
 #  Description	
 #
@@ -42,7 +42,6 @@
 #
 ##############################################################################
 
-
 all: html latex UserManual.pdf KitBooklet.pdf
 
 SOURCES = $(wildcard ../main/*.hxx) kitbooklet.h Revision.h \
@@ -59,6 +58,17 @@ SOURCES = $(wildcard ../main/*.hxx) kitbooklet.h Revision.h \
           $(wildcard ../../../CommonComponents/HealthMonitor/include/*.hxx) \
           $(wildcard ../../../CommonComponents/RebootHelpers/*.cpp) \
           $(wildcard ../../../CommonComponents/RebootHelpers/include/*.hxx) \
+
+ifndef PROJECTNAME
+PROJECTNAME=Esp32TextDisplay
+endif
+ifndef PROJECTNUMBER
+PROJECTNUMBER=$(shell git rev-parse --short HEAD)
+$(shell git diff --quiet)
+ifeq ($.SHELLSTATUS,1)
+$PROJECTNUMBER=${PROJECTNUMBER}-dirty
+endif
+endif
 
 Doxyfile: Doxyfile.in ../../../.git/index ../sdkconfig
 	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \
@@ -94,6 +104,14 @@ KitBooklet.pdf: latex2/refman.tex
 	make -C latex2
 	pdfbook2 latex2/refman.pdf
 	mv latex2/refman-book.pdf ./KitBooklet.pdf
+
+KitBooklet_even.pdf: KitBooklet.pdf
+	pdftk KitBooklet.pdf cat even output KitBooklet_even.pdf
+	
+KitBooklet_odd.pdf: KitBooklet.pdf
+	pdftk KitBooklet.pdf cat odd output KitBooklet_odd.pdf
+
+
 clean:
 	-rm -rf html latex latex2 Doxyfile Doxyfile.kit
 

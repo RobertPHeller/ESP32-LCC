@@ -791,7 +791,9 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = kitbooklet.h \
-                         ../../ESP32-OctalBufferOpenMRNIDF/components/Config/include \
+                         ../../ESP32-OctalBufferOpenMRNIDF/components/Config/include/SequenceConfigGroup.hxx \
+                         ../../ESP32-OctalBufferOpenMRNIDF/components/Config/include/StepConfigGroup.hxx \
+                         ../../ESP32-OctalBufferOpenMRNIDF/components/Config/include/OutputConfigGroup.hxx \
                          ../../CommonComponents/NVSManager/include \
     
 

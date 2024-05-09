@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Feb 5 21:19:52 2023
-//  Last Modified : <230216.1413>
+//  Last Modified : <240509.1553>
 //
 //  Description	
 //
@@ -51,6 +51,21 @@
 static const char YesNoMap[] = 
 "<relation><property>0</property><value>No</value></relation>"
 "<relation><property>1</property><value>Yes</value></relation>";
+
+/** @page SequenceConfig Sequence configuration
+ * There are 8 Sequences, which countain these configuration options:
+ * @section name Sequence Name
+ * This is a user supplied name for the sequence, used for identitication.
+ * @section enabled Enabled
+ * This is a boolean flag that enables or disables the Sequence.
+ * @section start Event to start the sequence
+ * Receiving this event starts the sequence.
+ * @section stop Event to stop the sequence
+ * Receiving this event stops the sequence.
+ * @section steps Steps
+ * These are the steps in the sequence. See @ref StepConfig
+ */
+
 
 /// CDI Configuration for a @ref Sequence
 CDI_GROUP(SequenceConfig);

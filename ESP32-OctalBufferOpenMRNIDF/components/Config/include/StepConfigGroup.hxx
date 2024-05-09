@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Feb 5 21:41:05 2023
-//  Last Modified : <230206.1407>
+//  Last Modified : <240509.1542>
 //
 //  Description	
 //
@@ -53,6 +53,22 @@ static const char NextModeMap[] =
 "<relation><property>0</property><value>Last</value></relation>"
 "<relation><property>1</property><value>Next</value></relation>"
 "<relation><property>2</property><value>First</value></relation>";
+
+/** @page StepConfig Step configuration
+ * @section outputs Appearence
+ * This defines the outputs used in this step. See @ref OutputConfig.
+ * @section time Step Time (MilliSecs)
+ * This how long the sequence pauses at this step.
+ * @section next Next step
+ * What step to goto when this step ends.
+ * - Last This is the last top. No futher steps will be performed.
+ * - Next The sequence precedes to the next steo.
+ * - First The sequence loops back to the first stop.
+ * @section start Event to send when the step starts
+ * This event is produced when this step starts.
+ * @section end Event to send when the step ends
+ * This event is produced when this step finishes.
+ */
 
 CDI_GROUP(StepConfig);
 CDI_GROUP_ENTRY(outputs,OutputConfigGroup,Name("Appearence"),

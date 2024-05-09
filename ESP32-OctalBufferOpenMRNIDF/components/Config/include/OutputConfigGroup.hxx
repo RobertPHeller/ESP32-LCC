@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun Feb 5 21:56:19 2023
-//  Last Modified : <230206.1412>
+//  Last Modified : <240509.1548>
 //
 //  Description	
 //
@@ -66,6 +66,20 @@ static const char modeSelectMap[] =
 "<relation><property>3</property><value>Fade Off</value></relation>"
 "<relation><property>4</property><value>Flicker</value></relation>";
 
+/** @page OutputConfig Output configuration
+ * @section selection Output Selection
+ * This selects the output to manage.
+ * @section mode Output Mode
+ * This selects the mode:
+ * - On Turns the output on to the specified brightness.
+ * - Off Turns off the output.
+ * - Fade On Slowly fades the output up to the specified brightness.
+ * - Fade Off Slowly fades the output off.
+ * - Flicker Sets the output to random brightness for random (short) periods
+ * of time. This simulates a candle flame or fire.
+ * @section brightness Output brightness
+ * Output brightness in hundreths of a percent (0 to 10000).
+ */
 CDI_GROUP(OutputConfig);
 CDI_GROUP_ENTRY(selection, openlcb::Uint8ConfigEntry,
                 Name("Output Selection"), MapValues(outputSelectMap),

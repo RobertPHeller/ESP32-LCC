@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sun May 5 12:53:24 2024
-//  Last Modified : <240508.1513>
+//  Last Modified : <240508.1949>
 //
 //  Description	
 //
@@ -103,13 +103,23 @@
  * 
  * You will probably want to use some sheet styrene to dress up the display 
  * panel. Using textured styrene sheets can be used to simulate brick, stone,
- * or other materials.  There are two options to provide a way to connect the 
- * ribbon cable to the display board.  The small piece of strip board and the
- * single in line header is one option, the other is the free hanging single 
- * in line socket is the other.
+ * or other materials.  
  * 
  * @image html DisplayBoard.png "Using styrene sheet (3/32in/2.4mm) to dress up the display panels."
  * @image latex DisplayBoard.png "Using styrene sheet (3/32in/2.4mm) to dress up the display panels." height=4in
+ *
+ * The connector pins can be "hidden" in a base constructed of sheet styrene,
+ * typically textured to simulate brick or stone.  Alternatively, the pins can
+ * be inside of a building side.  There are two options to provide a way to
+ * connect the ribbon cable to the display board.  The small piece of strip
+ * board and the single in line header is one option, the other is the free
+ * hanging single in line socket is the other.  The strip board with the 
+ * single in line header might be a good choice for a sign mounted upright on 
+ * a base and the free hanging option would be a good choice for a sign 
+ * mounted sideways into the side of a building.  There is a 2x5 IDC plug for 
+ * the other end of the cable.  Be sure to match up pin 1.  Pin 1 on the board 
+ * is marked G and is at the end with the "J501" marking on the PCB.  There 
+ * should be a small arrow indicating pin 1 on the IDC plug.
  * 
  * @page 02wiring General Wiring Notes
  * Wiring the board is simply connecting the LCC CAN network and the display.

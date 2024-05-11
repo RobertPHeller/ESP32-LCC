@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu May 9 10:00:29 2024
-//  Last Modified : <240509.1557>
+//  Last Modified : <240511.0934>
 //
 //  Description	
 //
@@ -101,6 +101,29 @@
  * @page 03initialConfig Initial Configuration
  * The first time the node is started, it is necessary to set the node id.
  * See \ref NodeIdConfig for information about this.
+ * @page 04applications Application Examples
+ *
+ * @section eightballsign "8 Ball Club Sign"
+ * 
+ * This board can be use to light "8 Ball Club Sign", available separately.
+ * A ribbon cable can be used to connect the sign panel to the driver board.
+ * A sequence can be configured to light the sign's segements in turn, creating
+ * an animated, colorfuly lighted sign for your model pool hall. 
+ *
+ * @image html 8ballsignhookup.png "Ribbon cable hookup to an 8 Ball Sign board"
+ * @image latex 8ballsignhookup.png "Ribbon cable hookup to an 8 Ball Sign board" width=4in
+ * 
+ * @subsection eightballsignConf Configuration for the 8 ball sign
+ * 
+ * The configuration for the 8 ball sign contains these steps:
+ * 
+ * -# Appearence: Output 1: steady on, Step Time: 1000, Next step: Next
+ * -# Appearence: Output 1 and 2: steady on, Step Time: 1000, Next step: Next
+ * -# Appearence: Output 1, 2, and 3: steady on, Step Time: 1000, Next step: Next
+ * -# Appearence: Output 1, 2, 3 and 4: steady on, Step Time: 1000, Next step: Next
+ * -# Appearence: Output 1, 2, 3, 4, and 5: steady on, Step Time: 1000, Next step: Next
+ * -# Appearence: Output 1, 2, 3, 4, and 5: off, Step Time: 1000, Next step: First
+ *    
  ****************************************************************************/
 
 

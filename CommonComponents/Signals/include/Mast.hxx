@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 25 15:59:18 2019
-//  Last Modified : <230324.0932>
+//  Last Modified : <241116.1003>
 //
 //  Description	
 //
@@ -78,6 +78,7 @@ public:
         for (int i = 0; i < RULESCOUNT; i++) {
             rules_[i] = new Rule(node_,cfg_.rules().entry(i),this);
         }
+        isLit_ = true;
         ConfigUpdateService::instance()->register_update_listener(this);
     }
     virtual UpdateAction apply_configuration(int fd, 
@@ -89,10 +90,16 @@ public:
     void handle_identify_producer(const EventRegistryEntry &registry_entry,
                                   EventReport *event, 
                                   BarrierNotifiable *done) override;
-     void ClearCurrentRule(BarrierNotifiable *done);
-     void SetCurrentRuleAndSpeed(Rule *r, TrackCircuit::TrackSpeed s, 
+    void handle_identify_consumer(const EventRegistryEntry &registry_entry,
+                                  EventReport *event, 
+                                  BarrierNotifiable *done) override;
+    void handle_event_report(const EventRegistryEntry &entry, 
+                             EventReport *event,
+                             BarrierNotifiable *done) override;
+    void ClearCurrentRule(BarrierNotifiable *done);
+    void SetCurrentRuleAndSpeed(Rule *r, TrackCircuit::TrackSpeed s, 
                                  BarrierNotifiable *done);
-     const std::string Mastid() const {return mastid_;}
+    const std::string Mastid() const {return mastid_;}
 private:
     openlcb::Node *node_;
     const MastConfig cfg_;
@@ -101,15 +108,21 @@ private:
     LampFade fade_;
 #endif
     openlcb::EventId linkevent_;
+    openlcb::EventId eventDark_;
+    openlcb::EventId eventLit_;
     static uint16_t baseLinkEvent_;
     Rule *rules_[RULESCOUNT];
     Rule *currentRule_;
     TrackCircuit::TrackSpeed currentSpeed_;
     Mast *previous_;
+    bool isLit_;
     void register_handler();
     void unregister_handler();
     void SendAllProducersIdentified(EventReport *event,BarrierNotifiable *done);
     void SendProducerIdentified(EventReport *event,BarrierNotifiable *done);
+    void SendAllConsumersIdentified(EventReport *event,BarrierNotifiable *done);
+    void SendConsumerIdentified(EventReport *event,BarrierNotifiable *done);
+    void setLit(bool lit);
     openlcb::WriteHelper write_helper[8];
     std::string mastid_{""};
 };

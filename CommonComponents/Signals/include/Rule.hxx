@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 25 17:12:10 2019
-//  Last Modified : <230324.0932>
+//  Last Modified : <241116.1042>
 //
 //  Description	
 //
@@ -72,7 +72,7 @@ public:
     enum Effects {None,Transition,H2RedFlash,Strobe};
 #endif
     Rule(openlcb::Node *n,const RuleConfig &cfg, Mast *parent) 
-      : node_(n), cfg_(cfg) 
+      : node_(n), cfg_(cfg)
     {
         name_ = Stop;
         speed_ = TrackCircuit::Stop_;
@@ -85,6 +85,7 @@ public:
         }
         parent_ = parent;
         isSet_ = false;
+        isLit_ = true;
         ConfigUpdateService::instance()->register_update_listener(this);
     }
     virtual UpdateAction apply_configuration(int fd, 
@@ -103,6 +104,7 @@ public:
                                   EventReport *event,
                                   BarrierNotifiable *done) override;
     void ClearRule(BarrierNotifiable *done);
+    void SetLit(bool lit);
 private:
     openlcb::Node *node_;
     const RuleConfig cfg_;
@@ -115,6 +117,7 @@ private:
     Lamp *lamps_[LAMPCOUNT];
     openlcb::EventId eventsets_{0},eventset_{0},eventclear_{0};
     Mast *parent_;
+    bool isLit_;
     bool isSet_;
     void register_handler();
     void unregister_handler();

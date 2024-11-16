@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 25 20:06:13 2019
-//  Last Modified : <230324.0931>
+//  Last Modified : <241116.1043>
 //
 //  Description	
 //
@@ -155,6 +155,15 @@ void Rule::handle_event_report(const EventRegistryEntry &entry,
         }
     }
     done->maybe_done();
+}
+
+void Rule::SetLit(bool lit)
+{
+    isLit_ = lit;
+    for (int i=0; i < LAMPCOUNT; i++)
+    {
+        lamps_[i]->SetLit(lit);
+    }
 }
 
 void Rule::ClearRule(BarrierNotifiable *done)

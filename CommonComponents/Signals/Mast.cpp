@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 25 20:26:38 2019
-//  Last Modified : <230324.0931>
+//  Last Modified : <241116.1038>
 //
 //  Description	
 //
@@ -76,9 +76,15 @@ ConfigUpdateListener::UpdateAction Mast::apply_configuration(int fd,
     fade_ = (LampFade) cfg_.fade().read(fd);
 #endif
     openlcb::EventId linkevent_cfg = cfg_.linkevent().read(fd);
-    if ((linkevent_cfg != linkevent_) && (processing_ == Normal || initial_load)) {
+    openlcb::EventId eventDark_cfg = cfg_.eventDark().read(fd);
+    openlcb::EventId eventLit_cfg = cfg_.eventLit().read(fd);
+    if ((linkevent_cfg != linkevent_||
+         eventDark_cfg != eventDark_||
+         eventLit_cfg != eventLit_) && (processing_ == Normal || initial_load)) {
         if (!initial_load) unregister_handler();
         linkevent_ = linkevent_cfg;
+        eventDark_ = eventDark_cfg;
+        eventLit_ = eventLit_cfg;
         register_handler();
         return REINIT_NEEDED; // Causes events identify.
     }
@@ -115,6 +121,7 @@ void Mast::handle_identify_global(const openlcb::EventRegistryEntry &registry_en
         return;
     }
     SendAllProducersIdentified(event,done);
+    SendAllConsumersIdentified(event,done);
     done->maybe_done();
 }
 
@@ -126,12 +133,21 @@ void Mast::handle_identify_producer(const EventRegistryEntry &registry_entry,
     done->maybe_done();
 }
 
+void Mast::handle_identify_consumer(const EventRegistryEntry &registry_entry,     
+                              EventReport *event,                           
+                              BarrierNotifiable *done)
+{
+    SendConsumerIdentified(event,done);
+    done->maybe_done();
+}
 void Mast::register_handler()
 {
     for (int i = 0; i < 8; i++) {
         openlcb::EventRegistry::instance()->register_handler(
             openlcb::EventRegistryEntry(this, linkevent_+i), 0);
     }
+    openlcb::EventRegistry::instance()->register_handler(openlcb::EventRegistryEntry(this, eventDark_), 0);
+    openlcb::EventRegistry::instance()->register_handler(openlcb::EventRegistryEntry(this, eventLit_), 0);
 }
 
 void Mast::unregister_handler()
@@ -169,6 +185,83 @@ void Mast::SendProducerIdentified(EventReport *event,BarrierNotifiable *done)
                                    done->new_child());
 }
 
+void Mast::SendAllConsumersIdentified(EventReport *event,BarrierNotifiable *done)
+{
+    if (isLit_)
+    {
+        event->event_write_helper<2>()->WriteAsync(node_,
+                                                   openlcb::Defs::MTI_CONSUMER_IDENTIFIED_INVALID,
+                                                   openlcb::WriteHelper::global(),
+                                                   openlcb::eventid_to_buffer(eventDark_),
+                                                   done->new_child());
+        event->event_write_helper<3>()->WriteAsync(node_,
+                                                   openlcb::Defs::MTI_CONSUMER_IDENTIFIED_VALID,
+                                                   openlcb::WriteHelper::global(),
+                                                   openlcb::eventid_to_buffer(eventLit_),
+                                                   done->new_child());
+    }
+    else
+    {
+        event->event_write_helper<2>()->WriteAsync(node_,
+                                                   openlcb::Defs::MTI_CONSUMER_IDENTIFIED_VALID,
+                                                   openlcb::WriteHelper::global(),
+                                                   openlcb::eventid_to_buffer(eventDark_),
+                                                   done->new_child());
+        event->event_write_helper<3>()->WriteAsync(node_,
+                                                   openlcb::Defs::MTI_CONSUMER_IDENTIFIED_INVALID,
+                                                   openlcb::WriteHelper::global(),
+                                                   openlcb::eventid_to_buffer(eventLit_),
+                                                   done->new_child());
+    }        
+}
+
+void Mast::SendConsumerIdentified(EventReport *event,BarrierNotifiable *done)
+{
+    openlcb::Defs::MTI mti = openlcb::Defs::MTI_CONSUMER_IDENTIFIED_UNKNOWN;
+    if (isLit_)
+    {
+        if (event->event == eventLit_)
+        {
+            mti = openlcb::Defs::MTI_CONSUMER_IDENTIFIED_VALID;
+        }
+        else
+        {
+            mti = openlcb::Defs::MTI_CONSUMER_IDENTIFIED_INVALID;
+        }
+    }
+    else
+    {
+        if (event->event == eventDark_)
+        {
+            mti = openlcb::Defs::MTI_CONSUMER_IDENTIFIED_VALID;
+        }
+        else
+        {
+            mti = openlcb::Defs::MTI_CONSUMER_IDENTIFIED_INVALID;
+        }
+    }
+    event->event_write_helper<4>()->WriteAsync(node_, mti,
+                                               openlcb::WriteHelper::global(),
+                                               openlcb::eventid_to_buffer(event->event),
+                                               done->new_child());
+}
+void Mast::handle_event_report(const EventRegistryEntry &entry,
+                               EventReport *event,
+                               BarrierNotifiable *done)
+{
+    if (event->event == eventDark_)
+    {
+        isLit_ = false;
+        currentRule_->SetLit(isLit_);
+    }
+    else if (event->event == eventLit_)
+    {
+        isLit_ = true;
+        currentRule_->SetLit(isLit_);
+    }
+    done->maybe_done();
+}
+        
 void Mast::ClearCurrentRule(BarrierNotifiable *done)
 {
     //LOG(ALWAYS, "*** Mast[%s]::ClearCurrentRule(): currentRule_ = %p", Mastid().c_str(),currentRule_);
@@ -191,6 +284,7 @@ void Mast::SetCurrentRuleAndSpeed(Rule *r, TrackCircuit::TrackSpeed s,
         previous_->SetCurrentRuleAndSpeed(r,s,done);
     } else {
         currentRule_ = r;
+        currentRule_->SetLit(isLit_);
         currentSpeed_ = s;
         write_helper[(int)s].WriteAsync(node_,openlcb::Defs::MTI_EVENT_REPORT,
                                 openlcb::WriteHelper::global(),

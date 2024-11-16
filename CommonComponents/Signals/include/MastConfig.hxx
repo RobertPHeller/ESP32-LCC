@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:15:46 2022
-//  Last Modified : <230324.0936>
+//  Last Modified : <241116.0848>
 //
 //  Description	
 //
@@ -68,6 +68,10 @@ CDI_GROUP_ENTRY(processing,openlcb::Uint8ConfigEntry,
                 MapValues(MastProcessingMap));
 CDI_GROUP_ENTRY(mastid, openlcb::StringConfigEntry<8>,
                 Name("Mast ID"));
+CDI_GROUP_ENTRY(eventDark,openlcb::EventConfigEntry,
+                Name("(C) Event to Set Mast to 'Dark' -- used for Approach Lit signals."));
+CDI_GROUP_ENTRY(eventLit,openlcb::EventConfigEntry,
+                Name("(C) Event to Set Mast to 'Lit' -- used for Approach Lit signals."));
 CDI_GROUP_ENTRY(linkevent,openlcb::EventConfigEntry,
                 Name("(P) Track Circuit Link Address. Copy and Paste into linked Track Circuit. (Read Only)"));
 #define TRACKCIRCUITBASE 2048 // Leave lots of room

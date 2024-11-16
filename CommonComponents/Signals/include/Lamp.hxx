@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 25 11:37:34 2019
-//  Last Modified : <230324.0931>
+//  Last Modified : <241116.0947>
 //
 //  Description	
 //
@@ -68,6 +68,7 @@ public:
         lampid_ = Unused;
         phase_  = Steady;
         isOn_   = false;
+        isLit_  = true;
         hasChanged_ = false;
         // Default: 50%
         brightness_ = 5000;
@@ -115,6 +116,7 @@ public:
             //LOG(ALWAYS, "*** Lamp::blink(): lampid_ = %d, isOn_ = %d, phase_ is %d, p is %p",lampid_,isOn_,phase_,p);
         }
 #endif
+        if (!isLit_) {p->set_duty(0);return;}
         if (!isOn_ && hasChanged_) {
             p->set_duty(0); 
         } else {
@@ -141,12 +143,14 @@ public:
     {
         pinlookup_[index] = pin;
     }
+    void SetLit(bool lit) {isLit_ = lit;}
 private:
     static PWM* pinlookup_[17];
     LampID lampid_;
     LampPhase  phase_;
     const LampConfig cfg_;
     bool isOn_;
+    bool isLit_;
     bool hasChanged_;
     uint16_t brightness_;
     uint32_t period_;    

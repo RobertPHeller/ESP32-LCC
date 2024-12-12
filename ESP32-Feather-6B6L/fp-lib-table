@@ -1,0 +1,6 @@
+(fp_lib_table
+  (lib (name "RJ45-8N-S")(type "Legacy")(uri "$(KIPRJMOD)/../CommonFootprints/RJ45-8N-S.mod")(options "")(descr ""))
+  (lib (name "PELowProfile")(type "Legacy")(uri "$(KIPRJMOD)/../CommonFootprints/PELowProfile.mod")(options "")(descr ""))
+  (lib (name "ESP32dev")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonFootprints/ESP32-Boards.pretty")(options "")(descr ""))
+  (lib (name "FeatherWing")(type Legacy)(uri "$(KIPRJMOD)/FeatherWing.mod")(options "")(descr ""))
+)

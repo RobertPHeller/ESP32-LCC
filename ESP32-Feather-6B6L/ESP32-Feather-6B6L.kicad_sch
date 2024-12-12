@@ -1008,10 +1008,10 @@
       (reference "J202") (unit 1) (value "RJ45") (footprint "RJ45-8N-S:RJ45_8N-S")
     )
     (path "/7e647a3c-ecd7-42e2-9dac-c11c82477b2d/563c42d0-665e-4776-8480-30f0455fc38c"
-      (reference "J401") (unit 1) (value "1 2 3 4 5 6 G") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-7_1x07_P2.54mm_Horizontal")
+      (reference "J401") (unit 1) (value "G  6  5  4  3  2  1") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-7_1x07_P2.54mm_Horizontal")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/d6a9cb2a-15f1-4e00-b655-1dd3d3ab0b6a"
-      (reference "J501") (unit 1) (value "+ 1 2 3 4  5 6 -") (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-10-2.54_1x10_P2.54mm_Horizontal")
+      (reference "J501") (unit 1) (value "+  1  2  3  4  5  6  7  8  -") (footprint "TerminalBlock_Phoenix:TerminalBlock_Phoenix_MPT-0,5-10-2.54_1x10_P2.54mm_Horizontal")
     )
     (path "/9736768d-9982-48bf-9a9e-87791a9983e3/5248c567-778b-4bf7-93d7-84ec2660b8aa"
       (reference "L301") (unit 1) (value "330 uh") (footprint "PELowProfile:PE-LowProfile")
@@ -1089,25 +1089,25 @@
       (reference "U501") (unit 1) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/278d4e0d-9c28-47be-b000-ce0a9c147110"
-      (reference "U501") (unit 2) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 2) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/7803de8b-306b-4ffe-aec8-7725fa8ef3c4"
-      (reference "U501") (unit 3) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 3) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/3378b5c9-c0ab-4b4b-8fb3-f7f3cb69bd8e"
-      (reference "U501") (unit 4) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 4) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/bd3e1382-2294-4df2-a143-b4f4024ede7e"
-      (reference "U501") (unit 5) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 5) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/ccc7043b-5f63-4056-a204-7cfd48001279"
-      (reference "U501") (unit 6) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 6) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/4d9df74e-a8b3-4373-830b-5745ccdc7a63"
-      (reference "U501") (unit 7) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 7) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
     (path "/ac448250-9774-471b-8ab3-71f273ea3ef8/d3c8f25b-eea4-4223-8e13-0c3f8f56bae5"
-      (reference "U501") (unit 8) (value "TBD62084A") (footprint "")
+      (reference "U501") (unit 8) (value "TBD62084A") (footprint "Package_DIP:DIP-18_W7.62mm")
     )
   )
 )

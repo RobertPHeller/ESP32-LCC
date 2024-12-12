@@ -1460,7 +1460,7 @@
     (in_bom yes) (on_board yes)
     (uuid 563c42d0-665e-4776-8480-30f0455fc38c)
     (property "Reference" "J401" (id 0) (at 164.465 62.23 0))
-    (property "Value" "1 2 3 4 5 6 G" (id 1) (at 159.385 76.2 90))
+    (property "Value" "G  6  5  4  3  2  1" (id 1) (at 159.385 76.2 90))
     (property "Footprint" "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-7_1x07_P2.54mm_Horizontal" (id 2) (at 164.465 76.2 0)
       (effects (font (size 1.27 1.27)) hide)
     )

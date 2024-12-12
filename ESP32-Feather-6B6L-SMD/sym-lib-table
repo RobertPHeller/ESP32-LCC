@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "FeatherWing")(type "Legacy")(uri "${KICAD_USER_TEMPLATE_DIR}/FeatherWing/FeatherWing.lib")(options "")(descr ""))
+  (lib (name "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue")(type "Legacy")(uri "/home/heller/ESP32-LCC/ESP32-T7S3-MultiFunctionUniversalTurnout/ESP32-T7S3-MultiFunctionUniversalTurnout-rescue.lib")(options "")(descr ""))
+  (lib (name "tbd62x83a")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/tbd62x83a.lib")(options "")(descr ""))
+)

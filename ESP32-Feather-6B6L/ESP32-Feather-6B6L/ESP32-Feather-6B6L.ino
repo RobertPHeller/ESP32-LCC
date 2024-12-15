@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Dec 12 21:04:57 2024
-//  Last Modified : <241213.1253>
+//  Last Modified : <241215.1351>
 //
 //  Description	
 //
@@ -242,8 +242,8 @@ Button1_Pin> GpioInit;
 // producers to it.
 openlcb::RefreshLoop producer_refresh_loop(openmrn.stack()->node(),
     { 
-        Button1.polling(), Button2.polling(), Button3.polling(),
-        Button4.polling(), Button5.polling(), Button6.polling()
+        button1.polling(), button2.polling(), button3.polling(),
+        button4.polling(), button5.polling(), button6.polling()
     }
 );
 
@@ -261,11 +261,7 @@ public:
     {
         cfg.userinfo().name().write(fd, openlcb::SNIP_STATIC_DATA.model_name);
         cfg.userinfo().description().write(
-             fd, "OpenLCB + ESP32-Feather-6B6L on a " ARDUINO_VARIANT);
-        for(int i = 0; i < openlcb::NUM_LEDS; i++)
-        {
-            cfg.seg().leds().entry(i).description().write(fd, "");
-        }
+             fd, "OpenLCB + 6B6L on a " ARDUINO_VARIANT);
         for(int i = 0; i < openlcb::NUM_BUTTONS; i++)
         {
             cfg.seg().buttons().entry(i).description().write(fd, "");

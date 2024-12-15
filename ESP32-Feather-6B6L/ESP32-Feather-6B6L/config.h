@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Dec 13 12:48:05 2024
-//  Last Modified : <241213.1256>
+//  Last Modified : <241215.1355>
 //
 //  Description	
 //
@@ -77,19 +77,19 @@ extern const SimpleNodeStaticValues SNIP_STATIC_DATA = {
     4,
     "OpenMRN",
 #if defined(USE_WIFI) && !defined(USE_TWAI)
-    "ESP32-Feather-6B6L (WiFi)",
+    "6B6L (WiFi)",
 #elif defined(USE_TWAI) && !defined(USE_WIFI)
-    "ESP32-Feather-6B6L (CAN)",
+    "6B6L (CAN)",
 #elif defined(USE_TWAI) && defined(USE_WIFI)
-    "ESP32-Feather-6B6L (WiFi/CAN)",
+    "6B6L (WiFi/CAN)",
 #else
-    "ESP32-Feather-6B6L",
+    "6B6L",
 #endif
-    ARDUINO_VARIANT,
+    "ESP32-S3 Feather", //ARDUINO_VARIANT,
     "1.00"};
 
 constexpr uint8_t NUM_LEDS = 8;
-constexpr uint8_t NUM_BUTTON = 6;
+constexpr uint8_t NUM_BUTTONS = 6;
 
 /// Declares a repeated group of a given base group and number of repeats. The
 /// ProducerConfig and ConsumerConfig groups represent the configuration layout

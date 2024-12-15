@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Jun 21 22:27:50 2021
-//  Last Modified : <241213.1222>
+//  Last Modified : <241215.1336>
 //
 //  Description	
 //
@@ -81,7 +81,7 @@ public:
           , consumer_(&impl_)
           , cfg_(cfg)
           , gpio_(g)
-          , phase_(SteadyHighside)
+          , phase_(Steady)
     {
         ConfigUpdateService::instance()->register_update_listener(this);
         BlinkTimer::instance()->AddMe(this);

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Dec 12 21:04:57 2024
-//  Last Modified : <241215.1351>
+//  Last Modified : <241216.1026>
 //
 //  Description	
 //
@@ -261,7 +261,12 @@ public:
     {
         cfg.userinfo().name().write(fd, openlcb::SNIP_STATIC_DATA.model_name);
         cfg.userinfo().description().write(
-             fd, "OpenLCB + 6B6L on a " ARDUINO_VARIANT);
+                        fd, "OpenLCB + 6B6L on a " ARDUINO_VARIANT);
+        for(int i = 0; i < openlcb::NUM_LEDS; i++)
+        {
+            CDI_FACTORY_RESET(cfg.seg().leds().entry(i).phase);
+            CDI_FACTORY_RESET(cfg.seg().leds().entry(i).pulsewidth);
+        }
         for(int i = 0; i < openlcb::NUM_BUTTONS; i++)
         {
             cfg.seg().buttons().entry(i).description().write(fd, "");

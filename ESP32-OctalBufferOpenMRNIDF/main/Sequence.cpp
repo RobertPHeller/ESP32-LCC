@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 6 15:24:56 2023
-//  Last Modified : <230216.1418>
+//  Last Modified : <250109.1315>
 //
 //  Description	
 //
@@ -103,3 +103,4 @@ long long Step::timeout()
     return NONE;
 }
 
+PWM* Output::pinlookup_[OUTPUTCOUNT+1];

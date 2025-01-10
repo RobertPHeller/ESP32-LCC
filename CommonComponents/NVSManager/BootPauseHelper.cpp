@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:34:03 2022
-//  Last Modified : <231009.1400>
+//  Last Modified : <250109.1714>
 //
 //  Description	
 //
@@ -130,19 +130,24 @@ void BootPauseHelper::CheckPause()
 #endif
 }
 
+static void writeSerial(const char *buffer,size_t length)
+{
+#ifndef CONFIG_IDF_TARGET_ESP32
+    usb_serial_jtag_write_bytes(buffer,length,100);
+#else
+    uart_write_bytes(UART_NUM_0,buffer,length);
+#endif
+}
+
 void BootPauseHelper::PauseConsole()
 {
     char receivebuffer[RXBufferLength];
     char transmitBuffer[TXBufferLength];
-    uart_write_bytes(UART_NUM_0,"Ready.\r\n",8);
+    writeSerial("Ready.\r\n",8);
     
     while (true)
     {
-#ifndef CONFIG_IDF_TARGET_ESP32
-        usb_serial_jtag_write_bytes("\r\n>>>",5,100);
-#else
-        uart_write_bytes(UART_NUM_0,"\r\n>>>",5);
-#endif
+        writeSerial("\r\n>>>",5);
         size_t len = ReadLine(UART_NUM_0,receivebuffer,sizeof(receivebuffer));
         if (len == 0)
         {
@@ -153,10 +158,10 @@ void BootPauseHelper::PauseConsole()
         case SETNODE:
             {
                 uint64_t nid = ParseNode(&receivebuffer[1],len-1);
-                uart_write_bytes(UART_NUM_0,"\r\n",2);
+                writeSerial("\r\n",2);
                 NvsManager::instance()->node_id(nid);
                 int l = snprintf(transmitBuffer,sizeof(transmitBuffer),"\r\nSet Node ID: %0llx\r\n",nid);
-                uart_write_bytes(UART_NUM_0,transmitBuffer,l);
+                writeSerial(transmitBuffer,l);
                 break;
             }
         case BOOTLOADER:
@@ -190,7 +195,7 @@ void BootPauseHelper::PauseConsole()
         default:
             {
                 int l = snprintf(transmitBuffer,sizeof(transmitBuffer),"Err: %c\r\n",receivebuffer[0]);
-                uart_write_bytes(UART_NUM_0,transmitBuffer,l);
+                writeSerial(transmitBuffer,l);
                 break;
             }
         }
@@ -243,11 +248,7 @@ size_t BootPauseHelper::ReadLine(uart_port_t uart_num,char *buffer,
         {
             if (*p == EOL)
             {
-#ifndef CONFIG_IDF_TARGET_ESP32
-                usb_serial_jtag_write_bytes(eol,2,100);
-#else
-                uart_write_bytes(uart_num,eol,2);
-#endif
+                writeSerial(eol,2);
                 numread++;
                 *p = '\0';
                 break;
@@ -257,21 +258,12 @@ size_t BootPauseHelper::ReadLine(uart_port_t uart_num,char *buffer,
                 if (p > buffer && remainder < bufferlen)
                 {
                     p--; remainder++; numread--;
-#ifndef CONFIG_IDF_TARGET_ESP32
-                    usb_serial_jtag_write_bytes(space,3,100);
-#else
-                    uart_write_bytes(uart_num,space,3);
-#endif
-                    
+                    writeSerial(space,3);
                 }
             }
             else
             {
-#ifndef CONFIG_IDF_TARGET_ESP32
-                usb_serial_jtag_write_bytes(p,r,100);
-#else
-                uart_write_bytes(uart_num,p,r);
-#endif
+                writeSerial(p,r);
                 numread++;
                 p++;
                 remainder--;

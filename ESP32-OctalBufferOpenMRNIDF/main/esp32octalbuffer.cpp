@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <230222.1541>
+//  Last Modified : <250111.2328>
 //
 //  Description	
 //
@@ -260,7 +260,7 @@ void app_main()
                                                    (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
                                                    nvs.hostname_prefix());
 #endif
-    esp32octalbuffer::FactoryResetHelper factory_reset_helper();
+    esp32octalbuffer::FactoryResetHelper factory_reset_helper;
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
     healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[MAIN] HealthMonitor allocated");
@@ -275,6 +275,7 @@ void app_main()
                                     cfg.seg().sequences().entry(i),
                                     stack.executor()->active_timers());
     }
+    LOG(INFO, "[MAIN] sequences done (%p)",sequences[0]);
     LOG(INFO, "[MAIN] config file size is %d",openlcb::CONFIG_FILE_SIZE);
     // Create config file and initiate factory reset if it doesn't exist or is
     // otherwise corrupted.

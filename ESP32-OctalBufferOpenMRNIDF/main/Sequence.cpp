@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 6 15:24:56 2023
-//  Last Modified : <250109.1315>
+//  Last Modified : <250310.1113>
 //
 //  Description	
 //
@@ -62,6 +62,7 @@ static const char rcsid[] = "@(#) : $Id$";
 
 void Step::StartStep()
 {
+    LOG(ALWAYS,"*** Step::StartStep()");
     for (int i=0; i < OUTPUTCOUNT; i++)
     {
         outputs_[i]->StartOutput();
@@ -75,6 +76,7 @@ void Step::StartStep()
 
 long long Step::timeout()
 {
+    LOG(ALWAYS,"*** Step::timeout()");
     running_ = false;
     SendEventReport(&write_helpers[1],end_);
     started_ = false;

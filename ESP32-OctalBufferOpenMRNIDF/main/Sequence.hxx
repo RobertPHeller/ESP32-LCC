@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Feb 6 09:47:06 2023
-//  Last Modified : <230216.1429>
+//  Last Modified : <250310.1125>
 //
 //  Description	
 //
@@ -388,15 +388,20 @@ private:
         running_ = true;
     }
     long long timeout() override;
+    void notify() override {
+        // ** nothing here -- just to make WriteAsync happy.
+        LOG(ALWAYS,"*** Step::notify()");
+    }
     void SendEventReport(openlcb::WriteHelper *helper,openlcb::EventId event)
     {
-        bn_.reset(this);
+        LOG(ALWAYS,"*** Step::SendEventReport(%p,0X%016llX)",helper,event);
+        //bn_.reset(this);
         helper->WriteAsync(node_,
                            openlcb::Defs::MTI_EVENT_REPORT,
                            openlcb::WriteHelper::global(),
                            openlcb::eventid_to_buffer(event),
-                           bn_.new_child());
-        bn_.maybe_done();
+                           this);
+        //bn_.maybe_done();
     }
     
     openlcb::Node *node_;

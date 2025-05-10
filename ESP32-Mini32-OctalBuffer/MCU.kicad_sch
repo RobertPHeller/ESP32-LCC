@@ -398,7 +398,7 @@
   )
 
   (symbol (lib_id "ESP32-Mini32-OctalBuffer-rescue:TTGO-T7_S3-V1.1-RESCUE-ESP32-Mini32-OctalBuffer") (at 132.715 78.105 0) (unit 1)
-    (in_bom yes) (on_board yes)
+    (in_bom no) (on_board yes)
     (uuid 00000000-0000-0000-0000-000063e00230)
     (property "Reference" "U201" (id 0) (at 139.7 127.635 0))
     (property "Value" "TTGO-T7_S3-V1.1" (id 1) (at 135.255 146.05 0))
@@ -466,7 +466,7 @@
     (pin "1" (uuid 44cd273f-f3a1-4b9a-83a6-972b276409e1))
   )
 
-  (symbol (lib_id "ESP32-Mini32-OctalBuffer-rescue:+3V3") (at 152.4 83.185 0)
+  (symbol (lib_id "ESP32-Mini32-OctalBuffer-rescue:+3V3") (at 152.4 83.185 0) (unit 1)
     (in_bom yes) (on_board yes)
     (uuid 00000000-0000-0000-0000-000063e00399)
     (property "Reference" "#PWR05" (id 0) (at 152.4 86.995 0)

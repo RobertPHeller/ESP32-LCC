@@ -1,0 +1,5 @@
+(fp_lib_table
+  (lib (name "ESP32S3-WROOM")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonFootprints/ESP32-WROOM.pretty")(options "")(descr ""))
+  (lib (name "USBConn")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonFootprints/GCT_USB.pretty")(options "")(descr ""))
+  (lib (name "NanoT")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonFootprints/NanoT160AS.pretty")(options "")(descr ""))
+)

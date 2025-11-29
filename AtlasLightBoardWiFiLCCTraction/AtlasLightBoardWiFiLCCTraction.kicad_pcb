@@ -170,7 +170,7 @@
       (effects (font (size 1 1) (thickness 0.15)))
       (tstamp c7d0a50e-195b-49f8-80d8-63bca02d56af)
     )
-    (fp_text value "Right Rail" (at 0.127 3.175 270) (layer "F.SilkS")
+    (fp_text value "Right Rail" (at -1.651 0.508 270) (layer "F.SilkS")
       (effects (font (size 0.5 0.5) (thickness 0.075)))
       (tstamp 1b332c2a-14c8-410b-aadd-b3483ade0836)
     )
@@ -838,6 +838,11 @@
       (net 2 "GND") (pinfunction "GND") (pintype "power_in") (tstamp b049c2c3-66f5-4a37-b386-8657b53aad69))
     (pad "EPad" thru_hole circle locked (at -0.1 0.23 270) (size 0.9 0.9) (drill 0.5) (layers *.Cu *.Mask)
       (net 2 "GND") (pinfunction "GND") (pintype "power_in") (tstamp eddfe90a-b3a0-45e2-b87b-1ea90ae45d14))
+    (model "${KICAD6_3DMODEL_DIR}/RF_Module.3dshapes/ESP32-WROOM-32.wrl"
+      (offset (xyz 0 0.5 0))
+      (scale (xyz 1 1 1))
+      (rotate (xyz 0 0 0))
+    )
   )
 
   (footprint "Capacitor_SMD:C_0201_0603Metric" (layer "F.Cu")
@@ -1167,7 +1172,7 @@
       (net 2 "GND") (pinfunction "1") (pintype "passive") (tstamp a274e9a2-7045-496f-a417-226dc9104267))
     (pad "2" smd rect locked (at 1.15 0) (size 0.5 1.4) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 1 "/Reset") (pinfunction "2") (pintype "passive") (tstamp edc0e8df-a41b-43ad-803a-a1d2f2871628))
-    (model "NanoT160AS.stp"
+    (model "/home/heller/ESP32-LCC/CommonFootprints/NanoT160AS.pretty/NanoT160AS.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -1901,7 +1906,7 @@
       (net 2 "GND") (pinfunction "EP") (pintype "passive") (tstamp ae24fd45-d5f0-4fb6-aae5-035cf8988ab9))
     (pad "9" smd rect (at 0 0 270) (size 2.29 3) (layers "F.Cu" "F.Mask")
       (net 2 "GND") (pinfunction "EP") (pintype "passive") (tstamp e44149a5-cc71-4a89-85b0-dfa2f0b6ea21))
-    (model "${KICAD6_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm.wrl"
+    (model "${KICAD6_3DMODEL_DIR}/Package_SO.3dshapes/SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.35x2.35mm.wrl"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))
@@ -2024,7 +2029,7 @@
       (net 33 "/Boot0") (pinfunction "1") (pintype "passive") (tstamp 66d5a1a8-9c6c-4c8d-aeee-9aa5b6453502))
     (pad "2" smd rect locked (at 1.15 0 180) (size 0.5 1.4) (layers "F.Cu" "F.Paste" "F.Mask")
       (net 2 "GND") (pinfunction "2") (pintype "passive") (tstamp ea3cfe84-3ca8-456a-903b-2903bc0eb133))
-    (model "NanoT160AS.stp"
+    (model "/home/heller/ESP32-LCC/CommonFootprints/NanoT160AS.pretty/NanoT160AS.stp"
       (offset (xyz 0 0 0))
       (scale (xyz 1 1 1))
       (rotate (xyz 0 0 0))

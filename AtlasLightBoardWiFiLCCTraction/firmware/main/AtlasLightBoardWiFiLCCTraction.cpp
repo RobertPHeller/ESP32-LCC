@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251129.1536>
+//  Last Modified : <251129.1632>
 //
 //  Description	
 //
@@ -41,6 +41,19 @@
 /// 
 ///
 //////////////////////////////////////////////////////////////////////////////
+
+/** @mainpage Introduction 
+ * Atlas Light Board WiFi LCC Traction node.
+ * 
+ * @image html AtlasLightBoardWiFiLCCTraction_Top3D.png
+ * 
+ * This is a WiFi LCC node that drops in to any locomotive that takes a
+ * DCC decoder that follows the Atlas Light Board form factor.  This
+ * board replaces a DCC decoder and works as a LCC node that connects via
+ * WiFi using a GC Hub (such as the one provided by JMRI or OpenMRN). It
+ * needs a LCC aware throttle (such as TCS's UWT-100).  It does NOT need
+ * a command station, but does need powered rails (either DC or DCC).
+ */
 
 static const char rcsid[] = "@(#) : $Id$";
 

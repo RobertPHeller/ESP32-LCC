@@ -2034,6 +2034,9 @@
   (gr_rect (start 74.295 68.58) (end 151 88.9) (layer "Edge.Cuts") (width 0.1) (fill none) (tstamp 027ca664-6c81-464e-93a5-917d78ca2aa2))
   (gr_rect (start 93.345 75.565) (end 96.52 81.915) (layer "Edge.Cuts") (width 0.1) (fill none) (tstamp 11ee040c-2233-4936-8730-35a5505e8984))
   (gr_rect (start 124.46 75.565) (end 127.635 81.915) (layer "Edge.Cuts") (width 0.1) (fill none) (tstamp f1c8f425-31f9-4997-b961-3e1615758ef1))
+  (gr_text "<< Front" (at 78.359 91.44) (layer "Cmts.User") (tstamp aaf300c0-63af-4652-baad-11c474717fa5)
+    (effects (font (size 1 1) (thickness 0.15)))
+  )
 
   (segment (start 149.2625 73.787) (end 147.447 71.9715) (width 0.25) (layer "F.Cu") (net 1) (tstamp 12d257cb-1ebd-481f-a24e-4ab935d6533a))
   (segment (start 147.447 71.9715) (end 147.447 69.977) (width 0.25) (layer "F.Cu") (net 1) (tstamp 23c7bea1-f05d-45f9-a6cb-5d2d76a47e00))

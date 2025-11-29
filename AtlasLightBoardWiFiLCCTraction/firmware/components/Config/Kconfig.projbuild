@@ -94,6 +94,16 @@ menu "OpenLCB Configuration"
                 Number of microseconds to allow the GridConnect buffer to fill
                 before flushing to the socket.
 
+        config OLCB_TWAI_RX_BUFFER_SIZE
+            int "Number of TWAI (CAN) packets to queue for RX"
+            range 16 128
+            default 32
+
+        config OLCB_TWAI_TX_BUFFER_SIZE
+            int "Number of TWAI (CAN) packets to queue for TX"
+            range 16 128
+            default 32
+            
     endmenu
 
     config OLCB_CONFIG_SYNC_SEC
@@ -127,10 +137,10 @@ menu "WiFi Configuration"
 
     config WIFI_HOSTNAME_PREFIX
         string "Hostname prefix"
-        default "trainnode_"
+        default "esp32textdisp_"
         help
             The OpenLCB node identifier will be appended to this value, ie:
-            trainnode_0502010300000.
+            esp32textdisp_0502010300000.
             Note: The maximum hostname length is 32 characters.
 
     config WIFI_STATION_SSID
@@ -159,6 +169,18 @@ menu "Advanced Configuration"
     config HEALTH_INTERVAL
         int "Health report interval (sec)"
         default 15
+
+    config TWO_DISPLAY_PANELS
+        bool "Two Display Panels"
+        default y
+        help
+            Two display panels, back to back.
+            
+    config FAST_CLOCK
+        bool "Use fast clock for panel time displays."
+        default n
+        help
+            Select between realtime and fast clocks..
 
 endmenu
 

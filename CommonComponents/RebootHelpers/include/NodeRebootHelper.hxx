@@ -43,7 +43,7 @@ class NodeRebootHelper : public Singleton<NodeRebootHelper>
 {
 public:
     /// Constructor.
-    NodeRebootHelper(openlcb::SimpleCanStack *stack, int fd)
+    NodeRebootHelper(openlcb::SimpleStackBase *stack, int fd)
           : stack_(stack), fd_(fd)
     {
     }
@@ -66,8 +66,8 @@ public:
         });
     }
 private:
-    /// @ref SimpleCanStack to be shutdown.
-    openlcb::SimpleCanStack *stack_;
+    /// @ref SimpleStackBase to be shutdown.
+    openlcb::SimpleStackBase *stack_;
 
     /// Configuration file descriptor to be closed prior to shutdown.
     int fd_;

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251129.2014>
+//  Last Modified : <251130.0828>
 //
 //  Description	
 //
@@ -77,7 +77,9 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <esp_task_wdt.h>
 #include <esp32s3/rom/rtc.h>
 #include <freertos_includes.h>   
-#include <openlcb/TractionTrain.hxx>
+#include "openlcb/SimpleStack.hxx"
+#include "openlcb/TractionTrain.hxx"
+#include "openlcb/TrainInterface.hxx"
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
 #ifdef CONFIG_ESP32_WIFI_ENABLED
@@ -96,7 +98,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "FunctionConfig.hxx"
 #include "FunctionConsumer.hxx"
 
-#include "PhysicalTrainNode.hxx"
+#include "ESP32S3Train.hxx"
 
 OVERRIDE_CONST(num_memory_spaces, 6);
 AtlasLightBoardWiFiLCCTraction::ConfigDef cfg(0);
@@ -259,7 +261,9 @@ void app_main()
     mount_fs(cleanup_config_tree);
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] about to start the PhysicalTrainNode");
     
-    PhysicalTrainNode stack(nvs.node_id());
+    ESP32S3Train trainImpl;
+    openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
+    ESP32SpeedController esp32_speed_controller(stack.service(), cfg.seg().motor_control());
     
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] stack started");
 #if CONFIG_OLCB_PRINT_ALL_PACKETS

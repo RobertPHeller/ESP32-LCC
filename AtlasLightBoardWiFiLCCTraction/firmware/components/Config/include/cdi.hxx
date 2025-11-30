@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <251129.2010>
+//  Last Modified : <251130.0821>
 //
 //  Description	
 //
@@ -53,6 +53,7 @@
 #include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
 #include "FunctionConfig.hxx"
+#include "MotorConfig.hxx"
 
 using FunctionConsumers = openlcb::RepeatedGroup<FunctionConsumerConfig, NUM_FUNCTIONS>;
 
@@ -67,6 +68,7 @@ CDI_GROUP(IoBoard, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
 /// Each entry declares the name of the current entry, then the type and then
 /// optional arguments list.
 CDI_GROUP_ENTRY(internal_config, openlcb::InternalConfigData);
+CDI_GROUP_ENTRY(motor_control, MotorControl);
 CDI_GROUP_ENTRY(functions,FunctionConsumers,Name("Functions"),
                 RepName("Function"),
                 Description("Functions: headlights, etc."));

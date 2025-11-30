@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <251129.2007>
+//  Last Modified : <251130.0702>
 //
 //  Description	
 //
@@ -42,8 +42,8 @@
 ///
 //////////////////////////////////////////////////////////////////////////////
 
-#ifndef __PHYSICALTRAINNODE_HXX
-#define __PHYSICALTRAINNODE_HXX
+#ifndef __ESP32S3TRAIN_HXX
+#define __ESP32S3TRAIN_HXX
 
 
-#endif // __PHYSICALTRAINNODE_HXX
+#endif // __ESP32S3TRAIN_HXX

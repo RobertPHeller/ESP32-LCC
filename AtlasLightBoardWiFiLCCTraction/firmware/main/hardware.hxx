@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 19:42:19
-//  Last Modified : <251129.1949>
+//  Last Modified : <251130.1328>
 //
 //  Description	
 //
@@ -50,23 +50,15 @@
 #include <os/Gpio.hxx>
 #include <utils/GpioInitializer.hxx>
 
-// Motor control (PWM)
-GPIO_PIN(MForward,GpioOutputSafeLow,1);
-GPIO_PIN(MReverse,GpioOutputSafeLow,2);
 
-// Functions (PWM)
-GPIO_PIN(Function1,GpioOutputSafeLow,3);
-GPIO_PIN(Function2,GpioOutputSafeLow,4);
-GPIO_PIN(Function3,GpioOutputSafeLow,5);
-GPIO_PIN(Function4,GpioOutputSafeLow,6);
-GPIO_PIN(Function5,GpioOutputSafeLow,7);
-GPIO_PIN(Function6,GpioOutputSafeLow,8);
+
+#define PWM_MOTOR {1, 2}
+#define PWM_FUNCTIONS {3, 4, 5, 6, 7, 8}
+
 
 GPIO_PIN(BOOT,GpioInputNP, 0);
 
 // Create an initializer that can initialize all the GPIO pins in one shot
-typedef GpioInitializer<MForward_Pin, MReverse_Pin, Function1_Pin, 
-                        Function2_Pin, Function3_Pin, Function4_Pin, 
-                        Function5_Pin, Function6_Pin, BOOT_Pin> GpioInit;
+typedef GpioInitializer<BOOT_Pin> GpioInit;
 
 #endif // __HARDWARE_HXX

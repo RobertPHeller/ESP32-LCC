@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <251130.0821>
+//  Last Modified : <251130.0923>
 //
 //  Description	
 //
@@ -54,8 +54,6 @@
 #include "WiFiConfigurationGroup.hxx"
 #include "FunctionConfig.hxx"
 #include "MotorConfig.hxx"
-
-using FunctionConsumers = openlcb::RepeatedGroup<FunctionConsumerConfig, NUM_FUNCTIONS>;
 
 #include "Revision.hxxout"
 

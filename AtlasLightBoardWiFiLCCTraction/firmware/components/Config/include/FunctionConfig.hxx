@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 19:50:58
-//  Last Modified : <251129.2007>
+//  Last Modified : <251130.1553>
 //
 //  Description	
 //
@@ -55,8 +55,8 @@
  *   when B is on.
  * - Pulse width in seconds, 1 to 127: This is only used to the Pulse option
  *   and defined how long the plus in on.
- * - Function on: This Event is consumed to turn the output on.
- * - Function off: This event is consomed to turn the output off.
+ * - Brightness percent, 1 to 100: This defines how bright the light, from 1
+ *   (very dim) to 100 (maximum possible brightness). default 50.
  */
 
 #include "openlcb/ConfigRepresentation.hxx"
@@ -82,18 +82,13 @@ CDI_GROUP_ENTRY(phase, openlcb::Uint8ConfigEntry,
 CDI_GROUP_ENTRY(pulsewidth, openlcb::Uint8ConfigEntry,
                 Name("Pulse width in seconds, 1 to 127"),
                 Min(1), Max(127), Default(1));
-/// This event will be consumed to turn the output on.
-CDI_GROUP_ENTRY(
-                event_on, openlcb::EventConfigEntry, //
-                Name("Function on"),
-                Description("This event will be consumed to turn the output on."));
-/// This event will be consumed to turn the output off.
-CDI_GROUP_ENTRY(
-                event_off, openlcb::EventConfigEntry, //
-                Name("Function off"),
-                Description("This event will be consumed to turn the output off."));
+CDI_GROUP_ENTRY(brightness, openlcb::Uint8ConfigEntry, 
+                Name("Brightness percent, 1 to 100"),
+                Min(1), Max(100), Default(50));
 CDI_GROUP_END();
 
 #define NUM_FUNCTIONS 6
+
+using FunctionConsumers = openlcb::RepeatedGroup<FunctionConsumerConfig, NUM_FUNCTIONS>;
 
 #endif // __FUNCTIONCONFIG_HXX

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251130.0828>
+//  Last Modified : <251130.1329>
 //
 //  Description	
 //
@@ -96,7 +96,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "hardware.hxx"
 
 #include "FunctionConfig.hxx"
-#include "FunctionConsumer.hxx"
 
 #include "ESP32S3Train.hxx"
 
@@ -261,9 +260,17 @@ void app_main()
     mount_fs(cleanup_config_tree);
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] about to start the PhysicalTrainNode");
     
-    ESP32S3Train trainImpl;
+    Esp32Ledc PWM_Motor(PWM_MOTOR);
+    PWM_Motor.hw_init();
+    Esp32Ledc PWM_Functions(PWM_FUNCTIONS,LEDC_CHANNEL_2);
+    PWM_Functions.hw_init();
+    
+    ESP32S3Train trainImpl(cfg.seg().functions(),&PWM_Functions);
     openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
-    ESP32SpeedController esp32_speed_controller(stack.service(), cfg.seg().motor_control());
+    ESP32SpeedController esp32_speed_controller(stack.service(),
+                                                cfg.seg().motor_control(),
+                                                &PWM_Motor);
+    trainImpl.set_speed_controller(&esp32_speed_controller);
     
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] stack started");
 #if CONFIG_OLCB_PRINT_ALL_PACKETS

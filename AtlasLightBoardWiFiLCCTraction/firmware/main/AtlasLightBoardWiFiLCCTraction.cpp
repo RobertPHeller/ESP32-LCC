@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251129.1632>
+//  Last Modified : <251129.2014>
 //
 //  Description	
 //
@@ -94,7 +94,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "hardware.hxx"
 
 #include "FunctionConfig.hxx"
-#include "FunctionImpl.hxx"
+#include "FunctionConsumer.hxx"
 
 #include "PhysicalTrainNode.hxx"
 
@@ -223,15 +223,8 @@ void app_main()
       , openlcb::SNIP_STATIC_DATA.hardware_version
       , openlcb::SNIP_STATIC_DATA.software_version);
     bool reset_events = false;
-    bool run_bootloader = false;
     bool cleanup_config_tree = false;
     GpioInit::hw_init();
-    spibus.hw_initbus(CONFIG_MOSI,CONFIG_MISO,CONFIG_SCLK);
-    display1.initR(&spibus,INITR_BLACKTAB);
-#ifdef CONFIG_TWO_DISPLAY_PANELS
-    display2.initR(&spibus,INITR_BLACKTAB);
-#endif
-    spibus.mount_sd_card("/sdcard",CONFIG_CardCS);
 
     nvsmanager::NvsManager nvs;
     nvs.init(reset_reason);
@@ -254,13 +247,6 @@ void app_main()
         nvs.clear_factory_reset();
     }
 
-    if (nvs.should_start_bootloader())
-    {
-        run_bootloader = true;
-        // reset the flag so we start in normal operating mode next time.
-        nvs.clear_bootloader();
-    }
-    
     if (nvs.should_reset_events())
     {
         reset_events = true;
@@ -269,77 +255,66 @@ void app_main()
     }
     nvs.CheckPersist();
 
-    if (run_bootloader)
-    {
-        LOG(VERBOSE, "[Bootloader] bootloader_hw_set_to_safe");
-        esp32_bootloader_run(nvs.node_id(), CONFIG_TWAI_TX_PIN, CONFIG_TWAI_RX_PIN, true);
-        esp_restart();
-    }
-    else
-    {
-        nvs.DisplayNvsConfiguration();
-        mount_fs(cleanup_config_tree);
-        LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] about to start the PhysicalTrainNode");
-
-        PhysicalTrainNode stack(nvs.node_id());
-        
-        LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] stack started");
+    nvs.DisplayNvsConfiguration();
+    mount_fs(cleanup_config_tree);
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] about to start the PhysicalTrainNode");
+    
+    PhysicalTrainNode stack(nvs.node_id());
+    
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] stack started");
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
-        stack.print_all_packets();
+    stack.print_all_packets();
 #endif
-        nvs.register_virtual_memory_spaces(&stack);
-        openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
-        LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] MemoryConfigClient done.");
+    nvs.register_virtual_memory_spaces(&stack);
+    openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] MemoryConfigClient done.");
 #ifdef CONFIG_ESP32_WIFI_ENABLED
-        openmrn_arduino::Esp32WiFiManager wifi_manager(
-                                                       nvs.station_ssid(), 
-                                                       nvs.station_pass(),
-                                                       &stack, 
-                                                       cfg.seg().olbcwifi(), 
-                                                       nvs.wifi_mode(),
-                                                       (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
-                                                       nvs.hostname_prefix());
+    openmrn_arduino::Esp32WiFiManager wifi_manager(
+                                                   nvs.station_ssid(), 
+                                                   nvs.station_pass(),
+                                                   &stack, 
+                                                   cfg.seg().olbcwifi(), 
+                                                   nvs.wifi_mode(),
+                                                   (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
+                                                   nvs.hostname_prefix());
 #endif
-        AtlasLightBoardWiFiLCCTraction::FactoryResetHelper factory_reset_helper;
-        LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] FactoryResetHelper done.");
-        reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
-        LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] DelayRebootHelper done.");
-        healthmonitor::HealthMonitor health_mon(stack.service());
-        LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] HealthMonitor done.");
-        // Create config file and initiate factory reset if it doesn't exist or is
-        // otherwise corrupted.
-        int config_fd =
-              stack.create_config_file_if_needed(cfg.seg().internal_config(),
-                                                  CDI_VERSION,
-                                                  openlcb::CONFIG_FILE_SIZE);
-        stack.check_version_and_factory_reset(cfg.seg().internal_config(),
-                                              CDI_VERSION,
-                                              cleanup_config_tree);
-
-        reboothelpers::NodeRebootHelper node_reboot_helper(&stack, config_fd);
-        
-        if (reset_events)
-        {
-            LOG(WARNING, "[CDI] Resetting event IDs");
-            stack.factory_reset_all_events(
-                    cfg.seg().internal_config(), nvs.node_id(), config_fd);
-            fsync(config_fd);
-        }
-        
-        
-        // Add the TWAI port to the stack.
-        stack.add_can_port_select("/dev/twai/twai0");
-        
-        // if a brownout was detected send an event as part of node startup.
-        if (reset_reason == RTCWDT_BROWN_OUT_RESET)
-        {
-            //event_helper.send_event(openlcb::Defs::NODE_POWER_BROWNOUT_EVENT);
-        }
-        
-        // Start the stack in the background using it's own task.
-        stack.loop_executor();
-        //stackrunning = true;
+    AtlasLightBoardWiFiLCCTraction::FactoryResetHelper factory_reset_helper;
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] FactoryResetHelper done.");
+    reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] DelayRebootHelper done.");
+    healthmonitor::HealthMonitor health_mon(stack.service());
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] HealthMonitor done.");
+    // Create config file and initiate factory reset if it doesn't exist or is
+    // otherwise corrupted.
+    int config_fd =
+          stack.create_config_file_if_needed(cfg.seg().internal_config(),
+                                             CDI_VERSION,
+                                             openlcb::CONFIG_FILE_SIZE);
+    stack.check_version_and_factory_reset(cfg.seg().internal_config(),
+                                          CDI_VERSION,
+                                          cleanup_config_tree);
+    
+    reboothelpers::NodeRebootHelper node_reboot_helper(&stack, config_fd);
+    
+    if (reset_events)
+    {
+        LOG(WARNING, "[CDI] Resetting event IDs");
+        stack.factory_reset_all_events(
+                                       cfg.seg().internal_config(), nvs.node_id(), config_fd);
+        fsync(config_fd);
     }
+        
+        
+    // if a brownout was detected send an event as part of node startup.
+    if (reset_reason == RTCWDT_BROWN_OUT_RESET)
+    {
+        //event_helper.send_event(openlcb::Defs::NODE_POWER_BROWNOUT_EVENT);
+    }
+        
+    // Start the stack in the background using it's own task.
+    stack.loop_executor();
+    //stackrunning = true;
+    
     // At this point the OpenMRN stack is running in it's own task and we can
     // safely exit from this one. We do not need to cleanup as that will be
     // handled automatically by ESP-IDF.

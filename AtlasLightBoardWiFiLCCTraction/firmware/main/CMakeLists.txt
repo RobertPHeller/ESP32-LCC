@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <251130.1220>
+#  Last Modified : <251201.0846>
 #
 #  Description	
 #
@@ -58,6 +58,7 @@ set(deps
     RebootHelpers
     json
     esp_timer
+    Signals
 )
 
 idf_component_register(SRCS AtlasLightBoardWiFiLCCTraction.cpp

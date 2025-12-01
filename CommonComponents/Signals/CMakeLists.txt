@@ -1,7 +1,6 @@
 set(DEPS
     app_update
     OpenMRNIDF
-    GeneralIO
     Config
     Logic
    )

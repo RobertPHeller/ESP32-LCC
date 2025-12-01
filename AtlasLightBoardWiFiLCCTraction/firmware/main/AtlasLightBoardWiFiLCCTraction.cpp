@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251130.1329>
+//  Last Modified : <251201.0852>
 //
 //  Description	
 //
@@ -67,6 +67,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "fs.hxx"
 #include "NodeRebootHelper.hxx"
 #include "NvsManager.hxx"
+#include "Blink.hxx"
 
 #include <algorithm>
 #include <driver/uart.h>
@@ -273,6 +274,9 @@ void app_main()
     trainImpl.set_speed_controller(&esp32_speed_controller);
     
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] stack started");
+    BlinkTimer blinker(stack.executor()->active_timers());
+    LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] blinker started");
+    blinker.AddMe(&trainImpl);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif

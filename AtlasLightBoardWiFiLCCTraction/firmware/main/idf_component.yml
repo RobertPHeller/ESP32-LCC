@@ -10,4 +10,7 @@ dependencies:
     path: ../../../CommonComponents/HealthMonitor
   RebootHelpers:
     path: ../../../CommonComponents/RebootHelpers
-          
+  Signals:
+    path: ../../../CommonComponents/Signals
+  Logic:
+    path: ../../../CommonComponents/Logic          

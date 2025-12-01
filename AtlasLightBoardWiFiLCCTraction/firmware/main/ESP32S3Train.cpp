@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <251130.1619>
+//  Last Modified : <251201.0905>
 //
 //  Description	
 //
@@ -236,7 +236,6 @@ void ESP32S3Train::set_fn(uint32_t address, uint16_t value)
                 case Steady:
                     functionpwm_->get_channel(index)->set_duty(functionConfig_[index].brightness);
                     break;
-                case Pulse:
                 case SlowA:
                 case MediumA:
                 case FastA:
@@ -248,6 +247,80 @@ void ESP32S3Train::set_fn(uint32_t address, uint16_t value)
             }
         }
         break;
+    }
+}
+
+void ESP32S3Train::blink(bool AFast, bool AMedium, bool ASlow)
+{
+    for (int i = 0; i < NUM_FUNCTIONS; i++)
+    {
+        if (states[i])
+        {
+            switch (functionConfig_[i].phase)
+            {
+            case Steady: break;
+            case SlowA:
+                if (ASlow)
+                {
+                    functionpwm_->get_channel(i)->set_duty(functionConfig_[i].brightness);
+                }
+                else
+                {
+                    functionpwm_->get_channel(i)->set_duty(0);
+                }
+                break;
+            case MediumA:
+                if (AMedium)
+                {
+                    functionpwm_->get_channel(i)->set_duty(functionConfig_[i].brightness);
+                }
+                else
+                {
+                    functionpwm_->get_channel(i)->set_duty(0);
+                }
+                break;
+            case FastA:
+                if (AFast)
+                {
+                    functionpwm_->get_channel(i)->set_duty(functionConfig_[i].brightness);
+                }
+                else
+                {
+                    functionpwm_->get_channel(i)->set_duty(0);
+                }
+                break;
+            case SlowB:
+                if (!ASlow)
+                {
+                    functionpwm_->get_channel(i)->set_duty(functionConfig_[i].brightness);
+                }
+                else
+                {
+                    functionpwm_->get_channel(i)->set_duty(0);
+                }
+                break;
+            case MediumB:
+                if (!AMedium)
+                {
+                    functionpwm_->get_channel(i)->set_duty(functionConfig_[i].brightness);
+                }
+                else
+                {
+                    functionpwm_->get_channel(i)->set_duty(0);
+                }
+                break;
+            case FastB:
+                if (!AFast)
+                {
+                    functionpwm_->get_channel(i)->set_duty(functionConfig_[i].brightness);
+                }
+                else
+                {
+                    functionpwm_->get_channel(i)->set_duty(0);
+                }
+                break;
+            }
+        }
     }
 }
 
@@ -293,7 +366,6 @@ ConfigUpdateListener::UpdateAction
     {
         FunctionConsumerConfig func = functions_.entry(i);
         functionConfig_[i].phase = (PhaseType) func.phase().read(fd);
-        functionConfig_[i].pulsewidth = func.pulsewidth().read(fd);
         functionConfig_[i].brightness = func.brightness().read(fd);
     }
     return UPDATED;
@@ -304,7 +376,6 @@ void ESP32S3Train::factory_reset(int fd)
     {
         FunctionConsumerConfig func = functions_.entry(i);
         func.phase().write(fd, func.phase_options().defaultvalue());
-        func.pulsewidth().write(fd, func.pulsewidth_options().defaultvalue());
         func.brightness().write(fd, func.brightness_options().defaultvalue());
     }
 }

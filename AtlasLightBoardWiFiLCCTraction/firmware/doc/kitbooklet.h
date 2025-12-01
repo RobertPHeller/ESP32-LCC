@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <251129.1648>
+//  Last Modified : <251201.1016>
 //
 //  Description	
 //
@@ -43,7 +43,22 @@
 //////////////////////////////////////////////////////////////////////////////
 
 /** @page 00kitContents Kit Contents
+ * This kit just contains the node PCB.  
+ * @image html AtlasLightBoardWiFiLCCTraction_Top3D_Thumb.png
+ * @image latex AtlasLightBoardWiFiLCCTraction_Top3D_Thumb.png width=1in
  * @page 01assembly Assembly
+ * The PCB is fully assembled and ready to install.  It is designed to be 
+ * installed on top of an Atlas motor.  Note the orientation: there is a small
+ * "F" near the end meant to be towards the front of the locomotive.
  * @page 02wiring General Wiring Notes
+ * The PCB can support up to 6 LED lights, including front and read headlights.
+ * There are through hole solder terminals for functions 1 (front headlight) 
+ * and 2 (rear headlight),  There are surface pads for functions 3 through 6
+ * near the front end of the board.  These four functions share a common "C"
+ * pad.  All 6 function outputs have on-board load resistors and are designed
+ * to directly drive LEDs. See the figure below for how to wire the board.
+ * @image html AtlasLightBoardWiFiLCCTraction_Top3D_Annotated.png
+ * @image latex AtlasLightBoardWiFiLCCTraction_Top3D_Annotated.png width=5in
  * @page 03initialConfig Initial Configuration
+ * 
  */

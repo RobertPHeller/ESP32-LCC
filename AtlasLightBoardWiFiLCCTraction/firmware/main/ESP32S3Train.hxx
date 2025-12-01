@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <251130.1610>
+//  Last Modified : <251201.0857>
 //
 //  Description	
 //
@@ -54,6 +54,7 @@
 #include "openlcb/ConfigRepresentation.hxx"
 #include "utils/ConfigUpdateListener.hxx"
 
+#include "Blink.hxx"
 #include "hardware.hxx"
 #include "FunctionConfig.hxx"
 #include "MotorConfig.hxx"
@@ -116,7 +117,8 @@ private:
     bool lastDirMotAHi_{false};
 };
 
-class ESP32S3Train : public openlcb::TrainImpl, private DefaultConfigUpdateListener 
+class ESP32S3Train : public openlcb::TrainImpl, public Blinking,
+                     private DefaultConfigUpdateListener 
 {
 public:
     ESP32S3Train(FunctionConsumers functions,Esp32Ledc *functionpwm)
@@ -142,7 +144,7 @@ public:
     virtual uint16_t get_fn(uint32_t address);
     virtual uint32_t legacy_address();
     virtual dcc::TrainAddressType legacy_address_type();
-    
+    virtual void blink(bool AFast, bool AMedium, bool ASlow);
 private:
     virtual UpdateAction apply_configuration(int fd, bool initial_load,
                                              BarrierNotifiable *done);
@@ -152,7 +154,7 @@ private:
     bool estop = false;
     bool f0 = false;
     bool states[6] = {false,false,false,false,false,false};
-    enum PhaseType {Steady,Pulse,SlowA,MediumA,FastA,SlowB,MediumB,FastB};
+    enum PhaseType {Steady=1,SlowA=2,MediumA=3,FastA=4,SlowB=5,MediumB=6,FastB=7};
     struct {
         PhaseType phase;
         uint8_t pulsewidth;

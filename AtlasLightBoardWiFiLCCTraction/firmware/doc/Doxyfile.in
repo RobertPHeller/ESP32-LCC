@@ -799,7 +799,8 @@ INPUT                  = ../main Revision.h kitbooklet.h \
                          ../../../CommonComponents/HealthMonitor \
                          ../../../CommonComponents/HealthMonitor/include \
                          ../../../CommonComponents/RebootHelpers \
-                         ../../../CommonComponents/RebootHelpers/include
+                         ../../../CommonComponents/RebootHelpers/include \
+                         ../../../CommonComponents/Signals/include/Blink.hxx
     
 
 # This tag can be used to specify the character encoding of the source files

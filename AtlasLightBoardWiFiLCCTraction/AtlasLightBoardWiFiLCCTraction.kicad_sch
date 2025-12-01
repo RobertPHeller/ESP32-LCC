@@ -2,7 +2,14 @@
 
   (uuid 0157561f-16f1-412b-978f-f5a2747d28d7)
 
-  (paper "A4")
+  (paper "USLetter")
+
+  (title_block
+    (title "Atlas Light Board LCC Traction Node")
+    (date "Nov. 30, 2025")
+    (rev "A")
+    (company "Deepwoods Software")
+  )
 
   (lib_symbols
     (symbol "Connector:TestPoint" (pin_numbers hide) (pin_names (offset 0.762) hide) (in_bom yes) (on_board yes)

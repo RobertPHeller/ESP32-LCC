@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <251129.1559>
+#  Last Modified : <251130.1650>
 #
 #  Description	
 #
@@ -55,7 +55,8 @@ SOURCES = $(wildcard ../main/*.hxx) kitbooklet.h Revision.h \
           $(wildcard ../../../CommonComponents/HealthMonitor/include/*.hxx) \
           $(wildcard ../../../CommonComponents/RebootHelpers/*.cpp) \
           $(wildcard ../../../CommonComponents/RebootHelpers/include/*.hxx) \
-
+	  $(wildcard Images/*)
+	  
 ifndef PROJECTNAME
 PROJECTNAME=AtlasLightBoardWiFiLCCTraction
 endif
@@ -83,27 +84,33 @@ Revision.h: ../components/Config/include/Revision.hxxout
 	echo '*/' >> $@
 
 
-html/index.html latex/refman.tex: Makefile Doxyfile $(SOURCES)
+html/index.html latex/refman.tex: Makefile Doxyfile $(SOURCES) header.tex
 	-rm -rf html latex 
 	doxygen Doxyfile
-	
+	cp Images/*.png latex/
 
 UserManual.pdf: latex/refman.tex
 	make -C latex
 	mv latex/refman.pdf ./UserManual.pdf
 	
 
-latex2/refman.tex: Makefile Doxyfile.kit $(SOURCES)
+latex2/refman.tex: Makefile Doxyfile.kit $(SOURCES) header.tex
 	-rm -rf latex2
 	doxygen Doxyfile.kit
+	cp Images/*.png latex2/
 
 KitBooklet.pdf: latex2/refman.tex
 	make -C latex2
 	pdfbook2 latex2/refman.pdf
 	mv latex2/refman-book.pdf ./KitBooklet.pdf
 
+header.tex: Doxyfile.kit Doxyfile Makefile header.sed
+	doxygen -w latex new_header.tex /dev/null /dev/null
+	sed <new_header.tex >header.tex -f header.sed
+	-rm new_header.tex
+
 clean:
-	-rm -rf html latex latex2 Doxyfile Doxyfile.kit
+	-rm -rf html latex latex2 Doxyfile Doxyfile.kit header.tex
 
 distclean: clean
 	-rm UserManual.pdf KitBooklet.pdf

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 08:19:28
-//  Last Modified : <251130.0820>
+//  Last Modified : <251202.1353>
 //
 //  Description	
 //
@@ -46,6 +46,12 @@
 #define __MOTORCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page MotorControl Motor control Configuration.
+ * There is only one configuration option, @c PWM @c frequency, which 
+ * specifies what frequency the motor should be driven at. Typical values are 
+ * in the 3000-20000 range.
+ */
 
 CDI_GROUP(MotorControl, Name("Motor control"));
 CDI_GROUP_ENTRY(pwm_frequency, openlcb::Uint16ConfigEntry, Name("PWM frequency"),

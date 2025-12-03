@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <251202.0912>
+//  Last Modified : <251203.1333>
 //
 //  Description	
 //
@@ -61,6 +61,9 @@
  * @image latex AtlasLightBoardWiFiLCCTraction_Top3D_Annotated.png width=5in
  * If the locomotive operates in reverse when you select the forward direction
  * this can be fixed by swapping the motor connections.
+ * 
+ * Additionally there are two solder connections for a "Keep Alive" device. 
+ * These connections are labeled @c "- KA +". 
  * @page 03initialConfig Initial Configuration
  * Before putting your locomotive on your layout, there are some initial
  * configuration tasks that are needed.

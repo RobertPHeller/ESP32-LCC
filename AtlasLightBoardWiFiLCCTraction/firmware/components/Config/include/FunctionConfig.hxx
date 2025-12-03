@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 19:50:58
-//  Last Modified : <251201.0856>
+//  Last Modified : <251202.1956>
 //
 //  Description	
 //
@@ -48,7 +48,7 @@
 /** @page FunctionConfig Function Config
  * There are six function outputs, each of which has these configuration options:
  * 
- * - Function Steady, Pulse, or Blink Phase (A-B): This defines the phase of
+ * - Function Steady or Blink Phase (A-B): This defines the phase of
  *   the function output.  The options are Steady on or 
  *   blinking, which can be Slow, Medium, or Fast, with either phase A or B.  
  *   The phase are opposite each other: B is off when A is on, and A is off 
@@ -72,7 +72,7 @@ static const char FunctionConsumerPhaseMap[] =
 /// CDI Configuration for a @ref FunctionConsumer
 CDI_GROUP(FunctionConsumerConfig);
 CDI_GROUP_ENTRY(phase, openlcb::Uint8ConfigEntry,
-                Name("Function Steady, Blink Phase (A-B)"),
+                Name("Function Steady or Blink Phase (A-B)"),
                 MapValues(FunctionConsumerPhaseMap),Default(0));
 CDI_GROUP_ENTRY(brightness, openlcb::Uint8ConfigEntry, 
                 Name("Brightness percent, 1 to 100"),

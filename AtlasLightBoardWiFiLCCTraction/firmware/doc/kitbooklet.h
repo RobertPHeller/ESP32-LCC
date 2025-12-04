@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <251203.1333>
+//  Last Modified : <251204.0844>
 //
 //  Description	
 //
@@ -51,7 +51,7 @@
  * installed on top of an Atlas motor.  Note the orientation: there is a small
  * "F" near the end meant to be towards the front of the locomotive.
  * @page 02wiring General Wiring Notes
- * The PCB can support up to 6 LED lights, including front and read headlights.
+ * The PCB can support up to 6 LED lights, including front and rear headlights.
  * There are through hole solder terminals for functions 1 (front headlight)
  * and 2 (rear headlight),  There are surface pads for functions 3 through 6
  * near the front end of the board.  These four functions share a common "C"

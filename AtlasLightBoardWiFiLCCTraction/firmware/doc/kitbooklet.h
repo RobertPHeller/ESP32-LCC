@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <251204.0844>
+//  Last Modified : <251207.0947>
 //
 //  Description	
 //
@@ -43,7 +43,7 @@
 //////////////////////////////////////////////////////////////////////////////
 
 /** @page 00kitContents Kit Contents
- * This kit just contains the node PCB.
+ * This kit just contains the node PCB and this instruction booklet.
  * @image html AtlasLightBoardWiFiLCCTraction_Top3D_Thumb.png
  * @image latex AtlasLightBoardWiFiLCCTraction_Top3D_Thumb.png width=1in
  * @page 01assembly Assembly
@@ -63,7 +63,7 @@
  * this can be fixed by swapping the motor connections.
  * 
  * Additionally there are two solder connections for a "Keep Alive" device. 
- * These connections are labeled @c "- KA +". 
+ * These connections are labeled @c "- KA +".
  * @page 03initialConfig Initial Configuration
  * Before putting your locomotive on your layout, there are some initial
  * configuration tasks that are needed.
@@ -90,7 +90,7 @@
  * hub using mDNS to find an available hub. You should either be running the 
  * JMRI LCC hub, running the OpenMRN hub application, or running a hub on a 
  * LCC/DCC command station (like the TCS CS-105). Once the node connects to 
- * the GC Hub it is possible to either just run the locomotive or and use a CDI
+ * the GC Hub it is possible to either just run the locomotive or use a CDI
  * configuration tool (eg JMRI) to change configuration settings, as described
  * in the following chapters.
  * @page 04OperationNotes Operation Notes

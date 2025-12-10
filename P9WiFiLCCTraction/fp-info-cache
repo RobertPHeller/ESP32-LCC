@@ -1,4 +1,4 @@
-20882262047363991
+20883993969683562
 Audio_Module
 Reverb_BTDR-1H
 Digital Reverberation Unit, http://www.belton.co.kr/inc/downfile.php?seq=17&file=pdf (footprint from http://www.uk-electronic.de/PDF/BTDR-1.pdf)
@@ -61074,6 +61074,13 @@ Mounting 4.5mm 9774100982
 0
 8
 1
+MyHSOP
+HSOP16-P-300-1.00
+
+
+0
+18
+17
 NanoT
 NanoT160AS
 NanoT 160 AS-3

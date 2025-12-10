@@ -1,4 +1,6 @@
 (fp_lib_table
   (lib (name "ESP32S3-WROOM")(type "KiCad")(uri "$(KIPRJMOD)/../CommonFootprints/ESP32-WROOM.pretty")(options "")(descr ""))
   (lib (name "NanoT")(type "KiCad")(uri "$(KIPRJMOD)/../CommonFootprints/NanoT160AS.pretty")(options "")(descr ""))
+  (lib (name "JST_ZH")(type "KiCad")(uri "$(KIPRJMOD)/../CommonFootprints/JST_ZH.pretty")(options "")(descr ""))
+  (lib (name "MyHSOP")(type "KiCad")(uri "$(KIPRJMOD)/../CommonFootprints/MyHSOP.pretty")(options "")(descr ""))
 )

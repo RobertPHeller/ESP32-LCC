@@ -1,0 +1,5 @@
+(sym_lib_table
+  (lib (name "MP6614")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonLibraries/MP6614GN-Z.kicad_sym")(options "")(descr ""))
+  (lib (name "ESP32-WROOM")(type "Legacy")(uri "/home/heller/ESP32-LCC/CommonLibraries/esp32_s3_wroom.lib")(options "")(descr ""))
+  (lib (name "tbd62064")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonLibraries/tbd62064afg_1.kicad_sym")(options "")(descr ""))
+)

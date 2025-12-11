@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <251201.0905>
+//  Last Modified : <251211.1521>
 //
 //  Description	
 //
@@ -220,8 +220,6 @@ void ESP32S3Train::set_fn(uint32_t address, uint16_t value)
     case 2:
     case 3:
     case 4:
-    case 5:
-    case 6:
         {
             int index = address - 1;
             states[index] = value != 0;
@@ -335,8 +333,6 @@ uint16_t ESP32S3Train::get_fn(uint32_t address)
     case 2:
     case 3:
     case 4:
-    case 5:
-    case 6:
         {
             int index = address -1;
             return states[index] ? 1 : 0;

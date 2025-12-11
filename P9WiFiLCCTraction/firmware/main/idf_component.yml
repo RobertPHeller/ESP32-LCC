@@ -1,0 +1,16 @@
+dependencies:
+  OpenMRNIDF:
+    version: idf-v5
+    git: https://github.com/atanisoft/OpenMRNIDF.git
+  NVSManager:
+    path: ../../../CommonComponents/NVSManager
+  FS:
+    path: ../../../CommonComponents/FS
+  HealthMonitor:
+    path: ../../../CommonComponents/HealthMonitor
+  RebootHelpers:
+    path: ../../../CommonComponents/RebootHelpers
+  Signals:
+    path: ../../../CommonComponents/Signals
+  Logic:
+    path: ../../../CommonComponents/Logic          

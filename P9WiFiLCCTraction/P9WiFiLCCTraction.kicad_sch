@@ -2442,7 +2442,7 @@
     (property "Reference" "TP104" (id 0) (at 113.03 107.9499 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
-    (property "Value" "+ KA -" (id 1) (at 113.03 110.4899 90)
+    (property "Value" "- KA +" (id 1) (at 113.03 110.4899 90)
       (effects (font (size 1.27 1.27)) (justify right))
     )
     (property "Footprint" "TestPoint:TestPoint_2Pads_Pitch2.54mm_Drill0.8mm" (id 2) (at 110.49 109.22 0)
@@ -3709,7 +3709,7 @@
       (reference "SW102") (unit 1) (value "Boot") (footprint "NanoT:NanoT160AS")
     )
     (path "/3032618d-7173-4140-8b2d-ca8a6623fcee"
-      (reference "TP104") (unit 1) (value "+ KA -") (footprint "TestPoint:TestPoint_2Pads_Pitch2.54mm_Drill0.8mm")
+      (reference "TP104") (unit 1) (value "- KA +") (footprint "TestPoint:TestPoint_2Pads_Pitch2.54mm_Drill0.8mm")
     )
     (path "/9724c26f-89b9-4862-8667-a2ad7abdb7a0"
       (reference "U101") (unit 1) (value "ESP32_S3_WROOM") (footprint "ESP32S3-WROOM:ESP32_S3_WROOM-1")

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <251202.1349>
+//  Last Modified : <251211.1023>
 //
 //  Description	
 //
@@ -238,7 +238,7 @@ private:
     /** The state of Function 0. */
     bool f0 = false;
     /** The states of Functions 1 through 6. */
-    bool states[6] = {false,false,false,false,false,false};
+    bool states[NUM_FUNCTIONS] = {false,false,false,false};
     /** The phase values. */
     enum PhaseType {Steady=1,SlowA=2,MediumA=3,FastA=4,SlowB=5,MediumB=6,FastB=7};
     /** Function confonfiguration. */
@@ -251,8 +251,6 @@ private:
         {Steady, 1, 50},
         {Steady, 1, 50},
         {Steady, 1, 50},
-        {Steady, 1, 50},
-        {Steady, 1, 50}
     };
     /** The speed controller. */
     ESP32SpeedController *speed_controller_;

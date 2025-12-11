@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 19:42:19
-//  Last Modified : <251130.1328>
+//  Last Modified : <251211.1020>
 //
 //  Description	
 //
@@ -53,7 +53,7 @@
 
 
 #define PWM_MOTOR {1, 2}
-#define PWM_FUNCTIONS {3, 4, 5, 6, 7, 8}
+#define PWM_FUNCTIONS {3, 4, 5, 6}
 
 
 GPIO_PIN(BOOT,GpioInputNP, 0);

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <251207.0947>
+//  Last Modified : <251211.1016>
 //
 //  Description	
 //
@@ -44,21 +44,15 @@
 
 /** @page 00kitContents Kit Contents
  * This kit just contains the node PCB and this instruction booklet.
- * @image html AtlasLightBoardWiFiLCCTraction_Top3D_Thumb.png
- * @image latex AtlasLightBoardWiFiLCCTraction_Top3D_Thumb.png width=1in
+ * @image html P9WiFiLCCTraction_Top3D_Thumb.png
+ * @image latex P9WiFiLCCTraction_Top3D_Thumb.png width=1in
  * @page 01assembly Assembly
  * The PCB is fully assembled and ready to install.  It is designed to be
  * installed on top of an Atlas motor.  Note the orientation: there is a small
  * "F" near the end meant to be towards the front of the locomotive.
  * @page 02wiring General Wiring Notes
- * The PCB can support up to 6 LED lights, including front and rear headlights.
- * There are through hole solder terminals for functions 1 (front headlight)
- * and 2 (rear headlight),  There are surface pads for functions 3 through 6
- * near the front end of the board.  These four functions share a common "C"
- * pad.  All 6 function outputs have on-board load resistors and are designed
- * to directly drive LEDs. See the figure below for how to wire the board.
- * @image html AtlasLightBoardWiFiLCCTraction_Top3D_Annotated.png
- * @image latex AtlasLightBoardWiFiLCCTraction_Top3D_Annotated.png width=5in
+ * The PCB can support up to 4 LED lights, including front and rear headlights.
+ * This board has a standard DCC 9-pin connector.  See (https://drupal.tcsdcc.com/pinout#9JST)[https://drupal.tcsdcc.com/pinout#9JST].)
  * If the locomotive operates in reverse when you select the forward direction
  * this can be fixed by swapping the motor connections.
  * 
@@ -98,9 +92,9 @@
  * there are seven functions.  Function number 0 is a "virtual" output for the
  * headlight.  If it is set to "On", it will turn Function 1 (front headlight)
  * or Function 2 (rear headlight) "On" or "Off" depending on the current
- * locomotive direction.  Functions 1 through 6 can be configured for various
+ * locomotive direction.  Functions 1 through 4 can be configured for various
  * effects: Steady on or blinking at one of three rates and two phases.  The
  * brightness can also be adjusted.  Function 1 is normally the front headlight
- * and Function 2 is the rear headlight.  Functions 3 through 6 can be used for
+ * and Function 2 is the rear headlight.  Functions 3 and 4 can be used for
  * any other lights, such as ditch lights, marker lights, or a mars light.
  */

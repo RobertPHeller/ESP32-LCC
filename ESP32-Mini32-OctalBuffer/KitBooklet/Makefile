@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu May 9 09:46:15 2024
-#  Last Modified : <240509.1001>
+#  Last Modified : <260118.1530>
 #
 #  Description	
 #
@@ -59,15 +59,16 @@ ifeq ($.SHELLSTATUS,1)
 $PROJECTNUMBER=${PROJECTNUMBER}-dirty
 endif
 endif
-
+29~
 Doxyfile: Doxyfile.in ../../.git/index
 	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \
 	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
 	    >$@ <$<
-
-latex/refman.tex: Makefile Doxyfile $(SOURCES)
+29~
+latex/refman.tex: Makefile Doxyfile $(SOURCES) header.tex images/*
 	-rm -rf latex
 	doxygen Doxyfile
+	cp images/* latex/
 	
 KitBooklet.pdf: latex/refman.tex
 	make -C latex
@@ -80,9 +81,13 @@ KitBooklet_even.pdf: KitBooklet.pdf
 KitBooklet_odd.pdf: KitBooklet.pdf
 	pdftk KitBooklet.pdf cat odd output KitBooklet_odd.pdf
 
-
+header.tex: Doxyfile Makefile header.sed
+	doxygen -w latex new_header.tex /dev/null /dev/null
+	sed <new_header.tex >header.tex -f header.sed
+	-rm new_header.tex
+	
 clean:
-	-rm -rf latex Doxyfile
+	-rm -rf latex Doxyfile header.tex
 
 distclean: clean
 	-rm UserManual.pdf KitBooklet.pdf

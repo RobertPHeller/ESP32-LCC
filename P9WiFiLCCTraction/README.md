@@ -2,7 +2,7 @@
 
 This is a WiFi LCC Traction Node that has a DCC standard JST 9-pin connecter.
 
-It has support for 6 function outputs.
+It has support for 3 function outputs.
 
 ![Schematic](firmware/doc/Images/P9WiFiLCCTraction.pdf)
 

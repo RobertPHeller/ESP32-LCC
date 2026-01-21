@@ -2,7 +2,14 @@
 
   (uuid 03ef64e6-5885-4302-afd0-6c1966841d02)
 
-  (paper "A4")
+  (paper "USLetter")
+
+  (title_block
+    (title "JST 9-Pin WiFi LCC Traction Node")
+    (date "12/11/2025")
+    (rev "A")
+    (company "Deepwoods Software")
+  )
 
   (lib_symbols
     (symbol "Connector:Conn_01x09_Male" (pin_names (offset 1.016) hide) (in_bom yes) (on_board yes)
@@ -3109,8 +3116,8 @@
     )
     (pin "1" (uuid 358d1db8-9e6c-4ce6-8bfe-be0b6e514637))
     (pin "8" (uuid 48b9c33a-70e6-4ae7-817b-31bd5cb86a7f))
-    (pin "FIN" (uuid aa065eaf-bb1e-45d7-b3c3-f27e5a7c89d6))
-    (pin "FIN" (uuid aa065eaf-bb1e-45d7-b3c3-f27e5a7c89d6))
+    (pin "FIN" (uuid aa065eaf-bb1e-45d7-b3c3-f27e5a7c89d7))
+    (pin "FIN" (uuid aa065eaf-bb1e-45d7-b3c3-f27e5a7c89d7))
     (pin "2" (uuid 4c9d626e-3209-4d14-989b-c7ad0c30404c))
     (pin "3" (uuid 2fcbabe8-acc3-4e9f-80e5-4eb6cb5b205e))
     (pin "6" (uuid 426679f0-ee58-44fc-b729-c5bfb5ad1f4d))
@@ -3363,7 +3370,7 @@
     )
     (pin "1" (uuid 723e79ad-5857-45d9-83a5-a4221fc750f7))
     (pin "8" (uuid c67f2339-3fb4-4674-bf98-93d916e56a2a))
-    (pin "FIN" (uuid 521ecff4-9a8b-4c10-8dbc-afe270177936))
+    (pin "FIN" (uuid 1f065e69-9248-456b-ab91-5d812f30b6b1))
     (pin "FIN" (uuid 1f065e69-9248-456b-ab91-5d812f30b6b1))
     (pin "2" (uuid 40e2c663-df4f-4e74-9012-643c789793a2))
     (pin "3" (uuid eca47947-f2bf-4203-b61a-f1e2aa480279))
@@ -3401,7 +3408,7 @@
     )
     (pin "1" (uuid 4dcc225c-3d3a-4800-b4e7-ffca112b88e0))
     (pin "8" (uuid 2ec33aea-7e9c-4ece-88d7-0e384649b426))
-    (pin "FIN" (uuid df02f577-500b-4868-b1ca-4c9728d210c6))
+    (pin "FIN" (uuid 6fe3e76e-773e-48dc-aec5-e632b3d78277))
     (pin "FIN" (uuid 6fe3e76e-773e-48dc-aec5-e632b3d78277))
     (pin "2" (uuid 5ab853cd-4f9f-4077-9949-fcc8e4b885b6))
     (pin "3" (uuid 4620ce5a-01e4-4b21-8486-3cf519024a88))
@@ -3489,7 +3496,7 @@
     )
     (pin "1" (uuid 515edb44-2621-46c4-b215-597d7a46aa72))
     (pin "8" (uuid 40de1638-73ae-4013-8dae-637a5a5174a7))
-    (pin "FIN" (uuid 644d3f62-1bca-4872-804d-0f7087bfc5ab))
+    (pin "FIN" (uuid 65cd1f1c-a484-429b-aea6-0db802c9ff8a))
     (pin "FIN" (uuid 65cd1f1c-a484-429b-aea6-0db802c9ff8a))
     (pin "2" (uuid a4321d46-4677-4c57-b428-6414a0c4928c))
     (pin "3" (uuid 17eaedcd-4ca5-40ea-bc44-3a6cdf775cc9))

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:32:27 2022
-//  Last Modified : <260323.0720>
+//  Last Modified : <260323.1638>
 //
 //  Description	
 //
@@ -44,38 +44,6 @@
 #define __LAMPCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
-
-/** @page LampConfig Lamp Configuration
- * @arg Lamp Selection
- * - Unused
- * - A0
- * - A1
- * - A2
- * - A3
- * - A4
- * - A5
- * - A6
- * - A7
- * - B0
- * - B1
- * - B2
- * - B3
- * - B4
- * - B5
- * - B6
- * - B7
- * @arg Lamp Phase (A-B) - Flash Rate
- * - Steady
- * - A - Slow
- * - A - Medium
- * - A - Fast
- * - None (not used)
- * - B - Slow
- * - B - Medium
- * - B - Fast
- * @arg Lamp brightness, hundreths of a percent (0 to 10000)
- * @arg PWM Period, in nanoseconds
- */
 
 #define LAMPCOUNT 4
 
@@ -113,6 +81,43 @@ static const char LampPhaseMap[] =
     "<relation><property>6</property><value>B - Medium</value></relation>"
     "<relation><property>7</property><value>B - Fast</value></relation>";
 
+
+/** @page LampConfig Lamp Configuration
+ * Each of the up to 4 lamps can be set to be steady on or to blink at a
+ * slow, medium or fast rate, with choice of phases.  The A and B phases
+ * are opposite each other.  The lamp brightness and the PWM frequence can
+ * also be set.
+ * 
+ * @arg Lamp Selection
+ * - Unused
+ * - A0
+ * - A1
+ * - A2
+ * - A3
+ * - A4
+ * - A5
+ * - A6
+ * - A7
+ * - B0
+ * - B1
+ * - B2
+ * - B3
+ * - B4
+ * - B5
+ * - B6
+ * - B7
+ * @arg Lamp Phase (A-B) - Flash Rate
+ * - Steady
+ * - A - Slow
+ * - A - Medium
+ * - A - Fast
+ * - None (not used)
+ * - B - Slow
+ * - B - Medium
+ * - B - Fast
+ * @arg Lamp brightness, hundreths of a percent (0 to 10000)
+ * @arg PWM Period, in nanoseconds
+ */
 
 /// CDI Configuration for a @ref Lamp
 CDI_GROUP(LampConfig);

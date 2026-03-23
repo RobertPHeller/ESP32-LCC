@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:20:53 2022
-//  Last Modified : <260322.2223>
+//  Last Modified : <260323.1039>
 //
 //  Description	
 //
@@ -46,6 +46,11 @@
 #include "openlcb/ConfigRepresentation.hxx"
 
 /** @page OccupancyDetectorConfig Occupancy Detector Configuration
+ * There are 4 CT transform type Occupancy Detectors on the board.  Each
+ * detector has 4 configuration variables, including a textual name, a 
+ * debounce setting that can be increased if needed (usually for dirty tracks
+ * or wheels), and thr two events produced by the detector.
+ * 
  * @arg Description User name of this block.
  * @arg Debounce parameter 
  * Amount of time to wait for the input to stabilize before 

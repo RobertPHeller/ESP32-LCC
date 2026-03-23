@@ -907,19 +907,21 @@ WARN_LOGFILE           =
 # Note: If this tag is empty the current directory is searched.
 
 INPUT                  = ../../CommonComponents/NVSManager/include/NodeIdConfigurationGroup.hxx \
-	                ../../CommonComponents/NVSManager/include/WiFiConfigurationGroup.hxx \
-                	../../CommonComponents/GeneralIO/include/ButtonConfig.hxx \
+	                 ../../CommonComponents/NVSManager/include/WiFiConfigurationGroup.hxx \
+                         Esp32WiFiConfiguration.dox main.dox \
+                         ../../CommonComponents/GeneralIO/include/ButtonConfig.hxx \
                          ../../CommonComponents/GeneralIO/include/LEDConfig.hxx \
                          ../../CommonComponents/GeneralIO/include/OccupancyDetectorConfig.hxx \
                          ../../CommonComponents/GeneralIO/include/PointsConfig.hxx \
                          ../../CommonComponents/GeneralIO/include/ServoTurnoutConfig.hxx \
                          ../../CommonComponents/GeneralIO/include/TurnoutConfig.hxx \
-                         ../../CommonComponents/Logic/include/LogicConfig.hxx \
-                         ../../CommonComponents/Logic/include/TrackCircuitConfig.hxx \
                          ../../CommonComponents/Signals/include/MastConfig.hxx \
                          ../../CommonComponents/Signals/include/RuleConfig.hxx \
                          ../../CommonComponents/Signals/include/LampConfig.hxx \
-                              Esp32WiFiConfiguration.dox main.dox
+                         ../../CommonComponents/Logic/include/LogicConfig.hxx \
+                         ../../CommonComponents/Logic/include/TrackCircuitConfig.hxx
+                         
+                
 
 
 # This tag can be used to specify the character encoding of the source files

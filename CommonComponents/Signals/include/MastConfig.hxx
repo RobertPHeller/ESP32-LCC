@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:15:46 2022
-//  Last Modified : <260323.0708>
+//  Last Modified : <260323.1119>
 //
 //  Description	
 //
@@ -47,6 +47,13 @@
 #include "RuleConfig.hxx"
 
 /** @page MastConfig Signal Mast Configuration
+ * There are eight signal masts.  The signal masts control the signal lamp
+ * driver outputs.  Each mast can have up to 8 "rules".  Each rule has an
+ * appearance that signals how the train should operate at the signal.
+ * The rules are described in @ref RuleConfig.
+ * 
+ * The mast will produce an event that implements a track circuit message.
+ * 
  * @arg Function Mast Processing, one of:
  * - Unused
  * - Normal

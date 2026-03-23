@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:19:57 2022
-//  Last Modified : <230323.1653>
+//  Last Modified : <260322.2225>
 //
 //  Description	
 //
@@ -44,6 +44,12 @@
 #define __POINTSCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page PointsConfig Points Configuration
+ * @arg Description User name of this set of points.
+ * @arg Normal This event will be produced when the points are aligned for normal.
+ * @arg Reversed This event will be produced when the are aligned for reversed.
+ */
 
 /// CDI Configuration for a @ref ConfiguredProducer.
 CDI_GROUP(PointsConfig);

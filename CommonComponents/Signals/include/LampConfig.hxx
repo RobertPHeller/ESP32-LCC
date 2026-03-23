@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:32:27 2022
-//  Last Modified : <230324.0932>
+//  Last Modified : <260323.0720>
 //
 //  Description	
 //
@@ -44,6 +44,38 @@
 #define __LAMPCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page LampConfig Lamp Configuration
+ * @arg Lamp Selection
+ * - Unused
+ * - A0
+ * - A1
+ * - A2
+ * - A3
+ * - A4
+ * - A5
+ * - A6
+ * - A7
+ * - B0
+ * - B1
+ * - B2
+ * - B3
+ * - B4
+ * - B5
+ * - B6
+ * - B7
+ * @arg Lamp Phase (A-B) - Flash Rate
+ * - Steady
+ * - A - Slow
+ * - A - Medium
+ * - A - Fast
+ * - None (not used)
+ * - B - Slow
+ * - B - Medium
+ * - B - Fast
+ * @arg Lamp brightness, hundreths of a percent (0 to 10000)
+ * @arg PWM Period, in nanoseconds
+ */
 
 #define LAMPCOUNT 4
 

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:21:55 2022
-//  Last Modified : <230323.1441>
+//  Last Modified : <260322.2210>
 //
 //  Description	
 //
@@ -44,7 +44,11 @@
 #define __BUTTONCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
-
+/** @page ButtonConfig Button Configuration
+ * @arg Description User name of this button.
+ * @arg Button Released This event will be produced when the button is released.
+ * @arg Button Pushed This event will be produced when the button is pushed.
+ */
 
 /// CDI Configuration for a @ref ConfiguredProducer.
 CDI_GROUP(ButtonConfig);

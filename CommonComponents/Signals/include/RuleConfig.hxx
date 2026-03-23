@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:29:55 2022
-//  Last Modified : <230324.0933>
+//  Last Modified : <260323.0716>
 //
 //  Description	
 //
@@ -43,6 +43,56 @@
 #ifndef __RULECONFIG_HXX
 #define __RULECONFIG_HXX
 #define RULESCOUNT 8
+
+/** @page RuleConfig Rule Configuration
+ * @arg Name One of:
+ * - 0-Stop
+ * - 1-Take Siding
+ * - 2-Stop Orders
+ * - 3-Stop Procede
+ * - 4-Restricting
+ * - 5-Permissive
+ * - 6-Slow-Approach
+ * - 7-Slow
+ * - 8-Slow-Medium
+ * - 9-Slow-Limited
+ * - 10-Slow-Clear
+ * - 11-Medium-Approach
+ * - 12-Medium-Slow
+ * - 13-Medium
+ * - 14-Medium-Clear
+ * - 15-Medium-Limited
+ * - 16-Limited-Approach
+ * - 17-Limited-Slow
+ * - 18-Limited-Medium
+ * - 19-Limited
+ * - 20-Limited-Clear
+ * - 21-Approach
+ * - 22-Advance-Approach
+ * - 23-Approach-Slow
+ * - 24-Advance-Approach-Slow
+ * - 25-Approach-Medium
+ * - 26-Advance-Approach-Medium
+ * - 27-Approach-Limited
+ * - 28-Advance-Approach-Limited
+ * - 29-Clear
+ * - 30-Cab Speed
+ * - 31-Dark
+ * @arg Track Speed (on approach to signal) One of:
+ * - Stop
+ * - Restricting/Tumble Down
+ * - Slow
+ * - Medium
+ * - Limited
+ * - Approach
+ * - Approach-Medium
+ * - Clear/Procede
+ * @arg (C) Event to Set Aspect. Note: Aspects are cleared automatically by the logic.
+ * @arg (P) Send this event when the Aspect is set.
+ * @arg (P) Send this event when the Aspect clears.
+ * @section Appearance Individual Aspect Lamps
+ * Upto 4 lamps can be lit.  See @ref LampConfig for details.
+ */
 
 #include "openlcb/ConfigRepresentation.hxx"
 

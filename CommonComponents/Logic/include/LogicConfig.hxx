@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:12:55 2022
-//  Last Modified : <260322.2305>
+//  Last Modified : <260323.1652>
 //
 //  Description	
 //
@@ -49,6 +49,15 @@
 #define LOGICCOUNT 32
 
 /** @page LogicConfig Logic Configuration
+ * There are 32 logic elements.  Logic elements can be part of a group, which
+ * then forms an if then else if then else if ... else chain.  Each logic
+ * block has two "variables" which are used to retain state information.
+ * These variables can be set or cleared via an event pair or via a track
+ * circuit (a signal from a distant mast).
+ * 
+ * The variables can be combined with various logic operators.  The result of
+ * the logic operation can then be acted on by up to 4 actions.
+ * 
  * @arg Logic description
  * @arg Group Function One of:
  * - Blocked

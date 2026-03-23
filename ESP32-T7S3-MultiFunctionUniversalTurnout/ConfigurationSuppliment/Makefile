@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : 2026-03-22 21:22:33
-#  Last Modified : <260322.2244>
+#  Last Modified : <260323.0726>
 #
 #  Description	
 #
@@ -44,7 +44,9 @@
 
 all: ConfigurationSuppliment-book.pdf ConfigurationSuppliment.pdf
 
-SRCS = ../../CommonComponents/GeneralIO/include/ButtonConfig.hxx \
+SRCS = ../../CommonComponents/NVSManager/include/NodeIdConfigurationGroup.hxx \
+	../../CommonComponents/NVSManager/include/WiFiConfigurationGroup.hxx \
+	../../CommonComponents/GeneralIO/include/ButtonConfig.hxx \
 	../../CommonComponents/GeneralIO/include/LEDConfig.hxx \
 	../../CommonComponents/GeneralIO/include/OccupancyDetectorConfig.hxx \
 	../../CommonComponents/GeneralIO/include/PointsConfig.hxx \

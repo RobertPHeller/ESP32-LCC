@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:23:01 2022
-//  Last Modified : <230323.1641>
+//  Last Modified : <260323.1035>
 //
 //  Description	
 //
@@ -44,6 +44,37 @@
 #define __LEDCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page LEDConfig LED (driver) Configuration
+ * There are 4 LED driver outputs.  The board has places for inserting through
+ * hole load resistors.  The drivers are push-pull types, so that can both 
+ * sink and source current.  There are terminals for connecting a 12 VDC power
+ * source for these outputs.
+ * 
+ * Each output has 4 configuration variables.  One controls how the output
+ * will be operated, this includes stady on, either high side or low side,
+ * a single pulse (good for decoupling electromagnets), either high side
+ * or low side, or blinking in three speeds in either of two phases.
+ * 
+ * @arg LED Steady, Pulse, or Blink Phase (A-B)
+ * The is the LED display mode.  One of these options are available:
+ * - Steady Highside
+ * - Steady Lowside
+ * - Pulse Highside
+ * - Pulse Lowside
+ * - A - Slow
+ * - A - Medium
+ * - A - Fast
+ * - B - Slow
+ * - B - Medium
+ * - B - Fast
+ * @arg Pulse width in seconds, 1 to 127 (for pulse options)
+ * @arg LED on This event will be consumed to turn the output on.
+ * @arg LED off This event will be consumed to turn the output off.
+ * 
+ * @par The A and B options are blink, with A and B opposite phases - when A is
+ * on, B is off and when B is on, A is off.
+ */
 
 static const char LEDPhaseMap[] =
     "<relation><property>0</property><value>Steady Highside</value></relation>"

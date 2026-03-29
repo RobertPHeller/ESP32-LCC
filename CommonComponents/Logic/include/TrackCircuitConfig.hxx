@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:17:14 2022
-//  Last Modified : <230324.0925>
+//  Last Modified : <260323.0700>
 //
 //  Description	
 //
@@ -42,6 +42,11 @@
 
 #ifndef __TRACKCIRCUITCONFIG_HXX
 #define __TRACKCIRCUITCONFIG_HXX
+
+
+/** @page TrackCircuitConfig Track Circuit Configuration
+ * @arg (C) Remote Mast Link Address -- Copy from 'Next' Mast and Paste here.
+ */
 
 #include "openlcb/ConfigRepresentation.hxx"
 

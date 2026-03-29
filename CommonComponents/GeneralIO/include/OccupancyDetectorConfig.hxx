@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:20:53 2022
-//  Last Modified : <230323.1652>
+//  Last Modified : <260323.1039>
 //
 //  Description	
 //
@@ -44,6 +44,27 @@
 #define __OCCUPANCYDETECTORCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page OccupancyDetectorConfig Occupancy Detector Configuration
+ * There are 4 CT transform type Occupancy Detectors on the board.  Each
+ * detector has 4 configuration variables, including a textual name, a 
+ * debounce setting that can be increased if needed (usually for dirty tracks
+ * or wheels), and thr two events produced by the detector.
+ * 
+ * @arg Description User name of this block.
+ * @arg Debounce parameter 
+ * Amount of time to wait for the input to stabilize before 
+ * producing the event. Unit is 30 msec of time. Usually a value 
+ * of 2-3 works well in a non-noisy environment. In high noise 
+ * (train wheels for example) a setting between 8 -- 15 makes 
+ * for a slower response time but a more stable 
+ * signal. <br />Formally, the parameter tells how many times of 
+ * tries, each 30 msec apart, the input must have the same value 
+ * in order for that value to be accepted and the event 
+ * transition produced.
+ * @arg Block Occupied This event will be produced when the block becomes occupied.
+ * @arg Block Clear This event will be produced when the block becomes clear.
+ */
 
 /// CDI Configuration for a @ref ConfiguredProducer.
 CDI_GROUP(OccupancyDetectorConfig);

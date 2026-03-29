@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:21:55 2022
-//  Last Modified : <230323.1441>
+//  Last Modified : <260323.1029>
 //
 //  Description	
 //
@@ -44,7 +44,16 @@
 #define __BUTTONCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
-
+/** @page ButtonConfig Button Configuration
+ * There are 4 button inputs.  These are Schmitt trigger inputs that are 
+ * design for push buttons switching to ground.  There are three configuration
+ * variables for each input: a short text description field and a pair of 
+ * events.
+ * 
+ * @arg Description User name of this button.
+ * @arg Button Released This event will be produced when the button is released.
+ * @arg Button Pushed This event will be produced when the button is pushed.
+ */
 
 /// CDI Configuration for a @ref ConfiguredProducer.
 CDI_GROUP(ButtonConfig);

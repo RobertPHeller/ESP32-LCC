@@ -1,0 +1,22 @@
+/** @mainpage Introduction
+ * This suppliment documents the configuration for the ESP32 T7S3 
+ * MultiFunctionUniversalTurnout firmware.  The configuration options
+ * available are described in detail and should aid in the proper configuration
+ * on the board.  There are configuration options relating to the board's core
+ * connectivity, including its node id covered in @ref NodeIdConfig, its WiFi
+ * configuration, covered in @ref WiFiConfiguration and @ref Esp32WiFiNode.
+ * 
+ * Then there is configuration for the General I/O connections:
+ * - Push button inputs in @ref ButtonConfig.
+ * - LED/Driver outputs in @ref LEDConfig.
+ * - Occupancy Detectors in @ref OccupancyDetectorConfig.
+ * - [Turnout] Points Configuration in @ref PointsConfig
+ * - Servo Turnout Configuration in @ref ServoTurnoutConfig (when using the 
+ * servo daughter board and the servo firmware.)
+ * - [Non-server] Turnout Configuration in @ref TurnoutConfig
+ * - Signal Mast Configuration in @MastConfig
+ * 
+ * @par 
+ * Then there is the logic (conditionals) described in @ref LogicConfig 
+ * and the track circuits described in @ref TrackCircuitConfig.
+ */

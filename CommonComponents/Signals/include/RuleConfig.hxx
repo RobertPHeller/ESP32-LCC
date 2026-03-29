@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:29:55 2022
-//  Last Modified : <230324.0933>
+//  Last Modified : <260323.1634>
 //
 //  Description	
 //
@@ -47,6 +47,7 @@
 #include "openlcb/ConfigRepresentation.hxx"
 
 #include "LampConfig.hxx"
+
 
 static const char RuleNamesMap[] =
 "<relation><property>0</property><value>0-Stop</value></relation>"
@@ -89,6 +90,68 @@ static const char EffectsMap[] =
 "<relation><property>2</property><value>H2 Red Flash</value></relation>"
 "<relation><property>3</property><value>Strobe</value></relation>";
 #endif
+
+/** @page RuleConfig Rule Configuration
+ * Each rule defines one aspect of a signal mast.  Generally the rule is out
+ * of the operating rules of the railroad and describe how the train should
+ * be operated.
+ * 
+ * The rule has a name (rule number), a track speed, an event that selects the
+ * rule (this is generally an event produced by a logic element, usually based
+ * on block occupation and turnout position or possibly set by the dispatcher 
+ * when operating under CTC.  The rule also produces an event when set and 
+ * when cleared.  And then it has an appearance consisting of up to 4 lamps,
+ * which can be lit steady or set to blink.
+ * 
+ * 
+ * @arg Name One of:
+ * - 0-Stop
+ * - 1-Take Siding
+ * - 2-Stop Orders
+ * - 3-Stop Procede
+ * - 4-Restricting
+ * - 5-Permissive
+ * - 6-Slow-Approach
+ * - 7-Slow
+ * - 8-Slow-Medium
+ * - 9-Slow-Limited
+ * - 10-Slow-Clear
+ * - 11-Medium-Approach
+ * - 12-Medium-Slow
+ * - 13-Medium
+ * - 14-Medium-Clear
+ * - 15-Medium-Limited
+ * - 16-Limited-Approach
+ * - 17-Limited-Slow
+ * - 18-Limited-Medium
+ * - 19-Limited
+ * - 20-Limited-Clear
+ * - 21-Approach
+ * - 22-Advance-Approach
+ * - 23-Approach-Slow
+ * - 24-Advance-Approach-Slow
+ * - 25-Approach-Medium
+ * - 26-Advance-Approach-Medium
+ * - 27-Approach-Limited
+ * - 28-Advance-Approach-Limited
+ * - 29-Clear
+ * - 30-Cab Speed
+ * - 31-Dark
+ * @arg Track Speed (on approach to signal) One of:
+ * - Stop
+ * - Restricting/Tumble Down
+ * - Slow
+ * - Medium
+ * - Limited
+ * - Approach
+ * - Approach-Medium
+ * - Clear/Procede
+ * @arg (C) Event to Set Aspect. Note: Aspects are cleared automatically by the logic.
+ * @arg (P) Send this event when the Aspect is set.
+ * @arg (P) Send this event when the Aspect clears.
+ * @section Appearance Individual Aspect Lamps
+ * Upto 4 lamps can be lit.  See @ref LampConfig for details.
+ */
 
 /// CDI Configuration for a @ref Rule
 CDI_GROUP(RuleConfig);

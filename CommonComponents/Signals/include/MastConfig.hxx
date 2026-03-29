@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:15:46 2022
-//  Last Modified : <230324.0936>
+//  Last Modified : <260323.1119>
 //
 //  Description	
 //
@@ -45,6 +45,25 @@
 
 #include "openlcb/ConfigRepresentation.hxx"
 #include "RuleConfig.hxx"
+
+/** @page MastConfig Signal Mast Configuration
+ * There are eight signal masts.  The signal masts control the signal lamp
+ * driver outputs.  Each mast can have up to 8 "rules".  Each rule has an
+ * appearance that signals how the train should operate at the signal.
+ * The rules are described in @ref RuleConfig.
+ * 
+ * The mast will produce an event that implements a track circuit message.
+ * 
+ * @arg Function Mast Processing, one of:
+ * - Unused
+ * - Normal
+ * - Linked to previous
+ * @arg Mast ID Mast identification
+ * @arg (P) Track Circuit Link Address. Copy and Paste into linked Track Circuit. (Read Only)
+ * @section Rules Aspect Rules
+ * Eight (8) Aspect rules can be configured for each mast.
+ * @ref RuleConfig
+ */
 
 #define MASTCOUNT 8
 

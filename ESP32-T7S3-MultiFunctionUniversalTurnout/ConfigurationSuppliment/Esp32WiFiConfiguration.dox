@@ -1,0 +1,19 @@
+/** @page Esp32WiFiNode WiFI Node Configuration 
+  *
+  * @arg WiFi Power Savings Mode 
+  * When enabled this allows the ESP32 WiFi radio to use power savings 
+  * mode which puts the radio to sleep except to receive beacon updates 
+  * from the connected SSID. This should generally not need to be 
+  * enabled unless you are powering the ESP32 from a battery.
+  * @arg Connection Mode
+  * Defines whether to allow accepting connections (according to the Hub 
+  * configuration), making a connection (according to the Uplink 
+  * configuration), or both. <br />  This setting can be set to Disabled if the 
+  * ESP32 will be using the TWAI (CAN) driver instead for the connection 
+  * to other nodes. <br /> Note: it is not recommended to enable the Hub 
+  * functionality on single-core ESP32 models.
+  * @arg Hub Configuration
+  * Configuration settings for an OpenLCB Hub
+  * @arg Node Uplink Configuration
+  * Configures how this node will connect to other nodes.
+  */

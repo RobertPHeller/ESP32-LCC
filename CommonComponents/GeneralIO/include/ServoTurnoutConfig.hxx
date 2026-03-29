@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Feb 14 09:30:08 2023
-//  Last Modified : <230323.1653>
+//  Last Modified : <260323.1110>
 //
 //  Description	
 //
@@ -45,6 +45,29 @@
 
 #include "openlcb/ConfigRepresentation.hxx"
 
+/** @page ServoTurnoutConfig Servo Turnout Configuration
+ * The Servo Turnout daughter board provides 4 servo outputs to control 4 
+ * turnouts powered with servos.  The servo version of the firmware supports
+ * these outputs with a set of 7 configuration variables, including textual
+ * description, normal and reverse events, servo positioning parameters and
+ * a pair of events to control vetoing turnout access.
+ * 
+ * @arg Description User name of this turnout.
+ * @arg Normal Event Receiving this event ID will rotate the servo to its normal configured point.
+ * @arg Reversed Event Receiving this event ID will rotate the servo to its reversed configured point.
+ * @arg Servo Normal Stop Point Percentage Normal-end
+ * stop point of the servo, as a percentage: generally 0-100.
+ * May be under/over-driven by setting a percentage value 
+ * of -99 to 200, respectively.
+ * @arg Servo Reversed Stop Point Percentage Reversed-end 
+ * stop point of the servo, as a percentage: generally 0-100.
+ * May be under/over-driven by setting a percentage value 
+ * of -99 to 200, respectively.
+ * @arg Veto On Receiving this event ID will lock the turnout.
+ * @arg Veto Off Receiving this event ID will unlock the turnout.
+ */
+
+   
 CDI_GROUP(ServoTurnoutConfig);
 CDI_GROUP_ENTRY(description, openlcb::StringConfigEntry<16>, Name("Description"),
                 Description("User name of this turnout."));

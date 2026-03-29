@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:19:57 2022
-//  Last Modified : <230323.1653>
+//  Last Modified : <260323.1041>
 //
 //  Description	
 //
@@ -44,6 +44,16 @@
 #define __POINTSCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page PointsConfig Points Configuration
+ * There are 4 turnout point feedback detectors.  Each point feedback detector
+ * has 3 configuration variables, a textual description, and a pair of event
+ * id produced by the detector.
+ * 
+ * @arg Description User name of this set of points.
+ * @arg Normal This event will be produced when the points are aligned for normal.
+ * @arg Reversed This event will be produced when the are aligned for reversed.
+ */
 
 /// CDI Configuration for a @ref ConfiguredProducer.
 CDI_GROUP(PointsConfig);

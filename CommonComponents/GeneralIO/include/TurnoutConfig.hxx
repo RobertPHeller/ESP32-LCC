@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:18:58 2022
-//  Last Modified : <230323.1657>
+//  Last Modified : <260323.1113>
 //
 //  Description	
 //
@@ -43,6 +43,21 @@
 #ifndef __TURNOUTCONFIG_HXX
 #define __TURNOUTCONFIG_HXX
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page TurnoutConfig Turnout Configuration
+ * The turnout daughter boards provide a selection of turnout motor drivers.
+ * The non-server firmware provides 5 configuration variables, including
+ * a textual description, a pair of event ids to control the position of
+ * the turnout and a pair of veto event ids to allow for locking the
+ * turnout.
+ * 
+ * @arg Description User name of this turnout.
+ * @arg Normal Receiving this event ID will align the turnout to normal.
+ * @arg Reversed Receiving this event ID will align the turnout to reversed.
+ * @arg Veto On Receiving this event ID will lock the turnout.
+ * @arg Veto Off Receiving this event ID will unlock the turnout.
+ */
+
 /// CDI Configuration for a @ref ConfiguredConsumer.
 CDI_GROUP(TurnoutConfig);
 /// Allows the user to assign a name for this output.

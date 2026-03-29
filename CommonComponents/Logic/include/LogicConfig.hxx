@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 09:12:55 2022
-//  Last Modified : <230324.0925>
+//  Last Modified : <260323.1652>
 //
 //  Description	
 //
@@ -47,6 +47,115 @@
 #include "TrackCircuitConfig.hxx"
 
 #define LOGICCOUNT 32
+
+/** @page LogicConfig Logic Configuration
+ * There are 32 logic elements.  Logic elements can be part of a group, which
+ * then forms an if then else if then else if ... else chain.  Each logic
+ * block has two "variables" which are used to retain state information.
+ * These variables can be set or cleared via an event pair or via a track
+ * circuit (a signal from a distant mast).
+ * 
+ * The variables can be combined with various logic operators.  The result of
+ * the logic operation can then be acted on by up to 4 actions.
+ * 
+ * @arg Logic description
+ * @arg Group Function One of:
+ * - Blocked
+ * - Group
+ * - Last (Single)
+ * @arg Variable #1
+ * @arg Variable Trigger One of
+ * - On Variable Change
+ * - On Matching Event
+ * - None
+ * @arg Variable Source One of:
+ * - Use Variable's (C) Events
+ * - Track Circuit 1
+ * - Track Circuit 2
+ * - Track Circuit 3
+ * - Track Circuit 4
+ * - Track Circuit 5
+ * - Track Circuit 6
+ * - Track Circuit 7
+ * - Track Circuit 8
+ * @arg Variable Track Speed One of:
+ * - Stop
+ * - Restricting/Tumble Down
+ * - Slow
+ * - Medium
+ * - Limited
+ * - Approach
+ * - Approach-Medium
+ * - Clear/Procede
+ * @arg (C) Event to set variable true.
+ * @arg (C) Event to set variable false.
+ * @arg Logic function One of:
+ * - V1 AND V2
+ * - V1 OR V2
+ * - V1 XOR V2
+ * - V1 AND V2 => Change
+ * - V1 OR V2 => Change
+ * - V1 AND then V2 => true<
+ * - V1 only
+ * - V2 only
+ * - null => true
+ * @arg Variable #2 
+ * @arg Variable Trigger One of
+ * - On Variable Change
+ * - On Matching Event
+ * - None
+ * @arg Variable Source One of:
+ * - Use Variable's (C) Events
+ * - Track Circuit 1
+ * - Track Circuit 2
+ * - Track Circuit 3
+ * - Track Circuit 4
+ * - Track Circuit 5
+ * - Track Circuit 6
+ * - Track Circuit 7
+ * - Track Circuit 8
+ * @arg Variable Track Speed One of:
+ * - Stop
+ * - Restricting/Tumble Down
+ * - Slow
+ * - Medium
+ * - Limited
+ * - Approach
+ * - Approach-Medium
+ * - Clear/Procede
+ * @arg (C) Event to set variable true.
+ * @arg (C) Event to set variable false.
+ * @arg when true "Action when Conditional = True
+ * - Send then Exit Group
+ * - Send then Evaluate Next
+ * - Exit Group
+ * - Evaluate Next
+ * @arg when false Action when Conditional = False
+ * - Send then Exit Group
+ * - Send then Evaluate Next
+ * - Exit Group
+ * - Evaluate Next
+ * @arg Time Delay before action 
+ * @arg Delay Time (1-60000)
+ * @arg Interval One of:
+ * - Milliseconds
+ * - Seconds
+ * - Minutes
+ * @arg Retriggerable One of:
+ * - No
+ * - Yes
+ * @arg Action 1 through 4:
+ * @arg Condition One of:
+ * - None
+ * - Immediately
+ * - After delay
+ * - Immediate if True
+ * - Immediate if False
+ * - Delayed if True
+ * - Delayed if False
+ * @arg Action Event (P) this event will be sent.
+ */
+
 
 static const char GroupFunctionMap[] = 
 "<relation><property>0</property><value>Blocked</value></relation>"

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <260326.1516>
+#  Last Modified : <260329.1716>
 #
 #  Description	
 #
@@ -66,13 +66,13 @@ compile_cdi: ../include/cdi.hxx ../include/MotorConfig.hxx \
 ../include/Revision.hxxout : ../../../../../.git/index \
 	../../../sdkconfig
 	../../../../../buildscripts/revision.py -t \
-		-i "$(PROJECTPATH)" -o ../include/Revision
+		-i "$(PROJECTPATH) ../../../components/OpenMRN/" -o ../include/Revision
 	
 
 ../../../Sticker.out: ../../../../../.git/index ../include/Revision.hxxout \
 	../../../sdkconfig
 	../../../../../buildscripts/sticker.py -t \
-		-i "$(PROJECTPATH)" \
+		-i "$(PROJECTPATH) ../../../components/OpenMRN/" \
 		-o ../../../Sticker.out
 FORCE:
 

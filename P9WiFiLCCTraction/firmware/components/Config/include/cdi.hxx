@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <251210.2050>
+//  Last Modified : <260329.0926>
 //
 //  Description	
 //
@@ -48,9 +48,9 @@
 #include <openlcb/ConfigRepresentation.hxx>
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
+#include "openlcb/ConfiguredTcpConnection.hxx"
 #include "openlcb/MemoryConfig.hxx"
 #include "NodeIdConfigurationGroup.hxx"
-#include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
 #include "FunctionConfig.hxx"
 #include "MotorConfig.hxx"
@@ -70,9 +70,10 @@ CDI_GROUP_ENTRY(motor_control, MotorControl);
 CDI_GROUP_ENTRY(functions,FunctionConsumers,Name("Functions"),
                 RepName("Function"),
                 Description("Functions: headlights, etc."));
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
-#endif
+CDI_GROUP_ENTRY(uplinkParams, 
+                openlcb::TcpClientConfig<openlcb::TcpClientDefaultParams>,
+                Name("Node Uplink Configuration"),
+                Description("Configures how this node will connect to other nodes."));
 CDI_GROUP_END();
 
 /// This segment is only needed temporarily until there is program code to set

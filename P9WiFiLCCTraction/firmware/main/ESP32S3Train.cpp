@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <251211.1521>
+//  Last Modified : <260326.2052>
 //
 //  Description	
 //
@@ -48,7 +48,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "executor/StateFlow.hxx"
 #include "freertos_drivers/esp32/Esp32Ledc.hxx"
 #include "freertos_drivers/esp32/Esp32Gpio.hxx"
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 #include "openlcb/TractionTrain.hxx"
 #include "openlcb/TrainInterface.hxx"
 #include "openlcb/ConfigRepresentation.hxx"
@@ -139,6 +139,7 @@ StateFlowBase::Action ESP32SpeedController::do_speed()
         lo_pin = 1;
     }
     double fill_rate = req()->speed_.mph();
+    /* speed modifier code here */
     if (fill_rate >= 128) fill_rate = 128;
     int fill = (fill_rate / 128.0) * 100;
     motorpwm_->get_channel(lo_pin)->set_duty(fill);
@@ -156,13 +157,118 @@ ConfigUpdateListener::UpdateAction
     printf("pwm freq = %d\n", config_freq);
     period_ = 1000000000 / config_freq;
     motorpwm_->get_channel(0)->set_period(period_);
+    if (mpar_.mode().read(fd) == 1)
+    {
+        speedMode_ = TableSpeed;
+    }
+    else
+    {
+        speedMode_ = BasicSpeed;
+    }
+    vstart_ = mpar_.basic().vstart().read(fd);
+    vmid_ = mpar_.basic().vmid().read(fd);
+    vhigh_ = mpar_.basic().vhigh().read(fd);
+    speedTable_[0] = mpar_.table().bar0().read(fd);
+    speedTable_[1] = mpar_.table().bar1().read(fd);
+    speedTable_[2] = mpar_.table().bar2().read(fd);
+    speedTable_[3] = mpar_.table().bar3().read(fd);
+    speedTable_[4] = mpar_.table().bar4().read(fd);
+    speedTable_[5] = mpar_.table().bar5().read(fd);
+    speedTable_[6] = mpar_.table().bar6().read(fd);
+    speedTable_[7] = mpar_.table().bar7().read(fd);
+    speedTable_[8] = mpar_.table().bar8().read(fd);
+    speedTable_[9] = mpar_.table().bar9().read(fd);
+    speedTable_[10] = mpar_.table().bar10().read(fd);
+    speedTable_[11] = mpar_.table().bar11().read(fd);
+    speedTable_[12] = mpar_.table().bar12().read(fd);
+    speedTable_[13] = mpar_.table().bar13().read(fd);
+    speedTable_[14] = mpar_.table().bar14().read(fd);
+    speedTable_[15] = mpar_.table().bar15().read(fd);
+    speedTable_[16] = mpar_.table().bar16().read(fd);
+    speedTable_[17] = mpar_.table().bar17().read(fd);
+    speedTable_[18] = mpar_.table().bar18().read(fd);
+    speedTable_[19] = mpar_.table().bar19().read(fd);
+    speedTable_[20] = mpar_.table().bar20().read(fd);
+    speedTable_[21] = mpar_.table().bar21().read(fd);
+    speedTable_[22] = mpar_.table().bar22().read(fd);
+    speedTable_[23] = mpar_.table().bar23().read(fd);
+    speedTable_[24] = mpar_.table().bar24().read(fd);
+    speedTable_[25] = mpar_.table().bar25().read(fd);
+    speedTable_[26] = mpar_.table().bar26().read(fd);
+    speedTable_[27] = mpar_.table().bar27().read(fd);
     return UPDATED;
 }
 
 void ESP32SpeedController::factory_reset(int fd)
 {
     mpar_.pwm_frequency().write(
-        fd, mpar_.pwm_frequency_options().defaultvalue());
+            fd, mpar_.pwm_frequency_options().defaultvalue());
+    mpar_.mode().write(
+            fd, mpar_.mode_options().defaultvalue());
+    
+    mpar_.basic().vstart().write(
+            fd, mpar_.basic().vstart_options().defaultvalue());
+    mpar_.basic().vmid().write(
+            fd, mpar_.basic().vmid_options().defaultvalue());
+    mpar_.basic().vhigh().write(
+            fd, mpar_.basic().vmid_options().defaultvalue());
+
+    mpar_.table().bar0().write(
+            fd, mpar_.table().bar0_options().defaultvalue());
+    mpar_.table().bar1().write(
+            fd, mpar_.table().bar1_options().defaultvalue());
+    mpar_.table().bar2().write(
+            fd, mpar_.table().bar2_options().defaultvalue());
+    mpar_.table().bar3().write(
+            fd, mpar_.table().bar3_options().defaultvalue());
+    mpar_.table().bar4().write(
+            fd, mpar_.table().bar4_options().defaultvalue());
+    mpar_.table().bar5().write(
+            fd, mpar_.table().bar5_options().defaultvalue());
+    mpar_.table().bar6().write(
+            fd, mpar_.table().bar6_options().defaultvalue());
+    mpar_.table().bar7().write(
+            fd, mpar_.table().bar7_options().defaultvalue());
+    mpar_.table().bar8().write(
+            fd, mpar_.table().bar8_options().defaultvalue());
+    mpar_.table().bar9().write(
+            fd, mpar_.table().bar9_options().defaultvalue());
+    mpar_.table().bar10().write(
+            fd, mpar_.table().bar10_options().defaultvalue());
+    mpar_.table().bar11().write(
+            fd, mpar_.table().bar11_options().defaultvalue());
+    mpar_.table().bar12().write(
+            fd, mpar_.table().bar12_options().defaultvalue());
+    mpar_.table().bar13().write(
+            fd, mpar_.table().bar13_options().defaultvalue());
+    mpar_.table().bar14().write(
+            fd, mpar_.table().bar14_options().defaultvalue());
+    mpar_.table().bar15().write(
+            fd, mpar_.table().bar15_options().defaultvalue());
+    mpar_.table().bar16().write(
+            fd, mpar_.table().bar16_options().defaultvalue());
+    mpar_.table().bar17().write(
+            fd, mpar_.table().bar17_options().defaultvalue());
+    mpar_.table().bar18().write(
+            fd, mpar_.table().bar18_options().defaultvalue());
+    mpar_.table().bar19().write(
+            fd, mpar_.table().bar19_options().defaultvalue());
+    mpar_.table().bar20().write(
+            fd, mpar_.table().bar20_options().defaultvalue());
+    mpar_.table().bar21().write(
+            fd, mpar_.table().bar21_options().defaultvalue());
+    mpar_.table().bar22().write(
+            fd, mpar_.table().bar22_options().defaultvalue());
+    mpar_.table().bar23().write(
+            fd, mpar_.table().bar23_options().defaultvalue());
+    mpar_.table().bar24().write(
+            fd, mpar_.table().bar24_options().defaultvalue());
+    mpar_.table().bar25().write(
+            fd, mpar_.table().bar25_options().defaultvalue());
+    mpar_.table().bar26().write(
+            fd, mpar_.table().bar26_options().defaultvalue());
+    mpar_.table().bar27().write(
+            fd, mpar_.table().bar27_options().defaultvalue());
 }
 
 void ESP32S3Train::set_speed(openlcb::SpeedType speed)

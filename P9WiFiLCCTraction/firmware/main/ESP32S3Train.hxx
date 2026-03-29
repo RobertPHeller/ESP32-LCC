@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <251211.1023>
+//  Last Modified : <260326.2051>
 //
 //  Description	
 //
@@ -48,7 +48,7 @@
 #include "executor/StateFlow.hxx"
 #include "freertos_drivers/esp32/Esp32Ledc.hxx"
 #include "freertos_drivers/esp32/Esp32Gpio.hxx"
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 #include "openlcb/TractionTrain.hxx"
 #include "openlcb/TrainInterface.hxx"
 #include "openlcb/ConfigRepresentation.hxx"
@@ -96,6 +96,11 @@ public:
           , mpar_(mpar)
           , motorpwm_(motorpwm)
     {
+        double fract = 255.0 / 27.0;
+        for (size_t i = 0; i < 28; i++)
+        {
+            speedTable_[i] = (uint8_t)((i*fract)+.5);
+        }
     }
     /** Helper to generate a speed change.
      * @param speed The new speed.
@@ -143,6 +148,16 @@ private:
     /** PWM period. */
     long long period_ =
           1000000000 / MotorControl::pwm_frequency_options().defaultvalue();
+    /** Speed mode -- basic or table */
+    enum {BasicSpeed=0, TableSpeed=1}  speedMode_{BasicSpeed};
+    /** VStart */
+    uint8_t vstart_{0};
+    /** VMid */
+    uint8_t vmid_{127};
+    /** VHigh */
+    uint8_t vhigh_{255};
+    /** Speed table */
+    uint8_t speedTable_[28];
     /** Motor PWM. */
     Esp32Ledc *motorpwm_;
     /** State Flow Timer. */

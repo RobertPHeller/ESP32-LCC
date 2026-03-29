@@ -1,6 +1,6 @@
 set(DEPS
     app_update
-    OpenMRNIDF
+    OpenMRN
     Config
     Logic
    )

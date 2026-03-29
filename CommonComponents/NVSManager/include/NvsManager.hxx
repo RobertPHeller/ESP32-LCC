@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <231105.1500>
+//  Last Modified : <260327.2056>
 //
 //  Description	
 //
@@ -123,7 +123,7 @@ public:
         config_.force_reset = true;
         need_persist_ = true;
     }
-#ifdef CONFIG_ESP32_WIFI_ENABLED
+//#ifdef CONFIG_ESP32_WIFI_ENABLED
     inline wifi_mode_t wifi_mode() {return config_.wifi_mode;}
     inline void wifi_mode(wifi_mode_t mode)
     {
@@ -163,7 +163,7 @@ public:
         config_.hostname_prefix[sizeof(config_.hostname_prefix)-1] = 0;
         need_persist_ = true;
     }
-#endif
+//#endif
     NvsManager() : need_persist_(false) 
     {
     }
@@ -191,12 +191,12 @@ private:
         bool bootloader_req;
         bool reset_events_req;
         bool test_signal_lamps;
-#ifdef CONFIG_ESP32_WIFI_ENABLED
+//#ifdef CONFIG_ESP32_WIFI_ENABLED
         char hostname_prefix[16];
         char station_ssid[33];
         char station_pass[33];
         wifi_mode_t wifi_mode;
-#endif
+//#endif
         uint8_t reserved[20];
     } config_;
     bool need_persist_;

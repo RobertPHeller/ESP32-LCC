@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251201.0852>
+//  Last Modified : <260330.1258>
 //
 //  Description	
 //
@@ -83,9 +83,8 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "openlcb/TrainInterface.hxx"
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-#include <freertos_drivers/esp32/Esp32WiFiManager.hxx>
-#endif
+#include "MyEsp32WiFiManager.hxx"
+
 #include <openlcb/MemoryConfigClient.hxx>
 #include <openlcb/RefreshLoop.hxx>
 #include <utils/constants.hxx>
@@ -283,22 +282,17 @@ void app_main()
     nvs.register_virtual_memory_spaces(&stack);
     openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] MemoryConfigClient done.");
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-    openmrn_arduino::Esp32WiFiManager wifi_manager(
-                                                   nvs.station_ssid(), 
-                                                   nvs.station_pass(),
-                                                   &stack, 
-                                                   cfg.seg().olbcwifi(), 
-                                                   nvs.wifi_mode(),
-                                                   (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
-                                                   nvs.hostname_prefix());
-#endif
     AtlasLightBoardWiFiLCCTraction::FactoryResetHelper factory_reset_helper;
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] FactoryResetHelper done.");
     reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] DelayRebootHelper done.");
     healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction] HealthMonitor done.");
+    MyEsp32WiFiManager wifi_manager(nvs.station_ssid(),
+                                    nvs.station_pass(),
+                                    &stack, 
+                                    cfg.seg().uplinkParams(),
+                                    nvs.hostname_prefix());
     // Create config file and initiate factory reset if it doesn't exist or is
     // otherwise corrupted.
     int config_fd =

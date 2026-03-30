@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <251130.0923>
+//  Last Modified : <260329.0926>
 //
 //  Description	
 //
@@ -48,16 +48,16 @@
 #include <openlcb/ConfigRepresentation.hxx>
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
+#include "openlcb/ConfiguredTcpConnection.hxx"
 #include "openlcb/MemoryConfig.hxx"
 #include "NodeIdConfigurationGroup.hxx"
-#include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
 #include "FunctionConfig.hxx"
 #include "MotorConfig.hxx"
 
 #include "Revision.hxxout"
 
-namespace AtlasLightBoardWiFiLCCTraction
+namespace P9WiFiLCCTraction
 {
 /// Defines the main segment in the configuration CDI. This is laid out at
 /// origin 128 to give space for the ACDI user data at the beginning.
@@ -70,9 +70,10 @@ CDI_GROUP_ENTRY(motor_control, MotorControl);
 CDI_GROUP_ENTRY(functions,FunctionConsumers,Name("Functions"),
                 RepName("Function"),
                 Description("Functions: headlights, etc."));
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
-#endif
+CDI_GROUP_ENTRY(uplinkParams, 
+                openlcb::TcpClientConfig<openlcb::TcpClientDefaultParams>,
+                Name("Node Uplink Configuration"),
+                Description("Configures how this node will connect to other nodes."));
 CDI_GROUP_END();
 
 /// This segment is only needed temporarily until there is program code to set

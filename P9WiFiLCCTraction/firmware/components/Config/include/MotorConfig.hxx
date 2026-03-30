@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 08:19:28
-//  Last Modified : <260326.1523>
+//  Last Modified : <260330.0948>
 //
 //  Description	
 //
@@ -95,10 +95,25 @@ CDI_GROUP_ENTRY(bar26,openlcb::Uint8ConfigEntry, Default(246),Min(0),Max(255),Na
 CDI_GROUP_ENTRY(bar27,openlcb::Uint8ConfigEntry, Default(255),Min(0),Max(255),Name("bar27"),Hints("<slider/>"));
 CDI_GROUP_END();
 
+static const char DirectionMode[] =
+"<relation><property>0</property><value>Normal</value></relation>"
+"<relation><property>1</property><value>Reversed</value></relation>";
+
 /** @page MotorControl Motor control Configuration.
- * There @c PWM @c frequency, which 
- * specifies what frequency the motor should be driven at. Typical values are 
+ * @arg pwm_frequency 
+ * Specifies what frequency the motor should be driven at. Typical values are 
  * in the 3000-20000 range.
+ * @arg direction_mode
+ * Specifies where the motor is wired for forward or reverse running.
+ * @arg speed_mode
+ * Specifies weither to use the basic speed mode, using VStart, VMid, and 
+ * VHigh or to use a 28 element speed table.
+ * @arg basic
+ * Includes three speed points, vstart, vmid, and vmax, which are fractions 
+ * of full drive voltage, in 255'ths.
+ * @arg table
+ * Includes 28 speed points, which are fractions of full drive voltage, in 
+ * 255'ths.
  */
 
 CDI_GROUP(MotorControl, Name("Motor control"));
@@ -106,7 +121,11 @@ CDI_GROUP_ENTRY(pwm_frequency, openlcb::Uint16ConfigEntry, Name("PWM frequency")
                 Description("Specifies what frequency the motor should be driven at. "
                             "Typical values are in the 3000-20000 range."),
                 Min(3), Max(50000), Default(13000));
-CDI_GROUP_ENTRY(mode, openlcb::Uint8ConfigEntry, 
+CDI_GROUP_ENTRY(direction_mode, openlcb::Uint8ConfigEntry,
+                Name("Direction Mode"),
+                Description("Specifies the direction mode, normal or reversed."),
+                Min(0), Max(1), Default(0));
+CDI_GROUP_ENTRY(speed_mode, openlcb::Uint8ConfigEntry, 
                 Name("Speed Mode"),
                 Description("Selects which speed mode to use:\n"
                             "Basic, using VStart, VMid, and VHigh\n"

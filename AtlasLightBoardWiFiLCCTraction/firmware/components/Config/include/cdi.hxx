@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <260329.0926>
+//  Last Modified : <260330.1332>
 //
 //  Description	
 //
@@ -57,7 +57,7 @@
 
 #include "Revision.hxxout"
 
-namespace P9WiFiLCCTraction
+namespace AtlasLightBoardWiFiLCCTraction
 {
 /// Defines the main segment in the configuration CDI. This is laid out at
 /// origin 128 to give space for the ACDI user data at the beginning.

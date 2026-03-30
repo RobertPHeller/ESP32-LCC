@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <260327.1259>
+#  Last Modified : <260330.1338>
 #
 #  Description	
 #
@@ -100,6 +100,7 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/incl
 add_custom_target(Documentation
                   ALL
                   COMMAND make PROJECTNAME="${project_name}" PROJECTNUMBER="${project_ver}" -C "${CMAKE_CURRENT_SOURCE_DIR}/../doc"
+                  DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/Revision.hxxout"
                   VERBATIM
                   )
 

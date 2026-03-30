@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260330.1258>
+//  Last Modified : <260330.1400>
 //
 //  Description	
 //
@@ -92,7 +92,7 @@ static const char rcsid[] = "@(#) : $Id$";
 
 #include "BootPauseHelper.hxx"
 #include <freertos_drivers/esp32/Esp32Ledc.hxx>
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 #include "hardware.hxx"
 
 #include "FunctionConfig.hxx"

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <260330.1404>
+//  Last Modified : <260331.1046>
 //
 //  Description	
 //
@@ -171,7 +171,7 @@ void ESP32S3Train::set_speed(openlcb::SpeedType speed)
     estop = false;
     if (speed_controller_ == nullptr) return;
     speed_controller_->call_speed(speed);
-    if (f0)
+    if (get_fn(0))
     {
         if (speed.direction() == openlcb::SpeedType::FORWARD)
         {
@@ -194,7 +194,8 @@ void ESP32S3Train::set_emergencystop()
     speed_controller_->call_estop();
 }
 
-void ESP32S3Train::set_fn(uint32_t address, uint16_t value)
+void ESP32FunctionController::set_fn(uint32_t address, uint16_t value,
+                                     openlcb::SpeedType lastSpeed)
 {
     switch (address)
     {
@@ -202,18 +203,18 @@ void ESP32S3Train::set_fn(uint32_t address, uint16_t value)
         f0 = value;
         if (!value)
         {
-            set_fn(1,0);
-            set_fn(2,0);
+            set_fn(1,0,lastSpeed);
+            set_fn(2,0,lastSpeed);
         }
-        else if (lastSpeed_.direction() == openlcb::SpeedType::FORWARD)
+        else if (lastSpeed.direction() == openlcb::SpeedType::FORWARD)
         {
-            set_fn(1,1);
-            set_fn(2,0);
+            set_fn(1,1,lastSpeed);
+            set_fn(2,0,lastSpeed);
         }
         else
         {
-            set_fn(1,0);
-            set_fn(2,1);
+            set_fn(1,0,lastSpeed);
+            set_fn(2,1,lastSpeed);
         }
         break;
     case 1:
@@ -250,7 +251,7 @@ void ESP32S3Train::set_fn(uint32_t address, uint16_t value)
     }
 }
 
-void ESP32S3Train::blink(bool AFast, bool AMedium, bool ASlow)
+void ESP32FunctionController::blink(bool AFast, bool AMedium, bool ASlow)
 {
     for (int i = 0; i < NUM_FUNCTIONS; i++)
     {
@@ -324,7 +325,7 @@ void ESP32S3Train::blink(bool AFast, bool AMedium, bool ASlow)
     }
 }
 
-uint16_t ESP32S3Train::get_fn(uint32_t address)
+uint16_t ESP32FunctionController::get_fn(uint32_t address)
 {
     switch (address)
     {
@@ -358,7 +359,7 @@ dcc::TrainAddressType ESP32S3Train::legacy_address_type()
 
 
 ConfigUpdateListener::UpdateAction 
-      ESP32S3Train::apply_configuration(int fd, bool initial_load,
+      ESP32FunctionController::apply_configuration(int fd, bool initial_load,
                                         BarrierNotifiable *done)
 {
     AutoNotify an(done);
@@ -370,7 +371,7 @@ ConfigUpdateListener::UpdateAction
     }
     return UPDATED;
 }
-void ESP32S3Train::factory_reset(int fd)
+void ESP32FunctionController::factory_reset(int fd)
 {
     for (int i = 0; i < NUM_FUNCTIONS; i++)
     {

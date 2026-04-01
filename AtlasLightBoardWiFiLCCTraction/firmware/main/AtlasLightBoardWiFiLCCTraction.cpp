@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260331.1024>
+//  Last Modified : <260331.1444>
 //
 //  Description	
 //
@@ -99,7 +99,9 @@ static const char rcsid[] = "@(#) : $Id$";
 
 #include "ESP32S3Train.hxx"
 
-OVERRIDE_CONST(num_memory_spaces, 6);
+OVERRIDE_CONST(num_memory_spaces, 8);
+//OVERRIDE_CONST(local_nodes_count, 5);
+//OVERRIDE_CONST(local_alias_cache_size, 6);
 AtlasLightBoardWiFiLCCTraction::ConfigDef cfg(0);
 
 namespace openlcb
@@ -206,6 +208,8 @@ void FactoryResetHelper::factory_reset(int fd)
     cfg.userinfo().description().write(fd, "");
     
 }
+
+
 
 }
 

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <260331.1048>
+//  Last Modified : <260331.1658>
 //
 //  Description	
 //
@@ -143,6 +143,18 @@ private:
     /** PWM period. */
     long long period_ =
           1000000000 / MotorControl::pwm_frequency_options().defaultvalue();
+    /** Direction Mode */
+    enum {Normal=0, Reversed=1} directionMode_{Normal};
+    /** Speed Mode */
+    enum {Basic=0, Table=1} speedMode_{Basic};
+    uint8_t vstart_{0};
+    uint8_t vmid_{127};
+    uint8_t vhigh_{255};
+    uint8_t speed_table_[28] = {
+        0, 9, 19, 28,38,47,57,66,76,85,94,104,113,123,142,151,161,170,179,189,
+        217,236,246,255};
+    int compute_basic_fill_(int rawfill);
+    int compute_table_fill_(int rawfill);
     /** Motor PWM. */
     Esp32Ledc *motorpwm_;
     /** State Flow Timer. */
@@ -213,8 +225,10 @@ private:
         {Steady, 1, 50},
         {Steady, 1, 50},
         {Steady, 1, 50},
+#if NUM_FUNCTIONS > 4
         {Steady, 1, 50},
         {Steady, 1, 50}
+#endif
     };
     /** The function PWM. */
     Esp32Ledc *functionpwm_;

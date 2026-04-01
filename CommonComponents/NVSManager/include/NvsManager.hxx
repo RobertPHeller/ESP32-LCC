@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 13:13:14 2022
-//  Last Modified : <260327.2056>
+//  Last Modified : <260331.1443>
 //
 //  Description	
 //
@@ -54,6 +54,7 @@
 #include <string.h>
 #include <utils/Singleton.hxx>
 #include <utils/format_utils.hxx>
+#include <utils/logging.h>
 
 namespace openlcb
 {
@@ -138,7 +139,8 @@ public:
         char *d = config_.station_ssid;
         for (i = 0; i <= sizeof(config_.station_ssid) && *s != '\0';i++)
             *d++ = *s++;
-        config_.station_ssid[sizeof(config_.station_ssid)-1] = 0;
+        *d = '\0';
+        config_.station_ssid[sizeof(config_.station_ssid)-1] = '\0';
         need_persist_ = true;
     }
     inline const char *station_pass() {return config_.station_pass;}
@@ -149,7 +151,8 @@ public:
         char *d = config_.station_pass;
         for (i = 0; i <= sizeof(config_.station_pass) && *s != '\0';i++)
             *d++ = *s++;
-        config_.station_pass[sizeof(config_.station_pass)-1] = 0;
+        *d = '\0'; 
+        config_.station_pass[sizeof(config_.station_pass)-1] = '\0';
         need_persist_ = true;
     }
     inline const char *hostname_prefix() {return config_.hostname_prefix;}
@@ -160,7 +163,8 @@ public:
         char *d = config_.hostname_prefix;
         for (i = 0; i <= sizeof(config_.hostname_prefix) && *s != '\0';i++)
             *d++ = *s++;
-        config_.hostname_prefix[sizeof(config_.hostname_prefix)-1] = 0;
+        *d = '\0'; 
+        config_.hostname_prefix[sizeof(config_.hostname_prefix)-1] = '\0';
         need_persist_ = true;
     }
 //#endif

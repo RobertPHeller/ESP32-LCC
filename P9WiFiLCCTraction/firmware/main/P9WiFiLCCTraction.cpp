@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260329.0949>
+//  Last Modified : <260331.1524>
 //
 //  Description	
 //
@@ -99,7 +99,7 @@ static const char rcsid[] = "@(#) : $Id$";
 
 #include "ESP32S3Train.hxx"
 
-OVERRIDE_CONST(num_memory_spaces, 6);
+OVERRIDE_CONST(num_memory_spaces, 8);
 P9WiFiLCCTraction::ConfigDef cfg(0);
 
 namespace openlcb
@@ -266,17 +266,19 @@ void app_main()
     Esp32Ledc PWM_Functions(PWM_FUNCTIONS,LEDC_CHANNEL_2);
     PWM_Functions.hw_init();
     
-    ESP32S3Train trainImpl(cfg.seg().functions(),&PWM_Functions);
+    ESP32S3Train trainImpl/*()*/;
     openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
     ESP32SpeedController esp32_speed_controller(stack.service(),
                                                 cfg.seg().motor_control(),
                                                 &PWM_Motor);
     trainImpl.set_speed_controller(&esp32_speed_controller);
-    
+    ESP32FunctionController esp32_function_controller(cfg.seg().functions(),
+                                                      &PWM_Functions);
+    trainImpl.set_function_controller(&esp32_function_controller);
     LOG(INFO, "[P9WiFiLCCTraction] stack started");
     BlinkTimer blinker(stack.executor()->active_timers());
     LOG(INFO, "[P9WiFiLCCTraction] blinker started");
-    blinker.AddMe(&trainImpl);
+    blinker.AddMe(&esp32_function_controller);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif

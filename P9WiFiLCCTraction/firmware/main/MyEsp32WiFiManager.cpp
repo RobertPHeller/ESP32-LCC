@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Mar 27 12:21:25 2026
-//  Last Modified : <260329.1521>
+//  Last Modified : <260401.1440>
 //
 //  Description	
 //
@@ -109,12 +109,13 @@ ConfigUpdateListener::UpdateAction
     esp32Params_.reset(new Esp32SocketParams(fd,cfg_));
     if (initial_load)
     {
-        espIdfWiFi_.disable_mdns_publish_on_sta ();
+        //espIdfWiFi_.disable_mdns_publish_on_sta ();
         espIdfWiFi_.init();
         espIdfWiFi_.set_ip_acquired_callback(std::bind(&MyEsp32WiFiManager::connect_callback_,
                                                        this,
                                                        std::placeholders::_1,
                                                        std::placeholders::_2));
+        espIdfWiFi_.start(WlanRole::STA);
     }
     else
     {

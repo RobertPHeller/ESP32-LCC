@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <260331.2013>
+//  Last Modified : <260401.1504>
 //
 //  Description	
 //
@@ -154,14 +154,15 @@ StateFlowBase::Action ESP32SpeedController::do_speed()
     int fill = (fill_rate / 128.0) * 100;
     if (speedMode_ == Basic)
     {
-        motorpwm_->get_channel(lo_pin)->set_duty(compute_basic_fill_(fill));
+        fill = compute_basic_fill_(fill);
     }
     else
     {
-        motorpwm_->get_channel(lo_pin)->set_duty(compute_table_fill_(fill));
+        fill = compute_table_fill_(fill);
     }
     motorpwm_->get_channel(lo_pin)->set_duty(fill);
     lastDirMotAHi_ = desired_dir;
+    LOG(INFO,"[ESP32SpeedController] do_speed(): fill = %d, desired_dir = %d",fill,desired_dir);
     return release_and_exit();    
 }
 
@@ -169,6 +170,7 @@ int ESP32SpeedController::compute_basic_fill_(int rawfill)
 {
     double x1,y1,x2,y2,x;
     x = rawfill;
+    LOG(INFO,"[ESP32SpeedController] compute_basic_fill_(): x = %f",x);
     /* use: vstart_, vmid_, and vhigh_ */
     if (rawfill >= 50)
     {
@@ -188,7 +190,8 @@ int ESP32SpeedController::compute_basic_fill_(int rawfill)
     }
     double slope = (y2 - y1) / (x2 - x1);
     double y = (x-x1) * slope + y1;
-    return round(y/25500.0);
+    LOG(INFO,"[ESP32SpeedController] compute_basic_fill_(): slope = %f, y = %f",slope,y);
+    return round((y/255.0)*100);
 }
 
 int ESP32SpeedController::compute_table_fill_(int rawfill)
@@ -199,11 +202,11 @@ int ESP32SpeedController::compute_table_fill_(int rawfill)
     size_t ix = (x / 100.0) *  27.0;
     if (x == 0.0) 
     {
-        return speed_table_[0] / 25500.0;
+        return (speed_table_[0] / 255.0)*100;
     }
     else if (ix == 27)
     {
-        return speed_table_[27] / 25500.0;
+        return (speed_table_[27] / 255.0)*100;
     }
     else
     {
@@ -213,7 +216,7 @@ int ESP32SpeedController::compute_table_fill_(int rawfill)
         y2 = speed_table_[ix+1];
         double slope = (y2 - y1) / (x2 - x1);
         double y = (x-x1) * slope + y1;
-        return round(y/25500.0);
+        return round((y/255.0)*100);
     }
 }
 

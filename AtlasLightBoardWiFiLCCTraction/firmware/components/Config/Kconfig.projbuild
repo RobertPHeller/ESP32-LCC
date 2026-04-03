@@ -110,13 +110,6 @@ menu "OpenLCB Configuration"
         int
         default 5
 
-    config OLCB_PRINT_ALL_PACKETS
-        bool "Print all GridConnect packets"
-        default n
-        help
-            Enabling this option will cause all packets that are sent or
-            received to be printed by the ESP32 OpenLCB IO Board.
-
 endmenu
 
 

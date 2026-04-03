@@ -7,12 +7,13 @@
 ##  Author        : $Author$
 ##  Created By    : Robert Heller
 ##  Created       : 2025-12-07 09:28:11
-##  Last Modified : <251207.1000>
+##  Last Modified : <260326.1306>
 ##
 ##  Description	  :
 ##
 ########################################################
-. ~/esp-idf-v5.0.1/export.sh
+. ~/esp-idf-v5.4.3/esp-idf/export.sh
+export IDF_TARGET=esp32s3
 idf.py build
 BuildBinaries="build/bootloader/bootloader.bin build/partition_table/partition-table.bin build/ota_data_initial.bin build/AtlasLightBoardWiFiLCCTraction.bin"
 BuildDocs="doc/KitBooklet.pdf  doc/UserManual.pdf"

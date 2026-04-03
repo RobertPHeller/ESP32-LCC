@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 17 14:03:56 2022
-//  Last Modified : <231105.1506>
+//  Last Modified : <260327.2057>
 //
 //  Description	
 //
@@ -68,6 +68,10 @@ static const char rcsid[] = "@(#) : $Id$";
 #define CONFIG_WIFI_HOSTNAME_PREFIX "esp32multifunc_"
 #endif
 
+#ifndef CONFIG_WIFI_MODE
+#define CONFIG_WIFI_MODE 0
+#endif
+
 namespace nvsmanager
 {
 
@@ -111,7 +115,7 @@ void NvsManager::init(uint8_t reset_reason)
         config_.force_reset = false;
         config_.reset_events_req = false;
         config_.bootloader_req = false;
-#ifdef CONFIG_ESP32_WIFI_ENABLED
+//#ifdef CONFIG_ESP32_WIFI_ENABLED
         config_.wifi_mode = (wifi_mode_t)CONFIG_WIFI_MODE;
         const char *s = CONFIG_WIFI_HOSTNAME_PREFIX;
         char *d = config_.hostname_prefix;
@@ -129,7 +133,7 @@ void NvsManager::init(uint8_t reset_reason)
         for (i = 0; i <= sizeof(config_.station_ssid) && *s != '\0';i++)
             *d++ = *s++;
         config_.station_pass[sizeof(config_.station_pass)-1] = 0;
-#endif
+//#endif
         need_persist_ = true;
     }
     CheckPersist();
@@ -140,9 +144,9 @@ void NvsManager::register_virtual_memory_spaces(openlcb::SimpleStackBase *stack)
 {
     LOG(VERBOSE, "NVS.register_virtual_memory_spaces()");
     node_id_memoryspace.emplace(stack, this);
-#ifdef CONFIG_ESP32_WIFI_ENABLED
+//#ifdef CONFIG_ESP32_WIFI_ENABLED
     wifi_memory_space.emplace(stack, this);
-#endif
+//#endif
 }
 
 void NvsManager::DisplayNvsConfiguration()
@@ -160,7 +164,7 @@ void NvsManager::DisplayNvsConfiguration()
         config_.reset_events_req ? "true" : "false");
     LOG(INFO, "[NVS] Bootloader: %s",
         config_.bootloader_req ? "true" : "false");
-#ifdef CONFIG_ESP32_WIFI_ENABLED
+//#ifdef CONFIG_ESP32_WIFI_ENABLED
     uint8_t m = (uint8_t)config_.wifi_mode;
     if (m > 1)
     {
@@ -175,7 +179,7 @@ void NvsManager::DisplayNvsConfiguration()
         LOG(INFO, "[NVS] Station SSID: %s", config_.station_ssid);
     }
     
-#endif
+//#endif
 }
 
 

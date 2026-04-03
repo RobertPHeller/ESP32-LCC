@@ -1,5 +1,5 @@
 set(DEPS
-    OpenMRNIDF
+    OpenMRN
     app_update
     spiffs
     vfs

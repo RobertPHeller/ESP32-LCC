@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <251211.1026>
+//  Last Modified : <260331.1524>
 //
 //  Description	
 //
@@ -83,9 +83,8 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "openlcb/TrainInterface.hxx"
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-#include <freertos_drivers/esp32/Esp32WiFiManager.hxx>
-#endif
+//#include <freertos_drivers/esp_idf/EspIdfWiFi.hxx>
+#include "MyEsp32WiFiManager.hxx"
 #include <openlcb/MemoryConfigClient.hxx>
 #include <openlcb/RefreshLoop.hxx>
 #include <utils/constants.hxx>
@@ -93,14 +92,14 @@ static const char rcsid[] = "@(#) : $Id$";
 
 #include "BootPauseHelper.hxx"
 #include <freertos_drivers/esp32/Esp32Ledc.hxx>
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 #include "hardware.hxx"
 
 #include "FunctionConfig.hxx"
 
 #include "ESP32S3Train.hxx"
 
-OVERRIDE_CONST(num_memory_spaces, 6);
+OVERRIDE_CONST(num_memory_spaces, 8);
 P9WiFiLCCTraction::ConfigDef cfg(0);
 
 namespace openlcb
@@ -210,6 +209,7 @@ void FactoryResetHelper::factory_reset(int fd)
 
 }
 
+
 void app_main()
 {
     
@@ -266,39 +266,46 @@ void app_main()
     Esp32Ledc PWM_Functions(PWM_FUNCTIONS,LEDC_CHANNEL_2);
     PWM_Functions.hw_init();
     
-    ESP32S3Train trainImpl(cfg.seg().functions(),&PWM_Functions);
+    ESP32S3Train trainImpl/*()*/;
     openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
     ESP32SpeedController esp32_speed_controller(stack.service(),
                                                 cfg.seg().motor_control(),
                                                 &PWM_Motor);
     trainImpl.set_speed_controller(&esp32_speed_controller);
-    
+    ESP32FunctionController esp32_function_controller(cfg.seg().functions(),
+                                                      &PWM_Functions);
+    trainImpl.set_function_controller(&esp32_function_controller);
     LOG(INFO, "[P9WiFiLCCTraction] stack started");
     BlinkTimer blinker(stack.executor()->active_timers());
     LOG(INFO, "[P9WiFiLCCTraction] blinker started");
-    blinker.AddMe(&trainImpl);
+    blinker.AddMe(&esp32_function_controller);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif
     nvs.register_virtual_memory_spaces(&stack);
     openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
     LOG(INFO, "[P9WiFiLCCTraction] MemoryConfigClient done.");
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-    openmrn_arduino::Esp32WiFiManager wifi_manager(
-                                                   nvs.station_ssid(), 
-                                                   nvs.station_pass(),
-                                                   &stack, 
-                                                   cfg.seg().olbcwifi(), 
-                                                   nvs.wifi_mode(),
-                                                   (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
-                                                   nvs.hostname_prefix());
-#endif
     P9WiFiLCCTraction::FactoryResetHelper factory_reset_helper;
     LOG(INFO, "[P9WiFiLCCTraction] FactoryResetHelper done.");
     reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
     LOG(INFO, "[P9WiFiLCCTraction] DelayRebootHelper done.");
     healthmonitor::HealthMonitor health_mon(stack.service());
     LOG(INFO, "[P9WiFiLCCTraction] HealthMonitor done.");
+    MyEsp32WiFiManager wifi_manager(nvs.station_ssid(),
+                                    nvs.station_pass(),
+                                    &stack, 
+                                    cfg.seg().uplinkParams(),
+                                    nvs.hostname_prefix());
+    //string hostname =  nvs.hostname_prefix();
+    //hostname += "_";
+    //hostname += uint64_to_string_hex(nvs.node_id());
+    //EspIdfWiFiConfigDefault wifiMgr(stack.service(),hostname.c_str());
+    //wifiMgr.init();
+    //// nvs.station_ssid() nvs.station_pass()
+    //wifiMgr.start(WlanRole::STA);
+    //wifiMgr.connect(nvs.station_ssid(),nvs.station_pass(),wifiMgr.SEC_WPA2);
+    ////wifiMgr.set_wlan_connect_callback();
+    LOG(INFO, "[P9WiFiLCCTraction] WiFi started");
     // Create config file and initiate factory reset if it doesn't exist or is
     // otherwise corrupted.
     int config_fd =
@@ -326,6 +333,7 @@ void app_main()
         //event_helper.send_event(openlcb::Defs::NODE_POWER_BROWNOUT_EVENT);
     }
         
+    
     // Start the stack in the background using it's own task.
     stack.loop_executor();
     //stackrunning = true;

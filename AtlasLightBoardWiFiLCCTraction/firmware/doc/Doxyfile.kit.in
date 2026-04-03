@@ -909,6 +909,7 @@ WARN_LOGFILE           =
 INPUT                  = ../main/AtlasLightBoardWiFiLCCTraction.cpp \
                          kitbooklet.h \
                          ../components/Config/include \
+                         ../components/OpenMRN/../../src/openlcb/ConfiguredTcpConnection.hxx \
                          ../../../CommonComponents/NVSManager/include \
                          Revision.h
 

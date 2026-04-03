@@ -27,27 +27,6 @@ menu "OpenLCB Configuration"
         default 250
 
     menu "Advanced"
-        choice OLCB_WIFI_MODE
-            bool "WiFi Uplink/Hub Behavior"
-            default OLCB_WIFI_MODE_OFF if OLCB_TWAI
-            default OLCB_WIFI_MODE_UPLINK_ONLY
-            config OLCB_WIFI_MODE_UPLINK_ONLY
-                bool "Uplink Only"
-            config OLCB_WIFI_MODE_HUB_ONLY
-                bool "Hub Only"
-            config OLCB_WIFI_MODE_HUB_AND_UPLINK
-                bool "Hub and Uplink"
-            config OLCB_WIFI_MODE_OFF
-                bool "Disabled"
-        endchoice
-
-        config OLCB_WIFI_MODE
-            int
-            default 0 if OLCB_WIFI_MODE_OFF
-            default 1 if OLCB_WIFI_MODE_HUB_ONLY
-            default 2 if OLCB_WIFI_MODE_UPLINK_ONLY
-            default 3 if OLCB_WIFI_MODE_HUB_AND_UPLINK
-
         config OLCB_EXECUTOR_SELECT_PRESCALER
             int "StateFlows to execute between select() calls"
             range 5 300
@@ -110,31 +89,11 @@ menu "OpenLCB Configuration"
         int
         default 5
 
-    config OLCB_PRINT_ALL_PACKETS
-        bool "Print all GridConnect packets"
-        default n
-        help
-            Enabling this option will cause all packets that are sent or
-            received to be printed by the ESP32 OpenLCB IO Board.
-
 endmenu
 
 
 
 menu "WiFi Configuration"
-    choice WIFI_MODE
-        bool "WiFi Mode"
-        config WIFI_MODE_STATION
-            bool "Station only"
-        config WIFI_MODE_OFF
-            bool "Off"
-    endchoice
-
-    config WIFI_MODE
-        int
-        default 0 if WIFI_MODE_OFF
-        default 1 if WIFI_MODE_STATION
-
     config WIFI_HOSTNAME_PREFIX
         string "Hostname prefix"
         default "engine_"

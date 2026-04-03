@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <251211.1023>
+//  Last Modified : <260331.1658>
 //
 //  Description	
 //
@@ -48,7 +48,7 @@
 #include "executor/StateFlow.hxx"
 #include "freertos_drivers/esp32/Esp32Ledc.hxx"
 #include "freertos_drivers/esp32/Esp32Gpio.hxx"
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 #include "openlcb/TractionTrain.hxx"
 #include "openlcb/TrainInterface.hxx"
 #include "openlcb/ConfigRepresentation.hxx"
@@ -143,6 +143,18 @@ private:
     /** PWM period. */
     long long period_ =
           1000000000 / MotorControl::pwm_frequency_options().defaultvalue();
+    /** Direction Mode */
+    enum {Normal=0, Reversed=1} directionMode_{Normal};
+    /** Speed Mode */
+    enum {Basic=0, Table=1} speedMode_{Basic};
+    uint8_t vstart_{0};
+    uint8_t vmid_{127};
+    uint8_t vhigh_{255};
+    uint8_t speed_table_[28] = {
+        0, 9, 19, 28,38,47,57,66,76,85,94,104,113,123,142,151,161,170,179,189,
+        217,236,246,255};
+    int compute_basic_fill_(int rawfill);
+    int compute_table_fill_(int rawfill);
     /** Motor PWM. */
     Esp32Ledc *motorpwm_;
     /** State Flow Timer. */
@@ -150,23 +162,93 @@ private:
     /** Last direction. */
     bool lastDirMotAHi_{false};
 };
+/** @brief Function controller implementation
+ * Processes a function request and sets the PWM outputs to drive
+ * the function (lights) outputs.
+ */
+class ESP32FunctionController : private DefaultConfigUpdateListener, 
+                                public Blinking
+{
+public:
+    ESP32FunctionController(FunctionConsumers functions,
+                            Esp32Ledc *functionpwm)
+                : functions_(functions) 
+          , functionpwm_(functionpwm)
+    {
+    }
+    /** Set a function.
+     * @param address The function number.  Only addresses from 0 through 6 are
+     * used and other addresses are ignored.
+     * @param value A value of 0 (zero) is off.  Any other value is on.
+     */
+    void set_fn(uint32_t address, uint16_t value,
+                openlcb::SpeedType lastSpeed);
+    /** Get a function.
+     * @param address The function number.  Only addresses from 0 through 6 are
+     * used and other addresses always return 0.
+     * @returns the state of the address.
+     */
+    uint16_t get_fn(uint32_t address);
+    /** Blink callback.
+     * @param AFast True if the fast cycle is on (phase A).
+     * @param AMedium True if the medium cycle is on (phase A).
+     * @param ASlow True if the slow cycle is on (phase A).
+     */
+    virtual void blink(bool AFast, bool AMedium, bool ASlow);
+private:
+    /** Configuration apply function.
+     * @param fd Config file descriptor.
+     * @param initial_load Initial load flag.
+     * @param done Notifiable.
+     */
+    virtual UpdateAction apply_configuration(int fd, bool initial_load,
+                                             BarrierNotifiable *done);
+    /** Factory reset function.
+     * @param fd Config file descriptor.
+     */
+    virtual void factory_reset(int fd);
+    /** Function configurations. */
+    FunctionConsumers functions_;
+    /** The state of Function 0. */
+    bool f0 = false;
+    /** The states of Functions 1 through 6. */
+    bool states[6] = {false,false,false,false,false,false};
+    /** The phase values. */
+    enum PhaseType {Steady=1,SlowA=2,MediumA=3,FastA=4,SlowB=5,MediumB=6,FastB=7};
+    /** Function confonfiguration. */
+    struct {
+        PhaseType phase;
+        uint8_t pulsewidth;
+        uint8_t brightness;
+    } functionConfig_[NUM_FUNCTIONS] = {
+        {Steady, 1, 50},
+        {Steady, 1, 50},
+        {Steady, 1, 50},
+        {Steady, 1, 50},
+#if NUM_FUNCTIONS > 4
+        {Steady, 1, 50},
+        {Steady, 1, 50}
+#endif
+    };
+    /** The function PWM. */
+    Esp32Ledc *functionpwm_;
+    
+};
 
 /** @brief Train implimentation.
  * This is the implimentation of a train.  It uses a speed controller to run
  * the train and directly handles the functions.
  */
-class ESP32S3Train : public openlcb::TrainImpl, public Blinking,
-                     private DefaultConfigUpdateListener 
+class ESP32S3Train : public openlcb::TrainImpl 
 {
 public:
     /** Constructor: initialize the implimentation.
      * @param functions Function configurations.
      * @param functionpwm Function PWM.
      */
-    ESP32S3Train(FunctionConsumers functions,Esp32Ledc *functionpwm)
-          : functions_(functions)
-    , speed_controller_(nullptr)
-    , functionpwm_(functionpwm)
+    ESP32S3Train()
+                : speed_controller_(nullptr)
+          , function_controller_(nullptr)
     {
     }
     /** Set the speed controller.
@@ -195,67 +277,51 @@ public:
     virtual bool get_emergencystop() {
         return estop;
     }
+    /** Set the function controller */
+    void set_function_controller(ESP32FunctionController *function_controller)
+    {
+        function_controller_ = function_controller;
+    }
     /** Set a function.
      * @param address The function number.  Only addresses from 0 through 6 are
      * used and other addresses are ignored.
      * @param value A value of 0 (zero) is off.  Any other value is on.
      */
-    virtual void set_fn(uint32_t address, uint16_t value);
+    virtual void set_fn(uint32_t address, uint16_t value)
+    {
+        if (function_controller_) 
+        {
+            function_controller_->set_fn(address,value,get_speed());
+        }
+    }
     /** Get a function.
      * @param address The function number.  Only addresses from 0 through 6 are
      * used and other addresses always return 0.
      * @returns the state of the address.
      */
-    virtual uint16_t get_fn(uint32_t address);
+    virtual uint16_t get_fn(uint32_t address)
+    {
+        if (function_controller_)
+        {
+            return function_controller_->get_fn(address);
+        }
+        else
+        {
+            return 0;
+        }
+    }
     /** Legacy address. */
     virtual uint32_t legacy_address();
     /** Legacy address type. */
     virtual dcc::TrainAddressType legacy_address_type();
-    /** Blink callback.
-     * @param AFast True if the fast cycle is on (phase A).
-     * @param AMedium True if the medium cycle is on (phase A).
-     * @param ASlow True if the slow cycle is on (phase A).
-     */
-    virtual void blink(bool AFast, bool AMedium, bool ASlow);
-private:
-    /** Configuration apply function.
-     * @param fd Config file descriptor.
-     * @param initial_load Initial load flag.
-     * @param done Notifiable.
-     */
-    virtual UpdateAction apply_configuration(int fd, bool initial_load,
-                                             BarrierNotifiable *done);
-    /** Factory reset function.
-     * @param fd Config file descriptor.
-     */
-    virtual void factory_reset(int fd);
-    /** Function configurations. */
-    FunctionConsumers functions_;
     /** The last speed setting. */
     openlcb::SpeedType lastSpeed_ = 0.0;
     /** The state of the emergency brake. */
     bool estop = false;
-    /** The state of Function 0. */
-    bool f0 = false;
-    /** The states of Functions 1 through 6. */
-    bool states[NUM_FUNCTIONS] = {false,false,false,false};
-    /** The phase values. */
-    enum PhaseType {Steady=1,SlowA=2,MediumA=3,FastA=4,SlowB=5,MediumB=6,FastB=7};
-    /** Function confonfiguration. */
-    struct {
-        PhaseType phase;
-        uint8_t pulsewidth;
-        uint8_t brightness;
-    } functionConfig_[NUM_FUNCTIONS] = {
-        {Steady, 1, 50},
-        {Steady, 1, 50},
-        {Steady, 1, 50},
-        {Steady, 1, 50},
-    };
     /** The speed controller. */
     ESP32SpeedController *speed_controller_;
-    /** The function PWM. */
-    Esp32Ledc *functionpwm_;
+    /** The function controller. */
+    ESP32FunctionController *function_controller_;
 };
 /** The nodes FDI. */
 extern const char ESP32_FDI[];

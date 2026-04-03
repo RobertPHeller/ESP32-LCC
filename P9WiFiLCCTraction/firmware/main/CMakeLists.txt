@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <251210.2042>
+#  Last Modified : <260330.1338>
 #
 #  Description	
 #
@@ -50,7 +50,7 @@ set(deps
     vfs
     app_update
     spiffs
-    OpenMRNIDF
+    OpenMRN
     Config
     NVSManager
     FS
@@ -58,11 +58,11 @@ set(deps
     RebootHelpers
     json
     esp_timer
-    Signals
 )
 
 idf_component_register(SRCS P9WiFiLCCTraction.cpp
 			ESP32S3Train.cpp
+			MyEsp32WiFiManager.cpp
 			REQUIRES "${deps}")
 			
 # export the project version as a define for the SNIP data, note it must be
@@ -78,10 +78,13 @@ set(CDI_VERSION "0x0101")
 
 set_source_files_properties(P9WiFiLCCTraction.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(ESP32S3Train.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(MyEsp32WiFiManager.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(P9WiFiLCCTraction.cpp PROPERTIES COMPILE_DEFINITIONS "SNIP_PROJECT_PAGE=\"${SNIP_PROJECT_PAGE}\"; SNIP_HW_VERSION=\"${SNIP_HW_VERSION}\"; SNIP_SW_VERSION=\"${SNIP_SW_VERSION}\"; SNIP_PROJECT_NAME=\"${SNIP_PROJECT_NAME}\"; CDI_VERSION=${CDI_VERSION}")
 
 set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/MotorConfig.hxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/FunctionConfig.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../.git/index
     ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )
@@ -97,6 +100,7 @@ add_custom_command(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/incl
 add_custom_target(Documentation
                   ALL
                   COMMAND make PROJECTNAME="${project_name}" PROJECTNUMBER="${project_ver}" -C "${CMAKE_CURRENT_SOURCE_DIR}/../doc"
+                  DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/Revision.hxxout"
                   VERBATIM
                   )
 

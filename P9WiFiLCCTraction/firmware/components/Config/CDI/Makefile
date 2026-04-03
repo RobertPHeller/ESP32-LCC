@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <240417.0938>
+#  Last Modified : <260329.1716>
 #
 #  Description	
 #
@@ -54,7 +54,8 @@ EXTRAFLAGS=
 
 EXTRAINCLUDES=`../../../../../buildscripts/getincludes.tcl ../../../build/build.ninja`
 
-compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
+compile_cdi: ../include/cdi.hxx ../include/MotorConfig.hxx \
+	../include/FunctionConfig.hxx CompileCdiMain.cxx \
 	../../../sdkconfig ../include/Revision.hxxout
 	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config $(EXTRAINCLUDES) \
 		$(CDIEXTRA)  --std=c++11 -MMD \
@@ -65,13 +66,13 @@ compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
 ../include/Revision.hxxout : ../../../../../.git/index \
 	../../../sdkconfig
 	../../../../../buildscripts/revision.py -t \
-		-i "$(PROJECTPATH)" -o ../include/Revision
+		-i "$(PROJECTPATH) ../../../components/OpenMRN/" -o ../include/Revision
 	
 
 ../../../Sticker.out: ../../../../../.git/index ../include/Revision.hxxout \
 	../../../sdkconfig
 	../../../../../buildscripts/sticker.py -t \
-		-i "$(PROJECTPATH)" \
+		-i "$(PROJECTPATH) ../../../components/OpenMRN/" \
 		-o ../../../Sticker.out
 FORCE:
 

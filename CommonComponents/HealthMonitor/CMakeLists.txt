@@ -1,5 +1,5 @@
 set(DEPS
-    OpenMRNIDF
+    OpenMRN
     log
    )
    

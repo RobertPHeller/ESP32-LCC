@@ -1,0 +1,7 @@
+(sym_lib_table
+  (lib (name "ESP32_mini")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/ESP32_mini.lib")(options "")(descr ""))
+  (lib (name "ESP32-S3")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/ESP32-S3.lib")(options "")(descr ""))
+  (lib (name "AP63205")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/ap63205.lib")(options "")(descr ""))
+  (lib (name "DWS_LOGO")(type "Legacy")(uri "${KIPRJMOD}/../CommonLibraries/DWSLogo.lib")(options "")(descr ""))
+  (lib (name "Yargo R-Array")(type "KiCad")(uri "/home/heller/ESP32-LCC/CommonLibraries/YC158TJR-0747KL.kicad_sym")(options "")(descr ""))
+)

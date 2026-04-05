@@ -1,0 +1,140 @@
+# The following lines of boilerplate have to be in your project's
+# CMakeLists in this exact order for cmake to work correctly
+cmake_minimum_required(VERSION 3.5)
+
+include($ENV{IDF_PATH}/tools/cmake/project.cmake)
+
+if (IDF_VERSION_MAJOR LESS 4)
+    message(FATAL_ERROR "ESP32IO requires IDF v4.2 (or newer)")
+endif()
+
+if (IDF_VERSION_MAJOR EQUAL 4 AND IDF_VERSION_MINOR LESS 2)
+    message(FATAL_ERROR "ESP32IO requires IDF v4.2 (or newer)")
+endif()
+
+
+set(SUPPORTED_TARGETS esp32s3)
+project(T7S3MiniDisplay)
+
+###############################################################################
+# Switch from GNU++11 to GNU++14
+#
+# NOTE: C++14 would be preferred but IDF has dependencies on GNU extensions.
+###############################################################################
+
+string(REPLACE "-std=gnu++11" "-std=gnu++14" CXX_OPTIONS "${CXX_COMPILE_OPTIONS}")
+idf_build_set_property(CXX_COMPILE_OPTIONS "${CXX_OPTIONS}" REPLACE)
+
+###############################################################################
+# Enable usage of std::stoi/stol/etc
+###############################################################################
+
+idf_build_set_property(COMPILE_DEFINITIONS "-D_GLIBCXX_USE_C99" APPEND)
+
+###############################################################################
+# Uncomment the below to enable NDEBUG build mode
+# NOTE: This disables some error checking in ESP-IDF and may lead to unexpected
+# behavior in a few areas. More testing is necessary before this can be enabled
+# by default.
+###############################################################################
+
+# idf_build_set_property(COMPILE_DEFINITIONS "-DNDEBUG" APPEND)
+# idf_build_set_property(COMPILE_DEFINITIONS "-Wno-unused-variable" APPEND)
+# idf_build_set_property(COMPILE_DEFINITIONS "-Wno-unused-but-set-variable" APPEND)
+
+###############################################################################
+# Configuration validations
+###############################################################################
+
+if (NOT CONFIG_FREERTOS_HZ EQUAL 1000)
+    message(FATAL_ERROR "FreeRTOS tick rate (hz) is required to be 1000.")
+endif()
+
+if (NOT CONFIG_PARTITION_TABLE_FILENAME STREQUAL "T7S3MiniDisplay-partitions.csv")
+    message(FATAL_ERROR "The custom partition table option is not enabled in menuconfig and is required for compilation.")
+endif()
+
+if (NOT CONFIG_PARTITION_TABLE_CUSTOM_FILENAME STREQUAL "T7S3MiniDisplay-partitions.csv")
+    message(FATAL_ERROR "The custom partition table option is not enabled in menuconfig and is required for compilation.")
+endif()
+
+if (NOT CONFIG_PARTITION_TABLE_CUSTOM)
+    message(FATAL_ERROR "The custom partition table option is not enabled in menuconfig and is required for compilation.")
+endif()
+EOF
+cat <<EOF|sed "s/T7S3MiniDisplay/$projectname/g" >firmware/sdkconfig.defaults
+#
+# Bootloader config
+#
+CONFIG_BOOTLOADER_LOG_LEVEL_NONE=y
+
+#
+# Serial flasher config
+#
+CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+
+#
+# Heap memory debugging
+#
+CONFIG_HEAP_POISONING_LIGHT=y
+
+#
+# Partition Table
+#
+CONFIG_PARTITION_TABLE_CUSTOM=y
+CONFIG_PARTITION_TABLE_CUSTOM_FILENAME="T7S3MiniDisplay-partitions.csv"
+
+#
+# Log output
+#
+CONFIG_LOG_DEFAULT_LEVEL_ERROR=y
+CONFIG_LOG_COLORS=n
+CONFIG_LOG_TIMESTAMP_SOURCE_RTOS=y
+
+#
+# Compiler options
+#
+CONFIG_COMPILER_OPTIMIZATION_PERF=y
+CONFIG_COMPILER_OPTIMIZATION_ASSERTIONS_ENABLE=y
+CONFIG_COMPILER_CXX_EXCEPTIONS=y
+CONFIG_COMPILER_STACK_CHECK_MODE_NORM=y
+CONFIG_COMPILER_STACK_CHECK=y
+CONFIG_COMPILER_WARN_WRITE_STRINGS=y
+
+#
+# ESP32 Specific
+#
+# NOTE: ESP-IDF defaults to 160Mhz mode!
+CONFIG_ESP32_DEFAULT_CPU_FREQ_240=y
+CONFIG_ESP32_XTAL_FREQ_AUTO=y
+CONFIG_ESP32S3_DEFAULT_CPU_FREQ_240=y
+CONFIG_ESP32S3_DEFAULT_CPU_FREQ_MHZ=240
+
+#
+# Common ESP-related
+#
+CONFIG_ESP_MAIN_TASK_STACK_SIZE=6144
+CONFIG_ESP_CONSOLE_UART=y
+CONFIG_ESP_SYSTEM_EVENT_TASK_STACK_SIZE=2048
+CONFIG_ESP_MAIN_TASK_AFFINITY_CPU1=y
+CONFIG_LWIP_TCPIP_TASK_AFFINITY_CPU0=y
+CONFIG_ESP32_WIFI_TASK_PINNED_TO_CORE_0=y
+CONFIG_MDNS_TASK_AFFINITY_CPU0=y
+
+#
+# FreeRTOS configuration
+#
+CONFIG_FREERTOS_HZ=1000
+CONFIG_FREERTOS_IDLE_TASK_STACKSIZE=1024
+CONFIG_FREERTOS_WATCHPOINT_END_OF_STACK=y
+
+#
+# Watchdog configuration
+#
+CONFIG_ESP_TASK_WDT=n
+
+#
+# LittleFS
+#
+CONFIG_LITTLEFS_MAX_PARTITIONS=1
+

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <260406.1412>
+#  Last Modified : <260406.1641>
 #
 #  Description	
 #
@@ -59,6 +59,8 @@ set(deps
     WiFiManager
     ParseXML
     Esp32SPI
+    GFX
+    SSD1306
     json
     esp_timer
 )

@@ -9,7 +9,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Sun Apr 5 14:33:40 2026
-#  Last Modified : <260405.1619>
+#  Last Modified : <260406.0918>
 #
 #  Description	
 #
@@ -84,6 +84,11 @@ file copy [file join $templatedir idf_component.yml] "firmware/main/idf_componen
 set ifp [open [file join $templatedir main.cpp] r]
 set fp [open "firmware/main/$projectname.cpp" w]
 puts $fp [regsub -all {@PROJECT@} [read $ifp] $projectname]
+close $fp
+close $ifp
+set ifp [open [file join $templatedir FactoryResetHelper.hxx] r]
+set fp [open "firmware/main/FactoryResetHelper.hxx" w]
+puts $fp [regsub -all {@PROJECT@} [read $ifp] $projectname] 
 close $fp
 close $ifp
 file copy [file join $templatedir hardware.hxx] firmware/main

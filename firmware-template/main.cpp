@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260405.1539>
+//  Last Modified : <260406.0922>
 //
 //  Description	
 //
@@ -252,9 +252,6 @@ void app_main()
   
     openlcb::SimpleCanStack stack(nvs.node_id());
     LOG(INFO, "[@PROJECT@] stack started");
-    BlinkTimer blinker(stack.executor()->active_timers());
-    LOG(INFO, "[@PROJECT@] blinker started");
-    blinker.AddMe(&esp32_function_controller);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Fri Mar 27 12:21:25 2026
-//  Last Modified : <260401.1440>
+//  Last Modified : <260405.2112>
 //
 //  Description	
 //
@@ -106,6 +106,7 @@ ConfigUpdateListener::UpdateAction
                                               bool initial_load,
                                               BarrierNotifiable *done)
 {
+    AutoNotify n(done);
     esp32Params_.reset(new Esp32SocketParams(fd,cfg_));
     if (initial_load)
     {

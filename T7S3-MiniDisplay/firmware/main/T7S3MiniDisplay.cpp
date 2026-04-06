@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260405.1539>
+//  Last Modified : <260406.1452>
 //
 //  Description	
 //
@@ -69,6 +69,8 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <freertos_drivers/esp32/Esp32HardwareTwai.hxx>
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
+#include "freertos_drivers/esp32/Esp32HardwareI2C.hxx"
+#include "Esp32SPI.hxx"
 
 #include <openlcb/MemoryConfigClient.hxx>
 #include <openlcb/RefreshLoop.hxx>
@@ -88,6 +90,10 @@ OVERRIDE_CONST(num_memory_spaces, 6);
 
 T7S3MiniDisplay::ConfigDef cfg(0);
 Esp32HardwareTwai twai(CONFIG_TWAI_RX_PIN, CONFIG_TWAI_TX_PIN);
+Esp32HardwareI2C i2c("/dev/i2c");
+Esp32SPI spibus;
+Esp32SPI::SpiDevice *sdcard;
+
 
 namespace openlcb
 {
@@ -252,9 +258,6 @@ void app_main()
   
     openlcb::SimpleCanStack stack(nvs.node_id());
     LOG(INFO, "[T7S3MiniDisplay] stack started");
-    BlinkTimer blinker(stack.executor()->active_timers());
-    LOG(INFO, "[T7S3MiniDisplay] blinker started");
-    blinker.AddMe(&esp32_function_controller);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif
@@ -271,7 +274,20 @@ void app_main()
                              nvs.station_pass(),
                              &stack, 
                              cfg.seg().uplinkParams(),
-                             nvs.hostname_prefix());
+                             nvs.hostname_prefix(),
+                             nvs.wifi_mode() != 0);
+    i2c.hw_init(CONFIG_SDA_PIN,CONFIG_SCL_PIN,400000,I2C_NUM_0);
+    i2c.scan(I2C_NUM_0);
+    spibus.hw_initbus(CONFIG_MOSI_PIN,CONFIG_MISO_PIN,CONFIG_SCLK_PIN);
+    if (!CDetect_Pin::get())
+    {
+        sdcard = spibus.mount_sd_card("/sdcard",CONFIG_CardCS_PIN);
+    }
+    else
+    {
+        sdcard = nullptr;
+    }
+    
     // Create config file and initiate factory reset if it doesn't exist or is
     // otherwise corrupted.
     int config_fd =

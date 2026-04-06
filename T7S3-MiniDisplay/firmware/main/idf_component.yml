@@ -7,4 +7,6 @@ dependencies:
     path: ../../../CommonComponents/HealthMonitor
   RebootHelpers:
     path: ../../../CommonComponents/RebootHelpers
+  WiFiManager:
+    path: ../../../CommonComponents/WiFiManager
   espressif/mdns: '*'

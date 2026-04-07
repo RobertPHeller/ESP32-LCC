@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <260405.1544>
+//  Last Modified : <260406.1718>
 //
 //  Description	
 //
@@ -53,6 +53,8 @@
 #include "NodeIdConfigurationGroup.hxx"
 #include "WiFiConfigurationGroup.hxx"
 
+#include "DepartureBoardConfig.hxx"
+
 #include "Revision.hxxout"
 
 namespace T7S3MiniDisplay
@@ -64,6 +66,9 @@ CDI_GROUP(IoBoard, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
 /// Each entry declares the name of the current entry, then the type and then
 /// optional arguments list.
 CDI_GROUP_ENTRY(internal_config, openlcb::InternalConfigData);
+CDI_GROUP_ENTRY(deparure,DepartureBoardConfig,
+                Name("Departure Board Configuration"),
+                Description("Configures the departure board"));
 CDI_GROUP_ENTRY(uplinkParams, 
                 openlcb::TcpClientConfig<openlcb::TcpClientDefaultParams>,
                 Name("Node Uplink Configuration"),

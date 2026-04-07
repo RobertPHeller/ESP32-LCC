@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260406.1452>
+//  Last Modified : <260407.0841>
 //
 //  Description	
 //
@@ -80,6 +80,9 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "BootPauseHelper.hxx"
 #include "hardware.hxx"
 #include "WiFiManager.hxx"
+
+#include "DepartureBoard.hxx"
+#include "DepartureBoardConfig.hxx"
 
 ///////////////////////////////////////////////////////////////////////////////
 // Increase the CAN RX frame buffer size to reduce overruns when there is high
@@ -287,6 +290,7 @@ void app_main()
     {
         sdcard = nullptr;
     }
+    DepartureBoard departure_board(stack.node(),cfg.seg().deparure());
     
     // Create config file and initiate factory reset if it doesn't exist or is
     // otherwise corrupted.

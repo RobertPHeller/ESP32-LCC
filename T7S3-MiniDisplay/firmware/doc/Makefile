@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <251130.1650>
+#  Last Modified : <260407.1352>
 #
 #  Description	
 #
@@ -47,6 +47,10 @@ all: UserManual.pdf KitBooklet.pdf
 SOURCES = $(wildcard ../main/*.hxx) kitbooklet.h Revision.h \
 	  $(wildcard ../main/*.cpp) \
 	  $(wildcard ../components/Config/include/*.hxx) \
+	  $(wildcard ../components/Esp32SPI/include/*.hxx) \
+	  $(wildcard ../components/GFX/include/*.hxx) \
+	  $(wildcard ../components/ParseXML/include/*.hxx) \
+	  $(wildcard ../components/SSD1306/include/*.hxx) \
           $(wildcard ../../../CommonComponents/NVSManager/*.cpp) \
           $(wildcard ../../../CommonComponents/NVSManager/include/*.hxx) \
           $(wildcard ../../../CommonComponents/FS/*.cpp) \

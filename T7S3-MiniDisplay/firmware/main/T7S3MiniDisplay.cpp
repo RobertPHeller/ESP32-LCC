@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260407.0841>
+//  Last Modified : <260407.1607>
 //
 //  Description	
 //
@@ -42,6 +42,15 @@
 ///
 //////////////////////////////////////////////////////////////////////////////
 
+/** @mainpage Introduction
+ * T7S3 Mini Display node.
+ * 
+ * @image html T7S3MiniDisplay_Top3D.png
+ * 
+ * This a node designed to use an Adafruit Monochrome 0.91" 128x32 I2C OLED 
+ * Display - STEMMA QT / Qwiic (Adafruit product #4440) as a 4-line departures
+ * board.  
+ */
 
 static const char rcsid[] = "@(#) : $Id$";
 

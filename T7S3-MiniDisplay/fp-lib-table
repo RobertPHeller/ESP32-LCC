@@ -4,4 +4,5 @@
   (lib (name "LCC-Logo")(type "KiCad")(uri "${KIPRJMOD}/../CommonFootprints/LCC_LOGO.pretty")(options "")(descr ""))
   (lib (name "RJ45")(type "Legacy")(uri "${KIPRJMOD}/../CommonFootprints/RJ45-8N-S.mod")(options "")(descr ""))
   (lib (name "R-Arrays")(type "KiCad")(uri "${KIPRJMOD}/../CommonFootprints/ResistorArrays.pretty")(options "")(descr ""))
+  (lib (name "Power")(type "KiCad")(uri "${KIPRJMOD}/../CommonFootprints/PowerLabels.pretty")(options "")(descr ""))
 )

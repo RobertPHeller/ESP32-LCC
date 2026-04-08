@@ -1832,10 +1832,10 @@
       (reference "R802") (unit 1) (value "60 Ohms") (footprint "Resistor_SMD:R_1206_3216Metric")
     )
     (path "/82db6b6c-dccc-4280-989e-df42c7c10acd/00000000-0000-0000-0000-000062b0530e"
-      (reference "T801") (unit 1) (value "- 15 in +") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal")
+      (reference "T801") (unit 1) (value "+ 15 in -") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal")
     )
     (path "/82db6b6c-dccc-4280-989e-df42c7c10acd/00000000-0000-0000-0000-000062b0530b"
-      (reference "T802") (unit 1) (value "- 15 out +") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal")
+      (reference "T802") (unit 1) (value "+ 15 out -") (footprint "TerminalBlock_TE-Connectivity:TerminalBlock_TE_282834-2_1x02_P2.54mm_Horizontal")
     )
     (path "/107f64ad-02a0-41db-a1e0-a8c89207ae1e"
       (reference "U101") (unit 1) (value "TTGO-T7_S3-V1.1") (footprint "ESP32Mini:ESP32_mini")

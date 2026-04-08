@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Apr 6 20:53:43 2026
-//  Last Modified : <260407.1232>
+//  Last Modified : <260408.1046>
 //
 //  Description	
 //
@@ -54,9 +54,16 @@
 
 #include <string.h>
 
+/** Class that implements the departure board.
+ */
+
 class DepartureBoard : private DefaultConfigUpdateListener
 {
 public:
+    /** Constructor: instanciate a DepartureBoard instance,
+     * @param node The node associated with the DepartureBoard.
+     * @param cfg The configuration for the DepartureBoard.
+     */
     DepartureBoard(openlcb::Node *node,const DepartureBoardConfig &cfg)
                 : DefaultConfigUpdateListener()
           , node_(node)
@@ -72,6 +79,7 @@ public:
         display_.clearDisplay();
         display_.display();
     }
+    /** Destructor: clean up after ourselves. */
     ~DepartureBoard()
     {
         if (alarm_ != nullptr) delete alarm_;
@@ -90,14 +98,25 @@ private:
      *      * @param fd Config file descriptor. 
      *      */
     virtual void factory_reset(int fd);
+    /** Update the board.
+     * @param done BarrierNotifiable to notify when done.
+     */
     void UpdateBoard_(BarrierNotifiable *done);
+    /** The node. */
     openlcb::Node *node_;
+    /** The configuration. */
     const DepartureBoardConfig cfg_;
+    /** The display. */
     Adafruit_SSD1306 display_;
+    /** Our alarm. */
     openlcb::BroadcastTimeAlarmMinute *alarm_;
+    /** Our clock. */
     openlcb::BroadcastTimeClient *clock_;
+    /** Fast clock flag. */
     bool use_fast_clock_;
+    /** Schedule file name. */
     string schedule_file_;
+    /** Parsed schedule. */
     ParseXML::ParseXML *parsedSched_;
 };
 

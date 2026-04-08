@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Apr 6 17:11:44 2026
-//  Last Modified : <260406.2054>
+//  Last Modified : <260408.0859>
 //
 //  Description	
 //
@@ -44,6 +44,15 @@
 #define __DEPARTUREBOARDCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"
+
+/** @page DepartureBoardConfig Departure Board Configuration
+ * There are two configuration options:
+ * @arg Schedule file name is the name of a file on the the MicroSD card 
+ * (/sdcard/) containing the schedule. See @ref 04OperationNotes for details
+ * on the contents of this file.
+ * @arg Use fast clock? - selects whether to use the fast clock or the wall 
+ * clock broadcast time servers.
+ */
 
 static const char YesNo[] = 
 "<relation><property>0</property><value>No</value></relation>"

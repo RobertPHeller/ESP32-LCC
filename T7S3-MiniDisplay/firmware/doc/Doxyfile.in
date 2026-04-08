@@ -910,11 +910,11 @@ INPUT                  = ../main \
                          Revision.h \
                          kitbooklet.h \
                          ../components/Config/include \
+                         ConfiguredTcpConnection.h \
                          ../components/Esp32SPI/include \
                          ../components/GFX/include \
                          ../components/ParseXML/include \
                          ../components/SSD1306/include \
-                         ../components/OpenMRN/../../src/openlcb/ConfiguredTcpConnection.hxx \
                          ../../../CommonComponents/NVSManager \
                          ../../../CommonComponents/NVSManager/include \
                          ../../../CommonComponents/FS \

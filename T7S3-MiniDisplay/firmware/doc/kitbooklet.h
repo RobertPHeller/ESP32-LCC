@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <260407.2209>
+//  Last Modified : <260408.1037>
 //
 //  Description	
 //
@@ -69,6 +69,7 @@
  * -# 1 STEMMA QT / Qwiic JST SH 4-pin Cable - 100mm Long
  * @image html 4210-00.jpg
  * @image latex 4210-00.jpg height=1in 
+ * 
  * @page 01assembly Assembly
  * Assembly is straight forward.  The SMD parts are already soldered,
  * so only the through hole parts need to be soldered to the board.
@@ -76,12 +77,33 @@
  * one 2x2 and two 2x10 headers.  The 2x2 header is for the termination header 
  * and the two 2x10 will go in the T7-S3 board (supplied separately). Note the
  * orientation of the screw terminals.
- * @page 02wiring General Wiring Notes  
+ * 
+ * @page 02wiring General Wiring Notes
  * There is a little JST connector (Qwiic) for the Adafruit display, Use the 
  * Qwiic JST SH 4-pin Cable to connect the node board to the display board.
+ * 
  * @page 03initialConfig Initial Configuration
  * The first time the node is started, it is necessary to set the node id.
- * See \ref NodeIdConfig for information about this.
+ * See @ref NodeIdConfig for information about this.
+ *
  * @page 04OperationNotes Operation Notes
+ * The departure board is populated using a XML data file on the MicroSD card.
+ * This XML contains information about departures.  Each departure is contained
+ * in a @c departure container.  In this container are tag fields for @c time 
+ * in minutes after midnight - 0 to 1439, @c number as an up to 4 character 
+ * identifier, @c destination as an up to 6 character destination code, and 
+ * @c platform as a 4 character boarding platform designation.
  * 
+ * Typically this would look like this:
+ * @verbatim
+   <departure>
+     <time>930</time>
+     <number>449</number>
+     <destination>CHI</destination>
+     <platform>B/2</platform>
+   </departure>
+   @endverbatim
+ * This defines train #449 leaving at 3:30pm headed for CHI from platform B, 
+ * track 2. Any number of @c departure blocks can be in the file.  They must 
+ * in order of increasing departure times.
  */

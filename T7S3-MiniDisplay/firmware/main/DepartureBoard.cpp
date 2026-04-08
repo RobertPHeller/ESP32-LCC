@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Mon Apr 6 21:22:28 2026
-//  Last Modified : <260407.1339>
+//  Last Modified : <260408.0815>
 //
 //  Description	
 //
@@ -207,7 +207,7 @@ void DepartureBoard::UpdateBoard_(BarrierNotifiable *done)
         if (field.size() == 1)
         {
             string dest = field.front()->Data();
-            for (size_t i = 0; i < 4; i++)
+            for (size_t i = 0; i < 6; i++)
             {
                 display_.drawChar(72+(i*6),y,dest[i],SSD1306_WHITE,SSD1306_BLACK,1);
             }
@@ -217,7 +217,7 @@ void DepartureBoard::UpdateBoard_(BarrierNotifiable *done)
         if (field.size() == 1)
         {
             string plat = field.front()->Data();
-            for (size_t i = 0; i < 6; i++)
+            for (size_t i = 0; i < 4; i++)
             {
                 display_.drawChar(102+(i*6),y,plat[i],SSD1306_WHITE,SSD1306_BLACK,1);
             }

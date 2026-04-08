@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Thu Mar 23 13:21:11 2023
-#  Last Modified : <260407.1352>
+#  Last Modified : <260408.0836>
 #
 #  Description	
 #
@@ -45,6 +45,7 @@
 all: UserManual.pdf KitBooklet.pdf
 
 SOURCES = $(wildcard ../main/*.hxx) kitbooklet.h Revision.h \
+	  ConfiguredTcpConnection.h \
 	  $(wildcard ../main/*.cpp) \
 	  $(wildcard ../components/Config/include/*.hxx) \
 	  $(wildcard ../components/Esp32SPI/include/*.hxx) \

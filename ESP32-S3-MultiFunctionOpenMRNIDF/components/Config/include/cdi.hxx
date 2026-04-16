@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230324.0947>
+//  Last Modified : <260416.1346>
 //
 //  Description	
 //
@@ -47,9 +47,9 @@
 #include <openlcb/ConfigRepresentation.hxx>
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
+#include "openlcb/ConfiguredTcpConnection.hxx"
 #include "openlcb/MemoryConfig.hxx"
 #include "NodeIdConfigurationGroup.hxx"
-#include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
 #include "LogicConfig.hxx"
 #include "MastConfig.hxx"
@@ -107,9 +107,10 @@ CDI_GROUP_ENTRY(leds,LEDGroup, Name("LEDS"), RepName("LED"));
 CDI_GROUP_ENTRY(logics, LogicGroup, Name("LOGIC"), RepName("Logic"));
 CDI_GROUP_ENTRY(masts, MastGroup, Name("Rule to aspect"),RepName("Mast"));
 CDI_GROUP_ENTRY(circuits, TrackCircuitGroup, Name("TRACK CIRCUITS"), RepName("Circuit"));
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
-#endif
+CDI_GROUP_ENTRY(uplinkParams, 
+                openlcb::TcpClientConfig<openlcb::TcpClientDefaultParams>,
+                Name("Node Uplink Configuration"),
+                Description("Configures how this node will connect to other nodes."));
 CDI_GROUP_END();
 
 /// This segment is only needed temporarily until there is program code to set

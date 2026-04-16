@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:07:59 2022
-//  Last Modified : <231010.0954>
+//  Last Modified : <260416.1414>
 //
 //  Description	
 //
@@ -43,7 +43,7 @@
 #ifndef __HARDWARE_HXX
 #define __HARDWARE_HXX
 
-#include <freertos_drivers/arduino/DummyGPIO.hxx>
+#include <freertos_drivers/common/DummyGPIO.hxx>
 #include <freertos_drivers/esp32/Esp32Gpio.hxx>
 #include <os/Gpio.hxx>
 #include <utils/GpioInitializer.hxx>

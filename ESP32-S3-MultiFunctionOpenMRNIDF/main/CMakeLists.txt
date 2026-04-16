@@ -5,13 +5,14 @@ set(deps
     vfs
     app_update
     spiffs
-    OpenMRNIDF
+    OpenMRN
     Config
     PCA9685PWM
     GeneralIO
     Signals
     Logic
     NVSManager
+    WiFiManager
     FS
     HealthMonitor
     RebootHelpers

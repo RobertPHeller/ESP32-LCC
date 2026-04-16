@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Dec 24 16:13:12 2022
-//  Last Modified : <230324.0938>
+//  Last Modified : <260416.1430>
 //
 //  Description	
 //
@@ -43,7 +43,7 @@
 #ifndef __SIGNALLAMPTESTER_HXX
 #define __SIGNALLAMPTESTER_HXX
 
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 #include "esp_timer.h"
 #include <esp_err.h>
 #include "utils/logging.h"

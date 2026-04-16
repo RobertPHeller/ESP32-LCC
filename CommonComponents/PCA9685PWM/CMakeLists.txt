@@ -1,7 +1,7 @@
 set(DEPS
     driver
     app_update
-    OpenMRNIDF
+    OpenMRN
     vfs
    )
    

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <230303.1209>
+#  Last Modified : <260416.1341>
 #
 #  Description	
 #
@@ -65,7 +65,7 @@ compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
 ../include/Revision.hxxout : ../../../../.git/index \
 	../../../sdkconfig
 	../../../../buildscripts/revision.py -t \
-		-i "$(PROJECTPATH)" -o ../include/Revision
+		-i "$(PROJECTPATH) ../../../components/OpenMRN/" -o ../include/Revision
 	
 
 ../../../Sticker.out: ../../../../.git/index ../include/Revision.hxxout \

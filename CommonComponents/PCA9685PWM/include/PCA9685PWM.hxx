@@ -37,10 +37,12 @@
 #include "i2c.h"
 #include "i2c-dev.h"
 
-#include "freertos_drivers/arduino/PWM.hxx"
+#include "freertos_drivers/common/PWM.hxx"
 
 
 #include "os/OS.hxx"
+
+#include <array>
 
 class PCA9685PWMBit;
 
@@ -301,8 +303,8 @@ private:
             ctl.off.counts = (counts + (channel * 256)) % 0x1000;
         }
 
-        htole16(ctl.on.word);
-        htole16(ctl.off.word);
+        //htole16(ctl.on.word);
+        //htole16(ctl.off.word);
 
         Registers offset = (Registers)(LED0_ON_L + (channel * 4));
         register_write_multiple(offset, &ctl, sizeof(ctl));

@@ -1,7 +1,4 @@
 dependencies:
-  OpenMRNIDF:
-    version: idf-v5
-    git: https://github.com/atanisoft/OpenMRNIDF.git
   PCA9685PWM:
     path: ../../CommonComponents/PCA9685PWM
   NVSManager:
@@ -18,4 +15,6 @@ dependencies:
     path: ../../CommonComponents/Signals
   Logic:
     path: ../../CommonComponents/Logic
-          
+  WiFiManager:
+    path: ../../CommonComponents/WiFiManager          
+  espressif/mdns: '*'

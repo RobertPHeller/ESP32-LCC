@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Jun 23 12:17:40 2022
-//  Last Modified : <250111.2328>
+//  Last Modified : <260416.1655>
 //
 //  Description	
 //
@@ -64,7 +64,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <freertos_includes.h>   
 #include <openlcb/SimpleStack.hxx>
 #include <freertos_drivers/esp32/Esp32HardwareTwai.hxx>
-#include <freertos_drivers/esp32/Esp32WiFiManager.hxx>
+#include "WiFiManager.hxx"
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
 #include <freertos_drivers/esp32/Esp32Ledc.hxx>
@@ -250,16 +250,12 @@ void app_main()
     nvs.register_virtual_memory_spaces(&stack);
     openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
     LOG(INFO, "[MAIN] MemoryConfigClient allocated");
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-    openmrn_arduino::Esp32WiFiManager wifi_manager(
-                                                   nvs.station_ssid(), 
-                                                   nvs.station_pass(),
-                                                   &stack, 
-                                                   cfg.seg().olbcwifi(), 
-                                                   nvs.wifi_mode(),
-                                                   (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
-                                                   nvs.hostname_prefix());
-#endif
+    WiFiManager wifi_manager(nvs.station_ssid(),
+                             nvs.station_pass(),
+                             &stack, 
+                             cfg.seg().uplinkParams(),
+                             nvs.hostname_prefix(),
+                             nvs.wifi_mode() != 0);
     esp32octalbuffer::FactoryResetHelper factory_reset_helper;
     LOG(INFO, "[MAIN] FactoryResetHelper allocated");
     healthmonitor::HealthMonitor health_mon(stack.service());

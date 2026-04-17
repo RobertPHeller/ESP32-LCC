@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <260416.1341>
+#  Last Modified : <260416.2020>
 #
 #  Description	
 #
@@ -71,7 +71,7 @@ compile_cdi: ../include/cdi.hxx CompileCdiMain.cxx \
 ../../../Sticker.out: ../../../../.git/index ../include/Revision.hxxout \
 	../../../sdkconfig
 	../../../../buildscripts/sticker.py -t \
-		-i "$(PROJECTPATH)" \
+		-i "$(PROJECTPATH) ../../../components/OpenMRN/" \
 		-b 'DEVKIT_BREADBOARD=$(CONFIG_DEVKIT_BREADBOARD) T7S3=$(CONFIG_T7S3) SERVO_TURNOUTS=$(CONFIG_SERVO_TURNOUTS)' \
 		-o ../../../Sticker.out
 FORCE:

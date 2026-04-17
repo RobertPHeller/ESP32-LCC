@@ -1,7 +1,4 @@
 dependencies:
-  OpenMRNIDF:
-    version: idf-v5
-    git: https://github.com/atanisoft/OpenMRNIDF.git
   NVSManager:
     path: ../../CommonComponents/NVSManager
   FS:
@@ -10,4 +7,7 @@ dependencies:
     path: ../../CommonComponents/HealthMonitor
   RebootHelpers:
     path: ../../CommonComponents/RebootHelpers
+  WiFiManager:
+    path: ../../CommonComponents/WiFiManager
+  espressif/mdns: '*'
 

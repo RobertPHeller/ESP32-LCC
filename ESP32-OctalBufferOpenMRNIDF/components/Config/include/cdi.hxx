@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Jun 25 09:33:40 2022
-//  Last Modified : <230216.1358>
+//  Last Modified : <260416.1657>
 //
 //  Description	
 //
@@ -44,12 +44,12 @@
 #define __CDI_HXX
 
 #include "NodeIdConfigurationGroup.hxx"
-#include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "WiFiConfigurationGroup.hxx"
 #include <openlcb/ConfigRepresentation.hxx>
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
 #include "openlcb/MemoryConfig.hxx"
+#include "openlcb/ConfiguredTcpConnection.hxx"
 #include "Revision.hxxout"
 #include "SequenceConfigGroup.hxx"
 
@@ -67,9 +67,10 @@ CDI_GROUP(IoBoard, Segment(openlcb::MemoryConfigDefs::SPACE_CONFIG),
 /// optional arguments list.
 CDI_GROUP_ENTRY(internal_config, openlcb::InternalConfigData);
 CDI_GROUP_ENTRY(sequences,SequenceConfigGroup,Name("Sequences"),RepName("Sequence"));
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
-#endif
+CDI_GROUP_ENTRY(uplinkParams, 
+                openlcb::TcpClientConfig<openlcb::TcpClientDefaultParams>,
+                Name("Node Uplink Configuration"),
+                Description("Configures how this node will connect to other nodes."));
 CDI_GROUP_END();
 
 /// This segment is only needed temporarily until there is program code to set

@@ -5,12 +5,13 @@ set(deps
     vfs
     app_update
     spiffs
-    OpenMRNIDF
+    OpenMRN
     Config
     NVSManager
     FS
     HealthMonitor
     RebootHelpers
+    WiFiManager
     json
 )
 

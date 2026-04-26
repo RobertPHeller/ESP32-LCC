@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 08:19:28
-//  Last Modified : <260330.0948>
+//  Last Modified : <260425.2005>
 //
 //  Description	
 //
@@ -120,7 +120,7 @@ CDI_GROUP(MotorControl, Name("Motor control"));
 CDI_GROUP_ENTRY(pwm_frequency, openlcb::Uint16ConfigEntry, Name("PWM frequency"),
                 Description("Specifies what frequency the motor should be driven at. "
                             "Typical values are in the 3000-20000 range."),
-                Min(3), Max(50000), Default(13000));
+                Min(3000), Max(50000), Default(5000));
 CDI_GROUP_ENTRY(direction_mode, openlcb::Uint8ConfigEntry,
                 Name("Direction Mode"),
                 Description("Specifies the direction mode, normal or reversed."),

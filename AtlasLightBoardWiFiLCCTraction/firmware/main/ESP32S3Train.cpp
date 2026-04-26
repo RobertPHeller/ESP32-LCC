@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <260401.1504>
+//  Last Modified : <260425.2007>
 //
 //  Description	
 //
@@ -228,7 +228,7 @@ ConfigUpdateListener::UpdateAction
     AutoNotify an(done);
     auto config_freq = mpar_.pwm_frequency().read(fd);
     printf("pwm freq = %d\n", config_freq);
-    period_ = 1000000000 / config_freq;
+    period_ = config_freq;
     motorpwm_->get_channel(0)->set_period(period_);
     if (mpar_.direction_mode().read(fd) == 0)
     {

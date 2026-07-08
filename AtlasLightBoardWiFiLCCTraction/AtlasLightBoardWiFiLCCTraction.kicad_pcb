@@ -576,7 +576,7 @@
     (tags "resistor")
     (property "Manufacturer_Name" "YAGEO")
     (property "Manufacturer_Part_Number" "RC0201FR-075K1L")
-    (property "Mouser Part Number " "603-RC0201FR-075K1L ")
+    (property "Mouser Part Number" "603-RC0201FR-075K1L ")
     (property "Sheetfile" "AtlasLightBoardWiFiLCCTraction.kicad_sch")
     (property "Sheetname" "")
     (path "/63c3259b-1bf6-4456-83d2-8735f862658a")

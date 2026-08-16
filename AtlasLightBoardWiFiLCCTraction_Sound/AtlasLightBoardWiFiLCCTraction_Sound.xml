@@ -1,0 +1,1254 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<export version="E">
+  <design>
+    <source>/home/heller/ESP32-LCC/AtlasLightBoardWiFiLCCTraction_Sound/AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch</source>
+    <date>Wed 08 Jul 2026 04:29:23 PM EDT</date>
+    <tool>Eeschema 6.0.11+dfsg-1</tool>
+    <sheet number="1" name="/" tstamps="/">
+      <title_block>
+        <title>Atlas Light Board LCC Traction Node</title>
+        <company>Deepwoods Software</company>
+        <rev>A</rev>
+        <date>Nov. 30, 2025</date>
+        <source>AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch</source>
+        <comment number="1" value=""/>
+        <comment number="2" value=""/>
+        <comment number="3" value=""/>
+        <comment number="4" value=""/>
+        <comment number="5" value=""/>
+        <comment number="6" value=""/>
+        <comment number="7" value=""/>
+        <comment number="8" value=""/>
+        <comment number="9" value=""/>
+      </title_block>
+    </sheet>
+  </design>
+  <components>
+    <comp ref="C101">
+      <value>1uf</value>
+      <footprint>Capacitor_SMD:C_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Murata Electronics</field>
+        <field name="Manufacturer_Part_Number">GRT033R60J105ME13D</field>
+        <field name="Mouser Part Number">81-GRT033R60J105ME3D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="81-GRT033R60J105ME3D"/>
+      <property name="Manufacturer_Name" value="Murata Electronics"/>
+      <property name="Manufacturer_Part_Number" value="GRT033R60J105ME13D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2f04978d-b236-4559-baec-c422c6f68508</tstamps>
+    </comp>
+    <comp ref="C102">
+      <value>10uf 25V</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-6032-28_Kemet-C</footprint>
+      <fields>
+        <field name="Manufacturer_Name">KEMET</field>
+        <field name="Manufacturer_Part_Number">T491C106K025AT7280</field>
+        <field name="Mouser Part Number">80-T491C106K25AT7280</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Mouser Part Number" value="80-T491C106K25AT7280"/>
+      <property name="Manufacturer_Name" value="KEMET"/>
+      <property name="Manufacturer_Part_Number" value="T491C106K025AT7280"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d3035f75-a9af-4632-8eae-c7a90f7fde06</tstamps>
+    </comp>
+    <comp ref="C103">
+      <value>1uf</value>
+      <footprint>Capacitor_SMD:C_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Murata Electronics</field>
+        <field name="Manufacturer_Part_Number">GRT033R60J105ME13D</field>
+        <field name="Mouser Part Number">81-GRT033R60J105ME3D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="81-GRT033R60J105ME3D"/>
+      <property name="Manufacturer_Name" value="Murata Electronics"/>
+      <property name="Manufacturer_Part_Number" value="GRT033R60J105ME13D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0a0f1c34-17c5-4aaf-89c8-f7d89adf00d8</tstamps>
+    </comp>
+    <comp ref="C104">
+      <value>1uf</value>
+      <footprint>Capacitor_SMD:C_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Murata Electronics</field>
+        <field name="Manufacturer_Part_Number">GRT033R60J105ME13D</field>
+        <field name="Mouser Part Number">81-GRT033R60J105ME3D</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="81-GRT033R60J105ME3D"/>
+      <property name="Manufacturer_Name" value="Murata Electronics"/>
+      <property name="Manufacturer_Part_Number" value="GRT033R60J105ME13D"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>70b627e3-bbf8-4497-a592-2100cad6d802</tstamps>
+    </comp>
+    <comp ref="C105">
+      <value>10uf 25V</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-6032-28_Kemet-C</footprint>
+      <fields>
+        <field name="Manufacturer_Name">KEMET</field>
+        <field name="Manufacturer_Part_Number">T491C106K025AT7280</field>
+        <field name="Mouser Part Number">80-T491C106K25AT7280</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Mouser Part Number" value="80-T491C106K25AT7280"/>
+      <property name="Manufacturer_Name" value="KEMET"/>
+      <property name="Manufacturer_Part_Number" value="T491C106K025AT7280"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>32e2654b-3366-437d-b4bd-2d4563e0f7f0</tstamps>
+    </comp>
+    <comp ref="C106">
+      <value>100Uf 16V</value>
+      <footprint>Capacitor_Tantalum_SMD:CP_EIA-6032-28_Kemet-C</footprint>
+      <fields>
+        <field name="Manufacturer_Name">KYOCERA AVX</field>
+        <field name="Manufacturer_Part_Number">F931C107MCC</field>
+        <field name="Mouser Part Number">647-F931C107MCC</field>
+      </fields>
+      <libsource lib="Device" part="C_Polarized_Small_US" description="Polarized capacitor, small US symbol"/>
+      <property name="Mouser Part Number" value="647-F931C107MCC"/>
+      <property name="Manufacturer_Name" value="KYOCERA AVX"/>
+      <property name="Manufacturer_Part_Number" value="F931C107MCC"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7ed8c76b-a32b-44f1-b7ad-61c8b65583b5</tstamps>
+    </comp>
+    <comp ref="C107">
+      <value>10uf 25V</value>
+      <footprint>Capacitor_SMD:C_1206_3216Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Samsung Electro-Mechanics</field>
+        <field name="Manufacturer_Part_Number">CL31B106KAHNNNE</field>
+        <field name="Mouser Part Number">187-CL31B106KAHNNNE</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="187-CL31B106KAHNNNE"/>
+      <property name="Manufacturer_Name" value="Samsung Electro-Mechanics"/>
+      <property name="Manufacturer_Part_Number" value="CL31B106KAHNNNE"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>f2670815-23fc-49e4-8b97-c6f0855c0d37</tstamps>
+    </comp>
+    <comp ref="C108">
+      <value>100nf</value>
+      <footprint>Capacitor_SMD:C_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Walsin</field>
+        <field name="Manufacturer_Part_Number">RF15N0R1B250CT</field>
+        <field name="Mouser Part Number">791-RF15N0R1B250CT</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="791-RF15N0R1B250CT"/>
+      <property name="Manufacturer_Name" value="Walsin"/>
+      <property name="Manufacturer_Part_Number" value="RF15N0R1B250CT"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>27afb26d-4bde-4b92-965b-2e8098997eea</tstamps>
+    </comp>
+    <comp ref="C109">
+      <value>22uf 6.3V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Walsin</field>
+        <field name="Manufacturer_Part_Number">0603X226M6R3CT</field>
+        <field name="Mouser Part Number">791-0603X226M6R3CT</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="791-0603X226M6R3CT"/>
+      <property name="Manufacturer_Name" value="Walsin"/>
+      <property name="Manufacturer_Part_Number" value="0603X226M6R3CT"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>547b536c-d34e-4f02-b19f-aac5f4f156da</tstamps>
+    </comp>
+    <comp ref="C110">
+      <value>22uf 6.3V</value>
+      <footprint>Capacitor_SMD:C_0603_1608Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Walsin</field>
+        <field name="Manufacturer_Part_Number">0603X226M6R3CT</field>
+        <field name="Mouser Part Number">791-0603X226M6R3CT</field>
+      </fields>
+      <libsource lib="Device" part="C" description="Unpolarized capacitor"/>
+      <property name="Mouser Part Number" value="791-0603X226M6R3CT"/>
+      <property name="Manufacturer_Name" value="Walsin"/>
+      <property name="Manufacturer_Part_Number" value="0603X226M6R3CT"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>dc9497db-7161-49d2-a2d5-f9d20130e974</tstamps>
+    </comp>
+    <comp ref="D101">
+      <value>SBR545SAFQ-13</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Central Semiconductor</field>
+        <field name="Manufacturer_Part_Number">CMMSH1-60G TR PBFREE </field>
+        <field name="Mouser Part Number">610-CMMSH1-60GTR</field>
+      </fields>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="Mouser Part Number" value="610-CMMSH1-60GTR"/>
+      <property name="Manufacturer_Name" value="Central Semiconductor"/>
+      <property name="Manufacturer_Part_Number" value="CMMSH1-60G TR PBFREE "/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>1ea56625-1b70-4c8a-9baf-075bc4bf5a9b</tstamps>
+    </comp>
+    <comp ref="D102">
+      <value>ABS15M</value>
+      <footprint>Diode_SMD:Diode_Bridge_Diotec_ABS</footprint>
+      <datasheet>https://diotec.com/tl_files/diotec/files/pdf/datasheets/abs2.pdf</datasheet>
+      <fields>
+        <field name="Manufacturer_Name">Diotec Semiconductor</field>
+        <field name="Manufacturer_Part_Number">ABS15M</field>
+        <field name="Mouser Part Number">637-ABS15M</field>
+      </fields>
+      <libsource lib="Diode_Bridge" part="ABS10" description="Miniature Glass Passivated Single-Phase Surface Mount Bridge Rectifiers, 700V Vrms, 0.8A If, ABS SMD package"/>
+      <property name="Mouser Part Number" value="637-ABS15M"/>
+      <property name="Manufacturer_Name" value="Diotec Semiconductor"/>
+      <property name="Manufacturer_Part_Number" value="ABS15M"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>93c06626-ba6f-47d9-83ae-88b17276ebae</tstamps>
+    </comp>
+    <comp ref="D103">
+      <value>SBR545SAFQ-13</value>
+      <footprint>Diode_SMD:D_SOD-123</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Central Semiconductor</field>
+        <field name="Manufacturer_Part_Number">CMMSH1-60G TR PBFREE </field>
+        <field name="Mouser Part Number">610-CMMSH1-60GTR </field>
+      </fields>
+      <libsource lib="Device" part="D_Schottky" description="Schottky diode"/>
+      <property name="Mouser Part Number" value="610-CMMSH1-60GTR "/>
+      <property name="Manufacturer_Name" value="Central Semiconductor"/>
+      <property name="Manufacturer_Part_Number" value="CMMSH1-60G TR PBFREE "/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>6158aa00-adf9-4894-a301-e8d87f78dd1b</tstamps>
+    </comp>
+    <comp ref="IC102">
+      <value>MP6614GN-Z</value>
+      <footprint>Package_SO:SOIC-8-1EP_3.9x4.9mm_P1.27mm_EP2.29x3mm_ThermalVias</footprint>
+      <fields>
+        <field name="Footprint_1">SOIC127P600X170-9N</field>
+        <field name="Height">1.7</field>
+        <field name="Manufacturer_Name">Monolithic Power Systems (MPS)</field>
+        <field name="Manufacturer_Part_Number">MP6614GN-Z</field>
+        <field name="Mouser Part Number">946-MP6614GN-Z</field>
+        <field name="Reference_1">IC</field>
+        <field name="Value_1">MP6614GN-Z</field>
+      </fields>
+      <libsource lib="MP6614" part="MP6614GN-Z" description="Motor/Motion/Ignition Controllers &amp; Drivers 35V, H-Bridge DC Motor Driver in an SOIC-8EP Package"/>
+      <property name="Reference_1" value="IC"/>
+      <property name="Value_1" value="MP6614GN-Z"/>
+      <property name="Footprint_1" value="SOIC127P600X170-9N"/>
+      <property name="Datasheet_1" value=""/>
+      <property name="Height" value="1.7"/>
+      <property name="Mouser Part Number" value="946-MP6614GN-Z"/>
+      <property name="Mouser Price/Stock" value=""/>
+      <property name="Manufacturer_Name" value="Monolithic Power Systems (MPS)"/>
+      <property name="Manufacturer_Part_Number" value="MP6614GN-Z"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>62b736d3-ae20-44a3-adea-6bfe64da29da</tstamps>
+    </comp>
+    <comp ref="J101">
+      <value>USB_C_Receptacle</value>
+      <footprint>Connector_USB:USB_C_Receptacle_GCT_USB4105-xx-A_16P_TopMnt_Horizontal</footprint>
+      <datasheet>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</datasheet>
+      <fields>
+        <field name="Manufacturer_Name">GCT</field>
+        <field name="Manufacturer_Part_Number">USB4105-GF-A</field>
+        <field name="Mouser Part Number">640-USB4105-GF-A</field>
+      </fields>
+      <libsource lib="Connector" part="USB_C_Receptacle" description="USB Full-Featured Type-C Receptacle connector"/>
+      <property name="Mouser Part Number" value="640-USB4105-GF-A"/>
+      <property name="Manufacturer_Name" value="GCT"/>
+      <property name="Manufacturer_Part_Number" value="USB4105-GF-A"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>84b438c9-c56a-4e6b-be0c-8ce994d13096</tstamps>
+    </comp>
+    <comp ref="L101">
+      <value>3.9uH</value>
+      <footprint>Inductor_SMD:L_Abracon_ASPI-0630LR</footprint>
+      <fields>
+        <field name="Manufacturer_Name">ABRACON</field>
+        <field name="Manufacturer_Part_Number">ASPI-0628-3R9M-T1</field>
+        <field name="Mouser Part Number">815-ASPI-0628-3R9MT1</field>
+      </fields>
+      <libsource lib="pspice" part="INDUCTOR" description="Inductor symbol for simulation only"/>
+      <property name="Mouser Part Number" value="815-ASPI-0628-3R9MT1"/>
+      <property name="Manufacturer_Name" value="ABRACON"/>
+      <property name="Manufacturer_Part_Number" value="ASPI-0628-3R9M-T1"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>7daeac09-db2c-4d6b-a292-469c8b799e2f</tstamps>
+    </comp>
+    <comp ref="R101">
+      <value>20K</value>
+      <footprint>Resistor_SMD:R_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0201JR-0720KL</field>
+        <field name="Mouser Part Number">603-RC0201JR-0720KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0201JR-0720KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0201JR-0720KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>fa6dcf15-6e16-44f5-b14c-ab827cde9ccf</tstamps>
+    </comp>
+    <comp ref="R102">
+      <value>5.1K</value>
+      <footprint>Resistor_SMD:R_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0201FR-075K1L</field>
+        <field name="Mouser Part Number">603-RC0201FR-075K1L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0201FR-075K1L"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0201FR-075K1L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c884d4f1-38e5-4591-bf3a-1f2b3b19d273</tstamps>
+    </comp>
+    <comp ref="R103">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0402JR-7W1KL</field>
+        <field name="Mouser Part Number">603-RC0402JR-7W1KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0402JR-7W1KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0402JR-7W1KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>45b713fc-c432-41c0-976f-7ec0fdd673ee</tstamps>
+    </comp>
+    <comp ref="R104">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0402JR-7W1KL</field>
+        <field name="Mouser Part Number">603-RC0402JR-7W1KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0402JR-7W1KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0402JR-7W1KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>911557a0-39ad-43f6-885c-f4418ecc3b49</tstamps>
+    </comp>
+    <comp ref="R105">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0402JR-7W1KL</field>
+        <field name="Mouser Part Number">603-RC0402JR-7W1KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0402JR-7W1KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0402JR-7W1KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>64b13e12-2ee5-4c8a-bd04-7d8edc96d5da</tstamps>
+    </comp>
+    <comp ref="R106">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0402JR-7W1KL</field>
+        <field name="Mouser Part Number">603-RC0402JR-7W1KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0402JR-7W1KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0402JR-7W1KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>33e2b518-e084-4299-a4b8-20a340321f4a</tstamps>
+    </comp>
+    <comp ref="R107">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0402JR-7W1KL</field>
+        <field name="Mouser Part Number">603-RC0402JR-7W1KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0402JR-7W1KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0402JR-7W1KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>0ce65a40-cf50-4783-b326-4f80bfcb4472</tstamps>
+    </comp>
+    <comp ref="R108">
+      <value>1K</value>
+      <footprint>Resistor_SMD:R_0402_1005Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0402JR-7W1KL</field>
+        <field name="Mouser Part Number">603-RC0402JR-7W1KL</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0402JR-7W1KL"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0402JR-7W1KL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>46b683d8-cf8c-471d-88c5-1218a16d4f9b</tstamps>
+    </comp>
+    <comp ref="R109">
+      <value>5.1K</value>
+      <footprint>Resistor_SMD:R_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0201FR-075K1L</field>
+        <field name="Mouser Part Number">603-RC0201FR-075K1L</field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0201FR-075K1L"/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0201FR-075K1L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>2720e5b7-d232-4423-8cf0-52f89c11236f</tstamps>
+    </comp>
+    <comp ref="R110">
+      <value>5.1K</value>
+      <footprint>Resistor_SMD:R_0201_0603Metric</footprint>
+      <fields>
+        <field name="Manufacturer_Name">YAGEO</field>
+        <field name="Manufacturer_Part_Number">RC0201FR-075K1L</field>
+        <field name="Mouser Part Number">603-RC0201FR-075K1L </field>
+      </fields>
+      <libsource lib="Device" part="R" description="Resistor"/>
+      <property name="Mouser Part Number" value="603-RC0201FR-075K1L "/>
+      <property name="Manufacturer_Name" value="YAGEO"/>
+      <property name="Manufacturer_Part_Number" value="RC0201FR-075K1L"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>63c3259b-1bf6-4456-83d2-8735f862658a</tstamps>
+    </comp>
+    <comp ref="SW101">
+      <value>Reset</value>
+      <footprint>NanoT:NanoT160AS</footprint>
+      <fields>
+        <field name="Manufacturer_Name">C&amp;K</field>
+        <field name="Manufacturer_Part_Number">NANOT160AS</field>
+        <field name="Mouser Part Number">611-NANOT160AS </field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Mouser Part Number" value="611-NANOT160AS "/>
+      <property name="Manufacturer_Name" value="C&amp;K"/>
+      <property name="Manufacturer_Part_Number" value="NANOT160AS"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>c693e6ba-0a85-4469-8fdc-d26fbc27d48b</tstamps>
+    </comp>
+    <comp ref="SW102">
+      <value>Boot</value>
+      <footprint>NanoT:NanoT160AS</footprint>
+      <fields>
+        <field name="Manufacturer_Name">C&amp;K</field>
+        <field name="Manufacturer_Part_Number">NANOT160AS</field>
+        <field name="Mouser Part Number">611-NANOT160AS </field>
+      </fields>
+      <libsource lib="Switch" part="SW_Push" description="Push button switch, generic, two pins"/>
+      <property name="Mouser Part Number" value="611-NANOT160AS "/>
+      <property name="Manufacturer_Name" value="C&amp;K"/>
+      <property name="Manufacturer_Part_Number" value="NANOT160AS"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>e28f1a4e-4f6e-43b5-a25a-45d5c4d4a6df</tstamps>
+    </comp>
+    <comp ref="U101">
+      <value>ESP32_S3_WROOM</value>
+      <footprint>ESP32S3-WROOM:ESP32_S3_WROOM-1</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Espressif Systems</field>
+        <field name="Manufacturer_Part_Number">ESP32-S3-WROOM-1-N4</field>
+        <field name="Mouser Part Number">356-ESP32-S3WROOM1N4</field>
+      </fields>
+      <libsource lib="ESP32-WROOM" part="ESP32_S3_WROOM" description=""/>
+      <property name="Mouser Part Number" value="356-ESP32-S3WROOM1N4"/>
+      <property name="Manufacturer_Name" value="Espressif Systems"/>
+      <property name="Manufacturer_Part_Number" value="ESP32-S3-WROOM-1-N4"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9724c26f-89b9-4862-8667-a2ad7abdb7a0</tstamps>
+    </comp>
+    <comp ref="U102">
+      <value>TBD62083A</value>
+      <footprint>Package_SO:SSOP-18_4.4x6.5mm_P0.65mm</footprint>
+      <fields>
+        <field name="Manufacturer_Name">Toshiba</field>
+        <field name="Manufacturer_Part_Number">TBD62083AFNG,EL</field>
+        <field name="Mouser Part Number">757-TBD62083AFNGEL</field>
+      </fields>
+      <libsource lib="tbd62x83a" part="TBD62083A" description=""/>
+      <property name="Mouser Part Number" value="757-TBD62083AFNGEL"/>
+      <property name="Manufacturer_Name" value="Toshiba"/>
+      <property name="Manufacturer_Part_Number" value="TBD62083AFNG,EL"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>d808f5a9-aacb-48b7-a8e3-b1cad01e9f1b 98098dfb-a325-4df7-b0af-369e136378ab 4f7d9846-6ca3-4ffc-b36b-86c07ba759d6 95e8836e-4d3a-422e-b0ae-e402d860da51 9b3d3346-c3c4-4110-a5d2-42844a51c1ea 336ada43-a495-4608-8676-40a47414662d d0c4ff91-63d9-4e34-b06a-bd1d38fa702f 11a922c4-b852-413d-84d6-79268ab79848</tstamps>
+    </comp>
+    <comp ref="U103">
+      <value>AP63203WU</value>
+      <footprint>Package_TO_SOT_SMD:TSOT-23-6</footprint>
+      <datasheet>https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf</datasheet>
+      <libsource lib="Regulator_Switching" part="AP63203WU" description="2A, 1.1MHz Buck DC/DC Converter, fixed 3.3V output voltage, TSOT-23-6"/>
+      <property name="Sheetname" value=""/>
+      <property name="Sheetfile" value="AtlasLightBoardWiFiLCCTraction_Sound.kicad_sch"/>
+      <sheetpath names="/" tstamps="/"/>
+      <tstamps>9968950d-5407-4e84-971b-cf1cf6b100fa</tstamps>
+    </comp>
+  </components>
+  <libparts>
+    <libpart lib="Connector" part="TestPoint">
+      <description>test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="TestPoint_2Pole">
+      <description>2-polar test point</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>Pin*</fp>
+        <fp>Test*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">TP</field>
+        <field name="Value">TestPoint_2Pole</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Connector" part="USB_C_Receptacle">
+      <description>USB Full-Featured Type-C Receptacle connector</description>
+      <docs>https://www.usb.org/sites/default/files/documents/usb_type-c.zip</docs>
+      <footprints>
+        <fp>USB*C*Receptacle*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">J</field>
+        <field name="Value">USB_C_Receptacle</field>
+        <field name="Datasheet">https://www.usb.org/sites/default/files/documents/usb_type-c.zip</field>
+      </fields>
+      <pins>
+        <pin num="A1" name="GND" type="passive"/>
+        <pin num="A2" name="TX1+" type="bidirectional"/>
+        <pin num="A3" name="TX1-" type="bidirectional"/>
+        <pin num="A4" name="VBUS" type="passive"/>
+        <pin num="A5" name="CC1" type="bidirectional"/>
+        <pin num="A6" name="D+" type="bidirectional"/>
+        <pin num="A7" name="D-" type="bidirectional"/>
+        <pin num="A8" name="SBU1" type="bidirectional"/>
+        <pin num="A9" name="VBUS" type="passive"/>
+        <pin num="A10" name="RX2-" type="bidirectional"/>
+        <pin num="A11" name="RX2+" type="bidirectional"/>
+        <pin num="A12" name="GND" type="passive"/>
+        <pin num="B1" name="GND" type="passive"/>
+        <pin num="B2" name="TX2+" type="bidirectional"/>
+        <pin num="B3" name="TX2-" type="bidirectional"/>
+        <pin num="B4" name="VBUS" type="passive"/>
+        <pin num="B5" name="CC2" type="bidirectional"/>
+        <pin num="B6" name="D+" type="bidirectional"/>
+        <pin num="B7" name="D-" type="bidirectional"/>
+        <pin num="B8" name="SBU2" type="bidirectional"/>
+        <pin num="B9" name="VBUS" type="passive"/>
+        <pin num="B10" name="RX1-" type="bidirectional"/>
+        <pin num="B11" name="RX1+" type="bidirectional"/>
+        <pin num="B12" name="GND" type="passive"/>
+        <pin num="S1" name="SHIELD" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C">
+      <description>Unpolarized capacitor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>C_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="C_Polarized_Small_US">
+      <description>Polarized capacitor, small US symbol</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>CP_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">C</field>
+        <field name="Value">C_Polarized_Small_US</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="D_Schottky">
+      <description>Schottky diode</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>TO-???*</fp>
+        <fp>*_Diode_*</fp>
+        <fp>*SingleDiode*</fp>
+        <fp>D_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">D_Schottky</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="K" type="passive"/>
+        <pin num="2" name="A" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Device" part="R">
+      <description>Resistor</description>
+      <docs>~</docs>
+      <footprints>
+        <fp>R_*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">R</field>
+        <field name="Value">R</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="" type="passive"/>
+        <pin num="2" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Diode_Bridge" part="ABS10">
+      <description>Miniature Glass Passivated Single-Phase Surface Mount Bridge Rectifiers, 700V Vrms, 0.8A If, ABS SMD package</description>
+      <docs>https://diotec.com/tl_files/diotec/files/pdf/datasheets/abs2.pdf</docs>
+      <footprints>
+        <fp>Diode*Bridge*Diotec*ABS*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">D</field>
+        <field name="Value">ABS10</field>
+        <field name="Footprint">Diode_SMD:Diode_Bridge_Diotec_ABS</field>
+        <field name="Datasheet">https://diotec.com/tl_files/diotec/files/pdf/datasheets/abs2.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="+" type="passive"/>
+        <pin num="2" name="-" type="passive"/>
+        <pin num="3" name="" type="passive"/>
+        <pin num="4" name="" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="ESP32-WROOM" part="ESP32_S3_WROOM">
+      <footprints>
+        <fp>ESP32_S3_WROOM-1U</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">ESP32_S3_WROOM</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="power_in"/>
+        <pin num="2" name="3v3" type="power_in"/>
+        <pin num="3" name="EN" type="input"/>
+        <pin num="4" name="IO4" type="bidirectional"/>
+        <pin num="5" name="IO5" type="bidirectional"/>
+        <pin num="6" name="IO6" type="bidirectional"/>
+        <pin num="7" name="IO7" type="bidirectional"/>
+        <pin num="8" name="IO15" type="bidirectional"/>
+        <pin num="9" name="IO16" type="bidirectional"/>
+        <pin num="10" name="IO17" type="bidirectional"/>
+        <pin num="11" name="IO18" type="bidirectional"/>
+        <pin num="12" name="IO8" type="bidirectional"/>
+        <pin num="13" name="IO19" type="bidirectional"/>
+        <pin num="14" name="IO20" type="bidirectional"/>
+        <pin num="15" name="IO3" type="bidirectional"/>
+        <pin num="16" name="IO46" type="bidirectional"/>
+        <pin num="17" name="IO9" type="bidirectional"/>
+        <pin num="18" name="IO10" type="bidirectional"/>
+        <pin num="19" name="IO11" type="bidirectional"/>
+        <pin num="20" name="IO12" type="bidirectional"/>
+        <pin num="21" name="IO13" type="bidirectional"/>
+        <pin num="22" name="IO14" type="bidirectional"/>
+        <pin num="23" name="IO21" type="bidirectional"/>
+        <pin num="24" name="IO47" type="bidirectional"/>
+        <pin num="25" name="IO48" type="bidirectional"/>
+        <pin num="26" name="IO45" type="bidirectional"/>
+        <pin num="27" name="IO0" type="bidirectional"/>
+        <pin num="28" name="IO35" type="bidirectional"/>
+        <pin num="29" name="IO36" type="bidirectional"/>
+        <pin num="30" name="IO37" type="bidirectional"/>
+        <pin num="31" name="IO38" type="bidirectional"/>
+        <pin num="32" name="IO39" type="bidirectional"/>
+        <pin num="33" name="IO40" type="bidirectional"/>
+        <pin num="34" name="IO41" type="bidirectional"/>
+        <pin num="35" name="IO42" type="bidirectional"/>
+        <pin num="36" name="RXD0" type="bidirectional"/>
+        <pin num="37" name="TXD0" type="bidirectional"/>
+        <pin num="38" name="IO2" type="bidirectional"/>
+        <pin num="39" name="IO1" type="bidirectional"/>
+        <pin num="40" name="GND" type="power_in"/>
+        <pin num="EPad" name="GND" type="power_in"/>
+      </pins>
+    </libpart>
+    <libpart lib="MP6614" part="MP6614GN-Z">
+      <description>Motor/Motion/Ignition Controllers &amp; Drivers 35V, H-Bridge DC Motor Driver in an SOIC-8EP Package</description>
+      <fields>
+        <field name="Value">MP6614GN-Z</field>
+        <field name="Reference_1">IC</field>
+        <field name="Value_1">MP6614GN-Z</field>
+        <field name="Footprint_1">SOIC127P600X170-9N</field>
+        <field name="Height">1.7</field>
+        <field name="Mouser Part Number">946-MP6614GN-Z</field>
+        <field name="Manufacturer_Name">Monolithic Power Systems (MPS)</field>
+        <field name="Manufacturer_Part_Number">MP6614GN-Z</field>
+      </fields>
+      <pins>
+        <pin num="1" name="GND" type="passive"/>
+        <pin num="2" name="IN2" type="passive"/>
+        <pin num="3" name="IN1" type="passive"/>
+        <pin num="4" name="ISET" type="passive"/>
+        <pin num="5" name="VIN" type="passive"/>
+        <pin num="6" name="OUT1" type="passive"/>
+        <pin num="7" name="VISEN" type="passive"/>
+        <pin num="8" name="OUT2" type="passive"/>
+        <pin num="9" name="EP" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Regulator_Switching" part="AP63203WU">
+      <description>2A, 1.1MHz Buck DC/DC Converter, fixed 3.3V output voltage, TSOT-23-6</description>
+      <docs>https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf</docs>
+      <footprints>
+        <fp>TSOT?23*</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">AP63203WU</field>
+        <field name="Footprint">Package_TO_SOT_SMD:TSOT-23-6</field>
+        <field name="Datasheet">https://www.diodes.com/assets/Datasheets/AP63200-AP63201-AP63203-AP63205.pdf</field>
+      </fields>
+      <pins>
+        <pin num="1" name="FB" type="input"/>
+        <pin num="2" name="EN" type="input"/>
+        <pin num="3" name="IN" type="power_in"/>
+        <pin num="4" name="GND" type="power_in"/>
+        <pin num="5" name="SW" type="output"/>
+        <pin num="6" name="BST" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="Switch" part="SW_Push">
+      <description>Push button switch, generic, two pins</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">SW</field>
+        <field name="Value">SW_Push</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="passive"/>
+        <pin num="2" name="2" type="passive"/>
+      </pins>
+    </libpart>
+    <libpart lib="pspice" part="INDUCTOR">
+      <description>Inductor symbol for simulation only</description>
+      <docs>~</docs>
+      <fields>
+        <field name="Reference">L</field>
+        <field name="Value">INDUCTOR</field>
+        <field name="Datasheet">~</field>
+      </fields>
+      <pins>
+        <pin num="1" name="1" type="input"/>
+        <pin num="2" name="2" type="input"/>
+      </pins>
+    </libpart>
+    <libpart lib="tbd62x83a" part="TBD62083A">
+      <footprints>
+        <fp>DIP-18__300</fp>
+      </footprints>
+      <fields>
+        <field name="Reference">U</field>
+        <field name="Value">TBD62083A</field>
+      </fields>
+      <pins>
+        <pin num="1" name="In" type="input"/>
+        <pin num="2" name="In" type="input"/>
+        <pin num="3" name="In" type="input"/>
+        <pin num="4" name="In" type="input"/>
+        <pin num="5" name="In" type="input"/>
+        <pin num="6" name="In" type="input"/>
+        <pin num="7" name="In" type="input"/>
+        <pin num="8" name="In" type="input"/>
+        <pin num="9" name="IC" type="unspecified"/>
+        <pin num="10" name="OC" type="unspecified"/>
+        <pin num="11" name="Out" type="output"/>
+        <pin num="12" name="Out" type="output"/>
+        <pin num="13" name="Out" type="output"/>
+        <pin num="14" name="Out" type="output"/>
+        <pin num="15" name="Out" type="output"/>
+        <pin num="16" name="Out" type="output"/>
+        <pin num="17" name="Out" type="output"/>
+        <pin num="18" name="Out" type="output"/>
+      </pins>
+    </libpart>
+  </libparts>
+  <libraries>
+    <library logical="Connector">
+      <uri>/usr/share/kicad/symbols//Connector.kicad_sym</uri>
+    </library>
+    <library logical="Device">
+      <uri>/usr/share/kicad/symbols//Device.kicad_sym</uri>
+    </library>
+    <library logical="Diode_Bridge">
+      <uri>/usr/share/kicad/symbols//Diode_Bridge.kicad_sym</uri>
+    </library>
+    <library logical="ESP32-WROOM">
+      <uri>/home/heller/ESP32-LCC/CommonLibraries/esp32_s3_wroom.lib</uri>
+    </library>
+    <library logical="MP6614">
+      <uri>/home/heller/ESP32-LCC/CommonLibraries/MP6614GN-Z.kicad_sym</uri>
+    </library>
+    <library logical="Regulator_Switching">
+      <uri>/usr/share/kicad/symbols//Regulator_Switching.kicad_sym</uri>
+    </library>
+    <library logical="Switch">
+      <uri>/usr/share/kicad/symbols//Switch.kicad_sym</uri>
+    </library>
+    <library logical="pspice">
+      <uri>/usr/share/kicad/symbols//pspice.kicad_sym</uri>
+    </library>
+    <library logical="tbd62x83a">
+      <uri>/home/heller/ESP32-LCC/CommonLibraries/tbd62x83a.lib</uri>
+    </library>
+  </libraries>
+  <nets>
+    <net code="1" name="+3V3">
+      <node ref="C103" pin="1" pintype="passive"/>
+      <node ref="C104" pin="1" pintype="passive"/>
+      <node ref="C105" pin="1" pintype="passive"/>
+      <node ref="C109" pin="1" pintype="passive"/>
+      <node ref="C110" pin="1" pintype="passive"/>
+      <node ref="L101" pin="2" pinfunction="2" pintype="input"/>
+      <node ref="R102" pin="1" pintype="passive"/>
+      <node ref="U101" pin="2" pinfunction="3v3" pintype="power_in"/>
+      <node ref="U103" pin="1" pinfunction="FB" pintype="input"/>
+    </net>
+    <net code="2" name="/Boot0">
+      <node ref="SW102" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="U101" pin="27" pinfunction="IO0" pintype="bidirectional"/>
+    </net>
+    <net code="3" name="/D+">
+      <node ref="J101" pin="A6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="J101" pin="B6" pinfunction="D+" pintype="bidirectional"/>
+      <node ref="U101" pin="14" pinfunction="IO20" pintype="bidirectional"/>
+    </net>
+    <net code="4" name="/D-">
+      <node ref="J101" pin="A7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="J101" pin="B7" pinfunction="D-" pintype="bidirectional"/>
+      <node ref="U101" pin="13" pinfunction="IO19" pintype="bidirectional"/>
+    </net>
+    <net code="5" name="/Function1">
+      <node ref="U101" pin="15" pinfunction="IO3" pintype="bidirectional"/>
+      <node ref="U102" pin="1" pinfunction="In" pintype="input"/>
+    </net>
+    <net code="6" name="/Function2">
+      <node ref="U101" pin="4" pinfunction="IO4" pintype="bidirectional"/>
+      <node ref="U102" pin="2" pinfunction="In" pintype="input"/>
+    </net>
+    <net code="7" name="/Function3">
+      <node ref="U101" pin="5" pinfunction="IO5" pintype="bidirectional"/>
+      <node ref="U102" pin="3" pinfunction="In" pintype="input"/>
+    </net>
+    <net code="8" name="/Function4">
+      <node ref="U101" pin="6" pinfunction="IO6" pintype="bidirectional"/>
+      <node ref="U102" pin="4" pinfunction="In" pintype="input"/>
+    </net>
+    <net code="9" name="/Function5">
+      <node ref="U101" pin="7" pinfunction="IO7" pintype="bidirectional"/>
+      <node ref="U102" pin="5" pinfunction="In" pintype="input"/>
+    </net>
+    <net code="10" name="/Function6">
+      <node ref="U101" pin="12" pinfunction="IO8" pintype="bidirectional"/>
+      <node ref="U102" pin="6" pinfunction="In" pintype="input"/>
+    </net>
+    <net code="11" name="/MForward">
+      <node ref="IC102" pin="3" pinfunction="IN1" pintype="passive"/>
+      <node ref="U101" pin="39" pinfunction="IO1" pintype="bidirectional"/>
+    </net>
+    <net code="12" name="/MPower">
+      <node ref="C102" pin="1" pintype="passive"/>
+      <node ref="C106" pin="1" pintype="passive"/>
+      <node ref="D102" pin="1" pinfunction="+" pintype="passive"/>
+      <node ref="D103" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="IC102" pin="5" pinfunction="VIN" pintype="passive"/>
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="13" name="/MReverse">
+      <node ref="IC102" pin="2" pinfunction="IN2" pintype="passive"/>
+      <node ref="U101" pin="38" pinfunction="IO2" pintype="bidirectional"/>
+    </net>
+    <net code="14" name="/Reset">
+      <node ref="C101" pin="1" pintype="passive"/>
+      <node ref="R102" pin="2" pintype="passive"/>
+      <node ref="SW101" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U101" pin="3" pinfunction="EN" pintype="input"/>
+    </net>
+    <net code="15" name="/VBus">
+      <node ref="D101" pin="2" pinfunction="A" pintype="passive"/>
+      <node ref="J101" pin="A4" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J101" pin="A9" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J101" pin="B4" pinfunction="VBUS" pintype="passive"/>
+      <node ref="J101" pin="B9" pinfunction="VBUS" pintype="passive"/>
+    </net>
+    <net code="16" name="/Vin">
+      <node ref="C107" pin="1" pintype="passive"/>
+      <node ref="D101" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="D103" pin="1" pinfunction="K" pintype="passive"/>
+      <node ref="U103" pin="2" pinfunction="EN" pintype="input"/>
+      <node ref="U103" pin="3" pinfunction="IN" pintype="power_in"/>
+    </net>
+    <net code="17" name="GND">
+      <node ref="C101" pin="2" pintype="passive"/>
+      <node ref="C102" pin="2" pintype="passive"/>
+      <node ref="C103" pin="2" pintype="passive"/>
+      <node ref="C104" pin="2" pintype="passive"/>
+      <node ref="C105" pin="2" pintype="passive"/>
+      <node ref="C106" pin="2" pintype="passive"/>
+      <node ref="C107" pin="2" pintype="passive"/>
+      <node ref="C109" pin="2" pintype="passive"/>
+      <node ref="C110" pin="2" pintype="passive"/>
+      <node ref="D102" pin="2" pinfunction="-" pintype="passive"/>
+      <node ref="IC102" pin="1" pinfunction="GND" pintype="passive"/>
+      <node ref="IC102" pin="9" pinfunction="EP" pintype="passive"/>
+      <node ref="J101" pin="A1" pinfunction="GND" pintype="passive"/>
+      <node ref="J101" pin="A12" pinfunction="GND" pintype="passive"/>
+      <node ref="J101" pin="B1" pinfunction="GND" pintype="passive"/>
+      <node ref="J101" pin="B12" pinfunction="GND" pintype="passive"/>
+      <node ref="J101" pin="S1" pinfunction="SHIELD" pintype="passive"/>
+      <node ref="R101" pin="2" pintype="passive"/>
+      <node ref="R109" pin="2" pintype="passive"/>
+      <node ref="R110" pin="2" pintype="passive"/>
+      <node ref="SW101" pin="1" pinfunction="1" pintype="passive"/>
+      <node ref="SW102" pin="2" pinfunction="2" pintype="passive"/>
+      <node ref="U101" pin="1" pinfunction="GND" pintype="power_in"/>
+      <node ref="U101" pin="40" pinfunction="GND" pintype="power_in"/>
+      <node ref="U101" pin="EPad" pinfunction="GND" pintype="power_in"/>
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+      <node ref="U103" pin="4" pinfunction="GND" pintype="power_in"/>
+    </net>
+    <net code="18" name="Net-(C108-Pad1)">
+      <node ref="C108" pin="1" pintype="passive"/>
+      <node ref="L101" pin="1" pinfunction="1" pintype="input"/>
+      <node ref="U103" pin="5" pinfunction="SW" pintype="output"/>
+    </net>
+    <net code="19" name="Net-(C108-Pad2)">
+      <node ref="C108" pin="2" pintype="passive"/>
+      <node ref="U103" pin="6" pinfunction="BST" pintype="passive"/>
+    </net>
+    <net code="20" name="Net-(D102-Pad3)">
+      <node ref="D102" pin="3" pintype="passive"/>
+    </net>
+    <net code="21" name="Net-(D102-Pad4)">
+      <node ref="D102" pin="4" pintype="passive"/>
+    </net>
+    <net code="22" name="Net-(IC102-Pad4)">
+      <node ref="IC102" pin="4" pinfunction="ISET" pintype="passive"/>
+      <node ref="R101" pin="1" pintype="passive"/>
+    </net>
+    <net code="23" name="Net-(IC102-Pad6)">
+      <node ref="IC102" pin="6" pinfunction="OUT1" pintype="passive"/>
+    </net>
+    <net code="24" name="Net-(IC102-Pad8)">
+      <node ref="IC102" pin="8" pinfunction="OUT2" pintype="passive"/>
+    </net>
+    <net code="25" name="Net-(J101-PadA5)">
+      <node ref="J101" pin="A5" pinfunction="CC1" pintype="bidirectional"/>
+      <node ref="R109" pin="1" pintype="passive"/>
+    </net>
+    <net code="26" name="Net-(J101-PadB5)">
+      <node ref="J101" pin="B5" pinfunction="CC2" pintype="bidirectional"/>
+      <node ref="R110" pin="1" pintype="passive"/>
+    </net>
+    <net code="27" name="Net-(R103-Pad1)">
+      <node ref="R103" pin="1" pintype="passive"/>
+    </net>
+    <net code="28" name="Net-(R103-Pad2)">
+      <node ref="R103" pin="2" pintype="passive"/>
+      <node ref="U102" pin="18" pinfunction="Out" pintype="output"/>
+    </net>
+    <net code="29" name="Net-(R104-Pad1)">
+      <node ref="R104" pin="1" pintype="passive"/>
+    </net>
+    <net code="30" name="Net-(R104-Pad2)">
+      <node ref="R104" pin="2" pintype="passive"/>
+      <node ref="U102" pin="13" pinfunction="Out" pintype="output"/>
+    </net>
+    <net code="31" name="Net-(R105-Pad1)">
+      <node ref="R105" pin="1" pintype="passive"/>
+    </net>
+    <net code="32" name="Net-(R105-Pad2)">
+      <node ref="R105" pin="2" pintype="passive"/>
+      <node ref="U102" pin="17" pinfunction="Out" pintype="output"/>
+    </net>
+    <net code="33" name="Net-(R106-Pad1)">
+      <node ref="R106" pin="1" pintype="passive"/>
+    </net>
+    <net code="34" name="Net-(R106-Pad2)">
+      <node ref="R106" pin="2" pintype="passive"/>
+      <node ref="U102" pin="16" pinfunction="Out" pintype="output"/>
+    </net>
+    <net code="35" name="Net-(R107-Pad1)">
+      <node ref="R107" pin="1" pintype="passive"/>
+    </net>
+    <net code="36" name="Net-(R107-Pad2)">
+      <node ref="R107" pin="2" pintype="passive"/>
+      <node ref="U102" pin="15" pinfunction="Out" pintype="output"/>
+    </net>
+    <net code="37" name="Net-(R108-Pad1)">
+      <node ref="R108" pin="1" pintype="passive"/>
+    </net>
+    <net code="38" name="Net-(R108-Pad2)">
+      <node ref="R108" pin="2" pintype="passive"/>
+      <node ref="U102" pin="14" pinfunction="Out" pintype="output"/>
+    </net>
+    <net code="39" name="unconnected-(IC102-Pad7)">
+      <node ref="IC102" pin="7" pinfunction="VISEN" pintype="passive+no_connect"/>
+    </net>
+    <net code="40" name="unconnected-(J101-PadA2)">
+      <node ref="J101" pin="A2" pinfunction="TX1+" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="41" name="unconnected-(J101-PadA3)">
+      <node ref="J101" pin="A3" pinfunction="TX1-" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="42" name="unconnected-(J101-PadA8)">
+      <node ref="J101" pin="A8" pinfunction="SBU1" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="43" name="unconnected-(J101-PadA10)">
+      <node ref="J101" pin="A10" pinfunction="RX2-" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="44" name="unconnected-(J101-PadA11)">
+      <node ref="J101" pin="A11" pinfunction="RX2+" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="45" name="unconnected-(J101-PadB2)">
+      <node ref="J101" pin="B2" pinfunction="TX2+" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="46" name="unconnected-(J101-PadB3)">
+      <node ref="J101" pin="B3" pinfunction="TX2-" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="47" name="unconnected-(J101-PadB8)">
+      <node ref="J101" pin="B8" pinfunction="SBU2" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="48" name="unconnected-(J101-PadB10)">
+      <node ref="J101" pin="B10" pinfunction="RX1-" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="49" name="unconnected-(J101-PadB11)">
+      <node ref="J101" pin="B11" pinfunction="RX1+" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="50" name="unconnected-(U101-Pad8)">
+      <node ref="U101" pin="8" pinfunction="IO15" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="51" name="unconnected-(U101-Pad9)">
+      <node ref="U101" pin="9" pinfunction="IO16" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="52" name="unconnected-(U101-Pad10)">
+      <node ref="U101" pin="10" pinfunction="IO17" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="53" name="unconnected-(U101-Pad11)">
+      <node ref="U101" pin="11" pinfunction="IO18" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="54" name="unconnected-(U101-Pad16)">
+      <node ref="U101" pin="16" pinfunction="IO46" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="55" name="unconnected-(U101-Pad17)">
+      <node ref="U101" pin="17" pinfunction="IO9" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="56" name="unconnected-(U101-Pad18)">
+      <node ref="U101" pin="18" pinfunction="IO10" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="57" name="unconnected-(U101-Pad19)">
+      <node ref="U101" pin="19" pinfunction="IO11" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="58" name="unconnected-(U101-Pad20)">
+      <node ref="U101" pin="20" pinfunction="IO12" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="59" name="unconnected-(U101-Pad21)">
+      <node ref="U101" pin="21" pinfunction="IO13" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="60" name="unconnected-(U101-Pad22)">
+      <node ref="U101" pin="22" pinfunction="IO14" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="61" name="unconnected-(U101-Pad23)">
+      <node ref="U101" pin="23" pinfunction="IO21" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="62" name="unconnected-(U101-Pad24)">
+      <node ref="U101" pin="24" pinfunction="IO47" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="63" name="unconnected-(U101-Pad25)">
+      <node ref="U101" pin="25" pinfunction="IO48" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="64" name="unconnected-(U101-Pad26)">
+      <node ref="U101" pin="26" pinfunction="IO45" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="65" name="unconnected-(U101-Pad28)">
+      <node ref="U101" pin="28" pinfunction="IO35" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="66" name="unconnected-(U101-Pad29)">
+      <node ref="U101" pin="29" pinfunction="IO36" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="67" name="unconnected-(U101-Pad30)">
+      <node ref="U101" pin="30" pinfunction="IO37" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="68" name="unconnected-(U101-Pad31)">
+      <node ref="U101" pin="31" pinfunction="IO38" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="69" name="unconnected-(U101-Pad32)">
+      <node ref="U101" pin="32" pinfunction="IO39" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="70" name="unconnected-(U101-Pad33)">
+      <node ref="U101" pin="33" pinfunction="IO40" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="71" name="unconnected-(U101-Pad34)">
+      <node ref="U101" pin="34" pinfunction="IO41" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="72" name="unconnected-(U101-Pad35)">
+      <node ref="U101" pin="35" pinfunction="IO42" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="73" name="unconnected-(U101-Pad36)">
+      <node ref="U101" pin="36" pinfunction="RXD0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="74" name="unconnected-(U101-Pad37)">
+      <node ref="U101" pin="37" pinfunction="TXD0" pintype="bidirectional+no_connect"/>
+    </net>
+    <net code="75" name="unconnected-(U102-Pad7)">
+      <node ref="U102" pin="7" pinfunction="In" pintype="input+no_connect"/>
+    </net>
+    <net code="76" name="unconnected-(U102-Pad8)">
+      <node ref="U102" pin="8" pinfunction="In" pintype="input+no_connect"/>
+    </net>
+    <net code="77" name="unconnected-(U102-Pad9)">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="78" name="unconnected-(U102-Pad9)_1">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="79" name="unconnected-(U102-Pad9)_2">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="80" name="unconnected-(U102-Pad9)_3">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="81" name="unconnected-(U102-Pad9)_4">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="82" name="unconnected-(U102-Pad9)_5">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="83" name="unconnected-(U102-Pad9)_6">
+      <node ref="U102" pin="9" pinfunction="IC" pintype="unspecified"/>
+    </net>
+    <net code="84" name="unconnected-(U102-Pad10)">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="85" name="unconnected-(U102-Pad10)_1">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="86" name="unconnected-(U102-Pad10)_2">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="87" name="unconnected-(U102-Pad10)_3">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="88" name="unconnected-(U102-Pad10)_4">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="89" name="unconnected-(U102-Pad10)_5">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="90" name="unconnected-(U102-Pad10)_6">
+      <node ref="U102" pin="10" pinfunction="OC" pintype="unspecified"/>
+    </net>
+    <net code="91" name="unconnected-(U102-Pad11)">
+      <node ref="U102" pin="11" pinfunction="Out" pintype="output+no_connect"/>
+    </net>
+    <net code="92" name="unconnected-(U102-Pad12)">
+      <node ref="U102" pin="12" pinfunction="Out" pintype="output+no_connect"/>
+    </net>
+  </nets>
+</export>

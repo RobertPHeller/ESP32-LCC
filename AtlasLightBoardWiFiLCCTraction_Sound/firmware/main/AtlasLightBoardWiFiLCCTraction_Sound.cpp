@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260331.1444>
+//  Last Modified : <260819.1536>
 //
 //  Description	
 //
@@ -98,6 +98,9 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "FunctionConfig.hxx"
 
 #include "ESP32S3Train.hxx"
+
+#include "Esp32STDI2S.hxx"
+openmrn_esp32::Esp32STDI2S i2sdev;
 
 OVERRIDE_CONST(num_memory_spaces, 8);
 //OVERRIDE_CONST(local_nodes_count, 5);
@@ -269,6 +272,7 @@ void app_main()
     Esp32Ledc PWM_Functions(PWM_FUNCTIONS,LEDC_CHANNEL_2);
     PWM_Functions.hw_init();
     
+    i2sdev.hw_init(I2S_BCLK, I2S_DOUT, I2S_LRCLK);
     ESP32S3Train trainImpl/*()*/;
     openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
     ESP32SpeedController esp32_speed_controller(stack.service(),

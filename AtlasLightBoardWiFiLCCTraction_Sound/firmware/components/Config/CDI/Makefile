@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <260330.1305>
+#  Last Modified : <260819.1643>
 #
 #  Description	
 #
@@ -55,6 +55,7 @@ EXTRAFLAGS=
 EXTRAINCLUDES=`../../../../../buildscripts/getincludes.tcl ../../../build/build.ninja`
 
 compile_cdi: ../include/cdi.hxx ../include/MotorConfig.hxx \
+	../include/SoundConfig.hxx \
 	../include/FunctionConfig.hxx CompileCdiMain.cxx \
 	../../../sdkconfig ../include/Revision.hxxout
 	g++ -o $@ $(EXTRAFLAGS) -I. -I../../../build/config $(EXTRAINCLUDES) \

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <260330.1335>
+#  Last Modified : <260817.1829>
 #
 #  Description	
 #
@@ -63,6 +63,7 @@ set(deps
 idf_component_register(SRCS AtlasLightBoardWiFiLCCTraction_Sound.cpp
 			ESP32S3Train.cpp
 			MyEsp32WiFiManager.cpp
+			Esp32PDMTXI2S.cpp
 			REQUIRES "${deps}")
 			
 # export the project version as a define for the SNIP data, note it must be
@@ -79,6 +80,7 @@ set(CDI_VERSION "0x0101")
 set_source_files_properties(AtlasLightBoardWiFiLCCTraction_Sound.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(ESP32S3Train.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(MyEsp32WiFiManager.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(Esp32PDMTXI2S.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(AtlasLightBoardWiFiLCCTraction_Sound.cpp PROPERTIES COMPILE_DEFINITIONS "SNIP_PROJECT_PAGE=\"${SNIP_PROJECT_PAGE}\"; SNIP_HW_VERSION=\"${SNIP_HW_VERSION}\"; SNIP_SW_VERSION=\"${SNIP_SW_VERSION}\"; SNIP_PROJECT_NAME=\"${SNIP_PROJECT_NAME}\"; CDI_VERSION=${CDI_VERSION}")
 
 set(CDIDEPS

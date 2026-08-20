@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260819.1536>
+//  Last Modified : <260819.2102>
 //
 //  Description	
 //
@@ -96,11 +96,16 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "hardware.hxx"
 
 #include "FunctionConfig.hxx"
+#include "SoundConfig.hxx"
+#include "SoundConfigUpdater.hxx"
 
 #include "ESP32S3Train.hxx"
 
 #include "Esp32STDI2S.hxx"
+#include "SoundLoopProcess.hxx"
 openmrn_esp32::Esp32STDI2S i2sdev;
+
+SoundLoopProcess sound_loop;
 
 OVERRIDE_CONST(num_memory_spaces, 8);
 //OVERRIDE_CONST(local_nodes_count, 5);
@@ -273,19 +278,26 @@ void app_main()
     PWM_Functions.hw_init();
     
     i2sdev.hw_init(I2S_BCLK, I2S_DOUT, I2S_LRCLK);
+    
+    Executor<1> Sound_Loop_executor("Sound Loop", 1, 2048);
+    
+    Sound_Loop_executor.add(&sound_loop);
+    
     ESP32S3Train trainImpl/*()*/;
     openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
     ESP32SpeedController esp32_speed_controller(stack.service(),
                                                 cfg.seg().motor_control(),
-                                                &PWM_Motor);
+                                                &PWM_Motor/* ,&sound_loop*/);
     trainImpl.set_speed_controller(&esp32_speed_controller);
     ESP32FunctionController esp32_function_controller(cfg.seg().functions(),
-                                                      &PWM_Functions);
+                                                      &PWM_Functions/*,
+                                                      &sound_loop*/);
     trainImpl.set_function_controller(&esp32_function_controller);
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction_Sound] stack started");
     BlinkTimer blinker(stack.executor()->active_timers());
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction_Sound] blinker started");
     blinker.AddMe(&esp32_function_controller);
+    SoundConfigUpdater sound_update(cfg.seg().sound_config()/*,&sound_loop*/);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif

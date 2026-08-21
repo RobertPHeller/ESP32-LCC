@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Aug 19 16:00:52 2026
-//  Last Modified : <260819.1634>
+//  Last Modified : <260821.0916>
 //
 //  Description	
 //
@@ -47,15 +47,16 @@
 
 static const char EngineType[] = 
 "<relation><property>0</property><value>Disabled</value></relation>"
-"<relation><property>1</property><value>EMD576 8-Cyl</value></relation>"
-"<relation><property>2</property><value>EMD576 12-Cyl</value></relation>"
-"<relation><property>3</property><value>EMD576 16-Cyl</value></relation>"
-"<relation><property>4</property><value>EMD645 8-Cyl</value></relation>"
-"<relation><property>5</property><value>EMD645 12-Cyl</value></relation>"
-"<relation><property>6</property><value>EMD645 16-Cyl</value></relation>"
-"<relation><property>7</property><value>EMD645 Turbo 12-Cyl</value></relation>"
-"<relation><property>8</property><value>EMD645 Turbo 16-Cyl</value></relation>"
-"<relation><property>9</property><value>EMD645 Turbo 20-Cyl</value></relation>"
+"<relation><property>1</property><value>EMD576 16-Cyl</value></relation>"
+"<relation><property>2</property><value>EMD710g3</value></relation>"
+"<relation><property>3</property><value>EMD576 8-Cyl</value></relation>"
+"<relation><property>4</property><value>EMD576 12-Cyl</value></relation>"
+"<relation><property>5</property><value>EMD645 8-Cyl</value></relation>"
+"<relation><property>6</property><value>EMD645 12-Cyl</value></relation>"
+"<relation><property>7</property><value>EMD645 16-Cyl</value></relation>"
+"<relation><property>8</property><value>EMD645 Turbo 12-Cyl</value></relation>"
+"<relation><property>9</property><value>EMD645 Turbo 16-Cyl</value></relation>"
+"<relation><property>10</property><value>EMD645 Turbo 20-Cyl</value></relation>"
 ;
 
 static const char HornType[] = 
@@ -73,7 +74,7 @@ CDI_GROUP(SoundConfig, Name("Sound config"))
 CDI_GROUP_ENTRY(engine_sound, openlcb::Uint8ConfigEntry,
                 Name("Engine Type"),
                 Description("Specifies the type of engine"),
-                Min(0), Max(9), MapValues(EngineType));
+                Min(0), Max(10), MapValues(EngineType));
 CDI_GROUP_ENTRY(horn_sound, openlcb::Uint8ConfigEntry,
                 Name("Horn Type"),
                 Description("Specifies the type of horn"),

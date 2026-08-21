@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Aug 19 19:17:48 2026
-//  Last Modified : <260819.1925>
+//  Last Modified : <260820.0850>
 //
 //  Description	
 //
@@ -53,8 +53,11 @@ ConfigUpdateListener::UpdateAction
 {
     AutoNotify an(done);
     auto engineSound = cfg_.engine_sound().read(fd);
+    slp_->SetEngineType((SoundLoopProcess::Engine_t)engineSound);
     auto hornSound = cfg_.horn_sound().read(fd);
+    slp_->SetHornType((SoundLoopProcess::Horn_t)hornSound);
     auto bellType = cfg_.bell_type().read(fd);
+    slp_->SetBellType((SoundLoopProcess::Bell_t)bellType);
     return UPDATED;
 }
 

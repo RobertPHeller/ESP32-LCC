@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Aug 19 18:59:00 2026
-//  Last Modified : <260819.1902>
+//  Last Modified : <260820.0849>
 //
 //  Description	
 //
@@ -46,11 +46,14 @@
 #include "openlcb/ConfigRepresentation.hxx"
 #include "utils/ConfigUpdateListener.hxx"
 #include "SoundConfig.hxx"
+#include "SoundLoopProcess.hxx"
 
 class SoundConfigUpdater : public DefaultConfigUpdateListener
 {
 public:
-    SoundConfigUpdater(SoundConfig cfg) : cfg_(cfg)
+    SoundConfigUpdater(SoundConfig cfg, SoundLoopProcess *slp) 
+                : cfg_(cfg)
+          , slp_(slp)
     {
     }
     /** Apply a the configuration settings.
@@ -66,6 +69,7 @@ public:
     virtual void factory_reset(int fd);
 private:
     SoundConfig cfg_;
+    SoundLoopProcess *slp_;
 };
 
 #endif // __SOUNDCONFIGUPDATER_HXX

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Aug 19 20:45:17 2026
-//  Last Modified : <260819.2117>
+//  Last Modified : <260820.2019>
 //
 //  Description	
 //
@@ -49,7 +49,7 @@
 class SoundLoopProcess : public Executable
 {
 public:
-    enum Engine_t {NoEngine = 0, EMD576_8, EMD576_12, EMD576_16, EMD645_8, EMD645_12,
+    enum Engine_t {NoEngine = 0, EMD576_16, EMD576_8, EMD576_12, EMD645_8, EMD645_12,
               EMD645_16, EMD645T_12, EMD645T_16, EMD645T_20};
     enum Horn_t {NoHorn = 0, Leslie_RS3L, Nathan_AirChime};
     enum Bell_t {NoBell = 0, Standard};

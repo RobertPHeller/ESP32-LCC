@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-30 12:19:45
-//  Last Modified : <260425.2007>
+//  Last Modified : <260820.1014>
 //
 //  Description	
 //
@@ -152,6 +152,7 @@ StateFlowBase::Action ESP32SpeedController::do_speed()
     double fill_rate = req()->speed_.mph();
     if (fill_rate >= 128) fill_rate = 128;
     int fill = (fill_rate / 128.0) * 100;
+    slp_->SetSpeed((uint16_t)fill);
     if (speedMode_ == Basic)
     {
         fill = compute_basic_fill_(fill);
@@ -393,28 +394,48 @@ void ESP32FunctionController::set_fn(uint32_t address, uint16_t value,
         f0 = value;
         if (!value)
         {
-            set_fn(1,0,lastSpeed);
-            set_fn(2,0,lastSpeed);
+            set_fn(3,0,lastSpeed);
+            set_fn(4,0,lastSpeed);
         }
         else if (lastSpeed.direction() == openlcb::SpeedType::FORWARD)
         {
-            set_fn(1,1,lastSpeed);
-            set_fn(2,0,lastSpeed);
+            set_fn(3,1,lastSpeed);
+            set_fn(4,0,lastSpeed);
         }
         else
         {
-            set_fn(1,0,lastSpeed);
-            set_fn(2,1,lastSpeed);
+            set_fn(3,0,lastSpeed);
+            set_fn(4,1,lastSpeed);
         }
         break;
-    case 1:
-    case 2:
+    case 1: /* bell */
+        if (value)
+        {
+            slp_->BellOn();
+        }
+        else
+        {
+            slp_->BellOff();
+        }
+        break;
+    case 2: /* Horn */
+        if (value)
+        {
+            slp_->HornOn();
+        }
+        else
+        {
+            slp_->HornOff();
+        }
+        break;
     case 3:
     case 4:
     case 5:
     case 6:
+    case 7:
+    case 8:
         {
-            int index = address - 1;
+            int index = address - 3;
             states[index] = value != 0;
             if (!states[index])
             {
@@ -528,6 +549,8 @@ uint16_t ESP32FunctionController::get_fn(uint32_t address)
     case 4:
     case 5:
     case 6:
+    case 7:
+    case 8:
         {
             int index = address -1;
             return states[index] ? 1 : 0;

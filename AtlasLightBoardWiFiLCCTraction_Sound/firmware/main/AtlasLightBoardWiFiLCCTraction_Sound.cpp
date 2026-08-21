@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 15:16:51
-//  Last Modified : <260819.2102>
+//  Last Modified : <260820.0943>
 //
 //  Description	
 //
@@ -287,17 +287,17 @@ void app_main()
     openlcb::SimpleTrainCanStack stack(&trainImpl, ESP32_FDI, nvs.node_id());
     ESP32SpeedController esp32_speed_controller(stack.service(),
                                                 cfg.seg().motor_control(),
-                                                &PWM_Motor/* ,&sound_loop*/);
+                                                &PWM_Motor ,&sound_loop);
     trainImpl.set_speed_controller(&esp32_speed_controller);
     ESP32FunctionController esp32_function_controller(cfg.seg().functions(),
-                                                      &PWM_Functions/*,
-                                                      &sound_loop*/);
+                                                      &PWM_Functions,
+                                                      &sound_loop);
     trainImpl.set_function_controller(&esp32_function_controller);
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction_Sound] stack started");
     BlinkTimer blinker(stack.executor()->active_timers());
     LOG(INFO, "[AtlasLightBoardWiFiLCCTraction_Sound] blinker started");
     blinker.AddMe(&esp32_function_controller);
-    SoundConfigUpdater sound_update(cfg.seg().sound_config()/*,&sound_loop*/);
+    SoundConfigUpdater sound_update(cfg.seg().sound_config(),&sound_loop);
 #if CONFIG_OLCB_PRINT_ALL_PACKETS
     stack.print_all_packets();
 #endif

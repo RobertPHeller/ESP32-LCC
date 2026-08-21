@@ -1,4 +1,4 @@
-// -!- C++ -!- //////////////////////////////////////////////////////////////
+// -!- c++ -!- //////////////////////////////////////////////////////////////
 //
 //  System        : 
 //  Module        : 
@@ -7,8 +7,8 @@
 //  Date          : $Date$
 //  Author        : $Author$
 //  Created By    : Robert Heller
-//  Created       : Wed Aug 19 21:18:05 2026
-//  Last Modified : <260820.0733>
+//  Created       : Thu Aug 20 07:28:47 2026
+//  Last Modified : <260820.1338>
 //
 //  Description	
 //
@@ -40,36 +40,27 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
-static const char rcsid[] = "@(#) : $Id$";
+#ifndef __SOUNDDATA_HXX
+#define __SOUNDDATA_HXX
 
-#include <fcntl.h>
-#include <unistd.h>
-
-#include "SoundLoopProcess.hxx"
-#include "SoundData.hxx"
-
-void SoundLoopProcess::run()
+class SoundData
 {
-    int soundFp = open("/dev/i2s/i2s0",O_WRONLY);
-    while (true)
-    {
-        if (engine_type_ != NoEngine)
+public:
+    struct SoundFileEntry {
+        const uint16_t *pcmData;
+        const size_t   pcmBytes;
+        SoundFileEntry(const uint16_t *pcm_data, size_t pcm_bytes)
+                    : pcmData(pcm_data)
+              , pcmBytes(pcm_bytes)
         {
-            SoundData::EngineSound(soundFp,((uint8_t)engine_type_)-1,current_speed_);
         }
-        if (horn_)
-        {
-            if (horn_type_ != NoHorn)
-            {
-                SoundData::HornSound(soundFp,((uint8_t)horn_type_)-1);
-            }
-        }
-        if (bell_)
-        {
-            if (bell_type_ != NoBell)
-            {
-                SoundData::BellSound(soundFp,((uint8_t)bell_type_)-1);
-            }
-        }
-    }
-}
+    };
+    static constexpr size_t COMPRESSION_BUFFER_SIZE = 2048;
+    static void EngineSound(int i2s_fp, uint8_t engineIndex, uint16_t speed);
+    static void HornSound(int i2s_fp, uint8_t hornIndex);
+    static void BellSound(int i2s_fp, uint8_t bellIndex);
+};
+
+
+#endif // __SOUNDDATA_HXX
+

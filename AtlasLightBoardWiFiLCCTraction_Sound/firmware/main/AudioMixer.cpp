@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Aug 22 13:17:19 2026
-//  Last Modified : <260822.1431>
+//  Last Modified : <260822.1448>
 //
 //  Description	
 //
@@ -187,15 +187,19 @@ ssize_t AudioMixer::write(int fd, const void *buf, size_t size)
 
 ssize_t AudioMixer::FlushToI2S(int i2s_fp)
 {
-    AtomicHolder h(this);
+    
     
     if (mixBufferFill_ == 0) return 0;
-    ssize_t result = write(i2s_fp,mixBuffer_,mixBufferFill_/sizeof(uint16_t));
+    ssize_t result = write(i2s_fp,mixBuffer_,mixBufferFill_*sizeof(uint16_t));
+    memset(mixBuffer_,0,mixBufferFill_*sizeof(uint16_t));
     mixBufferFill_ = 0;
     
-    for (auto entry = mix_channels_.begin(); entry != mix_channels_.end(); entry++)
     {
-        entry->mix_channel_index = 0;
+        AtomicHolder h(this);    
+        for (auto entry = mix_channels_.begin(); entry != mix_channels_.end(); entry++)
+        {
+            entry->mix_channel_index = 0;
+        }
     }
     return result;
 }

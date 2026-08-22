@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Aug 19 21:18:05 2026
-//  Last Modified : <260820.0733>
+//  Last Modified : <260822.1419>
 //
 //  Description	
 //
@@ -47,29 +47,37 @@ static const char rcsid[] = "@(#) : $Id$";
 
 #include "SoundLoopProcess.hxx"
 #include "SoundData.hxx"
+#include "AudioMixer.hxx"
 
 void SoundLoopProcess::run()
 {
+    AudioMixer mixer("/dev/mixer");
     int soundFp = open("/dev/i2s/i2s0",O_WRONLY);
+    int engineChannel = open("/dev/mixer", O_WRONLY);
+    int hornChannel = open("/dev/mixer", O_WRONLY);
+    int bellChannel = open("/dev/mixer", O_WRONLY);
+    
+    
     while (true)
     {
         if (engine_type_ != NoEngine)
         {
-            SoundData::EngineSound(soundFp,((uint8_t)engine_type_)-1,current_speed_);
+            SoundData::EngineSound(engineChannel,((uint8_t)engine_type_)-1,current_speed_);
         }
         if (horn_)
         {
             if (horn_type_ != NoHorn)
             {
-                SoundData::HornSound(soundFp,((uint8_t)horn_type_)-1);
+                SoundData::HornSound(hornChannel,((uint8_t)horn_type_)-1);
             }
         }
         if (bell_)
         {
             if (bell_type_ != NoBell)
             {
-                SoundData::BellSound(soundFp,((uint8_t)bell_type_)-1);
+                SoundData::BellSound(bellChannel,((uint8_t)bell_type_)-1);
             }
         }
+        mixer.FlushToI2S(soundFp);
     }
 }

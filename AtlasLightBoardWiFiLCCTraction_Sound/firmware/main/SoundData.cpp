@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Thu Aug 20 07:39:39 2026
-//  Last Modified : <260821.0917>
+//  Last Modified : <260822.1042>
 //
 //  Description	
 //
@@ -45,6 +45,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <fcntl.h>
 #include <unistd.h>
 #include "utils/logging.h"
+#include <math.h>
 
 #include "SoundData.hxx"
 
@@ -74,15 +75,28 @@ static SoundData::SoundFileEntry EngineData[] = {
 };
 #define EngineDataSize (sizeof(EngineData) / sizeof(EngineData[0]))
 
-
 void SoundData::EngineSound(int i2s_fp, uint8_t engineIndex, uint16_t speed)
 {
     LOG(INFO, "[SoundData::EngineSound] i2s_fp=%d, engineIndex=%d, speed=%d", i2s_fp,engineIndex,speed);
     if (engineIndex >= EngineDataSize) return;
-    //double compression = speed / 50.0;
-    //static uint16_t compressed_pcm[COMPRESSION_BUFFER_SIZE];
-    //size_t wordCount = EngineData[engineIndex].pcmBytes/2;
-    write(i2s_fp,EngineData[engineIndex].pcmData,EngineData[engineIndex].pcmBytes);
+    double compression = (speed / 100.0) + 1;
+    static uint16_t compressed_pcm[COMPRESSION_BUFFER_SIZE];
+    size_t wordCount = EngineData[engineIndex].pcmBytes/sizeof(uint16_t);
+    const uint16_t *pcm = EngineData[engineIndex].pcmData;
+    //write(i2s_fp,EngineData[engineIndex].pcmData,EngineData[engineIndex].pcmBytes);
+    size_t comp_words;
+    for (size_t k = 0; k < wordCount; k+=COMPRESSION_BUFFER_SIZE)
+    {
+        comp_words = 0;
+        for (size_t i = 0; i < COMPRESSION_BUFFER_SIZE; i++)
+        {
+            if ((i+k) >= wordCount) break;
+            size_t si = ((size_t)round((i+k)*compression)) % wordCount;
+            compressed_pcm[i] = pcm[si];
+            comp_words++;
+        }
+        write(i2s_fp,compressed_pcm,comp_words*sizeof(uint16_t));
+    }
 }
 
 //#include "PCMDATA/Leslie_RS3L.pcmdat"

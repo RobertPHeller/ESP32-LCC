@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Aug 22 12:52:52 2026
-//  Last Modified : <260822.1417>
+//  Last Modified : <260822.1609>
 //
 //  Description	
 //
@@ -57,7 +57,8 @@ public:
     /// @param path Base path to use for mixer
     AudioMixer(const char * const path = "/dev/mixer");
     
-    /// Destructor.    
+    /// Destructor.
+    ///
     ~AudioMixer();
     
     /// VFS implementation of write(fd, buf, size) 
@@ -89,6 +90,10 @@ public:
     int close(int fd); 
     
     /// Flush mix buffer to I2S.  Resets all channels when flush is complete.
+    ///
+    /// @param i2s_fp I2S file descriptor.
+    /// @return number of bytes written or -1 if there is the write would be a
+    /// blocking operation.
     ssize_t FlushToI2S(int i2s_fp);
     
 private:

@@ -1,0 +1,10 @@
+dependencies:
+  NVSManager:
+    path: ../../../CommonComponents/NVSManager
+  FS:
+    path: ../../../CommonComponents/FS
+  HealthMonitor:
+    path: ../../../CommonComponents/HealthMonitor
+  RebootHelpers:
+    path: ../../../CommonComponents/RebootHelpers
+  espressif/mdns: '*'

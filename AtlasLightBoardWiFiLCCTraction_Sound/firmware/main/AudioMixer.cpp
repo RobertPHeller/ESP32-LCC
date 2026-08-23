@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Sat Aug 22 13:17:19 2026
-//  Last Modified : <260822.1448>
+//  Last Modified : <260823.1344>
 //
 //  Description	
 //
@@ -176,9 +176,16 @@ ssize_t AudioMixer::write(int fd, const void *buf, size_t size)
     }
     for (size_t i = 0; i < wsize; i++)
     {
-        uint32_t sum =  mixBuffer_[entry->mix_channel_index+i];
-        sum += wbuf[i];
-        mixBuffer_[entry->mix_channel_index+i] = sum >> 1;
+        if (entry->mix_channel_index+i < mixBufferFill_)
+        {
+            uint32_t sum =  mixBuffer_[entry->mix_channel_index+i];
+            sum += wbuf[i];
+            mixBuffer_[entry->mix_channel_index+i] = sum >> 1;
+        }
+        else
+        {
+            mixBuffer_[entry->mix_channel_index+i] = wbuf[i];
+        }
     }
     mixBufferFill_ = MAX(entry->mix_channel_index+wsize,mixBufferFill_);
     entry->mix_channel_index += wsize;

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <260330.1338>
+#  Last Modified : <260823.1457>
 #
 #  Description	
 #
@@ -60,9 +60,14 @@ set(deps
     esp_timer
 )
 
-idf_component_register(SRCS P9WiFiLCCTraction_Sound_Sound.cpp
+idf_component_register(SRCS P9WiFiLCCTraction_Sound.cpp
 			ESP32S3Train.cpp
 			MyEsp32WiFiManager.cpp
+	                Esp32STDI2S.cpp
+        	        SoundConfigUpdater.cpp
+                        SoundLoopProcess.cpp
+                        SoundData.cpp
+                        AudioMixer.cpp
 			REQUIRES "${deps}")
 			
 # export the project version as a define for the SNIP data, note it must be
@@ -76,15 +81,21 @@ set(SNIP_HW_VERSION "1.0.0")
 set(SNIP_PROJECT_PAGE "https://www.deepsoft.com/")
 set(CDI_VERSION "0x0101")
 
-set_source_files_properties(P9WiFiLCCTraction_Sound_Sound.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(P9WiFiLCCTraction_Sound.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(ESP32S3Train.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
 set_source_files_properties(MyEsp32WiFiManager.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
-set_source_files_properties(P9WiFiLCCTraction_Sound_Sound.cpp PROPERTIES COMPILE_DEFINITIONS "SNIP_PROJECT_PAGE=\"${SNIP_PROJECT_PAGE}\"; SNIP_HW_VERSION=\"${SNIP_HW_VERSION}\"; SNIP_SW_VERSION=\"${SNIP_SW_VERSION}\"; SNIP_PROJECT_NAME=\"${SNIP_PROJECT_NAME}\"; CDI_VERSION=${CDI_VERSION}")
+set_source_files_properties(Esp32STDI2S.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(SoundConfigUpdater.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(SoundLoopProcess.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(SoundData.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(AudioMixer.cpp PROPERTIES COMPILE_FLAGS "-Wno-error=maybe-uninitialized -Wno-implicit-fallthrough -Wno-ignored-qualifiers")
+set_source_files_properties(P9WiFiLCCTraction_Sound.cpp PROPERTIES COMPILE_DEFINITIONS "SNIP_PROJECT_PAGE=\"${SNIP_PROJECT_PAGE}\"; SNIP_HW_VERSION=\"${SNIP_HW_VERSION}\"; SNIP_SW_VERSION=\"${SNIP_SW_VERSION}\"; SNIP_PROJECT_NAME=\"${SNIP_PROJECT_NAME}\"; CDI_VERSION=${CDI_VERSION}")
 
 set(CDIDEPS
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/cdi.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/MotorConfig.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/FunctionConfig.hxx
+    ${CMAKE_CURRENT_SOURCE_DIR}/../components/Config/include/SoundConfig.hxx
     ${CMAKE_CURRENT_SOURCE_DIR}/../../../.git/index
     ${CMAKE_CURRENT_SOURCE_DIR}/../sdkconfig
    )

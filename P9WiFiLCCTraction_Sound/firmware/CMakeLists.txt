@@ -14,7 +14,7 @@ endif()
 
 
 set(SUPPORTED_TARGETS esp32s3)
-project(P9WiFiLCCTraction_Sound_Sound)
+project(P9WiFiLCCTraction_Sound)
 
 ###############################################################################
 # Switch from GNU++11 to GNU++14
@@ -50,11 +50,11 @@ if (NOT CONFIG_FREERTOS_HZ EQUAL 1000)
     message(FATAL_ERROR "FreeRTOS tick rate (hz) is required to be 1000.")
 endif()
 
-if (NOT CONFIG_PARTITION_TABLE_FILENAME STREQUAL "P9WiFiLCCTraction_Sound_Sound-partitions.csv")
+if (NOT CONFIG_PARTITION_TABLE_FILENAME STREQUAL "P9WiFiLCCTraction_Sound-partitions.csv")
     message(FATAL_ERROR "The custom partition table option is not enabled in menuconfig and is required for compilation.")
 endif()
 
-if (NOT CONFIG_PARTITION_TABLE_CUSTOM_FILENAME STREQUAL "P9WiFiLCCTraction_Sound_Sound-partitions.csv")
+if (NOT CONFIG_PARTITION_TABLE_CUSTOM_FILENAME STREQUAL "P9WiFiLCCTraction_Sound-partitions.csv")
     message(FATAL_ERROR "The custom partition table option is not enabled in menuconfig and is required for compilation.")
 endif()
 

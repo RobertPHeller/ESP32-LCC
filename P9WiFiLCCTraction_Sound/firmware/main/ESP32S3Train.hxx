@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 20:06:48
-//  Last Modified : <260331.1658>
+//  Last Modified : <260820.1008>
 //
 //  Description	
 //
@@ -58,6 +58,7 @@
 #include "hardware.hxx"
 #include "FunctionConfig.hxx"
 #include "MotorConfig.hxx"
+#include "SoundLoopProcess.hxx"
 
 /** Speed Request buffer object */
 struct SpeedRequest
@@ -90,11 +91,14 @@ public:
      * @param s The service.
      * @param mpar The motor configuration.
      * @param motorpwm The PWM object for the motor PWM lines.
+     * @param slp The speed loop process
      */
-    ESP32SpeedController(Service *s, MotorControl mpar,Esp32Ledc *motorpwm)
+    ESP32SpeedController(Service *s, MotorControl mpar,Esp32Ledc *motorpwm,
+                         SoundLoopProcess *slp)
                 : StateFlow<Buffer<SpeedRequest>, QList<2>>(s)
           , mpar_(mpar)
           , motorpwm_(motorpwm)
+          , slp_(slp)
     {
     }
     /** Helper to generate a speed change.
@@ -161,6 +165,8 @@ private:
     StateFlowTimer timer_{this};
     /** Last direction. */
     bool lastDirMotAHi_{false};
+    /** Speed Loop Processor */
+    SoundLoopProcess *slp_;
 };
 /** @brief Function controller implementation
  * Processes a function request and sets the PWM outputs to drive
@@ -171,9 +177,11 @@ class ESP32FunctionController : private DefaultConfigUpdateListener,
 {
 public:
     ESP32FunctionController(FunctionConsumers functions,
-                            Esp32Ledc *functionpwm)
+                            Esp32Ledc *functionpwm,
+                            SoundLoopProcess *slp)
                 : functions_(functions) 
           , functionpwm_(functionpwm)
+          , slp_(slp)
     {
     }
     /** Set a function.
@@ -232,7 +240,7 @@ private:
     };
     /** The function PWM. */
     Esp32Ledc *functionpwm_;
-    
+    SoundLoopProcess *slp_;
 };
 
 /** @brief Train implimentation.

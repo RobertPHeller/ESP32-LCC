@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 19:42:19
-//  Last Modified : <260326.1430>
+//  Last Modified : <260823.1506>
 //
 //  Description	
 //
@@ -55,6 +55,10 @@
 #define PWM_MOTOR {1, 2}
 #define PWM_FUNCTIONS {3, 4, 5, 6}
 
+// Sound out
+#define I2S_BCLK GPIO_NUM_12
+#define I2S_DOUT GPIO_NUM_11
+#define I2S_LRCLK GPIO_NUM_13
 
 GPIO_PIN(BOOT,GpioInputNP, 0);
 

@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : 2025-11-29 16:45:46
-//  Last Modified : <260330.0917>
+//  Last Modified : <260823.1524>
 //
 //  Description	
 //
@@ -44,8 +44,8 @@
 
 /** @page 00kitContents Kit Contents
  * This kit just contains the node PCB and this instruction booklet.
- * @image html P9WiFiLCCTraction_Sound_Sound_Top3D_Thumb.png
- * @image latex P9WiFiLCCTraction_Sound_Sound_Top3D_Thumb.png width=1in
+ * @image html P9WiFiLCCTraction_Sound_Top3D_Thumb.png
+ * @image latex P9WiFiLCCTraction_Sound_Top3D_Thumb.png width=1in
  * @page 01assembly Assembly
  * The PCB is fully assembled and ready to install.  It can be installed 
  * anywhere in the engine shell.  Using double sided tape to attach it to the

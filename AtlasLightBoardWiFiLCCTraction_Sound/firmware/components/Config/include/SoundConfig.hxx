@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Aug 19 16:00:52 2026
-//  Last Modified : <260821.0916>
+//  Last Modified : <260821.1126>
 //
 //  Description	
 //
@@ -70,6 +70,11 @@ static const char BellType[] =
 "<relation><property>1</property><value>Standard</value></relation>"
 ;
 
+/** @page SoundConfig Sound Configuration
+ * @arg engine_sound This is the type of engine sound.
+ * @arg horn_sound This is the type of horn sound.
+ * @arg bell_type This is the type of bell sound.
+ */
 CDI_GROUP(SoundConfig, Name("Sound config"))
 CDI_GROUP_ENTRY(engine_sound, openlcb::Uint8ConfigEntry,
                 Name("Engine Type"),

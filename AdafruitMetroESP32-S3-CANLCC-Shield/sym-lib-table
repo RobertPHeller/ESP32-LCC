@@ -1,0 +1,8 @@
+(sym_lib_table
+  (lib (name "stm32Morpho")(type "Legacy")(uri "/home/heller/STM32F303-RIR4/stm32Morpho.lib")(options "")(descr ""))
+  (lib (name "STM32F303-RIR4-rescue")(type "Legacy")(uri "/home/heller/STM32F303-RIR4/STM32F303-RIR4-rescue.lib")(options "")(descr ""))
+  (lib (name "sn65hvd1050")(type "Legacy")(uri "/home/heller/STM32F303-RIR4/sn65hvd1050.lib")(options "")(descr ""))
+  (lib (name "tc442x")(type "Legacy")(uri "/home/heller/STM32F303-RIR4/tc442x.lib")(options "")(descr ""))
+  (lib (name "PowerSupplyChips")(type "KiCad")(uri "/home/heller/STM32F303-RIR4/PowerSupplyChips.kicad_sym")(options "")(descr ""))
+  (lib (name "ESP32-T7S3-MultiFunctionUniversalTurnout-rescue")(type "Legacy")(uri "/home/heller/ESP32-LCC/ESP32-T7S3-MultiFunctionUniversalTurnout/ESP32-T7S3-MultiFunctionUniversalTurnout-rescue.lib")(options "")(descr ""))
+)

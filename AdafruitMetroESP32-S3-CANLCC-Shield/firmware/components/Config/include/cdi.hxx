@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Wed Apr 17 09:40:58 2024
-//  Last Modified : <261020.1946>
+//  Last Modified : <261021.0818>
 //
 //  Description	
 //
@@ -48,9 +48,9 @@
 #include <openlcb/ConfigRepresentation.hxx>
 #include "openlcb/ConfiguredConsumer.hxx"
 #include "openlcb/ConfiguredProducer.hxx"
+#include "openlcb/ConfiguredTcpConnection.hxx"
 #include "openlcb/ServoConsumerConfig.hxx"
 #include "openlcb/MemoryConfig.hxx"
-#include "freertos_drivers/esp32/Esp32WiFiConfiguration.hxx"
 #include "NodeIdConfigurationGroup.hxx"
 #include "WiFiConfigurationGroup.hxx"
 
@@ -131,9 +131,10 @@ CDI_GROUP_ENTRY(servos,ServoConsumers,Name("Servos"),RepName("Servo"),
                 Description("Servos for gates or other things."));
 CDI_GROUP_ENTRY(ssrs,SSRConsumers,Name("Solid State Relays"),RepName("Relay"),
                 Description("Solid State Relays for other accessors (sound units, etc.)"));
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-CDI_GROUP_ENTRY(olbcwifi, openmrn_arduino::WiFiConfiguration, Name("OLBC WiFi Configuration"));
-#endif
+CDI_GROUP_ENTRY(uplinkParams, 
+                openlcb::TcpClientConfig<openlcb::TcpClientDefaultParams>,
+                Name("Node Uplink Configuration"),
+                Description("Configures how this node will connect to other nodes."));
 CDI_GROUP_END();
 
 /// This segment is only needed temporarily until there is program code to set

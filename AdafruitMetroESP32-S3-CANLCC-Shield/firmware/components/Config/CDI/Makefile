@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Sep 21 11:39:10 2022
-#  Last Modified : <261020.1619>
+#  Last Modified : <261021.1041>
 #
 #  Description	
 #
@@ -65,6 +65,8 @@ compile_cdi: ../include/cdi.hxx  CompileCdiMain.cxx \
 		$(CDIEXTRA)  --std=c++11 -MMD \
 		-MF $@.d $(CXXFLAGSEXTRA) CompileCdiMain.cxx
 	
+-include *.d
+
 ../include/Revision.hxxout : ../../../../../.git/index \
 	../../../sdkconfig
 	../../../../../buildscripts/revision.py -t \

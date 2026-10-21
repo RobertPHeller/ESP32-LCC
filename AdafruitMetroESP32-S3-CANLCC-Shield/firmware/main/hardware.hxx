@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Oct 20 16:23:56 2026
-//  Last Modified : <261020.2001>
+//  Last Modified : <261021.0856>
 //
 //  Description	
 //
@@ -61,6 +61,12 @@ static constexpr gpio_num_t CONFIG_SDA_PIN = GPIO_NUM_47; /* SDA pin */
 /// GPIO Pin used for I2C SCL.
 static constexpr gpio_num_t CONFIG_SCL_PIN = GPIO_NUM_48; /* SCL pin */
 
+#define ActPin GpioOutputSafeHighInvert
+
+GPIO_PIN(LED_ACT1,ActPin,14);
+GPIO_PIN(LED_ACT2,ActPin,15);
+
+
 #define LEDPin GpioOutputSafeLow
 
 GPIO_PIN(SIG1,LEDPin,2);
@@ -81,7 +87,8 @@ GPIO_PIN(SSR1,SwitchPin,12);
 GPIO_PIN(SSR2,SwitchPin,13);
 
 // Create an initializer that can initialize all the GPIO pins in one shot
-typedef GpioInitializer<SIG1_Pin, SIG2_Pin, SIG3_Pin, SIG4_Pin, 
+typedef GpioInitializer<LED_ACT1_Pin, LED_ACT2_Pin,
+                        SIG1_Pin, SIG2_Pin, SIG3_Pin, SIG4_Pin, 
                         StallM_Pin, StallN_Pin, SSR1_Pin, SSR2_Pin> 
         GpioInit;
 

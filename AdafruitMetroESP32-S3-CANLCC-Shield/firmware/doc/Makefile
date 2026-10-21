@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Tue Oct 20 15:31:53 2026
-#  Last Modified : <261020.1547>
+#  Last Modified : <261021.1141>
 #
 #  Description	
 #
@@ -43,20 +43,16 @@
 ##############################################################################
 
 
-all: #html latex pdf
+all: html latex pdf
 
 SOURCES = $(wildcard ../main/*.hxx) $(wildcard ../main/*.cpp) \
 	  $(wildcard ../components/Config/include/*.hxx) \
-	  $(wildcard ../../../CommonComponents/Azatrax/*.cpp) \
           $(wildcard ../../../CommonComponents/Azatrax/include/*.hxx) \
-          $(wildcard ../../../CommonComponents/NVSManager/*.cpp) \
+          $(wildcard ../../../CommonComponents/WiFiManager/include/*.hxx) \
           $(wildcard ../../../CommonComponents/NVSManager/include/*.hxx) \
-          $(wildcard ../../../CommonComponents/FS/*.cpp) \
           $(wildcard ../../../CommonComponents/FS/include/*.hxx) \
-          $(wildcard ../../../CommonComponents/HealthMonitor/*.cpp) \
           $(wildcard ../../../CommonComponents/HealthMonitor/include/*.hxx) \
-          $(wildcard ../../../CommonComponents/RebootHelpers/*.cpp) \
-          $(wildcard ../../../CommonComponents/RebootHelpers/include/*.hxx)           $(wildcard ../../CommonComponents/Logic/include/*.hxx)
+          $(wildcard ../../../CommonComponents/RebootHelpers/include/*.hxx) 
 
 Doxyfile: Doxyfile.in ../../../.git/index ../sdkconfig
 	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \

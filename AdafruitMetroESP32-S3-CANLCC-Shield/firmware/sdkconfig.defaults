@@ -6,7 +6,7 @@ CONFIG_BOOTLOADER_LOG_LEVEL_NONE=y
 #
 # Serial flasher config
 #
-CONFIG_ESPTOOLPY_FLASHSIZE_4MB=y
+CONFIG_ESPTOOLPY_FLASHSIZE_16MB=y
 
 #
 # Heap memory debugging

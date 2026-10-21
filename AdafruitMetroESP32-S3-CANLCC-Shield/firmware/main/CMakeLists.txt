@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Wed Apr 17 09:01:52 2024
-#  Last Modified : <261020.1502>
+#  Last Modified : <261021.0807>
 #
 #  Description	
 #
@@ -56,6 +56,7 @@ set(deps
     FS
     HealthMonitor
     RebootHelpers
+    WiFiManager
     Azatrax
     json
     esp_timer

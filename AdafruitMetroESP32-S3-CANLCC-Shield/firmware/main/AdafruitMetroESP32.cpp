@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Oct 20 11:48:50 2026
-//  Last Modified : <261020.1957>
+//  Last Modified : <261021.0902>
 //
 //  Description	
 //
@@ -64,9 +64,6 @@ static const char rcsid[] = "@(#) : $Id$";
 #include <freertos_drivers/esp32/Esp32HardwareTwai.hxx>
 #include <freertos_drivers/esp32/Esp32BootloaderHal.hxx>
 #include <freertos_drivers/esp32/Esp32SocInfo.hxx>
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-#include <freertos_drivers/esp32/Esp32WiFiManager.hxx>
-#endif
 #include <freertos_drivers/esp32/Esp32Ledc.hxx>
 #include <openlcb/MemoryConfigClient.hxx>
 #include <openlcb/RefreshLoop.hxx>
@@ -86,6 +83,7 @@ static const char rcsid[] = "@(#) : $Id$";
 #include "StallConsumer.hxx"
 #include "SSRConsumerConfig.hxx"
 #include "SSRConsumer.hxx"
+#include "WiFiManager.hxx"
 
 #if defined(CONFIG_LOWRESCROSSING) || defined(CONFIG_STANDARDRESCROSSING)
 #include "AzatraxRIR4CrossingConfig.hxx"
@@ -156,6 +154,33 @@ namespace openlcb
 
 } // namespace openlcb
 
+/// Halts execution with a specific blink pattern for the two LEDs that are on
+/// the IO base board.
+///
+/// @param activity1 Sets the initial state of the Activity1 (Green) LED.
+/// @param activity2 Sets the initial state of the Activity2 (Red)   LED.
+/// @param period Sets the delay between blinking the LED(s).
+/// @param toggle_both Controls if both LEDs will blink or if only the activity
+/// LED will blink.
+void die_with(bool activity1, bool activity2, unsigned period = 1000
+              , bool toggle_both = false)
+{
+    LED_ACT1_Pin::set(activity1);
+    LED_ACT2_Pin::set(activity2);
+    
+    while(true)
+    {
+        if (toggle_both)
+        {
+            LED_ACT1_Pin::toggle();
+        }
+        LED_ACT2_Pin::toggle();
+        usleep(period);
+    }
+}
+
+
+
 extern "C"
 {
 
@@ -188,6 +213,41 @@ bool request_bootloader(void)
     // Default to allow bootloader to run since we are not entering the
     // bootloader loop unless requested by app_main.
     return true;
+}
+
+/// Updates the state of a status LED.
+///
+/// @param led is the LED to update.
+/// @param value is the new state of the LED.
+///
+/// NOTE: Currently the following mapping is being used for the LEDs:
+/// LED_ACTIVE -> Bootloader LED
+/// LED_WRITING -> Bootloader Write LED
+/// LED_REQUEST -> Used only as a hook for printing bootloader startup.
+void bootloader_led(enum BootloaderLed led, bool value)
+{
+    LOG(VERBOSE, "[Bootloader] bootloader_led(%d, %d)", led, value);
+    if (led == LED_ACTIVE)
+    {
+        LED_ACT1_Pin::instance()->write(value);
+    }
+    else if (led == LED_WRITING)
+    {
+        LED_ACT2_Pin::instance()->write(value);
+    }
+    else if (led == LED_REQUEST)
+    {
+        //LOG(INFO, "[Bootloader] Preparing to receive firmware");
+        //LOG(INFO, "[Bootloader] Current partition: %s", current->label);
+        //LOG(INFO, "[Bootloader] Target partition: %s", target->label);
+    }
+}
+/// Initializes the node specific bootloader hardware (LEDs)
+void bootloader_hw_set_to_safe(void)
+{
+    LOG(VERBOSE, "[Bootloader] bootloader_hw_set_to_safe");
+    LED_ACT1_Pin::hw_init();
+    LED_ACT2_Pin::hw_init();
 }
 
 
@@ -260,13 +320,17 @@ void app_main()
     i2c.hw_init(CONFIG_SDA_PIN,CONFIG_SCL_PIN,400000,I2C_NUM_0);
     
     rir4.begin("/dev/i2c0");
-#ifdef RIR4ADDRESS2
+#ifdef CONFIG_RIR4ADDRESS2
     rir4_2.begin("/dev/i2c0");
 #endif
     
     nvsmanager::NvsManager nvs;
     nvs.init(reset_reason);
 
+    // Ensure the LEDs are both ON for PauseCheck
+    LED_ACT1_Pin::instance()->set();
+    LED_ACT2_Pin::instance()->set();
+    
     LOG(INFO, "[BootPauseHelper] starting...");
     
     nvsmanager::BootPauseHelper pause;
@@ -281,6 +345,10 @@ void app_main()
         nvs.clear_factory_reset();
     }
 
+    // Ensure the LEDs are both OFF when we startup.
+    LED_ACT1_Pin::instance()->clr();
+    LED_ACT2_Pin::instance()->clr();
+    
     if (nvs.should_start_bootloader())
     {
         run_bootloader = true;
@@ -299,6 +367,8 @@ void app_main()
     if (run_bootloader)
     {
         LOG(VERBOSE, "[Bootloader] bootloader_hw_set_to_safe");
+        LED_ACT1_Pin::hw_init();
+        LED_ACT2_Pin::hw_init();
         esp32_bootloader_run(nvs.node_id(), CONFIG_TWAI_TX_PIN, CONFIG_TWAI_RX_PIN, true);
         esp_restart();
     }
@@ -315,23 +385,18 @@ void app_main()
         nvs.register_virtual_memory_spaces(&stack);
         openlcb::MemoryConfigClient memory_client(stack.node(), stack.memory_config_handler());
         LOG(INFO, "[AdafruitMetroESP32] MemoryConfigClient done.");
-#ifdef CONFIG_ESP32_WIFI_ENABLED
-        openmrn_arduino::Esp32WiFiManager wifi_manager(
-                                                       nvs.station_ssid(), 
-                                                       nvs.station_pass(),
-                                                       &stack, 
-                                                       cfg.seg().olbcwifi(), 
-                                                       nvs.wifi_mode(),
-                                                       (uint8_t)CONFIG_OLCB_WIFI_MODE, /* uplink / hub mode */
-                                                       nvs.hostname_prefix());
-#endif
         AdafruitMetroESP32::FactoryResetHelper factory_reset_helper;
         LOG(INFO, "[AdafruitMetroESP32] FactoryResetHelper done.");
         reboothelpers::DelayRebootHelper delayed_reboot(stack.service());
         LOG(INFO, "[AdafruitMetroESP32] DelayRebootHelper done.");
         healthmonitor::HealthMonitor health_mon(stack.service());
         LOG(INFO, "[AdafruitMetroESP32] HealthMonitor done.");
-        
+        WiFiManager wifi_manager(nvs.station_ssid(),
+                                 nvs.station_pass(),
+                                 &stack, 
+                                 cfg.seg().uplinkParams(),
+                                 nvs.hostname_prefix(),
+                                 nvs.wifi_mode() != 0);
         BlinkTimer blinker(stack.executor()->active_timers());
         LOG(INFO, "[AdafruitMetroESP32] BlinkTimer done.");
 #ifdef CONFIG_LOWRESCROSSING

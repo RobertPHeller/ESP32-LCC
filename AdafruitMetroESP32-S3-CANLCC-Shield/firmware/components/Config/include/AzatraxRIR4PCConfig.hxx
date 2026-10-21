@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Oct 20 14:52:24 2026
-//  Last Modified : <261020.1945>
+//  Last Modified : <261021.1457>
 //
 //  Description	
 //
@@ -40,10 +40,37 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+
 #ifndef __AZATRAXRIR4PCCONFIG_HXX
 #define __AZATRAXRIR4PCCONFIG_HXX
 
 #include "openlcb/ConfigRepresentation.hxx"                                     
+
+/** @page AzatraxRIR4PC  Azatrax RIR4 Configuration
+ * The Azatrax RIR4 has 4 detectors and 2 stop watches (timers).
+ * The detectors are in pairs and each pair has an associated stop watche 
+ * timer.  The timers can then be used to time the travel time between the
+ * detector pair and that can be used to calculate the speed of the train.
+ * 
+ * @section detector Detector Configuration
+ * @arg Description This is a 16 character description of the detector.
+ * @arg Occupied This event (P) is produced when a detector is occupied 
+ * (covered for in track, interupted for across track).
+ * @arg Vacant This event (P) is produced when a detector is vacated
+ * (uncovered for in track, not interupted for across track).
+ * @arg Threshold This is the Sensor threshold value, 0 to 255.
+ * 
+ * @section stopwatch Stop Watch (Timer) Configuration
+ * @arg Description This is a 16 character description for the timer.
+ * @arg Stopped This event (P) is produced when the Stop Watch stops.
+ * @arg Left to Right This event (P) is produced when the Stop Watch starts
+ * when detector 1 is triggered before detector 2 (Stop Watch 1) or when
+ * detector 3 is triggered before detector 4 (Stop Watch 2).
+ * @arg Right to Left This event (P) is produced when the Stop Watch starts
+ * when detector 2 is triggered before detector 1 (Stop Watch 1) or when
+ * detector 4 is triggered before detector 3 (Stop Watch 2).
+ * @arg Reset This event (C) is consumed to reset the Stopwatch.
+ */
 
 /// CDI Configuration for a @ref AzatraxDector.
 CDI_GROUP(AzatraxDetectorConfig);

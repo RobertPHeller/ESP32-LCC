@@ -52,9 +52,9 @@
  * The Azatrax RIR4 Crossing Configuration has these configuration options:
  * 
  * - Description (16 char string) User name of this Azatrax RIR4 Crossing.
- *   This is just a name for identifing purposes.
+ *   This is just a name for identifying purposes.
  * - Activated Event Produced (Event ID) (P) This event is produced when 
- *   the crossing is "activated" -- a train is aproaching the crossing. This
+ *   the crossing is "activated" -- a train is approaching the crossing. This
  *   event can be used to activate crossing protections: lowering gates
  *   (barriers), turn on flashers, and turn on the bell.
  * - Deactivated Event Produced (Event ID) (P) This event is produced when

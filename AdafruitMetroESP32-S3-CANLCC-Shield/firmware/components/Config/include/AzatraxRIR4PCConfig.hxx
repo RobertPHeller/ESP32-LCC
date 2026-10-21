@@ -48,16 +48,16 @@
 
 /** @page AzatraxRIR4PC  Azatrax RIR4 Configuration
  * The Azatrax RIR4 has 4 detectors and 2 stop watches (timers).
- * The detectors are in pairs and each pair has an associated stop watche 
+ * The detectors are in pairs and each pair has an associated stop watch 
  * timer.  The timers can then be used to time the travel time between the
  * detector pair and that can be used to calculate the speed of the train.
  * 
  * @section detector Detector Configuration
  * @arg Description This is a 16 character description of the detector.
  * @arg Occupied This event (P) is produced when a detector is occupied 
- * (covered for in track, interupted for across track).
+ * (covered for in track, interrupted for across track).
  * @arg Vacant This event (P) is produced when a detector is vacated
- * (uncovered for in track, not interupted for across track).
+ * (uncovered for in track, not interrupted for across track).
  * @arg Threshold This is the Sensor threshold value, 0 to 255.
  * 
  * @section stopwatch Stop Watch (Timer) Configuration

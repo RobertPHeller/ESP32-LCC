@@ -54,7 +54,7 @@
  * - Pulse width in seconds, 1 to 127: This is only used to the Pulse option
  *   and defined how long the plus in on.
  * - Blinker on: This Event is consumed to turn the output on.
- * - Blinker off: This event is consomed to turn the output off.
+ * - Blinker off: This event is consumed to turn the output off.
  */
 
 

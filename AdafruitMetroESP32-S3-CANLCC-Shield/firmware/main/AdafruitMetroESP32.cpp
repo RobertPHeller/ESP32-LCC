@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Oct 20 11:48:50 2026
-//  Last Modified : <261021.0902>
+//  Last Modified : <261021.1723>
 //
 //  Description	
 //
@@ -40,10 +40,45 @@
 //
 //////////////////////////////////////////////////////////////////////////////
 
+
+/** @mainpage Introduction
+ * Adafruit Metro ESPS3 LCC/CAN and I/O Shield for use with 1 or 2 Azatrax 
+ * RIR4 shields.
+ * @page Servo Servo Configuration
+ * There are 4 servo drivers for gates, etc.
+ * @arg Description This is a 16 character description.
+ * @arg Minimum Rotation Event ID This event (C) will rotate the servo to its 
+ * mimimum configured point.
+ * @arg Maximum Rotation Event ID This event (C) will rotate the servo to its
+ * maximum configured point.
+ * @arg Servo Minimum Stop Point Percentage This is the minimun stop percentage.
+ * @arg Servo Maximum Stop Point Percentage This is the maximum stop percentage.
+ */
+
 static const char rcsid[] = "@(#) : $Id$";
 
 #include "sdkconfig.h"
 #include "cdi.hxx"
+#ifdef CONFIG_LOWRESCROSSING
+#ifdef CONFIG_RIR4ADDRESS2
+#define SW_MODE "LR2RIR4"
+#else
+#define SW_MODE "LR1RIR4"
+#endif
+#elif defined(CONFIG_STANDARDRESCROSSING)
+#ifdef CONFIG_RIR4ADDRESS2
+#define SW_MODE "SR2RIR4"
+#else
+#define SW_MODE "SR1RIR4"
+#endif
+#else
+#ifdef CONFIG_RIR4ADDRESS2
+#define SW_MODE "RD2RIR4"
+#else
+#define SW_MODE "RD1RIR4"
+#endif
+#endif
+
 #include "cdidata.hxx"
 #include "DelayRebootHelper.hxx"
 #include "FactoryResetHelper.hxx"
@@ -148,8 +183,8 @@ namespace openlcb
         4,
         SNIP_PROJECT_PAGE,
         SNIP_PROJECT_NAME,
-        SNIP_HW_VERSION,
-        SNIP_SW_VERSION
+        SNIP_HW_VERSION CONFIG_IDF_TARGET,
+        SNIP_SW_VERSION SW_MODE
     };
 
 } // namespace openlcb

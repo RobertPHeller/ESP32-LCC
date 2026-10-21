@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Tue Oct 20 15:31:53 2026
-#  Last Modified : <261021.1141>
+#  Last Modified : <261021.1546>
 #
 #  Description	
 #
@@ -59,13 +59,17 @@ Doxyfile: Doxyfile.in ../../../.git/index ../sdkconfig
 	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
 	    >$@ <$<
 	    
+header.tex: Doxyfile Makefile header.sed
+	doxygen -w latex new_header.tex /dev/null /dev/null
+	sed <new_header.tex >header.tex -f header.sed 
+	-rm new_header.tex
 
-html latex: Doxyfile $(SOURCES)
+html latex: Doxyfile $(SOURCES) Makefile $(wildcard Images/*) header.tex
 	-rm -rf html latex pdf
 	doxygen Doxyfile
-	
+	cp Images/*.png latex/
 
-pdf: latex
+pdf: latex 
 	make -C latex
 	touch pdf
 

@@ -8,7 +8,7 @@
 #  Author        : $Author$
 #  Created By    : Robert Heller
 #  Created       : Tue Oct 20 15:31:53 2026
-#  Last Modified : <261021.1546>
+#  Last Modified : <261021.1955>
 #
 #  Description	
 #
@@ -43,9 +43,10 @@
 ##############################################################################
 
 
-all: html latex pdf
+all: UserManual.pdf KitBooklet.pdf
 
 SOURCES = $(wildcard ../main/*.hxx) $(wildcard ../main/*.cpp) \
+	  KitBooklet.dox ServoConfig.dox \
 	  $(wildcard ../components/Config/include/*.hxx) \
           $(wildcard ../../../CommonComponents/Azatrax/include/*.hxx) \
           $(wildcard ../../../CommonComponents/WiFiManager/include/*.hxx) \
@@ -59,21 +60,37 @@ Doxyfile: Doxyfile.in ../../../.git/index ../sdkconfig
 	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
 	    >$@ <$<
 	    
-header.tex: Doxyfile Makefile header.sed
+Doxyfile.kit: Doxyfile.kit.in ../../../.git/index ../sdkconfig
+	sed -e "s/@PROJECTNAME@/$(PROJECTNAME)/g" \
+	    -e "s/@PROJECTNUMBER@/$(PROJECTNUMBER)/g" \
+	    >$@ <$<
+	    
+header.tex: Doxyfile Doxyfile.kit Makefile header.sed
 	doxygen -w latex new_header.tex /dev/null /dev/null
 	sed <new_header.tex >header.tex -f header.sed 
 	-rm new_header.tex
 
 html latex: Doxyfile $(SOURCES) Makefile $(wildcard Images/*) header.tex
-	-rm -rf html latex pdf
+	-rm -rf html latex
 	doxygen Doxyfile
 	cp Images/*.png latex/
 
-pdf: latex 
+UserManual.pdf: latex 
 	make -C latex
-	touch pdf
+	mv latex/refman.pdf UserManual.pdf
+	
+latex2: Doxyfile.kit $(SOURCES) Makefile $(wildcard Images/*) header.tex
+	-rm -rf latex2 
+	doxygen Doxyfile.kit
+	cp Images/*.png latex2/
+	
 
+KitBooklet.pdf: latex2
+	$(MAKE) -C latex2
+	pdfbook2 --paper=letter latex2/refman.pdf
+	mv latex2/refman-book.pdf KitBooklet.pdf
+	
 clean:
-	rm -rf html latex pdf Doxyfile
+	rm -rf html latex latex2 UserManual.pdf KitBooklet.pdf Doxyfile Doxyfile.kit
 
 

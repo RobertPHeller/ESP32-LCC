@@ -1,0 +1,115 @@
+/* -*- C -*- ****************************************************************
+ *
+ *  System        : 
+ *  Module        : 
+ *  Object Name   : $RCSfile$
+ *  Revision      : $Revision$
+ *  Date          : $Date$
+ *  Author        : $Author$
+ *  Created By    : $USER_NAME$
+ *  Created       : $ASCII_TIME$
+ *  Last Modified : <261021.2029>
+ *
+ *  Description	
+ *
+ *  Notes
+ *
+ *  History
+ *	
+ ****************************************************************************
+ *
+ *    Generic Project
+ *    Copyright (C) $YEAR$  Robert Heller D/B/A Deepwoods Software
+ *			51 Locke Hill Road
+ *			Wendell, MA 01379-9728
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * 
+ *
+ ****************************************************************************/
+
+/**
+ * @page 00kitContents Kit Contents
+ * This kit contains:
+ * -# This booklet.
+ * -# The baseboard PCB
+ * @image html AdafruitMetroESP32-S3-CANLCC-Shield3D-Top_thumb.png
+ * @image latex AdafruitMetroESP32-S3-CANLCC-Shield3D-Top_thumb.png height=1in
+ * -# 2 RJ45 connectors
+ * @image html WR-MJ_SPL.jpg
+ * @image latex WR-MJ_SPL.jpg height=1in
+ * -# 1 3 position 2.54mm terminal block
+ * @image html 1725669_DSL.jpg
+ * @image latex 1725669_DSL.jpg height=1in
+ * -# 1 4 position 2.54mm terminal block
+ * @image html 1725672_DSL.jpg
+ * @image latex 1725672_DSL.jpg height=1in
+ * -# 1 5 position 2.54mm terminal block
+ * @image html 1725685_DSL.jpg
+ * @image latex 1725685_DSL.jpg height=1in
+ * -# 1 2 position 2.54mm terminal block
+ * @image html 41927_1000_int_04.jpg
+ * @image latex 41927_1000_int_04.jpg height=1in
+ * -# 1 1x12 pin header (to be cut into 4 1x3 headers)
+ * @image html 102972-1_SPL.jpg
+ * @image latex 102972-1_SPL.jpg height=1in
+ * -# 1 1x32 pin header (to be cut into a 1x6, 2 1x8, and a 1x10 headers)
+ * @image html 102972-1_SPL.jpg
+ * @image latex 102972-1_SPL.jpg height=1in
+ *
+ * @page 01assembly Assembly
+ *
+ * Assembly is straight forward.  All of the SMD parts are factory installed. 
+ * Only the through-hole parts are not soldered to the board. These are the 
+ * RJ45 Jacks, the 2x19 socket headers, the terminal blocks, and the servo
+ * headers.  These are all easy to solder parts. Make sure the headers and 
+ * terminal blocks are fully seated and square to the boards. A simple trick 
+ * is to solder one pin and then while pressing the part to the board, reheat 
+ * that one pin's solder pad and snapping the part to the board and holding it
+ * tight and square to the board as the solder cools. Important: make sure the
+ * wire entry holes in the terminal blocks are facing the edge of the board!
+ * The RJ45 Jacks cannot be installed wrong (they have orientation pins). 
+ * Start with the shortest parts and work up to the tallest.
+ *
+ * This shield expects one or two Aztrax RIR4 shields.  It also expects to
+ * used with an Adafruit Metro ESP32S3.
+ * 
+ * @page 02wiring General Wiring Notes
+ *
+ * There are various terminal blocks, connectors, and jumper blocks on this
+ * board.
+ *
+ * On the left side starting from the top, is a 5 position terminal block for 
+ * the flasher signals.  Its common is wired to the +12V supply (see below).
+ * You will need to add series current limiting resistors.
+ * Then there is a 4 position terminal block for the stall motors.
+ * After that is the 12V supply for the flashers and stall motors.
+ * Finally there is a 3 position terminal block for the SSRs.
+ * 
+ * Just above the Arduino power header, are 4 headers for the servos (3 pins 
+ * each: top to bottom: Ctl, +5V, Gnd).  There are places for pullup resistors
+ * for the servos.
+ *
+ * On the right side are two RJ45 connectors for the LCC network connections.
+ *
+ * @image html AdafruitMetroESP32-S3-CANLCC-Shield3D-Top_annotated.png
+ * @image latex AdafruitMetroESP32-S3-CANLCC-Shield3D-Top_annotated.png width=5in
+ *
+ * @page 03initialConfig Initial Configuration
+ * 
+ * The first time the node is started, it is necessary to set the node id.
+ * See \ref NodeIdConfig for information about this.
+*/   

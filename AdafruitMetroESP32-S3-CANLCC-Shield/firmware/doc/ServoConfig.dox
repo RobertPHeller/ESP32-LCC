@@ -1,0 +1,61 @@
+/* -*- C -*- ****************************************************************
+ *
+ *  System        : 
+ *  Module        : 
+ *  Object Name   : $RCSfile$
+ *  Revision      : $Revision$
+ *  Date          : $Date$
+ *  Author        : $Author$
+ *  Created By    : $USER_NAME$
+ *  Created       : $ASCII_TIME$
+ *  Last Modified : <251120.1408>
+ *
+ *  Description	
+ *
+ *  Notes
+ *
+ *  History
+ *	
+ ****************************************************************************
+ *
+ *    Generic Project
+ *    Copyright (C) $YEAR$  Robert Heller D/B/A Deepwoods Software
+ *			51 Locke Hill Road
+ *			Wendell, MA 01379-9728
+ *
+ *    This program is free software; you can redistribute it and/or modify
+ *    it under the terms of the GNU General Public License as published by
+ *    the Free Software Foundation; either version 2 of the License, or
+ *    (at your option) any later version.
+ *
+ *    This program is distributed in the hope that it will be useful,
+ *    but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *    GNU General Public License for more details.
+ *
+ *    You should have received a copy of the GNU General Public License
+ *    along with this program; if not, write to the Free Software
+ *    Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
+ *
+ * 
+ *
+ ****************************************************************************/
+
+/** @page ServoConfig Servo Consumer Configuration
+ *
+ * There are four servo outputs.  They have these configuration options:
+ *
+ * - Description: This is a 16 character description for the servo.
+ * - Minimum Rotation Event ID: This Event is consumed to rotate the servo to 
+ *   its minimum position.
+ * - Maximum Rotation Event ID: This Event is consumed to rotate the servo to
+ *   its maximum position.
+ * - Servo Minimum Stop Point Percentage: This is the servo's minimum stop 
+ *   point of the servo, as a percentage: generally 0-100. May be 
+ *   under/over-driven by setting a percentage value of -99 to 200, 
+ *   respectively.
+ * - Servo Maximum Stop Point Percentage:  This is the servo's maximum stop 
+ *   point of the servo, as a percentage: generally 0-100. May be 
+ *   under/over-driven by setting a percentage value of -99 to 200, 
+ *   respectively.
+ */

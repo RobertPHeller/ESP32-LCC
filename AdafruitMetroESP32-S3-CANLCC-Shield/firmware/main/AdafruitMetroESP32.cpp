@@ -8,7 +8,7 @@
 //  Author        : $Author$
 //  Created By    : Robert Heller
 //  Created       : Tue Oct 20 11:48:50 2026
-//  Last Modified : <261021.1723>
+//  Last Modified : <261021.1945>
 //
 //  Description	
 //
@@ -44,15 +44,6 @@
 /** @mainpage Introduction
  * Adafruit Metro ESPS3 LCC/CAN and I/O Shield for use with 1 or 2 Azatrax 
  * RIR4 shields.
- * @page Servo Servo Configuration
- * There are 4 servo drivers for gates, etc.
- * @arg Description This is a 16 character description.
- * @arg Minimum Rotation Event ID This event (C) will rotate the servo to its 
- * mimimum configured point.
- * @arg Maximum Rotation Event ID This event (C) will rotate the servo to its
- * maximum configured point.
- * @arg Servo Minimum Stop Point Percentage This is the minimun stop percentage.
- * @arg Servo Maximum Stop Point Percentage This is the maximum stop percentage.
  */
 
 static const char rcsid[] = "@(#) : $Id$";
